@@ -39,10 +39,6 @@ export default function Terms() {
                     </div>
                   </article>
                 </m.main>
-                
-                <m.div>
-                  <Footer />
-                </m.div>
               </m.div>
             </LazyMotion>
           </div>

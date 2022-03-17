@@ -41,7 +41,7 @@ export default function Home(initialData) {
     <Layout>
       <NextSeo title={home.title} />
       
-      <div>
+      <div className="p-5">
         <Header />
         
         <LazyMotion features={domAnimation}>
@@ -70,10 +70,6 @@ export default function Home(initialData) {
                 </div>
               </article>
             </m.main>
-            
-            <m.div>
-              <Footer />
-            </m.div>
           </m.div>
         </LazyMotion>
       </div>
