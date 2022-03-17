@@ -37,7 +37,7 @@ export default function Work(initialData) {
       <NextSeo title="Work" />
 
       <LocomotiveScrollProvider
-        options={{ smooth: true, lerp: 0.05 }}
+        options={{ smooth: true, lerp: 0.13 }}
         containerRef={containerRef}
         watch={[]}
       >

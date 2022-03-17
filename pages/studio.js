@@ -37,7 +37,7 @@ export default function Studio(initialData) {
       <NextSeo title={studio.title} />
 
       <LocomotiveScrollProvider
-        options={{ smooth: true, lerp: 0.05 }}
+        options={{ smooth: true, lerp: 0.13 }}
         containerRef={containerRef}
         watch={[]}
       >
