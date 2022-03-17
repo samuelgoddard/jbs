@@ -10,7 +10,7 @@ import SanityPageService from '@/services/sanityPageService'
 import BlockContent from '@sanity/block-content-to-react'
 
 const query = `{
-  "home": *[_type == "home"][0]{
+  "studio": *[_type == "studio"][0]{
     title,
     content,
     seo {
@@ -24,14 +24,14 @@ const query = `{
 
 const pageService = new SanityPageService(query)
 
-export default function Home(initialData) {
-  const { data: { home } } = pageService.getPreviewHook(initialData)()
+export default function Studio(initialData) {
+  const { data: { studio } } = pageService.getPreviewHook(initialData)()
   const containerRef = useRef(null)
 
   return (
     <Layout>
-      <NextSeo title={home.title} />
-      
+      <NextSeo title={studio.title} />
+
       <LocomotiveScrollProvider
         options={{ smooth: true, lerp: 0.05 }}
         containerRef={containerRef}
@@ -40,7 +40,7 @@ export default function Home(initialData) {
         <div data-scroll-container ref={containerRef} id="scroll-container">
           <div data-scroll-section>
             <Header />
-            
+
             <LazyMotion features={domAnimation}>
               <m.div
                 initial="initial"
@@ -49,9 +49,9 @@ export default function Home(initialData) {
               >
                 <m.main variants={fade} className="mb-12 md:mb-16 xl:mb-24 pt-24 md:pt-20">
                   <article>
-                    <h1 className="font-bold text-2xl md:text-3xl xl:text-4xl mb-4">{home.title}</h1>
+                    <h1 className="font-bold text-2xl md:text-3xl xl:text-4xl mb-4">{studio.title}</h1>
                     <div className="content max-w-3xl mb-4 font-mono">
-                      <BlockContent serializers={{ container: ({ children }) => children }} blocks={home.content} />
+                    <BlockContent serializers={{ container: ({ children }) => children }} blocks={studio.content} />
                     </div>
                   </article>
                 </m.main>

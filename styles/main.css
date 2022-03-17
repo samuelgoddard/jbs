@@ -15,5 +15,5 @@
 
 /* Simple defaults */
 body {
-  @apply font-sans antialiased text-black bg-white;
+  @apply font-mono antialiased text-black bg-white p-5;
 }

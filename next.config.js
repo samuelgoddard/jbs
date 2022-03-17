@@ -1,5 +1,8 @@
 module.exports = {
   swcMinify: true,
+  images: {
+    domains: ['cdn.sanity.io', 'cdn.shopify.com'],
+  },
   webpack: (config, { dev, isServer }) => {
     // Replace React with Preact only in client production build
     if (!dev && !isServer) {

@@ -5,8 +5,8 @@ module.exports = {
   ],
   theme: {
     fontFamily: {
-      'sans': ['Arial', 'sans-serif'],
-      'mono': ['Lucida Console', 'Courier', 'monospace'],
+      'sans': ['System85', 'sans-serif'],
+      'mono': ['FoundersGroteskMono', 'Lucida Console', 'Courier', 'monospace'],
     },
     screens: {
       sm: "640px",
