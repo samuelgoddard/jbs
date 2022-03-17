@@ -53,7 +53,7 @@ export default function Home(initialData) {
             <m.main className="mb-12 md:mb-16 xl:mb-24 pt-24 md:pt-20">
               <Image 
                 image={home.backgroundImage}
-                fill
+                layout="fill"
                 className="fixed inset-0 z-0 object-cover object-center"
               />
 
