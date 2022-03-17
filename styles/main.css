@@ -23,3 +23,10 @@ body {
     @apply object-cover;
   }
 }
+
+.image {
+
+  & img {
+    @apply will-change-transform;
+  }
+}

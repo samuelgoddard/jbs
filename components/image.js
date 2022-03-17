@@ -15,7 +15,7 @@ export default function Image({ image, layout, widthOverride, heightOverride, cl
 	const imageProps = useNextSanityImage(sanity.config, image.asset, { imageBuilder: myCustomImageBuilder });
 
 	return (
-    <figure className={`${className} ${layout == 'fill' && 'cover-image' }`}>
+    <figure className={`image ${className} ${layout == 'fill' && 'cover-image' }`}>
 		  <Img
         {...imageProps}
         layout={layout ? layout : 'responsive'}
