@@ -43,11 +43,13 @@ export default function WorkSlug(initialData) {
                 animate="enter"
                 exit="exit"
               >
-                <m.main variants={fade} className="mb-12 md:mb-16 xl:mb-24 pt-24 md:pt-20">
+                <m.main className="mb-12 md:mb-16 xl:mb-24 pt-24 md:pt-20">
                   <article>
-                    <FancyLink destination="/work" a11yText="Navigate to the work index page" label="Back to all work →" />
-                    <h1 className="font-bold text-2xl md:text-3xl xl:text-4xl my-4">{title}</h1>
-                    <div className="content max-w-3xl mb-4 font-mono">
+                    <FancyLink destination="/work" a11yText="Navigate to the work index page" label="Back to all work" />
+                    
+                    <div className="content max-w-3xl mb-4 font-mono mt-3">
+                      <h1 className="font-bold text-2xl md:text-3xl xl:text-4xl">{title}</h1>
+
                       <SanityBlockContent serializers={{ container: ({ children }) => children }} blocks={content} />
 
                       <h2>Project Info:</h2>
@@ -56,7 +58,7 @@ export default function WorkSlug(initialData) {
                   </article>
                 </m.main>
                 
-                <m.div variants={fade}>
+                <m.div>
                   <Footer />
                 </m.div>
               </m.div>

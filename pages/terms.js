@@ -6,32 +6,13 @@ import { fade } from '@/helpers/transitions'
 import { LocomotiveScrollProvider } from 'react-locomotive-scroll'
 import { LazyMotion, domAnimation, m } from 'framer-motion'
 import { NextSeo } from 'next-seo'
-import SanityPageService from '@/services/sanityPageService'
-import BlockContent from '@sanity/block-content-to-react'
-import Link from 'next/link'
 
-const query = `{
-  "home": *[_type == "home"][0]{
-    title,
-    content,
-    seo {
-      ...,
-      shareGraphic {
-        asset->
-      }
-    }
-  },
-}`
-
-const pageService = new SanityPageService(query)
-
-export default function Home(initialData) {
-  const { data: { home } } = pageService.getPreviewHook(initialData)()
+export default function Terms() {
   const containerRef = useRef(null)
 
   return (
     <Layout>
-      <NextSeo title={home.title} />
+      <NextSeo title="Terms" />
       
       <LocomotiveScrollProvider
         options={{ smooth: true, lerp: 0.05 }}
@@ -51,14 +32,10 @@ export default function Home(initialData) {
                 <m.main className="mb-12 md:mb-16 xl:mb-24 pt-24 md:pt-20">
                   <article>
                     <div className="content max-w-3xl mb-4 font-mono">
-                      <h1 className="font-bold text-2xl md:text-3xl xl:text-4xl">{home.title}</h1>
+                      <h1 className="font-bold text-2xl md:text-3xl xl:text-4xl">Terms &amp; Conditions</h1>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
 
-                      <BlockContent serializers={{ container: ({ children }) => children }} blocks={home.content} />
-
-                      <ul className="mt-6 font-sans tracking-tight text-xl">
-                        <li className="block"><Link href="/work"><a className="underline">Work</a></Link></li>
-                        <li className="block"><Link href="/studio"><a className="underline">Studio</a></Link></li>
-                      </ul>
+                      <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                     </div>
                   </article>
                 </m.main>
@@ -73,12 +50,4 @@ export default function Home(initialData) {
       </LocomotiveScrollProvider>
     </Layout>
   )
-}
-
-export async function getStaticProps(context) {
-  const cms = await pageService.fetchQuery(context)
-
-  return {
-    props: { ...cms }
-  }
 }

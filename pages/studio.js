@@ -13,6 +13,10 @@ const query = `{
   "studio": *[_type == "studio"][0]{
     title,
     content,
+    teamMembers[] {
+      name,
+      jobTitle,
+    },
     seo {
       ...,
       shareGraphic {
@@ -47,16 +51,25 @@ export default function Studio(initialData) {
                 animate="enter"
                 exit="exit"
               >
-                <m.main variants={fade} className="mb-12 md:mb-16 xl:mb-24 pt-24 md:pt-20">
+                <m.main className="mb-12 md:mb-16 xl:mb-24 pt-24 md:pt-20">
                   <article>
-                    <h1 className="font-bold text-2xl md:text-3xl xl:text-4xl mb-4">{studio.title}</h1>
                     <div className="content max-w-3xl mb-4 font-mono">
-                    <BlockContent serializers={{ container: ({ children }) => children }} blocks={studio.content} />
+                      <h1 className="font-bold text-2xl md:text-3xl xl:text-4xl">{studio.title}</h1>
+                      <BlockContent serializers={{ container: ({ children }) => children }} blocks={studio.content} />
+                      
+                      <h2>Team</h2>
+                      <ul>
+                        {studio.teamMembers.map((e, i) => {
+                          return (
+                            <li className="block" key={i}>{e.name} - {e.jobTitle}</li>
+                          )
+                        })}
+                      </ul>
                     </div>
                   </article>
                 </m.main>
                 
-                <m.div variants={fade}>
+                <m.div>
                   <Footer />
                 </m.div>
               </m.div>

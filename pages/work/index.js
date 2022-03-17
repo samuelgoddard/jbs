@@ -51,14 +51,15 @@ export default function Work(initialData) {
                 animate="enter"
                 exit="exit"
               >
-                <m.main variants={fade} className="mb-12 md:mb-16 xl:mb-24 pt-24 md:pt-20">
+                <m.main className="mb-12 md:mb-16 xl:mb-24 pt-24 md:pt-20">
                   <article>
-                    <h1 className="font-bold text-2xl md:text-3xl xl:text-4xl mb-4">Work</h1>
                     <div className="content max-w-3xl mb-4 font-mono">
-                      <ul className="list list-inside list-disc">
+                      <h1 className="font-bold text-2xl md:text-3xl xl:text-4xl">Work</h1>
+                      <p>Some content here...</p>
+                      <ul className="mt-6 font-sans tracking-tight text-xl">
                         {work.map((e, i) => {
                           return (
-                            <li className="mb-1" key={i}><Link href={`/work/${e.slug.current}`}><a className="underline">{e.title} →</a></Link></li>
+                            <li className="block" key={i}><Link href={`/work/${e.slug.current}`}><a className="underline">{e.title}</a></Link></li>
                           )
                         })}
                       </ul>
@@ -66,7 +67,7 @@ export default function Work(initialData) {
                   </article>
                 </m.main>
                 
-                <m.div variants={fade}>
+                <m.div >
                   <Footer />
                 </m.div>
               </m.div>
