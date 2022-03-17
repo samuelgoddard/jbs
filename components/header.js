@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 export default function Header({ menu }) {
   return (
-    <header className="font-mono w-full">
+    <header className="font-mono w-full relative z-10">
       <div className="flex flex-wrap">
         <Link href="/">
           <a className="mb-1 md:mb-0 block w-[60px]">

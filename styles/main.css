@@ -17,3 +17,9 @@
 body {
   @apply font-mono antialiased text-black bg-white p-5;
 }
+
+.cover-image {
+  & img {
+    @apply object-cover;
+  }
+}
