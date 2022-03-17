@@ -15,7 +15,7 @@ export default function Terms() {
       <NextSeo title="Terms" />
       
       <LocomotiveScrollProvider
-        options={{ smooth: true, lerp: 0.13 }}
+        options={{ smooth: true, lerp: 0.1 }}
         containerRef={containerRef}
         watch={[]}
       >

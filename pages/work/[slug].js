@@ -37,7 +37,7 @@ export default function WorkSlug(initialData) {
       <NextSeo title={title} />
 
       <LocomotiveScrollProvider
-        options={{ smooth: true, lerp: 0.13 }}
+        options={{ smooth: true, lerp: 0.1 }}
         containerRef={containerRef}
         watch={[]}
       >

@@ -15,7 +15,7 @@ export default function Reel() {
       <NextSeo title="Reel" />
       
       <LocomotiveScrollProvider
-        options={{ smooth: true, lerp: 0.13 }}
+        options={{ smooth: true, lerp: 0.1 }}
         containerRef={containerRef}
         watch={[]}
       >
