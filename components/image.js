@@ -7,7 +7,7 @@ export default function Image({ image, layout, widthOverride, heightOverride, fo
   const myCustomImageBuilder = (imageUrlBuilder, options) => {
     return imageUrlBuilder
       .width(options.width || Math.min(options.originalImageDimensions.width, 800))
-      .quality(80)
+      .quality(90)
       .fit('clip')
   };
   
@@ -20,8 +20,10 @@ export default function Image({ image, layout, widthOverride, heightOverride, fo
     const { x, y } = focalPoint;
     attributes.objectPosition = `${x * 100}% ${y * 100}%`;
   }
+
   if (image.alt) { attributes.alt = image.alt } else { attributes.alt = 'MISSING ALT TEXT' }
   if (layout) { attributes.layout = layout } else { attributes.layout = 'responsive' }
+  if (priority) { attributes.priority = true } else { attributes.priority = false }
 
 	return (
     <figure className={`image ${className} ${layout == 'fill' && 'cover-image' }`}>

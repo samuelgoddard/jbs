@@ -90,7 +90,7 @@ export default function Home(initialData) {
               />
 
               <article className="absolute bottom-0 top-auto md:bottom-auto md:top-0 right-0 left-0 z-10 w-full md:mt-[20vh] mb-[8vh] md:mb-0 p-3 indent-8 text-sm md:text-base leading-tight md:leading-tight grid grid-cols-9">
-                <div className="col-span-9 md:col-span-3 md:col-start-7 pr-12">
+                <div className="col-span-9 md:col-span-3 md:col-start-7 pr-12 xl:pr-20">
                   <BlockContent serializers={{ container: ({ children }) => children }} blocks={home.content} />
                 </div>
               </article>
