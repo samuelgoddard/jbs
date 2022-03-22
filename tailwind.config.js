@@ -18,7 +18,7 @@ module.exports = {
     },
     extend: {
       colors: {
-        'black': '#000',
+        'black': '#232322',
         'white': '#FFF',
         'example-color': {
           light: '#ffb288',

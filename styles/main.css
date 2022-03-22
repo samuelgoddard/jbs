@@ -20,7 +20,7 @@ body {
 
 .cover-image {
   & img {
-    @apply object-cover;
+    @apply object-cover object-center;
   }
 }
 
