@@ -21,7 +21,7 @@ export default function Reel() {
       >
         <div data-scroll-container ref={containerRef} id="scroll-container">
           <div data-scroll-section>
-            <div className="p-5">
+            <div className="p-3">
               <Header />
               
               <LazyMotion features={domAnimation}>

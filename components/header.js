@@ -1,9 +1,8 @@
-import FancyLink from '@/components/fancyLink'
 import Link from 'next/link'
 
-export default function Header({ menu }) {
+export default function Header() {
   return (
-    <header className="font-mono w-full relative z-10">
+    <header className="font-mono w-full z-20 absolute top-0 left-0 right-0 p-3">
       <div className="flex flex-wrap">
         <Link href="/">
           <a className="mb-1 md:mb-0 block w-[60px]">
@@ -18,7 +17,12 @@ export default function Header({ menu }) {
 
 
         <nav className="ml-auto flex space-x-3 text-sm md:text-base w-auto">
-          <FancyLink destination={menu ? '/' : '/menu'} a11yText="Navigate to the menu" label={menu ? 'Close' : 'Menu'} />
+          <Link href="/menu">
+            <a className="block w-[45px]">
+              <span className="block w-full h-[3px] mb-[5px] bg-current"></span>
+              <span className="block w-full h-[3px] mb-[5px] bg-current"></span>
+            </a>
+          </Link>
         </nav>
       </div>
     </header>

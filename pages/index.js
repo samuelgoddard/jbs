@@ -69,7 +69,7 @@ export default function Home(initialData) {
               </div>
               
               <div className="absolute top-0 left-0 right-0 grid grid-cols-9 p-3">
-                <span className="block text-[10px] md:text-[11px] xl:text-sm 2xl:text-base leading-[0.85] md:leading-[0.85] lg:leading-[0.85] 2xl:leading-[0.85] col-span-1">(</span>
+                <span className="block text-[10px] md:text-[11px] lg:text-sm 2xl:text-base leading-[0.85] md:leading-[0.85] lg:leading-[0.85] 2xl:leading-[0.85] col-span-1">(</span>
 
                 <span className="block text-[10px] md:text-[11px] lg:text-sm 2xl:text-base leading-[0.85] md:leading-[0.85] lg:leading-[0.85] 2xl:leading-[0.85] col-span-4 md:col-span-1 col-start-2">A Photography <span className="inline-block md:hidden">++ Moving Image</span></span>
                 
@@ -112,7 +112,7 @@ export default function Home(initialData) {
                 </div>
                 
                 <div className="col-span-2 col-start-8 text-right">
-                  <Link href="/studio"><a className="text-2xl md:text-5xl xl:text-6xl 2xl:text-7xl leading-none md:leading-none xl:leading-none 2xl:leading-none font-sans uppercase underline">Work</a></Link>
+                  <Link href="/studio"><a className="text-2xl md:text-5xl xl:text-6xl 2xl:text-7xl leading-none md:leading-none xl:leading-none 2xl:leading-none font-sans uppercase underline">Studio</a></Link>
                 </div>
               </div>
             </m.footer>
