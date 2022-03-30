@@ -68,16 +68,8 @@ export default function Studio(initialData) {
               >
                 <m.main className="">
                   <div className="">
-                    <div className="grid grid-cols-9">
-                      <div className="col-span-9 md:col-span-8 md:mr-[1vw] mt-[25vw] md:mt-0">
-                        <div className="w-full h-screen relative overflow-hidden">
-                          <Image
-                            image={studio.heroImage}
-                            layout="fill"
-                            focalPoint={studio.heroImage.hotspot}
-                            className="w-full z-0 absolute inset-0 h-full object-cover object-center"
-                          />
-                        </div>
+                    <div className="grid grid-cols-9 mb-12 md:mb-24 xl:mb-28 2xl:mb-40">
+                      <div className="col-span-9 md:mr-[1vw] mt-[25vw] md:mt-0">
                         <div className="absolute top-0 left-0 grid grid-cols-9 z-10">
                           <div className="col-span-9 md:col-span-3 xl:col-span-2 bg-white pt-[20vw] p-3">
                             <div className="w-10/12 leading-tight indent-8">
@@ -85,15 +77,28 @@ export default function Studio(initialData) {
                             </div>
                           </div>
                         </div>
+                        
+                        <div className="w-full h-[83vh] md:h-screen relative overflow-hidden flex flex-wrap flex-col">
+                          <div className="grid grid-cols-9 flex-1 h-full">
+                            <div className="relative overflow-hidden mb-auto col-span-9 md:col-span-8 h-full">
+                              <Image
+                                image={studio.heroImage}
+                                layout="fill"
+                                focalPoint={studio.heroImage.hotspot}
+                                className="w-full z-0 absolute inset-0 h-full object-cover object-center"
+                              />
+                            </div>
+                          </div>
+                          
+                          <h1 className="font-bold text-[11vw] leading-none grid grid-cols-9 mt-auto h-auto w-auto">
+                            <span className="block col-start-1">The</span>
+                            <span className="block col-start-7 col-span-3 text-right">Studio</span>
+                          </h1>
+                        </div>
                       </div>
                     </div>
 
                     <div className="p-3">
-                      <h1 className="font-bold text-[11vw] leading-none grid grid-cols-9 mb-12 md:mb-24 xl:mb-28 2xl:mb-40 -mt-[1vw]">
-                        <span className="block col-start-1">The</span>
-                        <span className="block col-start-7 col-span-3 text-right">Studio</span>
-                      </h1>
-
                       <div className="grid grid-cols-9 mb-12 md:mb-24 xl:mb-28 2xl:mb-40">
                         <div className="hidden md:block col-span-2">
                           <img src="https://place.dog/640/900" className="w-full" />
