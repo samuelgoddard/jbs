@@ -14,16 +14,6 @@ export default function Header() {
             </svg>
           </a>
         </Link>
-
-
-        <nav className="ml-auto flex space-x-3 text-sm md:text-base w-auto">
-          <Link href="/menu">
-            <a className="block w-[45px]">
-              <span className="block w-full h-[3px] mb-[5px] bg-current"></span>
-              <span className="block w-full h-[3px] mb-[5px] bg-current"></span>
-            </a>
-          </Link>
-        </nav>
       </div>
     </header>
   )

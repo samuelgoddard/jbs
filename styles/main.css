@@ -15,7 +15,7 @@
 
 /* Simple defaults */
 body {
-  @apply font-mono antialiased text-black bg-white;
+  @apply font-mono antialiased text-black bg-white selection:bg-black selection:text-white;
 }
 
 .cover-image {

@@ -6,7 +6,7 @@ export default function Image({ image, layout, widthOverride, heightOverride, fo
   // Pass in custom URL builder props
   const myCustomImageBuilder = (imageUrlBuilder, options) => {
     return imageUrlBuilder
-      .width(options.width || Math.min(options.originalImageDimensions.width, 800))
+      .width((widthOverride ? widthOverride : options.width) || Math.min(( widthOverride ? widthOverride : options.originalImageDimensions.width), 800))
       .quality(90)
       .fit('clip')
   };

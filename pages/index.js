@@ -86,6 +86,7 @@ export default function Home(initialData) {
                 image={home.backgroundImage}
                 focalPoint={home.backgroundImage.hotspot}
                 layout="fill"
+                widthOverride={600}
                 className="fixed inset-0 z-0 object-cover object-enter"
               />
 
@@ -99,20 +100,20 @@ export default function Home(initialData) {
             <m.footer className="absolute bottom-0 left-0 right-0 z-10 p-3">
               <div className="grid grid-cols-9 items-end">
                 <div className="col-span-2 text-left">
-                  <Link href="/work"><a className="text-2xl md:text-[4.5vw] xl:text-[4.5vw] 2xl:text-[5.5vw] leading-none md:leading-none xl:leading-none 2xl:leading-none font-sans uppercase">Work</a></Link>
+                  <Link href="/work"><a className="text-2xl md:text-[4.5vw] xl:text-[4.5vw] 2xl:text-[5.5vw] leading-none md:leading-none xl:leading-none 2xl:leading-none font-sans uppercase hover:underline focus:underline">Work</a></Link>
                 </div>
 
                 <div className="col-span-4 col-start-3 text-right md:space-x-7">
-                  <Link href="/work"><a className="text-sm md:text-[2.2vw] xl:text-[2vw] 2xl:text-[2.3vw] leading-none md:leading-none xl:leading-none 2xl:leading-none font-sans uppercase">
-                    <span className="hidden md:inline-block underline">Get in touch</span>
-                    <span className="inline-block md:hidden underline">Contact</span>
+                  <Link href="/work"><a className="text-sm md:text-[2.2vw] xl:text-[2vw] 2xl:text-[2.3vw] leading-none md:leading-none xl:leading-none 2xl:leading-none font-sans uppercase group">
+                    <span className="hidden md:inline-block group-hover:underline group-focus:underline">Get in touch</span>
+                    <span className="inline-block md:hidden group-hover:underline group-focus:underline">Contact</span>
                   </a></Link>
 
-                  <Link href="/work"><a className="text-sm md:text-[2.2vw] xl:text-[2vw] 2xl:text-[2.3vw] leading-none md:leading-none xl:leading-none 2xl:leading-none font-sans uppercase underline ml-5">Instagram</a></Link>
+                  <Link href="/work"><a className="text-sm md:text-[2.2vw] xl:text-[2vw] 2xl:text-[2.3vw] leading-none md:leading-none xl:leading-none 2xl:leading-none font-sans uppercase hover:underline focus:underline ml-5">Instagram</a></Link>
                 </div>
                 
                 <div className="col-span-2 col-start-8 text-right">
-                  <Link href="/studio"><a className="text-2xl md:text-[4.5vw] xl:text-[4.5vw] 2xl:text-[5.5vw] leading-none md:leading-none xl:leading-none 2xl:leading-none font-sans uppercase">Studio</a></Link>
+                  <Link href="/studio"><a className="text-2xl md:text-[4.5vw] xl:text-[4.5vw] 2xl:text-[5.5vw] leading-none md:leading-none xl:leading-none 2xl:leading-none font-sans uppercase hover:underline focus:underline">Studio</a></Link>
                 </div>
               </div>
             </m.footer>

@@ -85,6 +85,7 @@ export default function Studio(initialData) {
                                 image={studio.heroImage}
                                 layout="fill"
                                 focalPoint={studio.heroImage.hotspot}
+                                widthOverride={500}
                                 className="w-full z-0 absolute inset-0 h-full object-cover object-center"
                               />
                             </div>

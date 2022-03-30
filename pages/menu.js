@@ -60,31 +60,32 @@ export default function Menu(initialData) {
             </m.header>
 
             <m.main className="">
-              <div className="fixed left-0 top-0 bottom-0 w-[50vw] z-0">
+              <div className="fixed left-0 top-0 bottom-0 w-[43vw] z-0">
                 <Image 
                   image={home.backgroundImage}
                   focalPoint={home.backgroundImage.hotspot}
                   layout="fill"
+                  widthOverride={500}
                   className="absolute inset-0 w-full h-full z-0 object-cover object-center"
                 />
 
                 <div className="w-1/2 h-1/4 bg-white absolute top-0 right-0"></div>
               </div>
 
-              <div className="ml-[50vw] mt-[23.7vh]">
+              <div className="ml-[43vw] mt-[23.7vh]">
                 <nav className="border-t border-black">
                   <ul>
                     <li className="block border-b border-black">
-                      <Link href="/"><a className="text-5xl md:text-[7vw] xl:text-[6vw] 2xl:text-[5.5vw] leading-none md:leading-none xl:leading-none 2xl:leading-none font-sans uppercase">Home</a></Link>
+                      <Link href="/"><a className="text-5xl md:text-[7vw] xl:text-[6vw] 2xl:text-[5.5vw] leading-none md:leading-none xl:leading-none 2xl:leading-none font-sans uppercase block">Home</a></Link>
                     </li>
                     <li className="block border-b border-black">
-                      <Link href="/work"><a className="text-5xl md:text-[7vw] xl:text-[6vw] 2xl:text-[5.5vw] leading-none md:leading-none xl:leading-none 2xl:leading-none font-sans uppercase">Work</a></Link>
+                      <Link href="/work"><a className="text-5xl md:text-[7vw] xl:text-[6vw] 2xl:text-[5.5vw] leading-none md:leading-none xl:leading-none 2xl:leading-none font-sans uppercase block">Work</a></Link>
                     </li>
                     <li className="block border-b border-black">
-                      <Link href="/studio"><a className="text-5xl md:text-[7vw] xl:text-[6vw] 2xl:text-[5.5vw] leading-none md:leading-none xl:leading-none 2xl:leading-none font-sans uppercase">Studio</a></Link>
+                      <Link href="/studio"><a className="text-5xl md:text-[7vw] xl:text-[6vw] 2xl:text-[5.5vw] leading-none md:leading-none xl:leading-none 2xl:leading-none font-sans uppercase block">Studio</a></Link>
                     </li>
                     <li className="block border-b border-black">
-                      <Link href="/reel"><a className="text-5xl md:text-[6vw] xl:text-[6vw] 2xl:text-[5.5vw] leading-none md:leading-none xl:leading-none 2xl:leading-none font-sans uppercase">Reel</a></Link>
+                      <Link href="/reel"><a className="text-5xl md:text-[6vw] xl:text-[6vw] 2xl:text-[5.5vw] leading-none md:leading-none xl:leading-none 2xl:leading-none font-sans uppercase block">Reel</a></Link>
                     </li>
                   </ul>
                 </nav>
@@ -92,7 +93,7 @@ export default function Menu(initialData) {
             </m.main>
 
             <m.footer className="absolute bottom-0 left-0 right-0 z-10 p-3">
-              <div className="ml-[50vw] grid grid-cols-5 items-end">
+              <div className="ml-[43vw] grid grid-cols-5 items-end">
                 <div className="grid-col-1 hidden md:block">
                   <a href="#" className="block text-[10px] md:text-[11px] lg:text-sm 2xl:text-base leading-[0.85] md:leading-[0.85] lg:leading-[0.85] 2xl:leading-[0.85]">Instagram</a>
                 </div>
