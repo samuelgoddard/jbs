@@ -70,11 +70,14 @@ export default function Studio(initialData) {
                   <div className="">
                     <div className="grid grid-cols-9">
                       <div className="col-span-9 md:col-span-8 md:mr-[1vw] mt-[25vw] md:mt-0">
-                        <Image
-                          image={studio.heroImage}
-                          focalPoint={studio.heroImage.hotspot}
-                          className="w-full relative z-0"
-                        />
+                        <div className="w-full h-screen relative overflow-hidden">
+                          <Image
+                            image={studio.heroImage}
+                            layout="fill"
+                            focalPoint={studio.heroImage.hotspot}
+                            className="w-full z-0 absolute inset-0 h-full object-cover object-center"
+                          />
+                        </div>
                         <div className="absolute top-0 left-0 grid grid-cols-9 z-10">
                           <div className="col-span-9 md:col-span-3 xl:col-span-2 bg-white pt-[20vw] p-3">
                             <div className="w-10/12 leading-tight indent-8">
