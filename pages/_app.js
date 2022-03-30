@@ -28,7 +28,7 @@ export default function App({ Component, pageProps }) {
         </div>
       )}
       
-      { router.pathname.includes('/work') && (
+      { (router.pathname == '/work' || router.pathname == '/work/grid') && (
         <div className="absolute bottom-0 right-0 p-3 z-50">
           <nav>
             <ul className="text-right">

@@ -104,12 +104,12 @@ export default function Home(initialData) {
                 </div>
 
                 <div className="col-span-4 col-start-3 text-right md:space-x-7">
-                  <Link href="/work"><a className="text-sm md:text-[2.2vw] xl:text-[2vw] 2xl:text-[2.3vw] leading-none md:leading-none xl:leading-none 2xl:leading-none font-sans uppercase group">
+                  <a href="mailto:hello@jamesbaileystudio.com" className="text-sm md:text-[2.2vw] xl:text-[2vw] 2xl:text-[2.3vw] leading-none md:leading-none xl:leading-none 2xl:leading-none font-sans uppercase group">
                     <span className="hidden md:inline-block group-hover:underline group-focus:underline">Get in touch</span>
                     <span className="inline-block md:hidden group-hover:underline group-focus:underline">Contact</span>
-                  </a></Link>
+                  </a>
 
-                  <Link href="/work"><a className="text-sm md:text-[2.2vw] xl:text-[2vw] 2xl:text-[2.3vw] leading-none md:leading-none xl:leading-none 2xl:leading-none font-sans uppercase hover:underline focus:underline ml-5">Instagram</a></Link>
+                  <a href="#" className="text-sm md:text-[2.2vw] xl:text-[2vw] 2xl:text-[2.3vw] leading-none md:leading-none xl:leading-none 2xl:leading-none font-sans uppercase hover:underline focus:underline ml-5">Instagram</a>
                 </div>
                 
                 <div className="col-span-2 col-start-8 text-right">
