@@ -10,9 +10,25 @@ export default function WorkCarousel({ work }) {
   const [currentCat, setCurrentCat] = useState('all');
   const [currentType, setCurrentType] = useState('all');
 
+
   function resetFilters() {
     setCurrentCat('all')
     setCurrentType('all')
+    scroll.update()
+    scroll.scrollTo(0, { duration: 0, disableLerp: true })
+  }
+
+  function updateCat(cat) {
+    setCurrentCat(cat)
+    scroll.update()
+    scroll.scrollTo(0, { duration: 0, disableLerp: true })
+  }
+  
+  
+  function updateType(type) {
+    setCurrentType(type)
+    scroll.update()
+    scroll.scrollTo(0, { duration: 0, disableLerp: true })
   }
 
   useEffect(() => {
@@ -30,13 +46,13 @@ export default function WorkCarousel({ work }) {
           <div className="w-full flex space-x-6 items-center pb-3">
             <div className="w-8/12 flex space-x-[2vw]">
               <FilterButton label={'all'} onClick={resetFilters} current={currentCat} />
-              <FilterButton label={'drinks'} onClick={() => setCurrentCat('drinks')} current={currentCat} />
-              <FilterButton label={'food'} onClick={() => setCurrentCat('food')} current={currentCat} />
-              <FilterButton label={'lifestyle'} onClick={() => setCurrentCat('lifestyle')} current={currentCat} />
+              <FilterButton label={'drinks'} onClick={() => updateCat('drinks')} current={currentCat} />
+              <FilterButton label={'food'} onClick={() => updateCat('food')} current={currentCat} />
+              <FilterButton label={'lifestyle'} onClick={() => updateCat('lifestyle')} current={currentCat} />
             </div>
             <div className="w-4/12 justify-end flex space-x-[2vw]">
-              <FilterButton label={'still'} onClick={() => setCurrentType('still')} current={currentType} />
-              <FilterButton label={'moving'} onClick={() => setCurrentType('moving')} current={currentType} />
+              <FilterButton label={'still'} onClick={() => updateType('still')} current={currentType} />
+              <FilterButton label={'moving'} onClick={() => updateType('moving')} current={currentType} />
             </div>
           </div>
           
