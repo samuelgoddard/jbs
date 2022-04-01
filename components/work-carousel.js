@@ -10,25 +10,34 @@ export default function WorkCarousel({ work }) {
   const [currentCat, setCurrentCat] = useState('all');
   const [currentType, setCurrentType] = useState('all');
 
+  function filterScrollUpdate() {
+    scroll.update()
+    scroll.scrollTo(0, { duration: 0, disableLerp: true })
+  }
 
   function resetFilters() {
     setCurrentCat('all')
     setCurrentType('all')
-    scroll.update()
-    scroll.scrollTo(0, { duration: 0, disableLerp: true })
+    filterScrollUpdate()
   }
 
   function updateCat(cat) {
-    setCurrentCat(cat)
-    scroll.update()
-    scroll.scrollTo(0, { duration: 0, disableLerp: true })
+    if (currentCat !== cat) {
+      setCurrentCat(cat)
+    } else {
+      setCurrentCat('all')
+    }
+    filterScrollUpdate()
   }
   
   
   function updateType(type) {
-    setCurrentType(type)
-    scroll.update()
-    scroll.scrollTo(0, { duration: 0, disableLerp: true })
+    if (currentType !== type) {
+      setCurrentType(type)
+    } else {
+      setCurrentType('all')
+    }
+    filterScrollUpdate()
   }
 
   useEffect(() => {
