@@ -93,7 +93,7 @@ export default function WorkCarousel({ work }) {
         </div>
       </div>
 
-      <div className="col-span-3 col-start-7 p-3 pl-0 pt-3 flex justify-center">
+      <div className="col-span-3 col-start-7 pl-0 flex justify-center">
         <div className="w-9/12">
           {[...Array(5)].map((index) => ( 
             <div key={index}>
@@ -109,7 +109,7 @@ export default function WorkCarousel({ work }) {
                 }
                 
                 return (e.category == currentCat || currentCat == 'all') & (e.type == currentType || currentType == 'all') ? (
-                  <li className={`block mb-16 ${width}`} key={i} data-scroll data-scroll-repeat data-scroll-call={i} data-scroll-offset="80%, 20%" onClick={() => setCurrent(i)}>
+                  <li className={`block mb-16 pt-3 ${width}`} key={i} data-scroll data-scroll-repeat data-scroll-call={i} data-scroll-offset="90%, 10%" onClick={() => setCurrent(i)}>
                     { e.teaserImageThumbnail && (
                       <div>
                         <Image
