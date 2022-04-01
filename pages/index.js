@@ -1,16 +1,12 @@
 import { useRef } from 'react'
 import Layout from '@/components/layout'
-import Header from '@/components/header'
-import Footer from '@/components/footer'
-import { fade } from '@/helpers/transitions'
-import { LocomotiveScrollProvider } from 'react-locomotive-scroll'
+// import { fade } from '@/helpers/transitions'
 import { LazyMotion, domAnimation, m } from 'framer-motion'
 import { NextSeo } from 'next-seo'
 import Image from '@/components/image'
 import SanityPageService from '@/services/sanityPageService'
 import BlockContent from '@sanity/block-content-to-react'
 import Link from 'next/link'
-import FancyLink from '@/components/fancyLink'
 
 const query = `{
   "home": *[_type == "home"][0]{

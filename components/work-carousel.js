@@ -1,12 +1,19 @@
-import Link from 'next/link'
-import Image from '@/components/image'
 import { useLocomotiveScroll } from 'react-locomotive-scroll'
 import { useEffect, useState } from 'react'
-
+import Link from 'next/link'
+import Image from '@/components/image'
+import FilterButton from '@/components/filter-button'
 
 export default function WorkCarousel({ work }) {
   const { scroll } = useLocomotiveScroll()
   const [current, setCurrent] = useState(0);
+  const [currentCat, setCurrentCat] = useState('all');
+  const [currentType, setCurrentType] = useState('all');
+
+  function resetFilters() {
+    setCurrentCat('all')
+    setCurrentType('all')
+  }
 
   useEffect(() => {
     if (scroll) {
@@ -21,15 +28,15 @@ export default function WorkCarousel({ work }) {
       <div className="fixed top-0 left-0 w-[66.75vw]" data-scroll data-scroll-sticky data-scroll-target="#sticky">
         <div className="h-screen flex flex-col flex-wrap relative p-3">
           <div className="w-full flex space-x-6 items-center pb-3">
-            <div className="w-8/12 flex space-x-6">
-              <span className="text-sm md:text-[2.8vw] xl:text-[2.2vw] 2xl:text-[2vw] leading-none md:leading-none xl:leading-none 2xl:leading-none font-sans uppercase">All</span>
-              <span className="text-sm md:text-[2.8vw] xl:text-[2.2vw] 2xl:text-[2vw] leading-none md:leading-none xl:leading-none 2xl:leading-none font-sans uppercase">Drinks</span>
-              <span className="text-sm md:text-[2.8vw] xl:text-[2.2vw] 2xl:text-[2vw] leading-none md:leading-none xl:leading-none 2xl:leading-none font-sans uppercase">Food</span>
-              <span className="text-sm md:text-[2.8vw] xl:text-[2.2vw] 2xl:text-[2vw] leading-none md:leading-none xl:leading-none 2xl:leading-none font-sans uppercase">Lifestyle</span>
+            <div className="w-8/12 flex space-x-[2vw]">
+              <FilterButton label={'all'} onClick={resetFilters} current={currentCat} />
+              <FilterButton label={'drinks'} onClick={() => setCurrentCat('drinks')} current={currentCat} />
+              <FilterButton label={'food'} onClick={() => setCurrentCat('food')} current={currentCat} />
+              <FilterButton label={'lifestyle'} onClick={() => setCurrentCat('lifestyle')} current={currentCat} />
             </div>
-            <div className="w-4/12 justify-end flex space-x-6">
-              <span className="text-sm md:text-[2.8vw] xl:text-[2.2vw] 2xl:text-[2vw] leading-none md:leading-none xl:leading-none 2xl:leading-none font-sans uppercase">All</span>
-              <span className="text-sm md:text-[2.8vw] xl:text-[2.2vw] 2xl:text-[2vw] leading-none md:leading-none xl:leading-none 2xl:leading-none font-sans uppercase">Drinks</span>
+            <div className="w-4/12 justify-end flex space-x-[2vw]">
+              <FilterButton label={'still'} onClick={() => setCurrentType('still')} current={currentType} />
+              <FilterButton label={'moving'} onClick={() => setCurrentType('moving')} current={currentType} />
             </div>
           </div>
           
@@ -37,7 +44,7 @@ export default function WorkCarousel({ work }) {
             <a className="w-full flex-1 group">
               <div className="h-[70vh] relative overflow-hidden mb-1">
                 <Image
-                  image={work[current].images[0]}
+                  image={work[current].teaserImage}
                   widthOverride={550}
                   layout="fill"
                   className="w-full h-full transition-transform ease-in-out duration-200 group-hover:scale-110"
@@ -86,133 +93,40 @@ export default function WorkCarousel({ work }) {
         </div>
       </div>
 
-      <div className="col-span-3 col-start-7 p-3 pl-0 -mt-8 flex justify-center">
+      <div className="col-span-3 col-start-7 p-3 pl-0 pt-3 flex justify-center">
         <div className="w-9/12">
-          {work.map((e, i) => {
-            let width = 'w-11/12'
-            
-            if (e.images[0].asset.metadata.dimensions.height > e.images[0].asset.metadata.dimensions.width) {
-              width = 'w-[51%]'
-            } else if (i % 2 === 0) {
-              width = 'w-9/12'
-            } else if (i % 3 === 0) {
-              width = 'w-1/3'
-            }
-            return (
-              <li className={`block mb-16 ${width}`} key={i} data-scroll data-scroll-repeat data-scroll-call={i} data-scroll-offset="80%, 20%" onClick={() => setCurrent(i)}>
-                { e.images && (
-                  <div>
-                    <Image
-                      image={e.images[0]}
-                      className="w-full"
-                      widthOverride={340}
-                      alt={e.title}
-                    />
-                  </div>
-                )}
-              </li>
-            )
-          })}
-          {work.map((e, i) => {
-            let width = 'w-11/12'
-            
-            if (e.images[0].asset.metadata.dimensions.height > e.images[0].asset.metadata.dimensions.width) {
-              width = 'w-[51%]'
-            } else if (i % 2 === 0) {
-              width = 'w-9/12'
-            } else if (i % 3 === 0) {
-              width = 'w-1/3'
-            }
-            return (
-              <li className={`block mb-16 ${width}`} key={i} data-scroll data-scroll-repeat data-scroll-call={i} data-scroll-offset="80%, 20%" onClick={() => setCurrent(i)}>
-                { e.images && (
-                  <div>
-                    <Image
-                      image={e.images[0]}
-                      className="w-full"
-                      widthOverride={340}
-                      alt={e.title}
-                    />
-                  </div>
-                )}
-              </li>
-            )
-          })}
-          {work.map((e, i) => {
-            let width = 'w-11/12'
-            
-            if (e.images[0].asset.metadata.dimensions.height > e.images[0].asset.metadata.dimensions.width) {
-              width = 'w-[51%]'
-            } else if (i % 2 === 0) {
-              width = 'w-9/12'
-            } else if (i % 3 === 0) {
-              width = 'w-1/3'
-            }
-            return (
-              <li className={`block mb-16 ${width}`} key={i} data-scroll data-scroll-repeat data-scroll-call={i} data-scroll-offset="80%, 20%" onClick={() => setCurrent(i)}>
-                { e.images && (
-                  <div>
-                    <Image
-                      image={e.images[0]}
-                      className="w-full"
-                      widthOverride={340}
-                      alt={e.title}
-                    />
-                  </div>
-                )}
-              </li>
-            )
-          })}
-          {work.map((e, i) => {
-            let width = 'w-11/12'
-            
-            if (e.images[0].asset.metadata.dimensions.height > e.images[0].asset.metadata.dimensions.width) {
-              width = 'w-[51%]'
-            } else if (i % 2 === 0) {
-              width = 'w-9/12'
-            } else if (i % 3 === 0) {
-              width = 'w-1/3'
-            }
-            return (
-              <li className={`block mb-16 ${width}`} key={i} data-scroll data-scroll-repeat data-scroll-call={i} data-scroll-offset="80%, 20%" onClick={() => setCurrent(i)}>
-                { e.images && (
-                  <div>
-                    <Image
-                      image={e.images[0]}
-                      className="w-full"
-                      widthOverride={340}
-                      alt={e.title}
-                    />
-                  </div>
-                )}
-              </li>
-            )
-          })}
-          {work.map((e, i) => {
-            let width = 'w-11/12'
-            
-            if (e.images[0].asset.metadata.dimensions.height > e.images[0].asset.metadata.dimensions.width) {
-              width = 'w-[51%]'
-            } else if (i % 2 === 0) {
-              width = 'w-9/12'
-            } else if (i % 3 === 0) {
-              width = 'w-1/3'
-            }
-            return (
-              <li className={`block mb-16 ${width}`} key={i} data-scroll data-scroll-repeat data-scroll-call={i} data-scroll-offset="80%, 20%" onClick={() => setCurrent(i)}>
-                { e.images && (
-                  <div>
-                    <Image
-                      image={e.images[0]}
-                      className="w-full"
-                      widthOverride={340}
-                      alt={e.title}
-                    />
-                  </div>
-                )}
-              </li>
-            )
-          })}
+          {[...Array(5)].map((index) => ( 
+            <div key={index}>
+              {work.map((e, i) => {
+                let width = 'w-11/12'
+                
+                if (e.teaserImageThumbnail.asset.metadata.dimensions.height > e.teaserImageThumbnail.asset.metadata.dimensions.width) {
+                  width = 'w-[51%]'
+                } else if (i % 2 === 0) {
+                  width = 'w-9/12'
+                } else if (i % 3 === 0) {
+                  width = 'w-1/2'
+                }
+                
+                return (e.category == currentCat || currentCat == 'all') & (e.type == currentType || currentType == 'all') ? (
+                  <li className={`block mb-16 ${width}`} key={i} data-scroll data-scroll-repeat data-scroll-call={i} data-scroll-offset="80%, 20%" onClick={() => setCurrent(i)}>
+                    { e.teaserImageThumbnail && (
+                      <div>
+                        <Image
+                          image={e.teaserImageThumbnail}
+                          className="w-full"
+                          widthOverride={340}
+                          alt={e.title}
+                        />
+                      </div>
+                    )}
+                  </li>
+                ) : (
+                  null
+                )
+              })}
+            </div>
+          ))}
         </div>
       </div>
     </div>

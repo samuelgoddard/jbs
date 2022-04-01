@@ -11,11 +11,12 @@ import SanityPageService from '@/services/sanityPageService'
 import SanityBlockContent from '@sanity/block-content-to-react'
 import Image from '@/components/image'
 import Link from 'next/link'
+import Carousel from '@/components/carousel'
 
 const query = `*[_type == "work" && slug.current == $slug][0]{
   title,
   content,
-  images[] {
+  heroCarouselImages[] {
     asset-> {
       ...
     },
@@ -24,13 +25,30 @@ const query = `*[_type == "work" && slug.current == $slug][0]{
   },
   slug {
     current
+  },
+  "moreWork": *[_type == "work" && slug.current != $slug][0...3] {
+    title,
+    teaserImage {
+      asset-> {
+        ...,
+      },
+      caption,
+      alt,
+      hotspot {
+        x,
+        y
+      },
+    },
+    slug {
+      current
+    }
   }
 }`
 
 const pageService = new SanityPageService(query)
 
 export default function WorkSlug(initialData) {
-  const { data: { title, content, images, slug }  } = pageService.getPreviewHook(initialData)()
+  const { data: { title, content, heroCarouselImages, slug, moreWork }  } = pageService.getPreviewHook(initialData)()
 
   const containerRef = useRef(null)
   return (
@@ -61,7 +79,7 @@ export default function WorkSlug(initialData) {
                   </div>
                 </m.header>
 
-                <m.main className="">
+                <m.main className=" mb-16 md:mb-24 xl:mb-32">
                   <article>
                     <div className="flex items-start my-[10vh] p-3">
                       <div className="w-1/2">
@@ -116,20 +134,36 @@ export default function WorkSlug(initialData) {
                       <SanityBlockContent serializers={{ container: ({ children }) => children }} blocks={content} />
                     </div> */}
 
-                    { images && (
-                      <>
-                        {images.map((e, i) => {
-                          return (
-                            <Image
-                              key={i}
-                              image={e}
-                              widthOverride={450}
-                              className="w-full mb-8"
-                            />
-                          )
-                        })}
-                      </>
-                    )}                  
+                    { heroCarouselImages && (
+                      <div className="mb-12 md:mb-20 xl:mb-32">
+                        <Carousel slides={heroCarouselImages} />
+                      </div>
+                    )}
+
+                    <div className="p-3">
+                      <div className="flex border-b border-black pb-3">
+                        <span className="block">More Work</span>
+                        <Link href="/work"><a className="block underline text-right ml-auto">Back To Gallery</a></Link>
+                      </div>
+                      {moreWork.map((e, i) => {
+                        return (
+                          <Link href={`/work/${e.slug.current}`} key={i}>
+                            <a className={`flex items-center w-full border-b border-black py-3 ${i == 1 ? 'text-right justify-end' : '' }`}>
+                              <div className={`w-[16.5%] max-w-[300px] min-h-[9vw] md:min-h-[9vw] xl:min-h-[8.4vw] bg-gray-100 relative overflow-hidden ${ i == 1 ? 'order-2' : 'order-1' }`}>
+                                <Image
+                                  image={e.teaserImage}
+                                  className="w-full"
+                                  widthOverride={340}
+                                  alt={e.title}
+                                  layout="fill"
+                                />
+                              </div>
+                              <h2 className={`block text-[6.5vw] leading-none px-3 md:px-4 xl:px-5 ${ i == 1 ? 'order-1' : 'order-2' }`}>{e.title}</h2>
+                            </a>
+                          </Link>
+                        )
+                      })}
+                    </div>
                   </article>
                 </m.main>
                 

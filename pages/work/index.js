@@ -17,12 +17,29 @@ const query = `{
   "work": *[_type == "work"]{
     title,
     content,
-    images[] {
+    category,
+    type,
+    teaserImage {
       asset-> {
         ...,
       },
+      caption,
       alt,
-      caption
+      hotspot {
+        x,
+        y
+      },
+    },
+    teaserImageThumbnail {
+      asset-> {
+        ...,
+      },
+      caption,
+      alt,
+      hotspot {
+        x,
+        y
+      },
     },
     slug {
       current
