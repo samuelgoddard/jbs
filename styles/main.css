@@ -34,3 +34,7 @@ body {
     @apply will-change-transform !important;
   }
 }
+
+.list-child li:nth-child(even) {
+  @apply bg-[#FBEDE1];
+}
