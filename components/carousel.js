@@ -2,8 +2,8 @@ import React, { useState, useEffect, useCallback } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import Image from "@/components/image";
 
-const Carousel = ({ slides }) => {
-  const [viewportRef, embla] = useEmblaCarousel({ skipSnaps: false, loop: true });
+const Carousel = ({ slides, contained }) => {
+  const [viewportRef, embla] = useEmblaCarousel({ speed: 4, skipSnaps: false, loop: true, inViewThreshold: 0.75});
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [scrollSnaps, setScrollSnaps] = useState([]);
 
@@ -25,7 +25,7 @@ const Carousel = ({ slides }) => {
 
   return (
     <>
-      <div className="embla">
+    <div className={`embla ${contained && 'embla--contained' }`}>
         <div className="embla__viewport" ref={viewportRef}>
           <div className="embla__container">
             {slides.map((slide, index) => (
@@ -34,7 +34,7 @@ const Carousel = ({ slides }) => {
                   <Image
                     image={slide}
                     layout="fill"
-                    widthOverride={1000}
+                    widthOverride={720}
                     className="w-full"
                   />
                 </div>
@@ -44,16 +44,17 @@ const Carousel = ({ slides }) => {
         </div>
         {/* <PrevButton onClick={scrollPrev} enabled={prevBtnEnabled} />
         <NextButton onClick={scrollNext} enabled={nextBtnEnabled} /> */}
-      </div>
-      <div className="embla__dots">
-        {scrollSnaps.map((_, index) => (
-          <button
-            key={index}
-            className={`embla__dot ${index === selectedIndex ? "is-selected" : ""}`}
-            type="button"
-            onClick={() => scrollTo(index)}
-          >{index + 1}</button>
-        ))}
+
+        <div className="embla__dots">
+          {scrollSnaps.map((_, index) => (
+            <button
+              key={index}
+              className={`embla__dot ${index === selectedIndex ? "is-selected" : ""}`}
+              type="button"
+              onClick={() => scrollTo(index)}
+            >{index + 1}</button>
+          ))}
+        </div>
       </div>
     </>
   );

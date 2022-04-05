@@ -12,6 +12,7 @@ import SanityBlockContent from '@sanity/block-content-to-react'
 import Image from '@/components/image'
 import Link from 'next/link'
 import Carousel from '@/components/carousel'
+import BodyRenderer from '@/components/body-renderer'
 
 const query = `*[_type == "work" && slug.current == $slug][0]{
   title,
@@ -25,6 +26,33 @@ const query = `*[_type == "work" && slug.current == $slug][0]{
   },
   location,
   campaignTitle,
+  contentBlocks[] {
+    ...,
+    image {
+      asset-> {
+        ...
+      },
+      alt,
+      caption
+    },
+    images[] {
+      asset-> {
+        ...
+      },
+      alt,
+      caption
+    },
+    items[] {
+      ...,
+      image {
+        asset-> {
+          ...
+        },
+        alt,
+        caption
+      },
+    }
+  },
   tags,
   credits[] {
     job,
@@ -62,7 +90,7 @@ const query = `*[_type == "work" && slug.current == $slug][0]{
 const pageService = new SanityPageService(query)
 
 export default function WorkSlug(initialData) {
-  const { data: { title, content, heroCarouselImages, slug, moreWork, location, campaignTitle, tags, credits, contact }  } = pageService.getPreviewHook(initialData)()
+  const { data: { title, heroCarouselImages, moreWork, location, campaignTitle, tags, credits, contact, contentBlocks }  } = pageService.getPreviewHook(initialData)()
 
   const containerRef = useRef(null)
   return (
@@ -152,10 +180,12 @@ export default function WorkSlug(initialData) {
                     </div> */}
 
                     { heroCarouselImages && (
-                      <div className="mb-12 md:mb-20 xl:mb-32">
+                      <div className="mb-16 md:mb-24 xl:mb-28">
                         <Carousel slides={heroCarouselImages} />
                       </div>
                     )}
+
+                    <BodyRenderer body={contentBlocks} />
 
                     <div className="p-3">
                       <div className="flex border-b border-black pb-3">

@@ -46,3 +46,19 @@
 .embla__dot.is-selected {
   @apply border border-black;
 }
+
+.embla--contained {
+  .embla__container {
+    @apply flex;
+    margin-left: -5vw;
+  }
+
+  .embla__slide {
+    @apply bg-transparent min-w-[75vw] relative h-[47.5vw];
+    padding-left: 5vw;
+  }
+
+  .embla__dots {
+    @apply pl-[15vw];
+  }
+}
