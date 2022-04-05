@@ -1,7 +1,7 @@
 import Link from "next/link";
 import HashGrid from "@/components/hash-grid";
 
-export default function Footer() {
+export default function Footer({ contact }) {
   return (
     <footer className="relative">
       <div className="w-full h-[30vw] max-h-[650px]">
@@ -21,9 +21,13 @@ export default function Footer() {
         </div>
 
         <div className="col-span-2 col-start-4 md:col-start-3 xl:col-start-4 flex space-x-4">
-          <a href="#" className="text-xl md:text-xl xl:text-2xl 2xl:text-3xl leading-none md:leading-none xl:leading-none 2xl:leading-none font-sans uppercase underline">Contact</a>
+          <a href={`mailto:${contact.email}`} className="text-xl md:text-xl xl:text-2xl 2xl:text-3xl leading-none md:leading-none xl:leading-none 2xl:leading-none font-sans uppercase underline">Contact</a>
 
-          <a href="#" className="text-xl md:text-xl xl:text-2xl 2xl:text-3xl leading-none md:leading-none xl:leading-none 2xl:leading-none font-sans uppercase underline hidden md:block">Instagram</a>
+          {contact.socials.map((e, i) => {
+            return e.title === 'Instagram' && (
+              <a key={i} href={e.url} rel="noreferrer noopener" target="_blank" className="text-xl md:text-xl xl:text-2xl 2xl:text-3xl leading-none md:leading-none xl:leading-none 2xl:leading-none font-sans uppercase underline hidden md:block">Instagram</a>
+            )
+          })}
         </div>
 
         <div className="col-span-1 col-start-6 hidden md:flex">

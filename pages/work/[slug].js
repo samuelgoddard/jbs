@@ -49,13 +49,20 @@ const query = `*[_type == "work" && slug.current == $slug][0]{
     slug {
       current
     }
+  },
+  "contact": *[_type == "contact"][0]{
+    email,
+    socials[] {
+      title,
+      url
+    }
   }
 }`
 
 const pageService = new SanityPageService(query)
 
 export default function WorkSlug(initialData) {
-  const { data: { title, content, heroCarouselImages, slug, moreWork, location, campaignTitle, tags, credits }  } = pageService.getPreviewHook(initialData)()
+  const { data: { title, content, heroCarouselImages, slug, moreWork, location, campaignTitle, tags, credits, contact }  } = pageService.getPreviewHook(initialData)()
 
   const containerRef = useRef(null)
   return (
@@ -178,7 +185,7 @@ export default function WorkSlug(initialData) {
                 </m.main>
                 
                 <m.div className="p-3">
-                  <Footer />
+                  <Footer contact={contact} />
                 </m.div>
               </m.div>
             </LazyMotion>

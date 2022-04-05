@@ -209,6 +209,7 @@ export default function Studio(initialData) {
 
                         <div className="col-span-9 md:col-span-2 md:col-start-8">
                           { contact.email && (<a href={`mailto:${contact.email}`} className="block leading-none mb-1 underline">Email</a>)}
+
                           {contact.socials.map((e, i) => {
                             return (
                               <a key={i} href={e.url} target="_blank" rel="noopener noreferrer" className="block leading-none mb-1 underline">{e.title}</a>
@@ -220,7 +221,7 @@ export default function Studio(initialData) {
                   </div>
                 </m.main>
 
-                <Footer />
+                <Footer contact={contact} />
               </m.div>
             </LazyMotion>
           </div>

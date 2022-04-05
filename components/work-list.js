@@ -72,7 +72,7 @@ export default function WorkListSection({ work }) {
               return (e.category == currentCat || currentCat == 'all') & (e.type == currentType || currentType == 'all') ? (
                 <li className={`block`} key={i}>
                   <Link href={`/work/${e.slug.current}`}>
-                    <a className="flex items-center p-3 text-[12px] md:text-[14px]">
+                    <a className="flex items-center p-3 py-2 md:p-3 text-[12px] lg:text-[14px]">
                       <span className="block w-16 relative overflow-hidden py-[15px] mr-3">
                         { e.teaserImageThumbnail && (
                           <Image
@@ -84,10 +84,10 @@ export default function WorkListSection({ work }) {
                           />
                         )}
                       </span>
-                      <span className="block w-1/6">JBS.{(i + 1) < 10 && ('0')}{i + 1}</span>
-                      <span className="block w-1/5">{e.title}</span>
-                      <span className="block w-1/5">Some campaign title</span>
-                      <span className="block w-1/5">Location, UK</span>
+                      <span className="hidden md:block w-1/6">JBS.{(i + 1) < 10 && ('0')}{i + 1}</span>
+                      <span className="block flex-1">{e.title}</span>
+                      <span className="hidden md:block w-1/4">{e.campaignTitle}</span>
+                      <span className="hidden md:block w-1/5">{e.location}</span>
                       <span className="block ml-auto text-right">2021—</span>
                     </a>
                   </Link>

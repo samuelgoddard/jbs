@@ -13,6 +13,8 @@ const query = `{
     content,
     category,
     type,
+    location,
+    campaignTitle,
     teaserImage {
       asset-> {
         ...,
