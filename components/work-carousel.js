@@ -85,10 +85,10 @@ export default function WorkCarousel({ work }) {
                   <span className="block leading-none text-sm">{work[current].title}</span>
                 </div>
                 <div className="col-span-2">
-                  <span className="block leading-none text-sm">Ready to drink campaign</span>
+                  <span className="block leading-none text-sm">{work[current].campaignTitle}</span>
                 </div>
                 <div className="col-span-1 text-right">
-                  <span className="block leading-none text-sm">London, UK</span>
+                  <span className="block leading-none text-sm">{work[current].location}</span>
                 </div>
                 <div className="col-span-1 text-right">
                   <span className="block leading-none text-sm underline">Case Study</span>

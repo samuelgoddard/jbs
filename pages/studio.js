@@ -27,6 +27,8 @@ const query = `{
     },
     heroText,
     content,
+    clientList,
+    servicesList,
     contentSupportingImage {
       asset-> {
         ...
@@ -60,12 +62,19 @@ const query = `{
       }
     }
   },
+  "contact": *[_type == "contact"][0]{
+    email,
+    socials[] {
+      title,
+      url
+    }
+  }
 }`
 
 const pageService = new SanityPageService(query)
 
 export default function Studio(initialData) {
-  const { data: { studio } } = pageService.getPreviewHook(initialData)()
+  const { data: { studio, contact } } = pageService.getPreviewHook(initialData)()
   const containerRef = useRef(null)
 
   return (
@@ -183,53 +192,28 @@ export default function Studio(initialData) {
                         </div>
                         
                         <div className="col-span-9 md:col-span-2 md:col-start-3 mb-6 md:mb-0">
-                          <span className="block leading-none mb-1">Bacardi</span>
-                          <span className="block leading-none mb-1">Banks Rum</span>
-                          <span className="block leading-none mb-1">Bar Swift</span>
-                          <span className="block leading-none mb-1">Bombay Sapphire</span>
-                          <span className="block leading-none mb-1">British Land</span>
-                          <span className="block leading-none mb-1">Coya</span>
-                          <span className="block leading-none mb-1">Dandelyan</span>
-                          <span className="block leading-none mb-1">Driscoll's Berries</span>
-                          <span className="block leading-none mb-1">Edition Hotels</span>
-                          <span className="block leading-none mb-1">ETM Group</span>
-                          <span className="block leading-none mb-1">Food & Travel Magazine</span>
-                          <span className="block leading-none mb-1">GQ Magazine</span>
-                          <span className="block leading-none mb-1">Grey Goose</span>
-                          <span className="block leading-none mb-1">Highland Spring</span>
-                          <span className="block leading-none mb-1">Imbibe Magazine</span>
-                          <span className="block leading-none mb-1">Lurpak Butter</span>
-                          <span className="block leading-none mb-1">Marriott Hotels</span>
-                          <span className="block leading-none mb-1">Martini</span>
-                          <span className="block leading-none mb-1">Mondrian London</span>
-                          <span className="block leading-none mb-1">Morgans Hotel Group</span>
-                          <span className="block leading-none mb-1">Nobu</span>
-                          <span className="block leading-none mb-1">Pernod Ricard</span>
-                          <span className="block leading-none mb-1">Punch Magazine</span>
-                          <span className="block leading-none mb-1">Punch Room</span>
-                          <span className="block leading-none mb-1">Red Rooster</span>
-                          <span className="block leading-none mb-1">St.Germain Liqueur</span>
-                          <span className="block leading-none mb-1">The Autograph Collection</span>
-                          <span className="block leading-none mb-1">The Curtain Hotel</span>
-                          <span className="block leading-none mb-1">The Glenlivet</span>
-                          <span className="block leading-none mb-1">Vogue</span>
+                          {studio.clientList.map((e, i) => {
+                            return (
+                              <span className="block leading-none mb-1" key={i}>{e}</span>
+                            )
+                          })}
                         </div>
 
                         <div className="col-span-9 md:col-span-2 md:col-start-5 mb-6 md:mb-0">
-                          <span className="block leading-none mb-1">Photography</span>
-                          <span className="block leading-none mb-1">Set Design</span>
-                          <span className="block leading-none mb-1">Moving Image</span>
-                          <span className="block leading-none mb-1">Production</span>
-                          <span className="block leading-none mb-1">Retouching</span>
-                          <span className="block leading-none mb-1">Film</span>
+                          {studio.servicesList.map((e, i) => {
+                            return (
+                              <span className="block leading-none mb-1" key={i}>{e}</span>
+                            )
+                          })}
                         </div>
 
                         <div className="col-span-9 md:col-span-2 md:col-start-8">
-                          <span className="block leading-none mb-1 underline">Email</span>
-                          <span className="block leading-none mb-1 underline">Instagram</span>
-                          <span className="block leading-none mb-1 underline">Facebook</span>
-                          <span className="block leading-none mb-1 underline">Twitter</span>
-                          <span className="block leading-none mb-1 underline">Pinterest</span>
+                          { contact.email && (<a href={`mailto:${contact.email}`} className="block leading-none mb-1 underline">Email</a>)}
+                          {contact.socials.map((e, i) => {
+                            return (
+                              <a key={i} href={e.url} target="_blank" rel="noopener noreferrer" className="block leading-none mb-1 underline">{e.title}</a>
+                            )
+                          })}
                         </div>
                       </div>
                     </div>

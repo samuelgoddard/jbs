@@ -23,6 +23,13 @@ const query = `*[_type == "work" && slug.current == $slug][0]{
     alt,
     caption
   },
+  location,
+  campaignTitle,
+  tags,
+  credits[] {
+    job,
+    name
+  },
   slug {
     current
   },
@@ -48,7 +55,7 @@ const query = `*[_type == "work" && slug.current == $slug][0]{
 const pageService = new SanityPageService(query)
 
 export default function WorkSlug(initialData) {
-  const { data: { title, content, heroCarouselImages, slug, moreWork }  } = pageService.getPreviewHook(initialData)()
+  const { data: { title, content, heroCarouselImages, slug, moreWork, location, campaignTitle, tags, credits }  } = pageService.getPreviewHook(initialData)()
 
   const containerRef = useRef(null)
   return (
@@ -83,32 +90,35 @@ export default function WorkSlug(initialData) {
                   <article>
                     <div className="flex items-start my-[10vh] p-3">
                       <div className="w-1/2">
-                        <div className="mb-8">
-                          <span className="text-sm md:text-base block leading-none md:leading-none mb-1">Set &amp; Styling</span>
-                          <span className="text-sm md:text-base block leading-none md:leading-none mb-1">Oliver Blackburn</span>
-                        </div>
-                        <div className="mb-8">
-                          <span className="text-sm md:text-base block leading-none md:leading-none mb-1">Props / Set Asst</span>
-                          <span className="text-sm md:text-base block leading-none md:leading-none mb-1">Robbie White</span>
-                        </div>
-                        <div className="mb-8">
-                          <span className="text-sm md:text-base block leading-none md:leading-none mb-1">Retouch</span>
-                          <span className="text-sm md:text-base block leading-none md:leading-none mb-1">Stephen Kirby</span>
-                        </div>
+                        { credits && (
+                          <>
+                            {credits.map((e, i) => {
+                              return (
+                                <div className="mb-8" key={i}>
+                                  <span className="text-sm md:text-base block leading-none md:leading-none mb-1">{e.job}</span>
+                                  <span className="text-sm md:text-base block leading-none md:leading-none mb-1">{e.name}</span>
+                                </div>
+                              )
+                            })}
+                          </>
+                        )}
                       </div>
                       <div className="w-1/2 text-right">
                         <div className="mb-8">
                           <span className="text-sm md:text-base block leading-none md:leading-none mb-1">JBS.02</span>
-                          <span className="text-sm md:text-base block leading-none md:leading-none mb-1">Campaigns</span>
+                          <span className="text-sm md:text-base block leading-none md:leading-none mb-1">{campaignTitle}</span>
+                          <span className="text-sm md:text-base block leading-none md:leading-none mb-1">{location}</span>
                           <span className="text-sm md:text-base block leading-none md:leading-none mb-1">{title}</span>
                         </div>
-                        <div className="mb-8">
-                          <span className="text-sm md:text-base block leading-none md:leading-none mb-1">Set Design</span>
-                          <span className="text-sm md:text-base block leading-none md:leading-none mb-1">Photography</span>
-                          <span className="text-sm md:text-base block leading-none md:leading-none mb-1">Motion</span>
-                          <span className="text-sm md:text-base block leading-none md:leading-none mb-1">Collectibles</span>
-                          <span className="text-sm md:text-base block leading-none md:leading-none mb-1">Social</span>
-                        </div>
+                        { tags && (
+                          <div className="mb-8">
+                            {tags.map((e, i) => {
+                              return (
+                                <span key={i} className="text-sm md:text-base block leading-none md:leading-none mb-1">{e}</span>
+                              )
+                            })}
+                          </div>
+                        )}
                         <div className="mb-8">
                           <span className="text-sm md:text-base block leading-none md:leading-none mb-1 underline">Quick View</span>
                         </div>

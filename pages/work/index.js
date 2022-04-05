@@ -16,9 +16,10 @@ import WorkCarousel from '@/components/work-carousel'
 const query = `{
   "work": *[_type == "work"]{
     title,
-    content,
     category,
     type,
+    campaignTitle,
+    location,
     teaserImage {
       asset-> {
         ...,
