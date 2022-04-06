@@ -82,7 +82,7 @@ export default function Reel(initialData) {
                             <Image
                               image={e}
                               className="w-full"
-                              widthOverride={340}
+                              widthOverride={1000}
                               alt={e.title}
                             />
                           </div>

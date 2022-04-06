@@ -21,7 +21,7 @@ export default function ModularImageBlock({ image, layout }) {
           image={image}
           focalPoint={image.hotspot}
           layout="responsive"
-          widthOverride={450}
+          widthOverride={1000}
           className=""
         />
       </div>

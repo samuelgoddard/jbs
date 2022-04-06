@@ -34,7 +34,7 @@ const Carousel = ({ slides, contained }) => {
                   <Image
                     image={slide}
                     layout="fill"
-                    widthOverride={720}
+                    widthOverride={1400}
                     className="w-full"
                   />
                 </div>

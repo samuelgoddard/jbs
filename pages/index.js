@@ -89,7 +89,7 @@ export default function Home(initialData) {
                 image={home.backgroundImage}
                 focalPoint={home.backgroundImage.hotspot}
                 layout="fill"
-                widthOverride={600}
+                widthOverride={1400}
                 className="fixed inset-0 z-0 object-cover object-enter"
               />
 

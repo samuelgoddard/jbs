@@ -70,7 +70,7 @@ export default function WorkCarousel({ work }) {
               <div className="h-[70vh] relative overflow-hidden mb-1">
                 <Image
                   image={work[current].teaserImage}
-                  widthOverride={550}
+                  widthOverride={1400}
                   layout="fill"
                   className="w-full h-full transition-transform ease-in-out duration-200 group-hover:scale-110"
                   alt={work[current].title}
@@ -140,7 +140,7 @@ export default function WorkCarousel({ work }) {
                         <Image
                           image={e.teaserImageThumbnail}
                           className="w-full"
-                          widthOverride={340}
+                          widthOverride={800}
                           alt={e.title}
                         />
                       </div>

@@ -20,7 +20,7 @@ export default function ModularCollectionGridBlock({ items }) {
               image={e.image}
               focalPoint={e.image.hotspot}
               layout="responsive"
-              widthOverride={450}
+              widthOverride={1000}
               className="bg-gray-200"
             />
 

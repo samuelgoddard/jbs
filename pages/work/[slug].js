@@ -200,7 +200,7 @@ export default function WorkSlug(initialData) {
                                 <Image
                                   image={e.teaserImage}
                                   className="w-full"
-                                  widthOverride={340}
+                                  widthOverride={750}
                                   alt={e.title}
                                   layout="fill"
                                 />

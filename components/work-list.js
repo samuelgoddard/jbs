@@ -79,7 +79,7 @@ export default function WorkListSection({ work }) {
                             image={e.teaserImageThumbnail}
                             className="w-full h-full object-center object-cover"
                             layout="fill"
-                            widthOverride={150}
+                            widthOverride={500}
                             alt={e.title}
                           />
                         )}

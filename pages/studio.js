@@ -115,7 +115,7 @@ export default function Studio(initialData) {
                                 image={studio.heroImage}
                                 layout="fill"
                                 focalPoint={studio.heroImage.hotspot}
-                                widthOverride={500}
+                                widthOverride={1200}
                                 className="w-full z-0 absolute inset-0 h-full object-cover object-center"
                               />
                             </div>
@@ -135,7 +135,7 @@ export default function Studio(initialData) {
                           <Image
                             image={studio.contentSupportingImage}
                             focalPoint={studio.contentSupportingImage.hotspot}
-                            widthOverride={200}
+                            widthOverride={550}
                             className="w-full"
                           />
                         </div>
@@ -163,7 +163,7 @@ export default function Studio(initialData) {
                                 <Image
                                   image={e.image}
                                   focalPoint={e.image.hotspot}
-                                  widthOverride={150}
+                                  widthOverride={550}
                                   className="w-full mb-3"
                                 />
                                 <span className="block text-xs leading-none mb-2">{e.jobTitle}</span>
@@ -175,7 +175,7 @@ export default function Studio(initialData) {
                               <Image
                                 image={e.image}
                                 focalPoint={e.image.hotspot}
-                                widthOverride={150}
+                                widthOverride={550}
                                 className="w-full mb-3"
                               />
                               <span className="block text-xs leading-none mb-2">{e.jobTitle}</span>

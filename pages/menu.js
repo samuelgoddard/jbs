@@ -65,7 +65,7 @@ export default function Menu(initialData) {
                   image={home.backgroundImage}
                   focalPoint={home.backgroundImage.hotspot}
                   layout="fill"
-                  widthOverride={500}
+                  widthOverride={1200}
                   className="absolute inset-0 w-full h-full z-0 object-cover object-center"
                 />
 
