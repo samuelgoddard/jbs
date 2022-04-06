@@ -38,3 +38,29 @@ body {
 .list-child li:nth-child(even) {
   @apply bg-[#FBEDE1];
 }
+
+@keyframes fadein {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.image-stack {
+  opacity: 0;
+  animation: fadein 0.2s steps(1, end) forwards;
+}
+
+.image-stack-1 {
+  animation-delay: 1000ms;
+}
+.image-stack-2 {
+  animation-delay: 2000ms;
+}
+.image-stack-3 {
+  animation-delay: 3000ms;
+}
+.image-stack-4 {
+  animation-delay: 4000ms;
+}
+.image-stack-5 {
+  animation-delay: 5000ms;
+}

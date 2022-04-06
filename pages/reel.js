@@ -65,26 +65,43 @@ export default function Reel(initialData) {
                   </div>
 
                   <div className="absolute inset-0 flex flex-wrap items-center justify-center">
-                    <div className="w-[70vw] h-[60vh] relative overflow-hidden">
+                    <div className="w-[70vw] h-[80vh] relative ">
                       {reel.images.map((e, i) => {
-                        let width = 'w-full'
+                        let wrapper = 'w-[90%] z-0'
+                        let innerWrapper = 'h-[70vh] z-0'
                         
-                        if (e.asset.metadata.dimensions.height > e.asset.metadata.dimensions.width) {
-                          width = 'w-full'
-                        } else if (i % 2 === 0) {
-                          width = 'w-full'
-                        } else if (i % 3 === 0) {
-                          width = 'w-full'
+                        if (i === 0) {
+                          wrapper = 'w-10/12 top-auto bottom-0 right-0 z-0'
+                          innerWrapper = 'h-[85%] mt-auto'
+                        } else if (i === 1) {
+                          wrapper = 'w-10/12 top-0 left-0 z-10'
+                          innerWrapper = 'h-[85%]'
+                        } else if (i === 2) {
+                          wrapper = 'w-full z-20 inset-0'
+                          innerWrapper = 'w-[75%] h-[70%] m-auto rotate-[7deg]'
+                        } else if (i === 3) {
+                          wrapper = 'w-8/12 z-30 bottom-0 right-0'
+                          innerWrapper = 'h-[65%] mt-auto rotate-[-2deg] translate-x-[1.5vw] translate-y-[1.5vw]'
+                        } else if (i === 4) {
+                          wrapper = 'w-8/12 z-40 top-0 left-0'
+                          innerWrapper = 'h-[65%] mb-auto rotate-[2deg] translate-x-[-1.5vw] translate-y-[-1.5vw]'
+                        } else if (i === 5) {
+                          wrapper = 'w-full z-50 inset-0'
+                          innerWrapper = 'w-[75%] h-[70%] m-auto rotate-[2deg]'
                         }
                         
                         return (
-                          <div key={i} className={`${width} absolute inset-0`}>
-                            <Image
-                              image={e}
-                              className="w-full"
-                              widthOverride={1000}
-                              alt={e.title}
-                            />
+                          <div key={i} className={`${wrapper} h-full absolute flex flex-wrap image-stack image-stack-${i}`}>
+                            <div className={`${innerWrapper} w-full relative overflow-hidden`}>
+                              <Image
+                                image={e}
+                                className="w-full inset-0 h-full"
+                                layout="fill"
+                                widthOverride={1000}
+                                alt={e.title}
+                              />
+                              <span className="block absolute top-0 left-0 bg-black text-white">Image {i}</span>
+                            </div>
                           </div>
                         )
                       })}
