@@ -1,10 +1,10 @@
-import { useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Layout from '@/components/layout'
 import Header from '@/components/header'
 import Footer from '@/components/footer'
 import { fade } from '@/helpers/transitions'
 import { LocomotiveScrollProvider } from 'react-locomotive-scroll'
-import { LazyMotion, domAnimation, m } from 'framer-motion'
+import { LazyMotion, domAnimation, m, useAnimation } from 'framer-motion'
 import { NextSeo } from 'next-seo'
 import Link from 'next/link'
 
@@ -28,6 +28,15 @@ const pageService = new SanityPageService(query)
 
 export default function Reel(initialData) {
   const { data: { reel } } = pageService.getPreviewHook(initialData)()
+  const [stackClass, setStackClass] = useState('image-stack-in')
+
+  useEffect(() => {
+    const intervalId = setInterval(() => { 
+      setStackClass(stackClass === 'image-stack-in' ? 'image-stack-out' : 'image-stack-in')
+    }, 6000);
+  
+    return () => clearInterval(intervalId);
+  }, [stackClass])
 
   return (
     <Layout>
@@ -64,8 +73,10 @@ export default function Reel(initialData) {
                     </div>
                   </div>
 
+
                   <div className="absolute inset-0 flex flex-wrap items-center justify-center">
-                    <div className="w-[70vw] h-[80vh] relative ">
+                    <div className="w-[70vw] h-[80vh] relative">
+                      <div className="fixed top-0 left-0 bg-black text-white block z-100">{stackClass}</div>
                       {reel.images.map((e, i) => {
                         let wrapper = 'w-[90%] z-0'
                         let innerWrapper = 'h-[70vh] z-0'
@@ -91,7 +102,7 @@ export default function Reel(initialData) {
                         }
                         
                         return (
-                          <div key={i} className={`${wrapper} h-full absolute flex flex-wrap image-stack image-stack-${i}`}>
+                          <div key={i} className={`${wrapper} h-full absolute flex flex-wrap opacity-0 ${stackClass} ${stackClass}-${i}`}>
                             <div className={`${innerWrapper} w-full relative overflow-hidden`}>
                               <Image
                                 image={e}

@@ -44,23 +44,49 @@ body {
   to { opacity: 1; }
 }
 
-.image-stack {
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+.image-stack-in {
   opacity: 0;
   animation: fadein 0.2s steps(1, end) forwards;
 }
 
-.image-stack-1 {
+.image-stack-out {
+  opacity: 1;
+  animation: fadeOut 0.2s steps(1, end) forwards;
+}
+
+.image-stack-in-1 {
   animation-delay: 1000ms;
 }
-.image-stack-2 {
+.image-stack-in-2 {
   animation-delay: 2000ms;
 }
-.image-stack-3 {
+.image-stack-in-3 {
   animation-delay: 3000ms;
 }
-.image-stack-4 {
+.image-stack-in-4 {
   animation-delay: 4000ms;
 }
-.image-stack-5 {
+.image-stack-in-5 {
   animation-delay: 5000ms;
+}
+
+.image-stack-out-0 {
+  animation-delay: 5000ms;
+}
+.image-stack-out-1 {
+  animation-delay: 4000ms;
+}
+.image-stack-out-2 {
+  animation-delay: 3000ms;
+}
+.image-stack-out-3 {
+  animation-delay: 2000ms;
+}
+.image-stack-out-4 {
+  animation-delay: 1000ms;
 }
