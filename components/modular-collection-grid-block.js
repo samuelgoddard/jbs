@@ -15,15 +15,17 @@ export default function ModularCollectionGridBlock({ items }) {
           start = 'md:col-start-8'
         }
         return (
-          <div className={`col-span-5 sm:col-span-3 md:col-span-2 ${start}`}>
-            <Image
-              image={e.image}
-              focalPoint={e.image.hotspot}
-              layout="responsive"
-              widthOverride={1000}
-              className="bg-gray-200"
-            />
-
+          <div key={i} className={`w-full col-span-5 sm:col-span-3 md:col-span-2 ${start}`}>
+            <div className="relative overflow-hidden h-[65vw] sm:h-[50vw] md:h-[30vw]">
+              <Image
+                image={e.image}
+                focalPoint={e.image.hotspot}
+                layout="fill"
+                widthOverride={1000}
+                className="bg-gray-200"
+              />
+            </div>
+            
             { e.text && (
               <span className="block mt-2 mb-2 text-xs lg:text-sm">{e.text}</span>
             )}

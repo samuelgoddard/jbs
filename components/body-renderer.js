@@ -3,6 +3,7 @@ import ModularCollectionGridBlock from '@/components/modular-collection-grid-blo
 import ModularImageBlock from '@/components/modular-image-block'
 import ModularImageCarouselBlock from '@/components/modular-image-carousel-block'
 import ModularTextBlock from '@/components/modular-text-block'
+import ModularImageTextBlock from '@/components/modular-image-text-block'
 
 const notImplemented = ({ type }) => <h1>Not implemented {type}</h1>
 
@@ -37,6 +38,13 @@ const bodySerializers = {
   },
   textBlock: {
     component: ModularTextBlock,
+    wrapper: ({ children }) => 
+      <div className="mb-[12vh]">
+        {children}
+      </div>
+  },
+  modularImageTextBlock: {
+    component: ModularImageTextBlock,
     wrapper: ({ children }) => 
       <div className="mb-[12vh]">
         {children}
