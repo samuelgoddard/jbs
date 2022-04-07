@@ -29,21 +29,21 @@ export default function App({ Component, pageProps }) {
       )}
       
       { (router.pathname == '/work' || router.pathname == '/work/list') && (
-        <div className="absolute bottom-0 right-0 p-3 pb-[10px] z-50">
+        <div className="fixed md:bottom-0 md:right-0 left-[50%] md:left-auto ml-[-50px] md:ml-0 p-3 pb-[10px] z-50 justify-center">
           <nav>
-            <ul className="text-right">
+            <ul className="text-right flex space-x-2 md:block md:space-x-0">
               <li className="block">
-                <Link href="/work"><a className={`text-sm md:text-[2.8vw] xl:text-[2.2vw] 2xl:text-[2vw] leading-none md:leading-none xl:leading-none 2xl:leading-none font-sans uppercase ${router.pathname == '/work/list' && 'text-[#D3D3D3]' }`}>Grid</a></Link>
+                <Link href="/work"><a className={`text-lg md:text-[2.8vw] xl:text-[2.2vw] 2xl:text-[2vw] leading-none md:leading-none xl:leading-none 2xl:leading-none font-sans uppercase ${router.pathname == '/work/list' && 'text-[#D3D3D3]' }`}>Grid</a></Link>
               </li>
               <li className="block">
-                <Link href="/work/list"><a className={`text-sm md:text-[2.8vw] xl:text-[2.2vw] 2xl:text-[2vw] leading-none md:leading-none xl:leading-none 2xl:leading-none font-sans uppercase ${router.pathname == '/work' && 'text-[#D3D3D3]' }`}>List</a></Link>
+                <Link href="/work/list"><a className={`text-lg md:text-[2.8vw] xl:text-[2.2vw] 2xl:text-[2vw] leading-none md:leading-none xl:leading-none 2xl:leading-none font-sans uppercase ${router.pathname == '/work' && 'text-[#D3D3D3]' }`}>List</a></Link>
               </li>
             </ul>
           </nav>
         </div>
       )}
       { router.pathname == '/work/list' && (
-        <div className="fixed bottom-0 left-0 right-0 h-[90px] bg-white z-30 p-3 flex items-end">
+        <div className="fixed bottom-0 left-0 right-0 h-[90px] bg-white z-30 p-3 items-end hidden md:flex">
           <Link href="/">
             <a className="w-[33px] md:w-[48px]">
               <svg className="w-full" viewBox="0 0 111 53" fill="none" xmlns="http://www.w3.org/2000/svg">
