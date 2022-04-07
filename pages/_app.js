@@ -5,6 +5,7 @@ import { DefaultSeo } from 'next-seo'
 import SEO from '@/helpers/seo.config'
 // import FPSStats from 'react-fps-stats'
 import Link from 'next/link'
+import { useEffect } from 'react'
 
 export default function App({ Component, pageProps }) {
   const router = useRouter()
@@ -61,9 +62,7 @@ export default function App({ Component, pageProps }) {
         </div>
       )}
 
-      <AnimatePresence exitBeforeEnter>
-        <Component {...pageProps} key={router.asPath} />
-      </AnimatePresence>
+      <Component {...pageProps} key={router.asPath} />
     </>
   )
 }
