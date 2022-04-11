@@ -5,6 +5,7 @@ import { NextSeo } from 'next-seo'
 import SanityPageService from '@/services/sanityPageService'
 import Link from 'next/link'
 import Image from '@/components/image'
+import scrollRefresh from '@/helpers/scroll-refresh'
 
 const query = `{
   "home": *[_type == "home"][0]{
@@ -26,6 +27,7 @@ const pageService = new SanityPageService(query)
 
 export default function Menu(initialData) {
   const { data: { home } } = pageService.getPreviewHook(initialData)()
+  scrollRefresh();
 
   return (
     <Layout>
@@ -85,7 +87,7 @@ export default function Menu(initialData) {
                       <Link href="/studio"><a className="text-5xl md:text-[7vw] xl:text-[6vw] 2xl:text-[5.5vw] leading-none md:leading-none xl:leading-none 2xl:leading-none font-sans uppercase block">Studio</a></Link>
                     </li>
                     <li className="block border-b border-black">
-                      <Link href="/reel"><a className="text-5xl md:text-[6vw] xl:text-[6vw] 2xl:text-[5.5vw] leading-none md:leading-none xl:leading-none 2xl:leading-none font-sans uppercase block">Reel</a></Link>
+                      <Link href="/reel"><a className="text-5xl md:text-[7vw] xl:text-[6vw] 2xl:text-[5.5vw] leading-none md:leading-none xl:leading-none 2xl:leading-none font-sans uppercase block">Reel</a></Link>
                     </li>
                   </ul>
                 </nav>

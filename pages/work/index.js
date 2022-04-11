@@ -1,17 +1,12 @@
-import { useRef } from 'react'
 import Layout from '@/components/layout'
-import Header from '@/components/header'
-import Footer from '@/components/footer'
-import FancyLink from '@/components/fancyLink'
-import { fade } from '@/helpers/transitions'
-import { LocomotiveScrollProvider } from 'react-locomotive-scroll'
 import { LazyMotion, domAnimation, m } from 'framer-motion'
 import { NextSeo } from 'next-seo'
 import SanityPageService from '@/services/sanityPageService'
-import BlockContent from '@sanity/block-content-to-react'
-import Link from 'next/link'
-import Image from '@/components/image'
 import WorkCarousel from '@/components/work-carousel'
+import scrollRefresh from '@/helpers/scroll-refresh'
+import { SmootherContext } from '@/context/smoother-context'
+import { useContext } from 'react'
+import { useIsomorphicLayoutEffect } from '@/helpers/useIsomorphicLayoutEffect'
 
 const query = `{
   "work": *[_type == "work"]{
@@ -58,33 +53,30 @@ const pageService = new SanityPageService(query)
 
 export default function Work(initialData) {
   const { data: { work } } = pageService.getPreviewHook(initialData)()
-  const containerRef = useRef(null)
+  scrollRefresh();
+  
+  const smoother = useContext(SmootherContext);
+  
+  useIsomorphicLayoutEffect(() => {
+    smoother && smoother.content("#new-container");
+  }, [smoother]);
+  
   return (
     <Layout>
       <NextSeo title="Work" />
-
-      <LocomotiveScrollProvider
-        options={{ smooth: true, lerp: 0.1 }}
-        containerRef={containerRef}
-        watch={[]}
-      >
-        <div data-scroll-container ref={containerRef} id="scroll-container">
-          <div data-scroll-section>
-            <LazyMotion features={domAnimation}>
-              <m.div
-                initial="initial"
-                animate="enter"
-                exit="exit"
-                id="sticky"
-              >
-                <m.main>
-                  <WorkCarousel work={work} />
-                </m.main>
-              </m.div>
-            </LazyMotion>
-          </div>
-        </div>
-      </LocomotiveScrollProvider>
+      
+      <LazyMotion features={domAnimation}>
+        <m.div
+          initial="initial"
+          animate="enter"
+          exit="exit"
+          id="sticky"
+        >
+          <m.main>
+            <WorkCarousel work={work} />
+          </m.main>
+        </m.div>
+      </LazyMotion>
     </Layout>
   )
 }

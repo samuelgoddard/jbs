@@ -1,12 +1,12 @@
-import { useRef } from 'react'
+import { useContext, useEffect, useRef } from 'react'
 import Layout from '@/components/layout'
-// import { fade } from '@/helpers/transitions'
 import { LazyMotion, domAnimation, m } from 'framer-motion'
 import { NextSeo } from 'next-seo'
 import Image from '@/components/image'
 import SanityPageService from '@/services/sanityPageService'
 import BlockContent from '@sanity/block-content-to-react'
 import Link from 'next/link'
+import scrollRefresh from '@/helpers/scroll-refresh'
 
 const query = `{
   "home": *[_type == "home"][0]{
@@ -43,7 +43,7 @@ const pageService = new SanityPageService(query)
 
 export default function Home(initialData) {
   const { data: { home, contact } } = pageService.getPreviewHook(initialData)()
-  const containerRef = useRef(null)
+  scrollRefresh();
 
   return (
     <Layout>

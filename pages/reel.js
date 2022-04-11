@@ -1,15 +1,12 @@
-import { useEffect, useRef, useState } from 'react'
+import { useContext, useState } from 'react'
 import Layout from '@/components/layout'
-import Header from '@/components/header'
-import Footer from '@/components/footer'
-import { fade } from '@/helpers/transitions'
-import { LocomotiveScrollProvider } from 'react-locomotive-scroll'
-import { LazyMotion, domAnimation, m, useAnimation } from 'framer-motion'
+import { LazyMotion, domAnimation, m } from 'framer-motion'
 import { NextSeo } from 'next-seo'
 import Link from 'next/link'
-
 import SanityPageService from '@/services/sanityPageService'
 import Image from '@/components/image'
+import { useIsomorphicLayoutEffect } from '@/helpers/useIsomorphicLayoutEffect';
+import scrollRefresh from '@/helpers/scroll-refresh'
 
 const query = `{
   "reel": *[_type == "reel"][0]{
@@ -29,8 +26,8 @@ const pageService = new SanityPageService(query)
 export default function Reel(initialData) {
   const { data: { reel } } = pageService.getPreviewHook(initialData)()
   const [stackClass, setStackClass] = useState('image-stack-in')
-
-  useEffect(() => {
+  scrollRefresh();
+  useIsomorphicLayoutEffect(() => {
     const intervalId = setInterval(() => { 
       setStackClass(stackClass === 'image-stack-in' ? 'image-stack-out' : 'image-stack-in')
     }, 6000);
