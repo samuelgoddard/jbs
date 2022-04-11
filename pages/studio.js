@@ -211,93 +211,75 @@ export default function Studio(initialData) {
   const { data: { studio, contact } } = pageService.getPreviewHook(initialData)()
 
   return (
-    <Layout>
+    <>
       <NextSeo title={studio.title} />
       
-      <LazyMotion features={domAnimation}>
-        <Header/>
+      <Header/>
 
-        <m.div
-          initial="initial"
-          animate="enter"
-          exit="exit"
-          ref={ref}
-        >
-          <m.main className="">
-            <div className="">
+      <div ref={ref}>
+        <main className="">
+          <div className="">
+            <div className="grid grid-cols-9 mb-12 md:mb-24 xl:mb-28 2xl:mb-40">
+              <div className="col-span-9 md:mr-[1vw] mt-[25vw] md:mt-0">
+                <div className="absolute top-0 left-0 grid grid-cols-9 z-10">
+                  <div className="col-span-9 md:col-span-3 xl:col-span-2 bg-white pt-[20vw] p-3">
+                    <div className="w-10/12 leading-tight indent-8">
+                      <BlockContent serializers={{ container: ({ children }) => children }} blocks={studio.heroText} />
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="w-full h-[83vh] md:h-screen relative overflow-hidden flex flex-wrap flex-col">
+                  <div className="grid grid-cols-9 flex-1 h-full">
+                    <div className="relative overflow-hidden mb-auto col-span-9 md:col-span-8 h-full">
+                      <Image
+                        image={studio.heroImage}
+                        layout="fill"
+                        focalPoint={studio.heroImage.hotspot}
+                        widthOverride={1200}
+                        className="w-full z-0 absolute inset-0 h-full object-cover object-center"
+                      />
+                    </div>
+                  </div>
+                  <h1 className="font-bold text-[11vw] leading-none grid grid-cols-9 mt-auto h-auto w-auto">
+                    <span className="block col-start-1">The</span>
+                    <span className="block col-start-7 col-span-3 text-right studio">Studio</span>
+                  </h1>
+                </div>
+              </div>
+            </div>
+
+            <div className="p-3">
               <div className="grid grid-cols-9 mb-12 md:mb-24 xl:mb-28 2xl:mb-40">
-                <div className="col-span-9 md:mr-[1vw] mt-[25vw] md:mt-0">
-                  <div className="absolute top-0 left-0 grid grid-cols-9 z-10">
-                    <div className="col-span-9 md:col-span-3 xl:col-span-2 bg-white pt-[20vw] p-3">
-                      <div className="w-10/12 leading-tight indent-8">
-                        <BlockContent serializers={{ container: ({ children }) => children }} blocks={studio.heroText} />
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div className="w-full h-[83vh] md:h-screen relative overflow-hidden flex flex-wrap flex-col">
-                    <div className="grid grid-cols-9 flex-1 h-full">
-                      <div className="relative overflow-hidden mb-auto col-span-9 md:col-span-8 h-full">
-                        <Image
-                          image={studio.heroImage}
-                          layout="fill"
-                          focalPoint={studio.heroImage.hotspot}
-                          widthOverride={1200}
-                          className="w-full z-0 absolute inset-0 h-full object-cover object-center"
-                        />
-                      </div>
-                    </div>
-                    <h1 className="font-bold text-[11vw] leading-none grid grid-cols-9 mt-auto h-auto w-auto">
-                      <span className="block col-start-1">The</span>
-                      <span className="block col-start-7 col-span-3 text-right studio">Studio</span>
-                    </h1>
-                  </div>
+                <div className="hidden md:block col-span-2 fade">
+                  <Image
+                    image={studio.contentSupportingImage}
+                    focalPoint={studio.contentSupportingImage.hotspot}
+                    widthOverride={550}
+                    className="w-full"
+                  />
+                </div>
+                
+                <div className="col-span-7 md:col-span-3 col-start-1 md:col-start-5 leading-snug content max-w-[550px] split-cms">
+                  <BlockContent serializers={{ container: ({ children }) => children }} blocks={studio.content} />
                 </div>
               </div>
 
-              <div className="p-3">
-                <div className="grid grid-cols-9 mb-12 md:mb-24 xl:mb-28 2xl:mb-40">
-                  <div className="hidden md:block col-span-2 fade">
-                    <Image
-                      image={studio.contentSupportingImage}
-                      focalPoint={studio.contentSupportingImage.hotspot}
-                      widthOverride={550}
-                      className="w-full"
-                    />
-                  </div>
-                  
-                  <div className="col-span-7 md:col-span-3 col-start-1 md:col-start-5 leading-snug content max-w-[550px] split-cms">
-                    <BlockContent serializers={{ container: ({ children }) => children }} blocks={studio.content} />
-                  </div>
-                </div>
+              <h2 className="font-bold text-[7.5vw] leading-none mb-8 md:mb-16 xl:mb-20 split">
+                <span className="block text-right">JBS Is a</span>
+                <span className="block text-left">Photography + Production</span>
+                <span className="block text-left">Studio Specialising In</span>
+                <span className="block text-left">Lifestyle, Food + Drink</span>
+              </h2>
 
-                <h2 className="font-bold text-[7.5vw] leading-none mb-8 md:mb-16 xl:mb-20 split">
-                  <span className="block text-right">JBS Is a</span>
-                  <span className="block text-left">Photography + Production</span>
-                  <span className="block text-left">Studio Specialising In</span>
-                  <span className="block text-left">Lifestyle, Food + Drink</span>
-                </h2>
-
-                <div className="grid grid-cols-9 gap-3 mb-12 md:mb-24 xl:mb-28 2xl:mb-40 team-wrapper">
-                  {studio.teamMembers.map((e, i) =>
-                    i == 2 ? (
-                      <Fragment key={i}>
-                        <div className="col-span-8 md:col-span-3 xl:col-span-3 team-graph relative z-0">
-                          <HashGrid />
-                        </div>
-                        <div className="col-span-8 md:col-span-2 xl:col-span-2 team-member relative z-0">
-                          <Image
-                            image={e.image}
-                            focalPoint={e.image.hotspot}
-                            widthOverride={550}
-                            className="w-full mb-3"
-                          />
-                          <span className="block text-xs leading-none mb-2">{e.jobTitle}</span>
-                          <span className="block leading-none">{e.name}</span>
-                        </div>  
-                      </Fragment>
-                    ) : (
-                      <div className="col-span-8 md:col-span-2 xl:col-span-2 fade relative z-10" key={i}>
+              <div className="grid grid-cols-9 gap-3 mb-12 md:mb-24 xl:mb-28 2xl:mb-40 team-wrapper">
+                {studio.teamMembers.map((e, i) =>
+                  i == 2 ? (
+                    <Fragment key={i}>
+                      <div className="col-span-8 md:col-span-3 xl:col-span-3 team-graph relative z-0">
+                        <HashGrid />
+                      </div>
+                      <div className="col-span-8 md:col-span-2 xl:col-span-2 team-member relative z-0">
                         <Image
                           image={e.image}
                           focalPoint={e.image.hotspot}
@@ -307,60 +289,76 @@ export default function Studio(initialData) {
                         <span className="block text-xs leading-none mb-2">{e.jobTitle}</span>
                         <span className="block leading-none">{e.name}</span>
                       </div>  
+                    </Fragment>
+                  ) : (
+                    <div className="col-span-8 md:col-span-2 xl:col-span-2 fade relative z-10" key={i}>
+                      <Image
+                        image={e.image}
+                        focalPoint={e.image.hotspot}
+                        widthOverride={550}
+                        className="w-full mb-3"
+                      />
+                      <span className="block text-xs leading-none mb-2">{e.jobTitle}</span>
+                      <span className="block leading-none">{e.name}</span>
+                    </div>  
+                  )
+                )}
+              </div>
+
+
+              <div className="grid grid-cols-9 gap-3 mb-20 md:mb-32 xl:mb-48 2xl:mb-64">
+                <div className="col-span-9 md:col-span-1 mb-5 md:mb-0">
+                  <span className="block leading-none mb-1 fade">Clients &amp; <span className="block">Info</span></span>
+                </div>
+                
+                <div className="col-span-9 md:col-span-2 md:col-start-3 mb-6 md:mb-0 split">
+                  {studio.clientList.map((e, i) => {
+                    return (
+                      <span className="block leading-none mb-1" key={i}>{e}</span>
                     )
-                  )}
+                  })}
                 </div>
 
+                <div className="col-span-9 md:col-span-2 md:col-start-5 mb-6 md:mb-0 split">
+                  {studio.servicesList.map((e, i) => {
+                    return (
+                      <span className="block leading-none mb-1" key={i}>{e}</span>
+                    )
+                  })}
+                </div>
 
-                <div className="grid grid-cols-9 gap-3 mb-20 md:mb-32 xl:mb-48 2xl:mb-64">
-                  <div className="col-span-9 md:col-span-1 mb-5 md:mb-0">
-                    <span className="block leading-none mb-1 fade">Clients &amp; <span className="block">Info</span></span>
-                  </div>
+                <div className="col-span-9 md:col-span-2 md:col-start-8">
+                  { contact.email && (<a href={`mailto:${contact.email}`} className="block leading-none mb-1 underline fade">Email</a>)}
                   
-                  <div className="col-span-9 md:col-span-2 md:col-start-3 mb-6 md:mb-0 split">
-                    {studio.clientList.map((e, i) => {
+                  <div className="split">
+                    {contact.socials.map((e, i) => {
                       return (
-                        <span className="block leading-none mb-1" key={i}>{e}</span>
+                        <a key={i} href={e.url} target="_blank" rel="noopener noreferrer" className="block leading-none mb-1 underline">{e.title}</a>
                       )
                     })}
-                  </div>
-
-                  <div className="col-span-9 md:col-span-2 md:col-start-5 mb-6 md:mb-0 split">
-                    {studio.servicesList.map((e, i) => {
-                      return (
-                        <span className="block leading-none mb-1" key={i}>{e}</span>
-                      )
-                    })}
-                  </div>
-
-                  <div className="col-span-9 md:col-span-2 md:col-start-8">
-                    { contact.email && (<a href={`mailto:${contact.email}`} className="block leading-none mb-1 underline fade">Email</a>)}
-                    
-                    <div className="split">
-                      {contact.socials.map((e, i) => {
-                        return (
-                          <a key={i} href={e.url} target="_blank" rel="noopener noreferrer" className="block leading-none mb-1 underline">{e.title}</a>
-                        )
-                      })}
-                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </m.main>
+          </div>
+        </main>
 
-          <Footer contact={contact} />
-        </m.div>
-      </LazyMotion>
+        <Footer contact={contact} />
+      </div>
   
-    </Layout>
+    </>
   )
 }
 
 export async function getStaticProps(context) {
+  await waitload(2);
   const cms = await pageService.fetchQuery(context)
 
   return {
-    props: { ...cms }
+    props: { dummy: 'dummy', ...cms }
   }
+}
+
+function waitload(sec) {
+  return new Promise((resolve) => setTimeout(resolve, sec * 1000));
 }

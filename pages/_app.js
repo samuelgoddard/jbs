@@ -1,5 +1,4 @@
 import '@/styles/main.css'
-import { AnimatePresence } from 'framer-motion'
 import { useRouter } from 'next/router'
 import { DefaultSeo } from 'next-seo'
 import SEO from '@/helpers/seo.config'
@@ -11,6 +10,8 @@ import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { ScrollSmoother } from 'gsap/dist/ScrollSmoother';
 import { SmootherContext } from '@/context/smoother-context'
 import { useIsomorphicLayoutEffect } from '@/helpers/useIsomorphicLayoutEffect'
+import Layout from '@/components/layout'
+import Loader from '@/components/loader'
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
 export default function App({ Component, pageProps }) {
@@ -29,6 +30,8 @@ export default function App({ Component, pageProps }) {
   return (
     <>
       <DefaultSeo {...SEO} />
+
+      <Loader />
 
       { pageProps.preview && <><div className={'fixed bottom-0 w-full p-2 bg-red-500 opacity-75 text-white justify-center flex z-50 uppercase font-medium'}>! Preview Mode Enabled - <a className={'px-1 underline'} href={`/api/exit-preview?currentRoute=${router.route}`}>Click Here To Exit</a> !</div></> }
 
@@ -81,7 +84,9 @@ export default function App({ Component, pageProps }) {
       <SmootherContext.Provider value={smoother}>
         <div id="smooth-wrapper">
           <div id="smooth-content">
-            <Component {...pageProps} key={router.asPath} />
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
           </div>
         </div>
       </SmootherContext.Provider>

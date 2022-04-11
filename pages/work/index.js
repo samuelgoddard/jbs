@@ -82,9 +82,14 @@ export default function Work(initialData) {
 }
 
 export async function getStaticProps(context) {
+  await waitload(2);
   const cms = await pageService.fetchQuery(context)
 
   return {
-    props: { ...cms }
+    props: { dummy: 'dummy', ...cms }
   }
+}
+
+function waitload(sec) {
+  return new Promise((resolve) => setTimeout(resolve, sec * 1000));
 }

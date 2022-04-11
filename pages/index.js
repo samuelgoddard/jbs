@@ -1,5 +1,4 @@
 import { useContext, useEffect, useRef } from 'react'
-import Layout from '@/components/layout'
 import { LazyMotion, domAnimation, m } from 'framer-motion'
 import { NextSeo } from 'next-seo'
 import Image from '@/components/image'
@@ -46,7 +45,7 @@ export default function Home(initialData) {
   scrollRefresh();
 
   return (
-    <Layout>
+    <>
       <NextSeo title={home.title} />
       
       <div className="p-3 min-h-screen relative">
@@ -127,14 +126,19 @@ export default function Home(initialData) {
           </m.div>
         </LazyMotion>
       </div>
-    </Layout>
+    </>
   )
 }
 
 export async function getStaticProps(context) {
+  await waitload(2);
   const cms = await pageService.fetchQuery(context)
 
   return {
-    props: { ...cms }
+    props: { dummy: 'dummy', ...cms }
   }
+}
+
+function waitload(sec) {
+  return new Promise((resolve) => setTimeout(resolve, sec * 1000));
 }

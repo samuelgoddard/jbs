@@ -30,7 +30,7 @@ export default function Menu(initialData) {
   scrollRefresh();
 
   return (
-    <Layout>
+    <>
       <NextSeo title={"Menu"} />
       
       <div className="p-3 min-h-screen relative">
@@ -129,14 +129,19 @@ export default function Menu(initialData) {
           </m.div>
         </LazyMotion>
       </div>
-    </Layout>
+    </>
   )
 }
 
 export async function getStaticProps(context) {
   const cms = await pageService.fetchQuery(context)
+  await waitload(2);
 
   return {
-    props: { ...cms }
+    props: { dummy: 'dummy', ...cms }
   }
+}
+
+function waitload(sec) {
+  return new Promise((resolve) => setTimeout(resolve, sec * 1000));
 }
