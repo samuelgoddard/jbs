@@ -1,8 +1,6 @@
-import { Fragment, useContext, useEffect, useRef } from 'react'
-import Layout from '@/components/layout'
+import { Fragment, useRef } from 'react'
 import Header from '@/components/header'
 import Footer from '@/components/footer'
-import { LazyMotion, domAnimation, m } from 'framer-motion'
 import { NextSeo } from 'next-seo'
 import SanityPageService from '@/services/sanityPageService'
 import BlockContent from '@sanity/block-content-to-react'
@@ -10,9 +8,10 @@ import Image from '@/components/image'
 import HashGrid from '@/components/hash-grid'
 import scrollRefresh from '@/helpers/scroll-refresh'
 import { useIsomorphicLayoutEffect } from '@/helpers/useIsomorphicLayoutEffect'
-import gsap, { Power2 } from 'gsap'
+import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 import { SplitText } from 'gsap/dist/SplitText'
+import FadeInOut from 'animations/FadeInOut'
 
 const query = `{
   "studio": *[_type == "studio"][0]{
@@ -211,7 +210,7 @@ export default function Studio(initialData) {
   const { data: { studio, contact } } = pageService.getPreviewHook(initialData)()
 
   return (
-    <>
+    <FadeInOut>
       <NextSeo title={studio.title} />
       
       <Header/>
@@ -346,19 +345,14 @@ export default function Studio(initialData) {
         <Footer contact={contact} />
       </div>
   
-    </>
+    </FadeInOut>
   )
 }
 
 export async function getStaticProps(context) {
-  await waitload(2);
   const cms = await pageService.fetchQuery(context)
 
   return {
-    props: { dummy: 'dummy', ...cms }
+    props: { ...cms }
   }
-}
-
-function waitload(sec) {
-  return new Promise((resolve) => setTimeout(resolve, sec * 1000));
 }

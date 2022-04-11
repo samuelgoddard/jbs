@@ -33,6 +33,7 @@
     "gsap": "npm:@gsap/business@^3.10.2",
     "locomotive-scroll": "^4.1.3",
     "next": "^12.1.0",
+    "next-page-transitions": "^1.0.0-beta.2",
     "next-sanity": "^0.5.1",
     "next-sanity-image": "^3.2.1",
     "next-seo": "^4.26.0",

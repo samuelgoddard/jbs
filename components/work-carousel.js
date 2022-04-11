@@ -17,7 +17,7 @@ export default function WorkCarousel({ work }) {
   
   useIsomorphicLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
-  
+    
     // ScrollTrigger.create({
     //   trigger: box.current,
     //   start: "top",

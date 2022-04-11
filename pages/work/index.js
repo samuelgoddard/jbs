@@ -7,6 +7,7 @@ import scrollRefresh from '@/helpers/scroll-refresh'
 import { SmootherContext } from '@/context/smoother-context'
 import { useContext } from 'react'
 import { useIsomorphicLayoutEffect } from '@/helpers/useIsomorphicLayoutEffect'
+import FadeInOut from '@/animations/FadeInOut'
 
 const query = `{
   "work": *[_type == "work"]{
@@ -62,34 +63,22 @@ export default function Work(initialData) {
   }, [smoother]);
   
   return (
-    <Layout>
+    <FadeInOut>
       <NextSeo title="Work" />
-      
-      <LazyMotion features={domAnimation}>
-        <m.div
-          initial="initial"
-          animate="enter"
-          exit="exit"
-          id="sticky"
-        >
-          <m.main>
-            <WorkCarousel work={work} />
-          </m.main>
-        </m.div>
-      </LazyMotion>
-    </Layout>
+
+      <div id="sticky">
+        <main>
+          <WorkCarousel work={work} />
+        </main>
+      </div>
+    </FadeInOut>
   )
 }
 
 export async function getStaticProps(context) {
-  await waitload(2);
   const cms = await pageService.fetchQuery(context)
 
   return {
-    props: { dummy: 'dummy', ...cms }
+    props: { ...cms }
   }
-}
-
-function waitload(sec) {
-  return new Promise((resolve) => setTimeout(resolve, sec * 1000));
 }

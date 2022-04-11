@@ -1,80 +1,33 @@
-import { useRouter } from 'next/router';
-import { useState } from 'react';
-import { gsap } from 'gsap';
-import { useIsomorphicLayoutEffect } from '@/helpers/useIsomorphicLayoutEffect';
+import { useContext, useRef } from "react";
+import { TransitionContext } from "@/context/transition-context";
+import { useIsomorphicLayoutEffect } from "@/helpers/useIsomorphicLayoutEffect";
+import gsap from "gsap";
 
 const Loader = () => {
-  const router = useRouter();
-  const [isActive, setIsActive] = useState(false);
+  const { timeline } = useContext(TransitionContext)
+  const el = useRef()
+
   useIsomorphicLayoutEffect(() => {
-    let timer;
-    const aniStart = async () => {
-      timer = setTimeout(() => {
-        setIsActive(true);
-        const tl = gsap.timeline();
-        tl.to('.cover-strip', {
-          yPercent: 100,
-          duration: 1.2,
-          ease: "power4.inOut",
-        });
-        tl.to('.text', {
-          autoAlpha: 1,
-          duration: 0.3,
-          delay: -0.4,
-          ease: "power4.inOut",
-        });
-      }, 300);
-    };
-    const aniEnd = () => {
-      if (timer) {
-        clearTimeout(timer);
-      }
-      const tl = gsap.timeline();
-      if (isActive) {
-        tl.to('.text', {
-          autoAlpha: 0,
-          duration: 0.3,
-          delay: 1,
-          ease: "power4.inOut",
-        });
-        tl.to('.cover-strip', {
-          yPercent: 200,
-          duration: 1.2,
-          delay: -0.2,
-          ease: "power4.inOut",
-        });
-        setIsActive(false);
-      }
+    gsap.to(el.current, {
+      opacity: 1,
+      duration: 1,
+    })
 
-      tl.set('.cover-strip', { yPercent: 0 });
-      tl.set('.text', { autoAlpha: 0 });
-      clearTimeout(timer);
-    };
+    timeline.add(
+      gsap.to(el.current, {
+        opacity: 1,
+        duration: .5,
+      }),
+      0
+    )
+  }, [])
 
-    router.events.on('routeChangeStart', aniStart);
-    router.events.on('routeChangeComplete', aniEnd);
-    router.events.on('routeChangeError', aniEnd);
-
-    return () => {
-      router.events.off('routeChangeStart', aniStart);
-      router.events.off('routeChangeComplete', aniEnd);
-      router.events.off('routeChangeError', aniEnd);
-      if (timer) {
-        clearTimeout(timer);
-      }
-    };
-  }, [router]);
   return (
-    <>
-      <div className="flex flex-col overflow-hidden relative z-[10000] pointer-events-none">
-        <div className="cover-strip h-screen w-full bg-slate-50 top-0 left-0 right-0 cover fixed flex items-center justify-center z-40">
-        </div>
-
-        <div className="fixed inset-0 z-50 flex items-center justify-center">
-          <h1 className="text">Loading...</h1>
-        </div>
+    <div className="flex flex-col overflow-hidden z-[10000] pointer-events-none fixed inset-0 w-full h-full bg-red-500" ref={el}>
+      <div className="fixed inset-0 z-50 flex items-center justify-center">
+        <h1 className="">Loading...</h1>
       </div>
-    </>
+    </div>
   );
 };
 export default Loader;

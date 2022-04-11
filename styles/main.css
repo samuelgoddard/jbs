@@ -91,10 +91,3 @@ body {
   animation-delay: 1000ms;
 }
 
-.cover {
-   transform: translateY(-100%);
-}
-
-.text {
-   opacity: 0;
-}
