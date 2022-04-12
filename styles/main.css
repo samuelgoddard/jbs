@@ -91,6 +91,24 @@ body {
   animation-delay: 1000ms;
 }
 
-.loader {
-  z-index: 100000 !important;
+@keyframes swipeUp {
+  0% {
+    transform: translateY(100%);
+  }
+  33% {
+    transform: translateY(0);
+  }
+  66% {
+    transform: translateY(0);
+  }
+  80% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+.swipe-up {
+  animation: swipeUp 2.5s cubic-bezier(0.83, 0, 0.17, 1);
 }

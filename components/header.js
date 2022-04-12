@@ -2,14 +2,14 @@ import Link from 'next/link'
 import { m } from 'framer-motion'
 
 const revealDelay = {
-	initial: { y: '100%' },
+	initial: { y: '-100%' },
   enter: { 
     y: 0,
-    transition: { duration: 0.8, delay: 0.4, ease: [0.83, 0, 0.17, 1] }
+    transition: { duration: 0.66, delay: 1, ease: [0.83, 0, 0.17, 1] }
   },
 	exit: {
-    y: '100%',
-		transition: { duration: 0.8, ease: [0.83, 0, 0.17, 1] }
+    y: '-100%',
+		transition: { duration: 0.5, ease: [0.83, 0, 0.17, 1] }
 	}
 }
 

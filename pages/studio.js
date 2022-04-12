@@ -2,7 +2,7 @@ import { Fragment, useRef } from 'react'
 import Layout from '@/components/layout'
 import Header from '@/components/header'
 import Footer from '@/components/footer'
-import { scaleDelay, reveal, revealDelay } from '@/helpers/transitions'
+import { scaleDelay, reveal, fadeDelay, revealDelay } from '@/helpers/transitions'
 import { LocomotiveScrollProvider } from 'react-locomotive-scroll'
 import { LazyMotion, domAnimation, m } from 'framer-motion'
 import { NextSeo } from 'next-seo'
@@ -109,7 +109,9 @@ export default function Studio(initialData) {
                       <div className="absolute top-0 left-0 grid grid-cols-9 z-10">
                         <div className="col-span-9 md:col-span-3 xl:col-span-2 bg-white pt-[20vw] p-3">
                           <div className="w-full md:w-10/12 leading-tight md:pr-[20px]">
-                            <BlockContent serializers={{ container: ({ children }) => children }} blocks={studio.heroText} />
+                            <m.div variants={fadeDelay}>
+                              <BlockContent serializers={{ container: ({ children }) => children }} blocks={studio.heroText} />
+                            </m.div>
 
                             {/* <p className="w-full">
                               <SplitText

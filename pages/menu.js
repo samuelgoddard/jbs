@@ -1,5 +1,5 @@
 import Layout from '@/components/layout'
-import { revealDelay, scaleDelay } from '@/helpers/transitions'
+import { revealDelay, revealDelayTop, revealDelayBottom, scaleDelay } from '@/helpers/transitions'
 import { LazyMotion, domAnimation, m } from 'framer-motion'
 import { NextSeo } from 'next-seo'
 import SanityPageService from '@/services/sanityPageService'
@@ -42,13 +42,25 @@ export default function Menu(initialData) {
             <Loader/>
             <m.header className="absolute top-0 left-0 right-0 z-10">
               <div className="absolute top-0 left-0 right-0 grid grid-cols-9 p-3">
-                <span className="block text-[10px] md:text-[11px] lg:text-sm 2xl:text-base leading-[0.85] md:leading-[0.85] lg:leading-[0.85] 2xl:leading-[0.85] col-span-1">(</span>
+                <span className="block text-[10px] md:text-[11px] lg:text-sm 2xl:text-base leading-[0.85] md:leading-[0.85] lg:leading-[0.85] 2xl:leading-[0.85] col-span-1 relative overflow-hidden">
+                  <m.span variants={revealDelayTop} className="block">(</m.span>
+                </span>
 
-                <span className="block text-[10px] md:text-[11px] lg:text-sm 2xl:text-base leading-[0.85] md:leading-[0.85] lg:leading-[0.85] 2xl:leading-[0.85] col-span-4 md:col-span-1 col-start-2">A Photography <span className="inline-block md:hidden">++ Moving Image</span></span>
+                <span className="block text-[10px] md:text-[11px] lg:text-sm 2xl:text-base leading-[0.85] md:leading-[0.85] lg:leading-[0.85] 2xl:leading-[0.85] col-span-4 md:col-span-1 col-start-2 relative overflow-hidden">
+                  <m.span variants={revealDelayTop} className="block">A Photography <span className="inline-block md:hidden relative overflow-hidden">++ Moving Image</span></m.span>
+                </span>
                 
-                <span className="hidden md:block text-[10px] md:text-[11px] lg:text-sm 2xl:text-base leading-[0.85] md:leading-[0.85] lg:leading-[0.85] 2xl:leading-[0.85] col-span-1 col-start-4">++</span>
-                <span className="hidden md:block text-[10px] md:text-[11px] lg:text-sm 2xl:text-base leading-[0.85] md:leading-[0.85] lg:leading-[0.85] 2xl:leading-[0.85] col-span-1 col-start-5">Moving Image</span>
-                <span className="block text-[10px] md:text-[11px] lg:text-sm 2xl:text-base leading-[0.85] md:leading-[0.85] lg:leading-[0.85] 2xl:leading-[0.85] col-span-1 col-start-7">Studio</span>
+                <span className="hidden md:block text-[10px] md:text-[11px] lg:text-sm 2xl:text-base leading-[0.85] md:leading-[0.85] lg:leading-[0.85] 2xl:leading-[0.85] col-span-1 col-start-4 relative overflow-hidden">
+                  <m.span variants={revealDelayTop} className="block">++</m.span>
+                </span>
+
+                <span className="hidden md:block text-[10px] md:text-[11px] lg:text-sm 2xl:text-base leading-[0.85] md:leading-[0.85] lg:leading-[0.85] 2xl:leading-[0.85] col-span-1 col-start-5 relative overflow-hidden">
+                  <m.span variants={revealDelayTop} className="block">Moving Image</m.span>
+                </span>
+
+                <span className="block text-[10px] md:text-[11px] lg:text-sm 2xl:text-base leading-[0.85] md:leading-[0.85] lg:leading-[0.85] 2xl:leading-[0.85] col-span-1 col-start-7 relative overflow-hidden">
+                  <m.span variants={revealDelayTop} className="block">Studio</m.span>
+                </span>
               </div>
 
               <nav className="flex space-x-3 text-sm md:text-base w-auto p-3 absolute top-0 right-0">
@@ -80,22 +92,22 @@ export default function Menu(initialData) {
                 <nav className="border-t border-black">
                   <ul>
                     <li className="block border-b border-black">
-                      <Link href="/"><a className="text-5xl md:text-[7vw] xl:text-[6vw] 2xl:text-[5.5vw] leading-[0.8] md:leading-[0.8] xl:leading-[0.8] 2xl:leading-[0.8] font-sans uppercase block relative overflow-hidden my-2">
+                      <Link href="/"><a className="text-5xl md:text-[7vw] xl:text-[6vw] 2xl:text-[5.5vw] leading-[0.8] md:leading-[0.8] xl:leading-[0.8] 2xl:leading-[0.8] font-sans uppercase block relative overflow-hidden my-3">
                         <m.span variants={revealDelay} className="block">Home</m.span>
                       </a></Link>
                     </li>
                     <li className="block border-b border-black">
-                      <Link href="/work"><a className="text-5xl md:text-[7vw] xl:text-[6vw] 2xl:text-[5.5vw] leading-[0.8] md:leading-[0.8] xl:leading-[0.8] 2xl:leading-[0.8] font-sans uppercase block relative overflow-hidden my-2">
+                      <Link href="/work"><a className="text-5xl md:text-[7vw] xl:text-[6vw] 2xl:text-[5.5vw] leading-[0.8] md:leading-[0.8] xl:leading-[0.8] 2xl:leading-[0.8] font-sans uppercase block relative overflow-hidden my-3">
                         <m.span variants={revealDelay} className="block">Work</m.span>
                       </a></Link>
                     </li>
                     <li className="block border-b border-black">
-                      <Link href="/studio"><a className="text-5xl md:text-[7vw] xl:text-[6vw] 2xl:text-[5.5vw] leading-[0.8] md:leading-[0.8] xl:leading-[0.8] 2xl:leading-[0.8] font-sans uppercase block relative overflow-hidden my-2">
+                      <Link href="/studio"><a className="text-5xl md:text-[7vw] xl:text-[6vw] 2xl:text-[5.5vw] leading-[0.8] md:leading-[0.8] xl:leading-[0.8] 2xl:leading-[0.8] font-sans uppercase block relative overflow-hidden my-3">
                         <m.span variants={revealDelay} className="block">Studio</m.span>
                       </a></Link>
                     </li>
                     <li className="block border-b border-black">
-                      <Link href="/reel"><a className="text-5xl md:text-[6vw] xl:text-[6vw] 2xl:text-[5.5vw] leading-[0.8] md:leading-[0.8] xl:leading-[0.8] 2xl:leading-[0.8] font-sans uppercase block relative overflow-hidden my-2">
+                      <Link href="/reel"><a className="text-5xl md:text-[6vw] xl:text-[6vw] 2xl:text-[5.5vw] leading-[0.8] md:leading-[0.8] xl:leading-[0.8] 2xl:leading-[0.8] font-sans uppercase block relative overflow-hidden my-3">
                         <m.span variants={revealDelay} className="block">Reel</m.span>
                       </a></Link>
                     </li>
@@ -108,32 +120,32 @@ export default function Menu(initialData) {
               <div className="ml-[43vw] grid grid-cols-5 items-end">
                 <div className="grid-col-1 hidden md:block">
                   <a href="#" className="block text-[10px] md:text-[11px] lg:text-sm 2xl:text-base leading-[0.85] md:leading-[0.85] lg:leading-[0.85] 2xl:leading-[0.85] relative overflow-hidden">
-                    <m.span variants={revealDelay} className="block">Instagram</m.span>
+                    <m.span variants={revealDelayBottom} className="block">Instagram</m.span>
                   </a>
                 </div>
 
                 <div className="grid-col-1 col-start-2 hidden md:block">
                   <a href="#" className="block text-[10px] md:text-[11px] lg:text-sm 2xl:text-base leading-[0.85] md:leading-[0.85] lg:leading-[0.85] 2xl:leading-[0.85] relative overflow-hidden">
-                    <m.span variants={revealDelay} className="block">Email</m.span>
+                    <m.span variants={revealDelayBottom} className="block">Email</m.span>
                   </a>
                 </div>
 
                 <div className="grid-col-1 col-start-3 hidden md:block">
                   <a href="#" className="block text-[10px] md:text-[11px] lg:text-sm 2xl:text-base leading-[0.85] md:leading-[0.85] lg:leading-[0.85] 2xl:leading-[0.85] relative overflow-hidden">
-                    <m.span variants={revealDelay} className="block">Terms</m.span>
+                    <m.span variants={revealDelayBottom} className="block">Terms</m.span>
                   </a>
                 </div>
 
                 <div className="grid-col-1 hidden md:block">
                   <a href="#" className="block text-[10px] md:text-[11px] lg:text-sm 2xl:text-base leading-[0.85] md:leading-[0.85] lg:leading-[0.85] 2xl:leading-[0.85] relative overflow-hidden">
-                    <m.span variants={revealDelay} className="block">By <span className="underline">ShiftWalk</span></m.span>
+                    <m.span variants={revealDelayBottom} className="block">By <span className="underline">ShiftWalk</span></m.span>
                   </a>
                 </div>
 
                 <div className="grid-col-1 col-start-5">
                   <Link href="/">
                     <a className="mb-1 md:mb-0 block w-[45px] md:w-[60px] ml-auto relative overflow-hidden">
-                      <m.svg variants={revealDelay} className="block w-full" viewBox="0 0 111 53" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <m.svg variants={revealDelayBottom} className="block w-full" viewBox="0 0 111 53" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M16.9088 52.2402C27.7683 52.2402 33.8176 45.9723 33.8176 34.0924V0H23.4682V34.8212C23.4682 39.9959 21.5733 42.9112 16.9088 42.9112C12.3172 42.9112 10.3493 40.4332 10.3493 34.4568H0C0 46.3367 6.3408 52.2402 16.9088 52.2402Z" fill="#212121"/>
                         <path d="M36.9389 51.1366H53.3375C61.5733 51.1366 69.4446 45.7433 69.4446 35.6126C69.4446 29.3447 66.8208 24.8988 62.1563 22.7852V22.4937C64.7801 21.036 67.5496 17.8292 67.5496 12.6545C67.5496 4.3459 62.0106 0 52.9731 0H36.9389V51.1366ZM47.2882 18.6309V9.15616H52.6087C55.2325 9.15616 57.2003 10.4681 57.2003 13.8935C57.2003 17.4648 55.2325 18.6309 52.6087 18.6309H47.2882ZM47.2882 42.0992V27.0853H52.4629C56.4715 27.0853 59.0952 29.4904 59.0952 34.5922C59.0952 39.694 56.4715 42.0992 52.4629 42.0992H47.2882Z" fill="#212121"/>
                         <path d="M87.1158 51.5439C96.9549 51.5439 102.786 45.1334 102.786 36.679C102.786 28.8077 98.777 25.7279 89.5209 21.5735C83.0343 18.6582 81.5038 16.9819 81.5038 13.4836C81.5038 10.4225 83.7632 8.45465 87.0429 8.45465C90.9786 8.45465 92.7277 10.714 92.7277 13.9209H102.421C102.348 5.75799 97.3922 0.000251422 87.0429 0.000251422C78.5885 0.000251422 71.8833 4.30033 71.8833 13.7751C71.8833 20.6261 76.7664 25.0178 83.9089 28.1517C90.4684 30.9942 93.165 32.962 93.165 36.679C93.165 40.5418 90.4684 42.3639 87.1158 42.3639C82.597 42.3639 80.6292 39.3028 80.2648 35.1485H70.7172C71.3002 45.6436 77.3495 51.5439 87.1158 51.5439Z" fill="#212121"/>
