@@ -13,6 +13,9 @@ import HashGrid from '@/components/hash-grid'
 import FadeInWhenVisible from '@/components/fade-in-when-visible'
 import Loader from '@/components/loader'
 import { SplitText } from '@cyriacbr/react-split-text'
+import ScrollBoundImage from '@/components/scroll-bound-image'
+import ScrollBoundStack from '@/components/scroll-bound-stack'
+import StudioTitle from '@/components/studio-title'
 
 const query = `{
   "studio": *[_type == "studio"][0]{
@@ -93,7 +96,7 @@ export default function Studio(initialData) {
           <Loader />
 
           <LocomotiveScrollProvider
-            options={{ smooth: true, lerp: 0.15 }}
+            options={{ smooth: true, lerp: 0.1 }}
             containerRef={containerRef}
             watch={[]}
           >
@@ -102,7 +105,7 @@ export default function Studio(initialData) {
 
               <Header/>
               
-              <m.main className="">
+              <main className="">
                 <div className="">
                   <div className="grid grid-cols-9 mb-12 md:mb-24 xl:mb-28 2xl:mb-40">
                     <div className="col-span-9 md:mr-[1vw] mt-[25vw] md:mt-0">
@@ -130,36 +133,27 @@ export default function Studio(initialData) {
                         <div className="grid grid-cols-9 flex-1 h-full">
                           <div className="relative overflow-hidden mb-auto col-span-9 md:col-span-8 h-full">
                             <m.div variants={scaleDelay} className="absolute inset-0 h-full object-cover object-center">
-                              <Image
-                                image={studio.heroImage}
-                                layout="fill"
-                                focalPoint={studio.heroImage.hotspot}
-                                widthOverride={1200}
-                                className="w-full z-0 absolute inset-0 h-full object-cover object-center"
-                              />
+                              <ScrollBoundImage id="studio" image={studio.heroImage} />
                             </m.div>
                           </div>
                         </div>
                         
-                        <h1 className="font-bold text-[11vw] leading-[0.8] grid grid-cols-9 mt-auto h-auto w-auto pt-[10px]">
-                          <span className="block col-start-1 col-span-3 relative overflow-hidden">
-                          <m.span className="block" variants={revealDelay}>The</m.span></span>
-                          <span className="block col-start-7 col-span-3 text-right relative overflow-hidden"><m.span className="block" variants={revealDelay}>Studio</m.span></span>
-                        </h1>
+                        <StudioTitle id="studio-title" />
                       </div>
                     </div>
                   </div>
 
                   <div className="p-3">
                     <div className="grid grid-cols-9 mb-12 md:mb-24 xl:mb-28 2xl:mb-40">
-                      <FadeInWhenVisible className="hidden md:block col-span-2">
-                        <Image
+                      <div className="hidden md:block col-span-2 relative  h-[28.5vw]">
+                        <ScrollBoundStack
                           image={studio.contentSupportingImage}
-                          focalPoint={studio.contentSupportingImage.hotspot}
-                          widthOverride={550}
-                          className="w-full"
+                          image2={studio.heroImage}
+                          id="supporting-image"
                         />
-                      </FadeInWhenVisible>
+
+                        <span className="text-xs mt-2 absolute top-auto bottom-0 left-0 z-10 block -mb-6">"{studio.contentSupportingImage.caption}"</span>
+                      </div>
                       
                       <FadeInWhenVisible className="col-span-7 md:col-span-3 col-start-1 md:col-start-5 leading-snug max-w-[550px]">
                         <div className="content">
@@ -183,24 +177,29 @@ export default function Studio(initialData) {
                               <HashGrid />
                             </div>
                             <div className="col-span-8 md:col-span-2 xl:col-span-2">
-                              <Image
-                                image={e.image}
-                                focalPoint={e.image.hotspot}
-                                widthOverride={550}
-                                className="w-full mb-3"
-                              />
+                              <div className="mb-3 relative overflow-hidden h-[120vw] md:h-[30vw]">
+                                <ScrollBoundStack
+                                  image={e.image}
+                                  image2={e.image}
+                                  id={`team-member-${i}`}
+                                  delay={100}
+                                />
+                              </div>
                               <span className="block text-xs leading-none mb-2">{e.jobTitle}</span>
                               <span className="block leading-none">{e.name}</span>
                             </div>  
                           </Fragment>
                         ) : (
                           <div className="col-span-8 md:col-span-2 xl:col-span-2" key={i}>
-                            <Image
-                              image={e.image}
-                              focalPoint={e.image.hotspot}
-                              widthOverride={550}
-                              className="w-full mb-3"
-                            />
+                            <div className="mb-3 relative overflow-hidden h-[120vw] md:h-[30vw]">
+                              <ScrollBoundStack
+                                image={e.image}
+                                image2={e.image}
+                                id={`team-member-alt-${i}`}
+                                delay={i == 0 ? 200 : 300}
+                              />
+                            </div>
+
                             <span className="block text-xs leading-none mb-2">{e.jobTitle}</span>
                             <span className="block leading-none">{e.name}</span>
                           </div>  
@@ -242,7 +241,7 @@ export default function Studio(initialData) {
                     </div>
                   </div>
                 </div>
-              </m.main>
+              </main>
 
               <Footer contact={contact} />
               </div>

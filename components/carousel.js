@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useCallback } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import Image from "@/components/image";
+import { m } from "framer-motion";
+import { useLocomotiveScroll } from "react-locomotive-scroll";
 
-const Carousel = ({ slides, contained }) => {
+const Carousel = ({ slides, contained, id }) => {
   const [viewportRef, embla] = useEmblaCarousel({ speed: 4, skipSnaps: false, loop: true, inViewThreshold: 0.75});
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [scrollSnaps, setScrollSnaps] = useState([]);
@@ -31,12 +33,14 @@ const Carousel = ({ slides, contained }) => {
             {slides.map((slide, index) => (
               <div className="embla__slide" key={index}>
                 <div className="embla__slide__inner">
-                  <Image
-                    image={slide}
-                    layout="fill"
-                    widthOverride={1400}
-                    className="w-full"
-                  />
+                  <div className="absolute inset-0">
+                    <Image
+                      image={slide}
+                      layout="fill"
+                      widthOverride={1400}
+                      className="w-full"
+                    />
+                  </div>
                 </div>
               </div>
             ))}

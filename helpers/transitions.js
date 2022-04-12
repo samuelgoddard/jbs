@@ -71,13 +71,13 @@ export const revealDelayTop = {
 }
 
 export const scaleDelay = {
-	initial: { scale: 1 },
+	initial: { scale: 1.2 },
   enter: { 
-    scale: 1.2,
+    scale: 1,
     transition: { duration: 1.7, delay: 0.6, ease: [0.83, 0, 0.17, 1] }
   },
 	exit: {
-    scale: 1,
+    scale: 1.2,
 		transition: { duration: 0.8, ease: [0.83, 0, 0.17, 1] }
 	}
 }

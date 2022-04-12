@@ -1,6 +1,6 @@
 import { m } from 'framer-motion'
 
-export default function FadeInWhenVisible({ children, duration, delay, className }) {
+export default function FadeInWhenVisible({ children, duration, className, delay }) {
   return(
     <div className={`relative overflow-hidden ${className}`}>
       <m.div
@@ -8,7 +8,7 @@ export default function FadeInWhenVisible({ children, duration, delay, className
         whileInView="block"
         viewport={{ once: false, margin: '-50px' }}
         transition={{ duration: duration ? duration : 0.7, ease: [0.83, 0, 0.17, 1], delay: delay ? delay : 0 }}
-        className="w-full"
+        className="w-full opacity-0"
         variants={{
           block: { opacity: 1 },
           none: { opacity: 0 }
