@@ -1,31 +1,13 @@
 import '@/styles/main.css'
+import { AnimatePresence } from 'framer-motion'
 import { useRouter } from 'next/router'
 import { DefaultSeo } from 'next-seo'
 import SEO from '@/helpers/seo.config'
-import FPSStats from 'react-fps-stats'
+// import FPSStats from 'react-fps-stats'
 import Link from 'next/link'
-import { useState } from 'react'
-import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
-import { ScrollSmoother } from 'gsap/dist/ScrollSmoother';
-import { SmootherContext } from '@/context/smoother-context'
-import { useIsomorphicLayoutEffect } from '@/helpers/useIsomorphicLayoutEffect'
-import {  TransitionProvider } from '@/context/transition-context'
-import TransitionLayout from '@/components/transition-layout'
-gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
 export default function App({ Component, pageProps }) {
   const router = useRouter()
-  let [smoother, setSmoother] = useState();
-  
-  useIsomorphicLayoutEffect(() => {
-    let smoother = ScrollSmoother.create({
-      smooth: 1.5,
-      normalizeScroll: true,
-      ignoreMobileResize: true,
-    });
-    setSmoother(smoother);
-  }, []);
 
   return (
     <>
@@ -33,7 +15,7 @@ export default function App({ Component, pageProps }) {
 
       { pageProps.preview && <><div className={'fixed bottom-0 w-full p-2 bg-red-500 opacity-75 text-white justify-center flex z-50 uppercase font-medium'}>! Preview Mode Enabled - <a className={'px-1 underline'} href={`/api/exit-preview?currentRoute=${router.route}`}>Click Here To Exit</a> !</div></> }
 
-      <FPSStats top="auto" bottom="0" right="auto" left="0" />
+      {/* <FPSStats top="auto" bottom="0" right="0" left="auto" /> */}
 
       { router.pathname !== '/' && (
         <div className="ml-auto flex space-x-3 text-sm md:text-base w-auto fixed top-0 right-0 z-50">
@@ -78,18 +60,10 @@ export default function App({ Component, pageProps }) {
           </a></Link>
         </div>
       )}
-      <TransitionProvider>
-        <TransitionLayout>
-          <SmootherContext.Provider value={smoother}>
-            <div id="smooth-wrapper">
-              <div id="smooth-content">
-                    {/* <Loader /> */}
-                    <Component {...pageProps} key={router.asPath} />
-              </div>
-            </div>
-          </SmootherContext.Provider>
-        </TransitionLayout>
-      </TransitionProvider>
+
+      <AnimatePresence exitBeforeEnter>
+        <Component {...pageProps} key={router.asPath} />
+      </AnimatePresence>
     </>
   )
 }

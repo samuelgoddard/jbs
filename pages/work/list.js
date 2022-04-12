@@ -1,9 +1,11 @@
+import { useRef } from 'react'
 import Layout from '@/components/layout'
+import { fade } from '@/helpers/transitions'
+import { LocomotiveScrollProvider } from 'react-locomotive-scroll'
 import { LazyMotion, domAnimation, m } from 'framer-motion'
 import { NextSeo } from 'next-seo'
 import SanityPageService from '@/services/sanityPageService'
 import WorkListSection from '@/components/work-list'
-import scrollRefresh from '@/helpers/scroll-refresh'
 
 const query = `{
   "work": *[_type == "work"]{
@@ -51,25 +53,34 @@ const pageService = new SanityPageService(query)
 
 export default function WorkList(initialData) {
   const { data: { work } } = pageService.getPreviewHook(initialData)()
-  scrollRefresh();
-
+  const containerRef = useRef(null)
   return (
     <Layout>
       <NextSeo title="Work List" />
 
-      <LazyMotion features={domAnimation}>
-        <m.div
-          initial="initial"
-          animate="enter"
-          exit="exit"
-          id="sticky"
-        >
-          <m.main>
-            <WorkListSection work={work} />
-          </m.main>
-        </m.div>
+      <LocomotiveScrollProvider
+        options={{ smooth: true, lerp: 0.1 }}
+        containerRef={containerRef}
+        watch={[]}
+      >
+        <div data-scroll-container ref={containerRef} id="scroll-container">
+          <div data-scroll-section>
+            <LazyMotion features={domAnimation}>
+              <m.div
+                initial="initial"
+                animate="enter"
+                exit="exit"
+                id="sticky"
+              >
+                <m.main>
+                  <WorkListSection work={work} />
+                </m.main>
+              </m.div>
 
-      </LazyMotion>
+            </LazyMotion>
+          </div>
+        </div>
+      </LocomotiveScrollProvider>
     </Layout>
   )
 }

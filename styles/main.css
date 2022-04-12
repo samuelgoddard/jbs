@@ -91,3 +91,6 @@ body {
   animation-delay: 1000ms;
 }
 
+.loader {
+  z-index: 100000 !important;
+}

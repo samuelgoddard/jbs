@@ -1,33 +1,20 @@
-import { useContext, useRef } from "react";
-import { TransitionContext } from "@/context/transition-context";
-import { useIsomorphicLayoutEffect } from "@/helpers/useIsomorphicLayoutEffect";
-import gsap from "gsap";
+import { m } from "framer-motion";
 
-const Loader = () => {
-  const { timeline } = useContext(TransitionContext)
-  const el = useRef()
+const loading = {
+	initial: { y: 0 },
+  enter: { 
+    y: '-100%',
+    transition: { duration: 0.5, delay: 0.6, ease: [0.83, 0, 0.17, 1] }
+  },
+	exit: {
+    y: 0,
+		transition: { duration: 0.5, ease: [0.83, 0, 0.17, 1] }
+	}
+}
 
-  useIsomorphicLayoutEffect(() => {
-    gsap.to(el.current, {
-      opacity: 1,
-      duration: 1,
-    })
-
-    timeline.add(
-      gsap.to(el.current, {
-        opacity: 1,
-        duration: .5,
-      }),
-      0
-    )
-  }, [])
-
+export default function Loader() {
   return (
-    <div className="flex flex-col overflow-hidden z-[10000] pointer-events-none fixed inset-0 w-full h-full bg-red-500" ref={el}>
-      <div className="fixed inset-0 z-50 flex items-center justify-center">
-        <h1 className="">Loading...</h1>
-      </div>
-    </div>
-  );
-};
-export default Loader;
+    <m.div variants={ loading } className="fixed inset-0 w-full h-full bg-[#E96447] z-[1000]">
+    </m.div>
+  )
+}
