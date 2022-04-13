@@ -1,70 +1,12 @@
-import { useLocomotiveScroll } from 'react-locomotive-scroll'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import Link from 'next/link'
 import Image from '@/components/image'
-import FilterButton from '@/components/filter-button'
 
-export default function WorkListSection({ work }) {
-  const { scroll } = useLocomotiveScroll()
+export default function WorkListSection({ work, currentCat, currentType }) {
   const [current, setCurrent] = useState(0);
-  const [currentCat, setCurrentCat] = useState('all');
-  const [currentType, setCurrentType] = useState('all');
-
-  function filterScrollUpdate() {
-    scroll.update()
-    scroll.scrollTo(0, { duration: 0, disableLerp: true })
-  }
-
-  function resetFilters() {
-    setCurrentCat('all')
-    setCurrentType('all')
-    filterScrollUpdate()
-  }
-
-  function updateCat(cat) {
-    if (currentCat !== cat) {
-      setCurrentCat(cat)
-    } else {
-      setCurrentCat('all')
-    }
-    filterScrollUpdate()
-  }
-  
-  
-  function updateType(type) {
-    if (currentType !== type) {
-      setCurrentType(type)
-    } else {
-      setCurrentType('all')
-    }
-    filterScrollUpdate()
-  }
-
-  useEffect(() => {
-    if (scroll) {
-      scroll.on('call', function(e) {
-        setCurrent(e)
-      });
-    }
-  }, [scroll])
 
   return (
     <div className="grid grid-cols-9">
-      <div className="fixed top-0 left-0 right-0 bg-white p-3 z-30 hidden md:block" data-scroll data-scroll-sticky data-scroll-target="#sticky">
-        <div className="w-[65.17vw] flex space-x-6 items-center">
-          <div className="w-8/12 flex space-x-[2vw]">
-            <FilterButton label={'all'} onClick={resetFilters} current={currentCat} />
-            <FilterButton label={'drinks'} onClick={() => updateCat('drinks')} current={currentCat} />
-            <FilterButton label={'food'} onClick={() => updateCat('food')} current={currentCat} />
-            <FilterButton label={'lifestyle'} onClick={() => updateCat('lifestyle')} current={currentCat} />
-          </div>
-          <div className="w-4/12 justify-end flex space-x-[2vw]">
-            <FilterButton label={'still'} onClick={() => updateType('still')} current={currentType} />
-            <FilterButton label={'moving'} onClick={() => updateType('moving')} current={currentType} />
-          </div>
-        </div>
-      </div>
-
       <div className="col-span-9 md:pt-32 xl:pt-40 pb-[90px]">
         <div className="p-3">
           <Link href="/">
@@ -77,19 +19,6 @@ export default function WorkListSection({ work }) {
               </svg>
             </a>
           </Link>
-
-          <div className="w-full flex md:hidden space-x-6 items-center pb-1">
-            <div className="w-full md:w-8/12 flex space-x-[12px]">
-              <FilterButton label={'all'} onClick={resetFilters} current={currentCat} />
-              <FilterButton label={'drinks'} onClick={() => updateCat('drinks')} current={currentCat} />
-              <FilterButton label={'food'} onClick={() => updateCat('food')} current={currentCat} />
-              <FilterButton label={'lifestyle'} onClick={() => updateCat('lifestyle')} current={currentCat} />
-            </div>
-            <div className="w-4/12 justify-end space-x-[2vw] hidden md:flex">
-              <FilterButton label={'still'} onClick={() => updateType('still')} current={currentType} />
-              <FilterButton label={'moving'} onClick={() => updateType('moving')} current={currentType} />
-            </div>
-          </div>
         </div>
         {[...Array(5)].map((index) => ( 
           <div key={index} className="list-child">

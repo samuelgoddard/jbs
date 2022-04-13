@@ -208,7 +208,7 @@ export default function Studio(initialData) {
                     </div>
 
 
-                    <div className="grid grid-cols-9 gap-3 mb-20 md:mb-32 xl:mb-48 2xl:mb-64">
+                    <div className="grid grid-cols-9 gap-3">
                       <div className="col-span-9 md:col-span-1 mb-5 md:mb-0">
                         <span className="block leading-none mb-1">Clients &amp; <span className="block">Info</span></span>
                       </div>

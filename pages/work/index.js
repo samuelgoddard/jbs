@@ -4,15 +4,12 @@ import Header from '@/components/header'
 import Footer from '@/components/footer'
 import FancyLink from '@/components/fancyLink'
 import { fade } from '@/helpers/transitions'
-import { LocomotiveScrollProvider } from 'react-locomotive-scroll'
+import { LocomotiveScrollProvider, useLocomotiveScroll } from 'react-locomotive-scroll'
 import { LazyMotion, domAnimation, m } from 'framer-motion'
 import { NextSeo } from 'next-seo'
 import SanityPageService from '@/services/sanityPageService'
-import BlockContent from '@sanity/block-content-to-react'
-import Link from 'next/link'
-import Image from '@/components/image'
-import WorkCarousel from '@/components/work-carousel'
 import Loader from '@/components/loader'
+import WorkViewSwitcher from '@/components/work-view-switcher'
 
 const query = `{
   "work": *[_type == "work"]{
@@ -60,30 +57,24 @@ const pageService = new SanityPageService(query)
 export default function Work(initialData) {
   const { data: { work } } = pageService.getPreviewHook(initialData)()
   const containerRef = useRef(null)
+
   return (
     <Layout>
     <NextSeo title="Work" />
-
       <LazyMotion features={domAnimation}>        
         <m.div
           initial="initial"
           animate="enter"
           exit="exit"
-          id="sticky"
         >
           <Loader />
+          
           <LocomotiveScrollProvider
             options={{ smooth: true, lerp: 0.1 }}
             containerRef={containerRef}
             watch={[]}
           >
-            <div data-scroll-container ref={containerRef} id="scroll-container">
-              <div data-scroll-section>
-                <m.main>
-                  <WorkCarousel work={work} />
-                </m.main>
-              </div>
-            </div>
+            <WorkViewSwitcher work={work} />
           </LocomotiveScrollProvider>
         </m.div>
       </LazyMotion>

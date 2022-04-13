@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import Layout from '@/components/layout'
 import { revealDelay, fadeDelay, revealDelayTop, revealDelayBottom, scaleDelay } from '@/helpers/transitions'
 import { LazyMotion, domAnimation, m } from 'framer-motion'
@@ -14,6 +14,28 @@ const query = `{
     title,
     content,
     backgroundImage {
+      asset-> {
+        ...
+      },
+      caption,
+      alt,
+      hotspot {
+        x,
+        y
+      },
+    },
+    workBackgroundImage {
+      asset-> {
+        ...
+      },
+      caption,
+      alt,
+      hotspot {
+        x,
+        y
+      },
+    },
+    studioBackgroundImage {
       asset-> {
         ...
       },
@@ -45,6 +67,11 @@ const pageService = new SanityPageService(query)
 export default function Home(initialData) {
   const { data: { home, contact } } = pageService.getPreviewHook(initialData)()
   const containerRef = useRef(null)
+  const [currentHover, setCurrentHover] = useState(null)
+
+  const updateCurrentHover = (value) => {
+    setCurrentHover(value)
+  } 
 
   return (
     <Layout>
@@ -108,7 +135,23 @@ export default function Home(initialData) {
                   focalPoint={home.backgroundImage.hotspot}
                   layout="fill"
                   widthOverride={1400}
-                  className="fixed inset-0 z-0 object-cover object-enter"
+                  className={`fixed inset-0 z-0 object-cover object-enter transition-all ease-custom duration-[700ms] ${(currentHover == 'work' || currentHover == 'studio' ) ? 'opacity-0 scale-[1.05]' : 'scale-1 opacity-100' }`}
+                />
+
+                <Image 
+                  image={home.workBackgroundImage}
+                  focalPoint={home.workBackgroundImage.hotspot}
+                  layout="fill"
+                  widthOverride={1400}
+                  className={`fixed inset-0 z-0 object-cover object-enter transition-all ease-custom duration-[700ms] ${currentHover == 'work' ? 'opacity-100 scale-1' : 'scale-[1.05] opacity-0' }`}
+                />
+
+                <Image 
+                  image={home.studioBackgroundImage}
+                  focalPoint={home.studioBackgroundImage.hotspot}
+                  layout="fill"
+                  widthOverride={1400}
+                  className={`fixed inset-0 z-0 object-cover object-enter transition-all ease-custom duration-[700ms] ${currentHover == 'studio' ? 'opacity-100 scale-1' : 'scale-[1.05] opacity-0' }`}
                 />
               </m.div>
 
@@ -122,15 +165,21 @@ export default function Home(initialData) {
             <m.footer className="absolute bottom-0 left-0 right-0 z-10 p-3">
               <div className="grid grid-cols-9 items-end">
                 <div className="col-span-2 text-left">
-                  <Link href="/work"><a className="text-2xl md:text-[4.5vw] xl:text-[4.5vw] 2xl:text-[5.5vw] leading-none md:leading-none xl:leading-none 2xl:leading-none font-sans uppercase hover:underline focus:underline block relative overflow-hidden">
-                    <m.span variants={revealDelayBottom} className="block">Work</m.span>
-                  </a></Link>
+                  <Link href="/work">
+                    <a
+                      className="text-2xl md:text-[4.5vw] xl:text-[4.5vw] 2xl:text-[5.5vw] leading-none md:leading-none xl:leading-none 2xl:leading-none font-sans uppercase relative block overflow-hidden"
+                      onMouseEnter={() => updateCurrentHover('work')}
+                      onMouseLeave={() => updateCurrentHover(null)}
+                    >
+                      <m.span className="block" variants={revealDelayBottom}>Work</m.span>
+                    </a>
+                  </Link>
                 </div>
 
                 <div className="col-span-4 col-start-3 text-right md:space-x-7 flex justify-end">
                   <a href={`mailto:${contact.email}`} className="text-sm md:text-[2.2vw] xl:text-[2vw] 2xl:text-[2.3vw] leading-none md:leading-none xl:leading-none 2xl:leading-none font-sans uppercase group block relative overflow-hidden">
-                    <m.span variants={revealDelayBottom} className="hidden md:inline-block group-hover:underline group-focus:underline">Get in touch</m.span>
-                    <m.span variants={revealDelayBottom} className="inline-block md:hidden group-hover:underline group-focus:underline">Contact</m.span>
+                    <m.span variants={revealDelayBottom} className="hidden md:inline-block">Get in touch</m.span>
+                    <m.span variants={revealDelayBottom} className="inline-block md:hidden">Contact</m.span>
                   </a>
 
                   {contact.socials.map((e, i) => {
@@ -143,9 +192,15 @@ export default function Home(initialData) {
                 </div>
                 
                 <div className="col-span-2 col-start-8 text-right">
-                  <Link href="/studio"><a className="text-2xl md:text-[4.5vw] xl:text-[4.5vw] 2xl:text-[5.5vw] leading-none md:leading-none xl:leading-none 2xl:leading-none font-sans uppercase hover:underline focus:underline relative block overflow-hidden">
-                    <m.span className="block" variants={revealDelayBottom}>Studio</m.span>
-                  </a></Link>
+                  <Link href="/studio">
+                    <a
+                      className="text-2xl md:text-[4.5vw] xl:text-[4.5vw] 2xl:text-[5.5vw] leading-none md:leading-none xl:leading-none 2xl:leading-none font-sans uppercase relative block overflow-hidden"
+                      onMouseEnter={() => updateCurrentHover('studio')}
+                      onMouseLeave={() => updateCurrentHover(null)}
+                    >
+                      <m.span className="block" variants={revealDelayBottom}>Studio</m.span>
+                    </a>
+                  </Link>
                 </div>
               </div>
             </m.footer>

@@ -70,7 +70,6 @@ export default function WorkList(initialData) {
                 initial="initial"
                 animate="enter"
                 exit="exit"
-                id="sticky"
               >
                 <m.main>
                   <WorkListSection work={work} />

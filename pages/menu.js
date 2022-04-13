@@ -6,6 +6,7 @@ import SanityPageService from '@/services/sanityPageService'
 import Link from 'next/link'
 import Image from '@/components/image'
 import Loader from '@/components/loader'
+import { useState } from 'react'
 
 const query = `{
   "home": *[_type == "home"][0]{
@@ -21,12 +22,74 @@ const query = `{
       },
     }
   },
+  "menu": *[_type == "menu"][0]{
+    backgroundImage {
+      asset-> {
+        ...
+      },
+      caption,
+      alt,
+      hotspot {
+        x,
+        y
+      },
+    },
+    homeBackgroundImage {
+      asset-> {
+        ...
+      },
+      caption,
+      alt,
+      hotspot {
+        x,
+        y
+      },
+    },
+    workBackgroundImage {
+      asset-> {
+        ...
+      },
+      caption,
+      alt,
+      hotspot {
+        x,
+        y
+      },
+    },
+    studioBackgroundImage {
+      asset-> {
+        ...
+      },
+      caption,
+      alt,
+      hotspot {
+        x,
+        y
+      },
+    },
+    reelBackgroundImage {
+      asset-> {
+        ...
+      },
+      caption,
+      alt,
+      hotspot {
+        x,
+        y
+      },
+    },
+  },
 }`
 
 const pageService = new SanityPageService(query)
 
 export default function Menu(initialData) {
-  const { data: { home } } = pageService.getPreviewHook(initialData)()
+  const { data: { home, menu } } = pageService.getPreviewHook(initialData)()
+  const [currentHover, setCurrentHover] = useState(null)
+
+  const updateCurrentHover = (value) => {
+    setCurrentHover(value)
+  } 
 
   return (
     <Layout>
@@ -75,13 +138,42 @@ export default function Menu(initialData) {
 
             <m.main className="">
               <div className="fixed left-0 top-0 bottom-0 w-[43vw] z-0 overflow-hidden">
-                <m.div variants={scaleDelay} className="absolute inset-0 w-full h-full z-0 object-cover object-center">
+                <m.div variants={scaleDelay} className="absolute inset-0 w-full h-full z-0 object-cover object-center bg-gray-200">
                   <Image 
-                    image={home.backgroundImage}
-                    focalPoint={home.backgroundImage.hotspot}
+                    image={menu.backgroundImage}
+                    focalPoint={menu.backgroundImage.hotspot}
                     layout="fill"
                     widthOverride={1200}
-                    className="absolute inset-0 w-full h-full z-0 object-cover object-center"
+                    className={`absolute inset-0 w-full h-full z-0 object-cover object-center transition-all ease-custom duration-[550ms] ${(currentHover == 'work' || currentHover == 'studio' || currentHover == 'home' || currentHover == 'reel') ? 'opacity-0 scale-[1.05]' : 'scale-1 opacity-100' }`}
+                  />
+
+                  <Image 
+                    image={menu.homeBackgroundImage}
+                    focalPoint={menu.homeBackgroundImage.hotspot}
+                    layout="fill"
+                    widthOverride={1200}
+                    className={`absolute inset-0 w-full h-full z-0 object-cover object-center transition-all ease-custom duration-[550ms] ${currentHover == 'home' ? 'opacity-100 scale-1' : 'scale-[1.05] opacity-0' }`}
+                  />
+                  <Image 
+                    image={menu.workBackgroundImage}
+                    focalPoint={menu.workBackgroundImage.hotspot}
+                    layout="fill"
+                    widthOverride={1200}
+                    className={`absolute inset-0 w-full h-full z-0 object-cover object-center transition-all ease-custom duration-[550ms] ${currentHover == 'work' ? 'opacity-100 scale-1' : 'scale-[1.05] opacity-0' }`}
+                  />
+                  <Image 
+                    image={menu.studioBackgroundImage}
+                    focalPoint={menu.studioBackgroundImage.hotspot}
+                    layout="fill"
+                    widthOverride={1200}
+                    className={`absolute inset-0 w-full h-full z-0 object-cover object-center transition-all ease-custom duration-[550ms] ${currentHover == 'studio' ? 'opacity-100 scale-1' : 'scale-[1.05] opacity-0' }`}
+                  />
+                  <Image 
+                    image={menu.reelBackgroundImage}
+                    focalPoint={menu.reelBackgroundImage.hotspot}
+                    layout="fill"
+                    widthOverride={1200}
+                    className={`absolute inset-0 w-full h-full z-0 object-cover object-center transition-all ease-custom duration-[550ms] ${currentHover == 'reel' ? 'opacity-100 scale-1' : 'scale-[1.05] opacity-0' }`}
                   />
                 </m.div>
 
@@ -92,24 +184,48 @@ export default function Menu(initialData) {
                 <nav className="border-t border-black">
                   <ul>
                     <li className="block border-b border-black">
-                      <Link href="/"><a className="text-5xl md:text-[7vw] xl:text-[6vw] 2xl:text-[5.5vw] leading-[0.8] md:leading-[0.8] xl:leading-[0.8] 2xl:leading-[0.8] font-sans uppercase block relative overflow-hidden my-3">
-                        <m.span variants={revealDelay} className="block">Home</m.span>
-                      </a></Link>
+                      <Link href="/">
+                        <a
+                          onMouseEnter={() => updateCurrentHover('home')}
+                          onMouseLeave={() => updateCurrentHover(null)}
+                          className="text-5xl md:text-[7vw] xl:text-[6vw] 2xl:text-[5.5vw] leading-[0.8] md:leading-[0.8] xl:leading-[0.8] 2xl:leading-[0.8] font-sans uppercase block relative overflow-hidden my-3"
+                        >
+                          <m.span variants={revealDelay} className="block">Home</m.span>
+                        </a>
+                      </Link>
                     </li>
                     <li className="block border-b border-black">
-                      <Link href="/work"><a className="text-5xl md:text-[7vw] xl:text-[6vw] 2xl:text-[5.5vw] leading-[0.8] md:leading-[0.8] xl:leading-[0.8] 2xl:leading-[0.8] font-sans uppercase block relative overflow-hidden my-3">
-                        <m.span variants={revealDelay} className="block">Work</m.span>
-                      </a></Link>
+                      <Link href="/work">
+                        <a
+                          onMouseEnter={() => updateCurrentHover('work')}
+                          onMouseLeave={() => updateCurrentHover(null)}
+                          className="text-5xl md:text-[7vw] xl:text-[6vw] 2xl:text-[5.5vw] leading-[0.8] md:leading-[0.8] xl:leading-[0.8] 2xl:leading-[0.8] font-sans uppercase block relative overflow-hidden my-3"
+                        >
+                          <m.span variants={revealDelay} className="block">Work</m.span>
+                        </a>
+                      </Link>
                     </li>
                     <li className="block border-b border-black">
-                      <Link href="/studio"><a className="text-5xl md:text-[7vw] xl:text-[6vw] 2xl:text-[5.5vw] leading-[0.8] md:leading-[0.8] xl:leading-[0.8] 2xl:leading-[0.8] font-sans uppercase block relative overflow-hidden my-3">
-                        <m.span variants={revealDelay} className="block">Studio</m.span>
-                      </a></Link>
+                      <Link href="/studio">
+                        <a
+                          onMouseEnter={() => updateCurrentHover('studio')}
+                          onMouseLeave={() => updateCurrentHover(null)}
+                          className="text-5xl md:text-[7vw] xl:text-[6vw] 2xl:text-[5.5vw] leading-[0.8] md:leading-[0.8] xl:leading-[0.8] 2xl:leading-[0.8] font-sans uppercase block relative overflow-hidden my-3"
+                        >
+                          <m.span variants={revealDelay} className="block">Studio</m.span>
+                        </a>
+                      </Link>
                     </li>
                     <li className="block border-b border-black">
-                      <Link href="/reel"><a className="text-5xl md:text-[6vw] xl:text-[6vw] 2xl:text-[5.5vw] leading-[0.8] md:leading-[0.8] xl:leading-[0.8] 2xl:leading-[0.8] font-sans uppercase block relative overflow-hidden my-3">
-                        <m.span variants={revealDelay} className="block">Reel</m.span>
-                      </a></Link>
+                      <Link href="/reel">
+                        <a
+                          onMouseEnter={() => updateCurrentHover('reel')}
+                          onMouseLeave={() => updateCurrentHover(null)}
+                          className="text-5xl md:text-[6vw] xl:text-[6vw] 2xl:text-[5.5vw] leading-[0.8] md:leading-[0.8] xl:leading-[0.8] 2xl:leading-[0.8] font-sans uppercase block relative overflow-hidden my-3"
+                        >
+                          <m.span variants={revealDelay} className="block">Reel</m.span>
+                        </a>
+                      </Link>
                     </li>
                   </ul>
                 </nav>

@@ -1,5 +1,5 @@
 import '@/styles/main.css'
-import { AnimatePresence } from 'framer-motion'
+import { AnimatePresence, MotionConfig } from 'framer-motion'
 import { useRouter } from 'next/router'
 import { DefaultSeo } from 'next-seo'
 import SEO from '@/helpers/seo.config'
@@ -15,10 +15,10 @@ export default function App({ Component, pageProps }) {
 
       { pageProps.preview && <><div className={'fixed bottom-0 w-full p-2 bg-red-500 opacity-75 text-white justify-center flex z-50 uppercase font-medium'}>! Preview Mode Enabled - <a className={'px-1 underline'} href={`/api/exit-preview?currentRoute=${router.route}`}>Click Here To Exit</a> !</div></> }
 
-      <FPSStats top="auto" bottom="0" left="0" right="auto" />
+      {/* <FPSStats top="auto" bottom="0" left="0" right="auto" /> */}
 
       { router.pathname !== '/' && (
-        <div className="ml-auto flex space-x-3 text-sm md:text-base w-auto fixed top-0 right-0 z-50">
+        <div className="ml-auto flex space-x-3 text-sm md:text-base w-auto fixed top-0 right-0 z-[100]">
           <Link href={router.pathname == '/menu' ? '/' : '/menu'}>
             <a className="block w-[75px] p-3">
               <span className="block w-full h-[3px] mb-[5px] bg-current"></span>
@@ -28,20 +28,6 @@ export default function App({ Component, pageProps }) {
         </div>
       )}
       
-      { (router.pathname == '/work' || router.pathname == '/work/list') && (
-        <div className="fixed md:bottom-0 md:right-0 left-[50%] md:left-auto ml-[-50px] md:ml-0 p-3 pb-[10px] z-50 justify-center">
-          <nav>
-            <ul className="text-right flex space-x-2 md:block md:space-x-0">
-              <li className="block">
-                <Link href="/work"><a className={`text-lg md:text-[2.8vw] xl:text-[2.2vw] 2xl:text-[2vw] leading-none md:leading-none xl:leading-none 2xl:leading-none font-sans uppercase ${router.pathname == '/work/list' && 'text-[#D3D3D3]' }`}>Grid</a></Link>
-              </li>
-              <li className="block">
-                <Link href="/work/list"><a className={`text-lg md:text-[2.8vw] xl:text-[2.2vw] 2xl:text-[2vw] leading-none md:leading-none xl:leading-none 2xl:leading-none font-sans uppercase ${router.pathname == '/work' && 'text-[#D3D3D3]' }`}>List</a></Link>
-              </li>
-            </ul>
-          </nav>
-        </div>
-      )}
       { router.pathname == '/work/list' && (
         <div className="fixed bottom-0 left-0 right-0 h-[90px] bg-white z-30 p-3 items-end hidden md:flex">
           <Link href="/">
@@ -60,7 +46,6 @@ export default function App({ Component, pageProps }) {
           </a></Link>
         </div>
       )}
-
       <AnimatePresence exitBeforeEnter initial={false}>
         <Component {...pageProps} key={router.asPath} />
       </AnimatePresence>

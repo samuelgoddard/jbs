@@ -112,3 +112,11 @@ body {
 .swipe-up {
   animation: swipeUp 2.5s cubic-bezier(0.83, 0, 0.17, 1);
 }
+
+.ease-custom {
+  transition-timing-function: cubic-bezier(0.83, 0, 0.17, 1)
+}
+
+.ease-scroll {
+  transition-timing-function: cubic-bezier(0.77,0,0.18,1)
+}

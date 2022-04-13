@@ -1,4 +1,5 @@
 import { m } from "framer-motion";
+// import { useReducedMotion } from "framer-motion"
 
 const loading = {
 	initial: { y: 0 },
@@ -13,6 +14,8 @@ const loading = {
 }
 
 export default function Loader() {
+  // const shouldReduceMotion = useReducedMotion()
+
   return (
     <m.div variants={ loading } className="fixed inset-0 w-full h-full bg-[#FFB371] z-[1000] flex items-center justify-center pointer-events-none">
       <div className="absolute inset-0 h-full flex items-center justify-center">
