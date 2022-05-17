@@ -17,6 +17,13 @@
 /* Simple defaults */
 body {
   @apply font-mono antialiased text-black bg-white selection:bg-black selection:text-white;
+
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .cover-image {

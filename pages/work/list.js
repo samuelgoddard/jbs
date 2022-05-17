@@ -71,7 +71,7 @@ export default function WorkList(initialData) {
                 animate="enter"
                 exit="exit"
               >
-                <m.main>
+                <m.main variants={fade}>
                   <WorkListSection work={work} />
                 </m.main>
               </m.div>

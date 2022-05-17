@@ -68,14 +68,15 @@ export default function Work(initialData) {
           exit="exit"
         >
           {/* <Loader /> */}
-          
-          <LocomotiveScrollProvider
-            options={{ smooth: true, lerp: 0.1 }}
-            containerRef={containerRef}
-            watch={[]}
-          >
-            <WorkViewSwitcher work={work} />
-          </LocomotiveScrollProvider>
+          <m.div variants={fade}>
+            <LocomotiveScrollProvider
+              options={{ smooth: true, lerp: 0.1 }}
+              containerRef={containerRef}
+              watch={[]}
+            >
+              <WorkViewSwitcher work={work} />
+            </LocomotiveScrollProvider>
+          </m.div>
         </m.div>
       </LazyMotion>
     </Layout>

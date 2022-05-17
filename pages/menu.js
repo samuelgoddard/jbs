@@ -1,5 +1,5 @@
 import Layout from '@/components/layout'
-import { revealDelay, revealDelayTop, revealDelayBottom, scaleDelay } from '@/helpers/transitions'
+import { revealDelay, revealDelayTop, revealDelayBottom, scaleDelay, fade } from '@/helpers/transitions'
 import { LazyMotion, domAnimation, m } from 'framer-motion'
 import { NextSeo } from 'next-seo'
 import SanityPageService from '@/services/sanityPageService'
@@ -102,6 +102,7 @@ export default function Menu(initialData) {
             animate="enter"
             exit="exit"
           >
+            <m.div variants={fade}>
             {/* <Loader/> */}
             <m.header className="absolute top-0 left-0 right-0 z-10">
               <div className="absolute top-0 left-0 right-0 grid grid-cols-9 p-3">
@@ -272,6 +273,7 @@ export default function Menu(initialData) {
                 </div>
               </div>
             </m.footer>
+            </m.div>
           </m.div>
         </LazyMotion>
       </div>

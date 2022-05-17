@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import Image from '@/components/image'
+import { m  } from 'framer-motion'
+import { reveal } from '@/helpers/transitions'
 
 export default function WorkListSection({ work, currentCat, currentType }) {
   const [current, setCurrent] = useState(0);
@@ -38,11 +40,31 @@ export default function WorkListSection({ work, currentCat, currentType }) {
                           />
                         )}
                       </span>
-                      <span className="hidden md:block w-1/6">JBS.{(i + 1) < 10 && ('0')}{i + 1}</span>
-                      <span className="block flex-1">{e.title}</span>
-                      <span className="hidden md:block w-1/4">{e.campaignTitle}</span>
-                      <span className="hidden md:block w-1/5">{e.location}</span>
-                      <span className="block ml-auto text-right">2021—</span>
+                      <span className="hidden md:block w-1/6">
+                        <span className="block overflow-hidden">
+                          <m.span className="block" variants={reveal}>JBS.{(i + 1) < 10 && ('0')}{i + 1}</m.span>
+                        </span>
+                      </span>
+                      <span className="block flex-1">
+                        <span className="block overflow-hidden">
+                          <m.span className="block" variants={reveal}>{e.title}</m.span>
+                        </span>
+                      </span>
+                      <span className="hidden md:block w-1/4">
+                        <span className="block overflow-hidden">
+                          <m.span className="block" variants={reveal}>{e.campaignTitle}</m.span>
+                        </span>
+                      </span>
+                      <span className="hidden md:block w-1/5">
+                        <span className="block overflow-hidden">
+                          <m.span className="block" variants={reveal}>{e.location}</m.span>
+                        </span>
+                      </span>
+                      <span className="block ml-auto text-right">
+                        <span className="block overflow-hidden">
+                          <m.span className="block" variants={reveal}>2021—</m.span>
+                        </span>
+                      </span>
                     </a>
                   </Link>
                 </li>

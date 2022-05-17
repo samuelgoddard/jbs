@@ -3,7 +3,7 @@ import Layout from '@/components/layout'
 import Header from '@/components/header'
 import Footer from '@/components/footer'
 import FancyLink from '@/components/fancyLink'
-import { fadeDelay, revealDelay, revealDelayTop, revealDelayBottom, scaleDelay } from '@/helpers/transitions'
+import { fade, revealDelay, revealDelayTop, revealDelayBottom, scaleDelay } from '@/helpers/transitions'
 import { LocomotiveScrollProvider } from 'react-locomotive-scroll'
 import { LazyMotion, domAnimation, m } from 'framer-motion'
 import { NextSeo } from 'next-seo'
@@ -104,7 +104,7 @@ export default function WorkSlug(initialData) {
           exit="exit"
         >
           {/* <Loader /> */}
-
+          <m.div variants={fade}>
           <LocomotiveScrollProvider
             options={{ smooth: true, lerp: 0.1 }}
             containerRef={containerRef}
@@ -246,6 +246,7 @@ export default function WorkSlug(initialData) {
               </div>
             </div>
           </LocomotiveScrollProvider>
+          </m.div>
         </m.div>
       </LazyMotion>
     </Layout>

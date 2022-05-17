@@ -3,6 +3,8 @@ import WorkCarousel from '@/components/work-carousel'
 import WorkListSection from '@/components/work-list'
 import FilterButton from '@/components/filter-button'
 import { useLocomotiveScroll } from 'react-locomotive-scroll'
+import { reveal } from '@/helpers/transitions'
+import { m } from 'framer-motion'
 
 export default function WorkViewSwitcher({ work }) {
   const { scroll } = useLocomotiveScroll()
@@ -79,18 +81,18 @@ export default function WorkViewSwitcher({ work }) {
           <ul className="text-right flex space-x-2 md:block md:space-x-0">
             <li className="block">
               <button
-                className={`text-lg md:text-[2.8vw] xl:text-[2.2vw] 2xl:text-[2vw] leading-none md:leading-none xl:leading-none 2xl:leading-none font-sans uppercase ${currentView == 'list' && 'text-[#D3D3D3]' }`}
+                className={`text-lg md:text-[2.8vw] xl:text-[2.2vw] 2xl:text-[2vw] leading-none md:leading-none xl:leading-none 2xl:leading-none font-sans uppercase overflow-hidden ${currentView == 'list' && 'text-[#D3D3D3]' }`}
                 onClick={() => updateCurrentView('grid')}
               >
-                Grid
+                <m.span className="block" variants={reveal}>Grid</m.span>
               </button>
             </li>
             <li className="block">
               <button
-                className={`text-lg md:text-[2.8vw] xl:text-[2.2vw] 2xl:text-[2vw] leading-none md:leading-none xl:leading-none 2xl:leading-none font-sans uppercase ${currentView == 'grid' && 'text-[#D3D3D3]' }`}
+                className={`text-lg md:text-[2.8vw] xl:text-[2.2vw] 2xl:text-[2vw] leading-none md:leading-none xl:leading-none 2xl:leading-none font-sans uppercase overflow-hidden ${currentView == 'grid' && 'text-[#D3D3D3]' }`}
                 onClick={() => updateCurrentView('list')}
               >
-                List
+                <m.span className="block" variants={reveal}>List</m.span>
               </button>
             </li>
           </ul>
