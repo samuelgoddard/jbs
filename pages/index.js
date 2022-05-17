@@ -136,7 +136,7 @@ export default function Home(initialData) {
                   focalPoint={home.backgroundImage.hotspot}
                   layout="fill"
                   widthOverride={1400}
-                  className={`fixed inset-0 z-0 object-cover object-enter transition-all ease-custom duration-[700ms] ${(currentHover == 'work' || currentHover == 'studio' ) ? 'opacity-0 scale-[1.05]' : 'scale-1 opacity-100' }`}
+                  className={`fixed inset-0 z-0 object-cover object-enter transition-all ease-custom duration-[450ms] ${(currentHover == 'work' || currentHover == 'studio' ) ? 'opacity-0 scale-[1.05]' : 'scale-1 opacity-100' }`}
                 />
 
                 <Image 
@@ -144,7 +144,7 @@ export default function Home(initialData) {
                   focalPoint={home.workBackgroundImage.hotspot}
                   layout="fill"
                   widthOverride={1400}
-                  className={`fixed inset-0 z-0 object-cover object-enter transition-all ease-custom duration-[700ms] ${currentHover == 'work' ? 'opacity-100 scale-1' : 'scale-[1.05] opacity-0' }`}
+                  className={`fixed inset-0 z-0 object-cover object-enter transition-all ease-custom duration-[450ms] ${currentHover == 'work' ? 'opacity-100 scale-1' : 'scale-[1.05] opacity-0' }`}
                 />
 
                 <Image 
@@ -152,7 +152,7 @@ export default function Home(initialData) {
                   focalPoint={home.studioBackgroundImage.hotspot}
                   layout="fill"
                   widthOverride={1400}
-                  className={`fixed inset-0 z-0 object-cover object-enter transition-all ease-custom duration-[700ms] ${currentHover == 'studio' ? 'opacity-100 scale-1' : 'scale-[1.05] opacity-0' }`}
+                  className={`fixed inset-0 z-0 object-cover object-enter transition-all ease-custom duration-[450ms] ${currentHover == 'studio' ? 'opacity-100 scale-1' : 'scale-[1.05] opacity-0' }`}
                 />
               </m.div>
 
