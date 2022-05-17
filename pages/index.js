@@ -1,13 +1,13 @@
 import { useRef, useState } from 'react'
 import Layout from '@/components/layout'
-import { revealDelay, fadeDelay, revealDelayTop, revealDelayBottom, scaleDelay } from '@/helpers/transitions'
+import { fade, revealDelay, fadeDelay, revealDelayTop, revealDelayBottom, scaleDelay } from '@/helpers/transitions'
 import { LazyMotion, domAnimation, m } from 'framer-motion'
 import { NextSeo } from 'next-seo'
 import Image from '@/components/image'
 import SanityPageService from '@/services/sanityPageService'
 import BlockContent from '@sanity/block-content-to-react'
 import Link from 'next/link'
-import Loader from '@/components/loader'
+// import Loader from '@/components/loader'
 
 const query = `{
   "home": *[_type == "home"][0]{
@@ -84,8 +84,9 @@ export default function Home(initialData) {
             animate="enter"
             exit="exit"
           >
-            <Loader />
+            {/* <Loader /> */}
 
+            <m.div variants={fade}>
             <m.header className="absolute top-0 left-0 right-0 z-10">
               <div className="grid grid-cols-9 p-3">
                 <div className="col-span-6 relative overflow-hidden">
@@ -204,6 +205,7 @@ export default function Home(initialData) {
                 </div>
               </div>
             </m.footer>
+            </m.div>
           </m.div>
         </LazyMotion>
       </div>

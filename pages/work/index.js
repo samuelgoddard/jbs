@@ -67,7 +67,7 @@ export default function Work(initialData) {
           animate="enter"
           exit="exit"
         >
-          <Loader />
+          {/* <Loader /> */}
           
           <LocomotiveScrollProvider
             options={{ smooth: true, lerp: 0.1 }}

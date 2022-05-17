@@ -102,7 +102,7 @@ export default function Menu(initialData) {
             animate="enter"
             exit="exit"
           >
-            <Loader/>
+            {/* <Loader/> */}
             <m.header className="absolute top-0 left-0 right-0 z-10">
               <div className="absolute top-0 left-0 right-0 grid grid-cols-9 p-3">
                 <span className="block text-[10px] md:text-[11px] lg:text-sm 2xl:text-base leading-[0.85] md:leading-[0.85] lg:leading-[0.85] 2xl:leading-[0.85] col-span-1 relative overflow-hidden">

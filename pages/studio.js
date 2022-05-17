@@ -2,7 +2,7 @@ import { Fragment, useRef } from 'react'
 import Layout from '@/components/layout'
 import Header from '@/components/header'
 import Footer from '@/components/footer'
-import { scaleDelay, reveal, fadeDelay, revealDelay } from '@/helpers/transitions'
+import { fade, scaleDelay, reveal, fadeDelay, revealDelay } from '@/helpers/transitions'
 import { LocomotiveScrollProvider } from 'react-locomotive-scroll'
 import { LazyMotion, domAnimation, m } from 'framer-motion'
 import { NextSeo } from 'next-seo'
@@ -11,7 +11,7 @@ import BlockContent from '@sanity/block-content-to-react'
 import Image from '@/components/image'
 import HashGrid from '@/components/hash-grid'
 import FadeInWhenVisible from '@/components/fade-in-when-visible'
-import Loader from '@/components/loader'
+// import Loader from '@/components/loader'
 import { SplitText } from '@cyriacbr/react-split-text'
 import ScrollBoundImage from '@/components/scroll-bound-image'
 import ScrollBoundStack from '@/components/scroll-bound-stack'
@@ -93,8 +93,9 @@ export default function Studio(initialData) {
           animate="enter"
           exit="exit"
         >
-          <Loader />
+          {/* <Loader /> */}
 
+          <m.div variants={fade}>
           <LocomotiveScrollProvider
             options={{ smooth: true, lerp: 0.1 }}
             containerRef={containerRef}
@@ -247,6 +248,7 @@ export default function Studio(initialData) {
               </div>
             </div>
           </LocomotiveScrollProvider>
+          </m.div>
         </m.div>
       </LazyMotion>
     </Layout>

@@ -103,7 +103,7 @@ export default function WorkSlug(initialData) {
           animate="enter"
           exit="exit"
         >
-          <Loader />
+          {/* <Loader /> */}
 
           <LocomotiveScrollProvider
             options={{ smooth: true, lerp: 0.1 }}

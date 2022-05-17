@@ -5,7 +5,7 @@ const revealDelay = {
 	initial: { y: '-100%' },
   enter: { 
     y: 0,
-    transition: { duration: 0.66, delay: 1, ease: [0.83, 0, 0.17, 1] }
+    transition: { duration: 0.66, ease: [0.83, 0, 0.17, 1] }
   },
 	exit: {
     y: '-100%',
