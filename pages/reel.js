@@ -52,9 +52,12 @@ export default function Reel(initialData) {
               exit="exit"
             >
               <div className="absolute bottom-0 left-0 right p-3 z-20">
-                <Link href="/menu"><a className={`text-sm md:text-[2vw] xl:text-[1.8vw] 2xl:text-[1.65vw] leading-none md:leading-none xl:leading-none 2xl:leading-none font-sans uppercase`}>
+                <Link href="/menu"><a className={`text-sm md:text-[2vw] xl:text-[1.8vw] 2xl:text-[1.65vw] leading-none md:leading-none xl:leading-none 2xl:leading-none font-sans uppercase group`}>
                   <span className="block overflow-hidden">
-                    <m.span className="block" variants={reveal}>Close</m.span>
+                    <m.span className="block relative overflow-hidden" variants={reveal}>
+                      <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-300">Close</span>
+                      <span className="block absolute inset-0 transition-transform ease-in-out duration-300 -translate-y-full group-hover:translate-y-0">Close</span>
+                    </m.span>
                   </span>
                 </a></Link>
               </div>

@@ -81,18 +81,24 @@ export default function WorkViewSwitcher({ work }) {
           <ul className="text-right flex space-x-2 md:block md:space-x-0">
             <li className="block">
               <button
-                className={`text-lg md:text-[2.8vw] xl:text-[2.2vw] 2xl:text-[2vw] leading-none md:leading-none xl:leading-none 2xl:leading-none font-sans uppercase overflow-hidden ${currentView == 'list' && 'text-[#D3D3D3]' }`}
+                className={`text-lg md:text-[2.8vw] xl:text-[2.2vw] 2xl:text-[2vw] leading-none md:leading-none xl:leading-none 2xl:leading-none font-sans uppercase overflow-hidden group ${currentView == 'list' && 'text-[#D3D3D3]' }`}
                 onClick={() => updateCurrentView('grid')}
               >
-                <m.span className="block" variants={reveal}>Grid</m.span>
+                <m.span className="block relative overflow-hidden" variants={reveal}>
+                  <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-300">Grid</span>
+                  <span className="block absolute inset-0 transition-transform ease-in-out duration-300 -translate-y-full group-hover:translate-y-0">Grid</span>
+                </m.span>
               </button>
             </li>
             <li className="block">
               <button
-                className={`text-lg md:text-[2.8vw] xl:text-[2.2vw] 2xl:text-[2vw] leading-none md:leading-none xl:leading-none 2xl:leading-none font-sans uppercase overflow-hidden ${currentView == 'grid' && 'text-[#D3D3D3]' }`}
+                className={`text-lg md:text-[2.8vw] xl:text-[2.2vw] 2xl:text-[2vw] leading-none md:leading-none xl:leading-none 2xl:leading-none font-sans uppercase overflow-hidden group ${currentView == 'grid' && 'text-[#D3D3D3]' }`}
                 onClick={() => updateCurrentView('list')}
               >
-                <m.span className="block" variants={reveal}>List</m.span>
+                <m.span className="block relative overflow-hidden" variants={reveal}>
+                  <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-300">List</span>
+                  <span className="block absolute inset-0 transition-transform ease-in-out duration-300 -translate-y-full group-hover:translate-y-0">List</span>
+                </m.span>
               </button>
             </li>
           </ul>

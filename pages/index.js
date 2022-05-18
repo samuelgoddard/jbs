@@ -118,7 +118,8 @@ export default function Home(initialData) {
                   <m.span className="block" variants={revealDelayTop}>Moving Image</m.span>
                 </span>
                 <span className="block text-[10px] md:text-[11px] lg:text-sm 2xl:text-base leading-[0.85] md:leading-[0.85] lg:leading-[0.85] 2xl:leading-[0.85] col-span-1 col-start-6 relative overflow-hidden">
-                  <m.span className="block" variants={revealDelayTop}>Studio</m.span>
+                  <m.span className="block" variants={revealDelayTop}>
+                    Studio</m.span>
                 </span>
                 <span className="block text-[10px] md:text-[11px] lg:text-sm 2xl:text-base leading-[0.85] md:leading-[0.85] lg:leading-[0.85] 2xl:leading-[0.85] col-span-1 col-start-8 relative overflow-hidden">
                   <m.span className="block" variants={revealDelayTop}>London</m.span>
@@ -168,25 +169,34 @@ export default function Home(initialData) {
                 <div className="col-span-2 text-left">
                   <Link href="/work">
                     <a
-                      className="text-2xl md:text-[4.5vw] xl:text-[4.5vw] 2xl:text-[5.5vw] leading-none md:leading-none xl:leading-none 2xl:leading-none font-sans uppercase relative block overflow-hidden"
+                      className="text-2xl md:text-[4.5vw] xl:text-[4.5vw] 2xl:text-[5.5vw] leading-[0.9] md:leading-[0.9] xl:leading-[0.9] 2xl:leading-[0.9] font-sans uppercase relative block overflow-hidden group"
                       onMouseEnter={() => updateCurrentHover('work')}
                       onMouseLeave={() => updateCurrentHover(null)}
                     >
-                      <m.span className="block" variants={revealDelayBottom}>Work</m.span>
+                      <m.span className="block relative overflow-hidden" variants={revealDelayBottom}>
+                        <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-300">Work</span>
+                        <span className="block absolute inset-0 transition-transform ease-in-out duration-300 -translate-y-full group-hover:translate-y-0">Work</span>
+                      </m.span>
                     </a>
                   </Link>
                 </div>
 
                 <div className="col-span-4 col-start-3 text-right md:space-x-7 flex justify-end">
-                  <a href={`mailto:${contact.email}`} className="text-sm md:text-[2.2vw] xl:text-[2vw] 2xl:text-[2.3vw] leading-none md:leading-none xl:leading-none 2xl:leading-none font-sans uppercase group block relative overflow-hidden">
-                    <m.span variants={revealDelayBottom} className="hidden md:inline-block">Get in touch</m.span>
+                  <a href={`mailto:${contact.email}`} className="text-sm md:text-[2.2vw] xl:text-[2vw] 2xl:text-[2.3vw] leading-[0.9] md:leading-[0.9] xl:leading-[0.9] 2xl:leading-[0.9] font-sans uppercase group block relative overflow-hidden">
+                    <m.span variants={revealDelayBottom} className="hidden md:inline-block relative overflow-hidden">
+                      <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-300">Get in touch</span>
+                      <span className="block absolute inset-0 transition-transform ease-in-out duration-300 -translate-y-full group-hover:translate-y-0">Get in touch</span>
+                    </m.span>
                     <m.span variants={revealDelayBottom} className="inline-block md:hidden">Contact</m.span>
                   </a>
 
                   {contact.socials.map((e, i) => {
                     return e.title === 'Instagram' && (
-                      <a key={i} href={e.url} target="_blank" rel="noopener noreferrer" className="text-sm md:text-[2.2vw] xl:text-[2vw] 2xl:text-[2.3vw] leading-none md:leading-none xl:leading-none 2xl:leading-none font-sans uppercase hover:underline focus:underline ml-5 block relative overflow-hidden">
-                        <m.span className="inline-block" variants={revealDelayBottom}>{e.title}</m.span>
+                      <a key={i} href={e.url} target="_blank" rel="noopener noreferrer" className="text-sm md:text-[2.2vw] xl:text-[2vw] 2xl:text-[2.3vw] leading-[0.9] md:leading-[0.9] xl:leading-[0.9] 2xl:leading-[0.9] font-sans uppercase hover:underline focus:underline ml-5 block relative overflow-hidden group">
+                        <m.span className="inline-block" variants={revealDelayBottom}>
+                          <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-300">{e.title}</span>
+                          <span className="block absolute inset-0 transition-transform ease-in-out duration-300 -translate-y-full group-hover:translate-y-0">{e.title}</span>
+                        </m.span>
                       </a>
                     )
                   })}
@@ -195,11 +205,14 @@ export default function Home(initialData) {
                 <div className="col-span-2 col-start-8 text-right">
                   <Link href="/studio">
                     <a
-                      className="text-2xl md:text-[4.5vw] xl:text-[4.5vw] 2xl:text-[5.5vw] leading-none md:leading-none xl:leading-none 2xl:leading-none font-sans uppercase relative block overflow-hidden"
+                      className="text-2xl md:text-[4.5vw] xl:text-[4.5vw] 2xl:text-[5.5vw] leading-[0.9] md:leading-[0.9] xl:leading-[0.9] 2xl:leading-[0.9] font-sans uppercase relative block overflow-hidden group"
                       onMouseEnter={() => updateCurrentHover('studio')}
                       onMouseLeave={() => updateCurrentHover(null)}
                     >
-                      <m.span className="block" variants={revealDelayBottom}>Studio</m.span>
+                      <m.span className="block" variants={revealDelayBottom}>
+                        <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-300">Studio</span>
+                        <span className="block absolute inset-0 transition-transform ease-in-out duration-300 -translate-y-full group-hover:translate-y-0">Studio</span>
+                      </m.span>
                     </a>
                   </Link>
                 </div>

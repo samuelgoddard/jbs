@@ -89,9 +89,12 @@ export default function WorkCarousel({ work, currentCat, currentType }) {
             </Link>
             
             <Link href={`/work/${work[current].slug.current}`}>
-              <a className="block overflow-hidden">
+              <a className="block overflow-hidden group">
                 <m.span className="block" variants={reveal}>
-                  <h1 className="text-5xl md:text-[6.5vw] xl:text-[7vw] 2xl:text-[7.5vw] leading-none md:leading-none xl:leading-none 2xl:leading-none font-sans uppercase mb-[-5px] md:mb-[-0.78vw] ml-2 md:ml-8">{work[current].title}</h1>
+                  <h1 className="text-5xl md:text-[6.5vw] xl:text-[7vw] 2xl:text-[7.5vw] leading-1 md:leading-1 xl:leading-1 2xl:leading-1 font-sans uppercase mb-[-5px] md:mb-[-0.78vw] ml-2 md:ml-8 relative overflow-hidden">
+                    <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-300">{work[current].title}</span>
+                    <span className="block absolute inset-0 transition-transform ease-in-out duration-300 -translate-y-full group-hover:translate-y-0">{work[current].title}</span>
+                  </h1>
                 </m.span>
               </a>
             </Link>

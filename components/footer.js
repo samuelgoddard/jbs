@@ -26,7 +26,7 @@ export default function Footer({ contact }) {
         <HashGridAnimated />
       </div>
 
-      <div className="grid grid-cols-9 items-end p-3">
+      <div className="grid grid-cols-9 items-end p-3 relative z-10">
         <div className="col-span-1">
           <div className="relative overflow-hidden">
             <svg className={`w-[31px] md:w-[41px] xl:w-[51px] fill-current transition-transform ease-custom duration-[800ms] delay-[0ms] ${showLogo ? 'translate-x-0' : 'translate-x-[-110%]' }`} viewBox="0 0 82 125" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M40.744 124.592c26.168 0 40.744-15.134 40.744-43.818V0H56.55v82.534c0 12.494-4.566 19.533-15.806 19.533-11.064 0-15.806-5.983-15.806-20.413H0c0 28.684 15.279 42.938 40.744 42.938Z" /></svg>
@@ -35,39 +35,50 @@ export default function Footer({ contact }) {
 
         <div className="col-span-1 col-start-2 hidden md:block">
           <Link href="/">
-            <a className="block text-[10px] md:text-[11px] lg:text-[13px] 2xl:text-[13px] leading-[0.85] md:leading-[0.85] lg:leading-[0.85] 2xl:leading-[0.85] underline mb-1">
-              Home
+            <a className="block text-[10px] md:text-[11px] lg:text-[13px] 2xl:text-[13px] leading-[0.95] md:leading-[0.95] lg:leading-[0.95] 2xl:leading-[0.95] underline mb-1 relative overflow-hidden group">
+              <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-300">Home</span>
+              <span className="block absolute inset-0 transition-transform ease-in-out duration-300 -translate-y-full group-hover:translate-y-0 underline">Home</span>
             </a>
           </Link>
           <Link href="/studio">
-            <a className="block text-[10px] md:text-[11px] lg:text-[13px] 2xl:text-[13px] leading-[0.85] md:leading-[0.85] lg:leading-[0.85] 2xl:leading-[0.85] underline mb-1">
-              Studio
+            <a className="block text-[10px] md:text-[11px] lg:text-[13px] 2xl:text-[13px] leading-[0.95] md:leading-[0.95] lg:leading-[0.95] 2xl:leading-[0.95] underline mb-1 relative overflow-hidden group">
+              <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-300">Studio</span>
+              <span className="block absolute inset-0 transition-transform ease-in-out duration-300 -translate-y-full group-hover:translate-y-0 underline">Studio</span>
             </a>
           </Link>
           <Link href="/work">
-            <a className="block text-[10px] md:text-[11px] lg:text-[13px] 2xl:text-[13px] leading-[0.85] md:leading-[0.85] lg:leading-[0.85] 2xl:leading-[0.85] underline mb-1">
-              Work
+            <a className="block text-[10px] md:text-[11px] lg:text-[13px] 2xl:text-[13px] leading-[0.95] md:leading-[0.95] lg:leading-[0.95] 2xl:leading-[0.95] underline mb-1 relative overflow-hidden group">
+              <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-300">Work</span>
+              <span className="block absolute inset-0 transition-transform ease-in-out duration-300 -translate-y-full group-hover:translate-y-0 underline">Work</span>
             </a>
           </Link>
           <Link href="/terms">
-            <a className="block text-[10px] md:text-[11px] lg:text-[13px] 2xl:text-[13px] leading-[0.85] md:leading-[0.85] lg:leading-[0.85] 2xl:leading-[0.85] underline mb-1">
-              Privacy
+            <a className="block text-[10px] md:text-[11px] lg:text-[13px] 2xl:text-[13px] leading-[0.95] md:leading-[0.95] lg:leading-[0.95] 2xl:leading-[0.95] underline mb-1 relative overflow-hidden group">
+              <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-300">Privacy</span>
+              <span className="block absolute inset-0 transition-transform ease-in-out duration-300 -translate-y-full group-hover:translate-y-0 underline">Privacy</span>
             </a>
           </Link>
         </div>
 
         <div className="col-span-2 col-start-3 -ml-6 md:ml-0 md:col-start-3 xl:col-start-4 flex space-x-4">
-          <a href={`mailto:${contact.email}`} className="text-lg md:text-xl xl:text-2xl 2xl:text-3xl leading-none md:leading-none xl:leading-none 2xl:leading-none font-sans uppercase underline">Contact</a>
+          <a href={`mailto:${contact.email}`} className="text-lg md:text-xl xl:text-2xl 2xl:text-3xl leading-[1.1] md:leading-[1.1] xl:leading-[1.1] 2xl:leading-[1.1] font-sans uppercase underline relative group overflow-hidden">
+            <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-300">Contact</span>
+            <span className="block absolute inset-0 transition-transform ease-in-out duration-300 -translate-y-full underline group-hover:translate-y-0">Contact</span>  
+          </a>
 
           {contact.socials.map((e, i) => {
             return e.title === 'Instagram' && (
-              <a key={i} href={e.url} rel="noreferrer noopener" target="_blank" className="text-xl md:text-xl xl:text-2xl 2xl:text-3xl leading-none md:leading-none xl:leading-none 2xl:leading-none font-sans uppercase underline hidden md:block">Instagram</a>
+              <a key={i} href={e.url} rel="noreferrer noopener" target="_blank" className="text-xl md:text-xl xl:text-2xl 2xl:text-3xl leading-[1.1] md:leading-[1.1] xl:leading-[1.1] 2xl:leading-[1.1] font-sans uppercase underline hidden group md:block relative overflow-hidden"><span className="block group-hover:translate-y-full transition-transform ease-in-out duration-300">Instagram</span>
+              <span className="block absolute inset-0 transition-transform ease-in-out duration-300 -translate-y-full underline group-hover:translate-y-0">Instagram</span></a>
             )
           })}
         </div>
 
         <div className="col-span-1 col-start-6 hidden md:flex">
-          <Link href="/reel"><a className="text-xl md:text-2xl xl:text-2xl 2xl:text-3xl leading-none md:leading-none xl:leading-none 2xl:leading-none font-sans uppercase underline">Reel</a></Link>
+          <Link href="/reel"><a className="text-xl md:text-2xl xl:text-2xl 2xl:text-3xl leading-[1.1] md:leading-[1.1] xl:leading-[1.1] 2xl:leading-[1.1] font-sans uppercase underline relative overflow-hidden group">
+            <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-300">Reel</span>
+            <span className="block absolute inset-0 transition-transform ease-in-out duration-300 -translate-y-full underline group-hover:translate-y-0">Reel</span>
+          </a></Link>
         </div>
 
         <div className="col-span-1 col-start-6 md:col-start-7">
@@ -77,7 +88,13 @@ export default function Footer({ contact }) {
         </div>
         
         <div className="col-span-2 md:col-span-1 col-start-7 md:col-start-8">
-          <span className="block text-[10px] md:text-[11px] lg:text-sm 2xl:text-base leading-[0.85] md:leading-[0.85] lg:leading-[0.85] 2xl:leading-[0.85]">By <a href="https://shiftwalk.studio" target="_blank" rel="noopener noreferrer" className="underline">ShiftWalk</a></span>
+          <a href="#" className="block text-[10px] md:text-[11px] lg:text-sm 2xl:text-base leading-[0.95] md:leading-[0.95] lg:leading-[0.95] 2xl:leading-[0.95] relative overflow-hidden group">
+            <span className="flex space-x-1">
+              <span className="block">By</span><span className="underline relative">
+              <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-300 underline">ShiftWalk</span>
+              <span className="block absolute inset-0 transition-transform ease-in-out duration-300 underline -translate-y-full group-hover:translate-y-0">ShiftWalk</span>
+            </span></span>
+          </a>
         </div>
         
         <div className="col-span-1 col-start-9 text-right flex">

@@ -231,11 +231,15 @@ export default function Studio(initialData) {
                       </div>
 
                       <div className="col-span-9 md:col-span-2 md:col-start-8">
-                        { contact.email && (<a href={`mailto:${contact.email}`} className="block leading-none mb-1 underline">Email</a>)}
+                        { contact.email && (<a href={`mailto:${contact.email}`} className="block leading-none mb-1 group relative overflow-hidden underline"><span className="block group-hover:translate-y-full transition-transform ease-in-out duration-300">Email</span>
+                              <span className="block absolute inset-0 transition-transform ease-in-out duration-300 -translate-y-full underline group-hover:translate-y-0">Email</span></a>)}
 
                         {contact.socials.map((e, i) => {
                           return (
-                            <a key={i} href={e.url} target="_blank" rel="noopener noreferrer" className="block leading-none mb-1 underline">{e.title}</a>
+                            <a key={i} href={e.url} target="_blank" rel="noopener noreferrer" className="block leading-none mb-1 underline group relative overflow-hidden">
+                              <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-300">{e.title}</span>
+                              <span className="block absolute inset-0 transition-transform ease-in-out duration-300 -translate-y-full underline group-hover:translate-y-0">{e.title}</span>
+                            </a>
                           )
                         })}
                       </div>
