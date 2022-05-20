@@ -191,7 +191,7 @@ export default function Studio(initialData) {
                                   image={e.image}
                                   image2={e.image}
                                   id={`team-member-alt-${i}`}
-                                  delay={i == 0 ? 200 : 300}
+                                  delay={(i == 0 || i == 4) ? 100 : 300}
                                 />
                               </div>
 
