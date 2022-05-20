@@ -116,8 +116,11 @@ export default function WorkSlug(initialData) {
                 <m.header>
                   <div className="flex space-x-1 p-3">
                     <Link href="/work">
-                      <a className="text-lg md:text-[2.8vw] xl:text-[2.2vw] 2xl:text-[2vw] leading-none md:leading-none xl:leading-none 2xl:leading-none font-sans uppercase opacity-20 relative overflow-hidden block">
-                        <m.span variants={revealDelayTop} className="block">Work</m.span>
+                      <a className="text-lg md:text-[2.8vw] xl:text-[2.2vw] 2xl:text-[2vw] leading-none md:leading-none xl:leading-none 2xl:leading-none font-sans uppercase opacity-20 relative overflow-hidden block group">
+                        <m.span variants={revealDelayTop} className="block">
+                          <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-300">Work</span>
+                          <span className="block absolute inset-0 transition-transform ease-in-out duration-300 -translate-y-full group-hover:translate-y-0">Work</span>
+                        </m.span>
                       </a>
                     </Link>
                     <span className="text-lg md:text-[2.8vw] xl:text-[2.2vw] 2xl:text-[2vw] leading-none md:leading-none xl:leading-none 2xl:leading-none font-sans uppercase opacity-20 block relative overflow-hidden">

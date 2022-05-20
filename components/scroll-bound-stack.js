@@ -41,7 +41,7 @@ export default function ScrollBoundStack({ image, image2, id, delay }) {
         <Image
           image={image2}
           focalPoint={image2.hotspot}
-          widthOverride={550}
+          widthOverride={900}
           className="w-full"
           noCaption
           layout="fill"
@@ -52,7 +52,7 @@ export default function ScrollBoundStack({ image, image2, id, delay }) {
         <Image
           image={image}
           focalPoint={image.hotspot}
-          widthOverride={550}
+          widthOverride={900}
           layout="fill"
           className="absolute inset-0 h-full object-cover object-center"
           noCaption

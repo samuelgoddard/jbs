@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from '@/components/image'
-import { m } from 'framer-motion'
+import { AnimatePresence, m } from 'framer-motion'
 import { revealDelay, reveal, scaleDelay } from '@/helpers/transitions'
 import { useLocomotiveScroll } from 'react-locomotive-scroll'
 
@@ -44,23 +44,128 @@ export default function WorkCarousel({ work, currentCat, currentType }) {
 
                   <div className="w-full grid grid-cols-6">
                     <div className="col-span-1">
-                      <span className="block leading-none text-sm overflow-hidden">
-                        <m.span className="block" variants={reveal}>JBS.{current < 10 && ('0')}{current}</m.span>
+                      <span className="block leading-none text-sm overflow-hidden w-full">
+                        <AnimatePresence>
+                          <span className="block overflow-hidden relative w-full">
+                            {work.map((e, i) => {
+                              return i == current ? (
+                                <m.span
+                                  key={i}
+                                  className="block"
+                                  initial={{ y: '100%', transition: { duration: 0.45, ease: [0.76, 0, 0.24, 1] } }}
+                                  animate={{ y: 0, transition: { duration: 0.45, ease: [0.76, 0, 0.24, 1] } }}
+                                  exit={{ y: '100%', transition: { duration: 0.45, ease: [0.76, 0, 0.24, 1] } }}
+                                >
+                                  JBS.{i < 10 && ('0')}{i}
+                                </m.span>
+                              ) : (
+                                <m.span
+                                  key={i}
+                                  className="absolute inset-0"
+                                  initial={{ y: 0, transition: { duration: 0.45, ease: [0.76, 0, 0.24, 1] } }}
+                                  animate={{ y: '100%', transition: { duration: 0.45, ease: [0.76, 0, 0.24, 1] } }}
+                                  exit={{ y: 0, transition: { duration: 0.45, ease: [0.76, 0, 0.24, 1] } }}
+                                >
+                                  JBS.{i < 10 && ('0')}{i}
+                                </m.span>
+                              )
+                            })}
+                          </span>
+                        </AnimatePresence>
                       </span>
                     </div>
                     <div className="col-span-1">
-                      <span className="block leading-none text-sm overflow-hidden">
-                        <m.span className="block" variants={reveal}>{work[current].title}</m.span>
+                      <span className="block leading-none text-sm overflow-hidden w-full">
+                        <AnimatePresence>
+                          <span className="block overflow-hidden relative w-full">
+                            {work.map((e, i) => {
+                              return i == current ? (
+                                <m.span
+                                  key={i}
+                                  className="block"
+                                  initial={{ y: '100%', transition: { duration: 0.45, ease: [0.76, 0, 0.24, 1] } }}
+                                  animate={{ y: 0, transition: { duration: 0.45, ease: [0.76, 0, 0.24, 1] } }}
+                                  exit={{ y: '100%', transition: { duration: 0.45, ease: [0.76, 0, 0.24, 1] } }}
+                                >
+                                  {e.title}
+                                </m.span>
+                              ) : (
+                                <m.span
+                                  key={i}
+                                  className="absolute inset-0"
+                                  initial={{ y: 0, transition: { duration: 0.45, ease: [0.76, 0, 0.24, 1] } }}
+                                  animate={{ y: '100%', transition: { duration: 0.45, ease: [0.76, 0, 0.24, 1] } }}
+                                  exit={{ y: 0, transition: { duration: 0.45, ease: [0.76, 0, 0.24, 1] } }}
+                                >
+                                  {e.title}
+                                </m.span>
+                              )
+                            })}
+                          </span>
+                        </AnimatePresence>
                       </span>
                     </div>
                     <div className="col-span-2">
-                      <span className="block leading-none text-sm overflow-hidden">
-                        <m.span className="block" variants={reveal}>{work[current].campaignTitle}</m.span>
+                      <span className="block leading-none text-sm overflow-hidden w-full">
+                        <AnimatePresence>
+                          <span className="block overflow-hidden relative w-full">
+                            {work.map((e, i) => {
+                              return i == current ? (
+                                <m.span
+                                  key={i}
+                                  className="block"
+                                  initial={{ y: '100%', transition: { duration: 0.45, ease: [0.76, 0, 0.24, 1] } }}
+                                  animate={{ y: 0, transition: { duration: 0.45, ease: [0.76, 0, 0.24, 1] } }}
+                                  exit={{ y: '100%', transition: { duration: 0.45, ease: [0.76, 0, 0.24, 1] } }}
+                                >
+                                  {e.campaignTitle}
+                                </m.span>
+                              ) : (
+                                <m.span
+                                  key={i}
+                                  className="absolute inset-0"
+                                  initial={{ y: 0, transition: { duration: 0.45, ease: [0.76, 0, 0.24, 1] } }}
+                                  animate={{ y: '100%', transition: { duration: 0.45, ease: [0.76, 0, 0.24, 1] } }}
+                                  exit={{ y: 0, transition: { duration: 0.45, ease: [0.76, 0, 0.24, 1] } }}
+                                >
+                                  {e.campaignTitle}
+                                </m.span>
+                              )
+                            })}
+                          </span>
+                        </AnimatePresence>
+
                       </span>
                     </div>
                     <div className="col-span-1 text-right">
-                      <span className="block leading-none text-sm overflow-hidden">
-                        <m.span className="block" variants={reveal}>{work[current].location}</m.span>
+                      <span className="block leading-none text-sm overflow-hidden w-full">
+                        <AnimatePresence>
+                          <span className="block overflow-hidden relative w-full">
+                            {work.map((e, i) => {
+                              return i == current ? (
+                                <m.span
+                                  key={i}
+                                  className="block"
+                                  initial={{ y: '100%', transition: { duration: 0.45, ease: [0.76, 0, 0.24, 1] } }}
+                                  animate={{ y: 0, transition: { duration: 0.45, ease: [0.76, 0, 0.24, 1] } }}
+                                  exit={{ y: '100%', transition: { duration: 0.45, ease: [0.76, 0, 0.24, 1] } }}
+                                >
+                                  {e.location}
+                                </m.span>
+                              ) : (
+                                <m.span
+                                  key={i}
+                                  className="absolute inset-0"
+                                  initial={{ y: 0, transition: { duration: 0.45, ease: [0.76, 0, 0.24, 1] } }}
+                                  animate={{ y: '100%', transition: { duration: 0.45, ease: [0.76, 0, 0.24, 1] } }}
+                                  exit={{ y: 0, transition: { duration: 0.45, ease: [0.76, 0, 0.24, 1] } }}
+                                >
+                                  {e.location}
+                                </m.span>
+                              )
+                            })}
+                          </span>
+                        </AnimatePresence>
                       </span>
                     </div>
                     <div className="col-span-1 text-right">
@@ -89,13 +194,38 @@ export default function WorkCarousel({ work, currentCat, currentType }) {
             </Link>
             
             <Link href={`/work/${work[current].slug.current}`}>
-              <a className="block overflow-hidden group">
-                <m.span className="block" variants={reveal}>
-                  <h1 className="text-5xl md:text-[6.5vw] xl:text-[7vw] 2xl:text-[7.5vw] leading-1 md:leading-1 xl:leading-1 2xl:leading-1 font-sans uppercase mb-[-5px] md:mb-[-0.78vw] ml-2 md:ml-8 relative overflow-hidden">
-                    <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-300">{work[current].title}</span>
-                    <span className="block absolute inset-0 transition-transform ease-in-out duration-300 -translate-y-full group-hover:translate-y-0">{work[current].title}</span>
+              <a className="block overflow-hidden group w-full">
+
+              <AnimatePresence>
+                <span className="block overflow-hidden relative w-full">
+                  <h1 className="text-5xl md:text-[6.5vw] xl:text-[7vw] 2xl:text-[7.5vw] leading-1 md:leading-1 xl:leading-1 2xl:leading-1 font-sans uppercase mb-[-5px] md:mb-[-0.78vw] ml-2 md:ml-8 relative overflow-hidden block w-full">
+                    {work.map((e, i) => {
+                      return i == current ? (
+                        <m.span
+                          key={i}
+                          className="block"
+                          initial={{ y: '100%', transition: { duration: 0.45, ease: [0.76, 0, 0.24, 1] } }}
+                          animate={{ y: 0, transition: { duration: 0.45, ease: [0.76, 0, 0.24, 1] } }}
+                          exit={{ y: '100%', transition: { duration: 0.45, ease: [0.76, 0, 0.24, 1] } }}
+                        >
+                          {e.title}
+                        </m.span>
+                      ) : (
+                        <m.span
+                          key={i}
+                          className="absolute inset-0"
+                          initial={{ y: 0, transition: { duration: 0.45, ease: [0.76, 0, 0.24, 1] } }}
+                          animate={{ y: '100%', transition: { duration: 0.45, ease: [0.76, 0, 0.24, 1] } }}
+                          exit={{ y: 0, transition: { duration: 0.45, ease: [0.76, 0, 0.24, 1] } }}
+                        >
+                          {e.title}
+                        </m.span>
+                      )
+                    })}
                   </h1>
-                </m.span>
+                </span>
+              </AnimatePresence>
+
               </a>
             </Link>
           </div>
@@ -108,18 +238,18 @@ export default function WorkCarousel({ work, currentCat, currentType }) {
             {[...Array(5)].map((index) => ( 
               <div key={index}>
                 {work.map((e, i) => {
-                  let width = 'w-full md:w-11/12'
+                  let width = 'w-full md:w-[60%] mx-auto'
                   
                   if (e.teaserImageThumbnail.asset.metadata.dimensions.height > e.teaserImageThumbnail.asset.metadata.dimensions.width) {
-                    width = 'w-full md:w-[51%]'
+                    width = 'w-full md:w-[40%] mr-auto'
                   } else if (i % 2 === 0) {
-                    width = 'w-full md:w-9/12'
+                    width = 'w-full md:w-[50%] ml-auto'
                   } else if (i % 3 === 0) {
-                    width = 'w-full md:w-1/2'
+                    width = 'w-full md:w-[50%] mr-auto'
                   }
                   
                   return (e.category == currentCat || currentCat == 'all') & (e.type == currentType || currentType == 'all') ? (
-                    <li className={`block mb-8 md:mb-[7vw] transition-all ease-in-out duration-300  ${width} ${current == i ? 'opacity-100 md:border md:p-4 md:border-black border-opacity-25' : 'md:opacity-50 border-opacity-0 md:grayscale p-0'}`} key={i} data-scroll data-scroll-repeat data-scroll-call={i} data-scroll-offset="60%, 40%" onClick={() => setCurrent(i)}>
+                    <li className={`block mb-8 md:mb-[7vw] transition-all ease-in-out duration-300  ${width} ${current == i ? 'opacity-100 md:border md:p-4 md:border-black md:border-opacity-[0.15]' : 'md:opacity-50 border-opacity-0 md:grayscale p-0'}`} key={i} data-scroll data-scroll-repeat data-scroll-call={i} data-scroll-offset="60%, 40%" onClick={() => setCurrent(i)}>
                       { e.teaserImageThumbnail && (
                         <>
                         <div className="hidden md:block">

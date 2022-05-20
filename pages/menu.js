@@ -127,14 +127,14 @@ export default function Menu(initialData) {
                 </span>
               </div>
 
-              <nav className="flex space-x-3 text-sm md:text-base w-auto p-3 absolute top-0 right-0">
+              {/* <nav className="flex space-x-3 text-sm md:text-base w-auto p-3 absolute top-0 right-0">
                 <Link href="/studio">
                   <a className="block w-[45px]">
                     <span className="block w-full h-[3px] mb-[5px] bg-current"></span>
                     <span className="block w-full h-[3px] mb-[5px] bg-current"></span>
                   </a>
                 </Link>
-              </nav>
+              </nav> */}
             </m.header>
 
             <m.main className="">
@@ -145,7 +145,7 @@ export default function Menu(initialData) {
                     focalPoint={menu.backgroundImage.hotspot}
                     layout="fill"
                     widthOverride={1200}
-                    className={`absolute inset-0 w-full h-full z-0 object-cover object-center transition-all ease-custom duration-[450ms] ${(currentHover == 'work' || currentHover == 'studio' || currentHover == 'home' || currentHover == 'reel') ? 'opacity-0 scale-[1.05]' : 'scale-1 opacity-100' }`}
+                    className={`absolute inset-0 w-full h-full z-0 object-cover object-center transition-all ease-custom duration-[400ms] ${(currentHover == 'work' || currentHover == 'studio' || currentHover == 'home' || currentHover == 'reel') ? 'opacity-0 scale-[1.05]' : 'scale-1 opacity-100' }`}
                   />
 
                   <Image 
@@ -153,28 +153,28 @@ export default function Menu(initialData) {
                     focalPoint={menu.homeBackgroundImage.hotspot}
                     layout="fill"
                     widthOverride={1200}
-                    className={`absolute inset-0 w-full h-full z-0 object-cover object-center transition-all ease-custom duration-[450ms] ${currentHover == 'home' ? 'opacity-100 scale-1' : 'scale-[1.05] opacity-0' }`}
+                    className={`absolute inset-0 w-full h-full z-0 object-cover object-center transition-all ease-custom duration-[400ms] ${currentHover == 'home' ? 'opacity-100 scale-1' : 'scale-[1.05] opacity-0' }`}
                   />
                   <Image 
                     image={menu.workBackgroundImage}
                     focalPoint={menu.workBackgroundImage.hotspot}
                     layout="fill"
                     widthOverride={1200}
-                    className={`absolute inset-0 w-full h-full z-0 object-cover object-center transition-all ease-custom duration-[450ms] ${currentHover == 'work' ? 'opacity-100 scale-1' : 'scale-[1.05] opacity-0' }`}
+                    className={`absolute inset-0 w-full h-full z-0 object-cover object-center transition-all ease-custom duration-[400ms] ${currentHover == 'work' ? 'opacity-100 scale-1' : 'scale-[1.05] opacity-0' }`}
                   />
                   <Image 
                     image={menu.studioBackgroundImage}
                     focalPoint={menu.studioBackgroundImage.hotspot}
                     layout="fill"
                     widthOverride={1200}
-                    className={`absolute inset-0 w-full h-full z-0 object-cover object-center transition-all ease-custom duration-[450ms] ${currentHover == 'studio' ? 'opacity-100 scale-1' : 'scale-[1.05] opacity-0' }`}
+                    className={`absolute inset-0 w-full h-full z-0 object-cover object-center transition-all ease-custom duration-[400ms] ${currentHover == 'studio' ? 'opacity-100 scale-1' : 'scale-[1.05] opacity-0' }`}
                   />
                   <Image 
                     image={menu.reelBackgroundImage}
                     focalPoint={menu.reelBackgroundImage.hotspot}
                     layout="fill"
                     widthOverride={1200}
-                    className={`absolute inset-0 w-full h-full z-0 object-cover object-center transition-all ease-custom duration-[450ms] ${currentHover == 'reel' ? 'opacity-100 scale-1' : 'scale-[1.05] opacity-0' }`}
+                    className={`absolute inset-0 w-full h-full z-0 object-cover object-center transition-all ease-custom duration-[400ms] ${currentHover == 'reel' ? 'opacity-100 scale-1' : 'scale-[1.05] opacity-0' }`}
                   />
                 </m.div>
 
@@ -275,7 +275,7 @@ export default function Menu(initialData) {
                 </div>
 
                 <div className="grid-col-1 hidden md:block">
-                  <a href="#" className="block text-[10px] md:text-[11px] lg:text-sm 2xl:text-base leading-[0.85] md:leading-[0.85] lg:leading-[0.85] 2xl:leading-[0.85] relative overflow-hidden group">
+                  <a href="#" className="block text-[10px] md:text-[11px] lg:text-sm 2xl:text-base leading-[0.95] md:leading-[0.95] lg:leading-[0.95] 2xl:leading-[0.95] relative overflow-hidden group">
                     <m.span variants={revealDelayBottom} className="flex space-x-1">
                       <span className="block">By</span><span className="underline relative">
                       <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-300 underline">ShiftWalk</span>

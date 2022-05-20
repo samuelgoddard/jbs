@@ -20,9 +20,9 @@ export default function App({ Component, pageProps }) {
       { router.pathname !== '/' && (
         <div className="ml-auto flex space-x-3 text-sm md:text-base w-auto fixed top-0 right-0 z-[100]">
           <Link href={router.pathname == '/menu' ? '/' : '/menu'}>
-            <a className="block w-[75px] bg-white p-3 group">
+            <a className={`block w-[75px] bg-transparent p-3 group ${ router.pathname == '/studio' ? 'text-white' : 'text-black'}`}>
               <div className="relative">
-                <span className="block w-full h-[3px] mb-[5px] bg-current"></span>
+                <span className="block w-full h-[3px] mb-[5px] bg-current transition ease-in-out duration-300"></span>
                 <span className="block w-full h-[3px] mb-[5px] bg-current group-hover:-translate-x-2 transition ease-in-out duration-300"></span>
               </div>
             </a>

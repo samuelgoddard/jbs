@@ -22,7 +22,7 @@ export default function ScrollBoundImage({ image }) {
         image={image}
         layout="fill"
         focalPoint={image.hotspot}
-        widthOverride={1200}
+        widthOverride={1920}
         className="w-full z-0 absolute inset-0 h-full object-cover object-center"
       />
     </div>

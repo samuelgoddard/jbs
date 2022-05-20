@@ -104,35 +104,25 @@ export default function Studio(initialData) {
             <div data-scroll-container ref={containerRef} id="scroll-container">
               <div data-scroll-section>
 
-              <Header/>
+              <Header light/>
               
               <main className="">
                 <div className="">
                   <div className="grid grid-cols-9 mb-12 md:mb-24 xl:mb-28 2xl:mb-40">
-                    <div className="col-span-9 md:mr-[1vw] mt-[25vw] md:mt-0">
-                      <div className="absolute top-0 left-0 grid grid-cols-9 z-10">
+                    <div className="col-span-9">
+                      {/* <div className="absolute top-0 left-0 grid grid-cols-9 z-10">
                         <div className="col-span-9 md:col-span-3 xl:col-span-2 bg-white pt-[20vw] p-3">
-                          <div className="w-full md:w-10/12 leading-tight md:pr-[20px]">
+                          <div className="w-full leading-tight md:pr-[20px]">
                             <m.div variants={fadeDelay}>
                               <BlockContent serializers={{ container: ({ children }) => children }} blocks={studio.heroText} />
                             </m.div>
-
-                            {/* <p className="w-full">
-                              <SplitText
-                                LineWrapper={({ lineIndex, children }) => (
-                                  <m.span variants={revealDelay} className="wrapper max-w-full block">
-                                    {children}
-                                  </m.span>
-                                )}
-                              >Jbs is a collective of artists and technicians dedicated to one simple thing — elevating the craft and science of photography + film.</SplitText>
-                            </p> */}
                           </div>
                         </div>
-                      </div>
+                      </div> */}
                       
                       <div className="w-full h-[83vh] md:h-screen relative overflow-hidden flex flex-wrap flex-col">
                         <div className="grid grid-cols-9 flex-1 h-full">
-                          <div className="relative overflow-hidden mb-auto col-span-9 md:col-span-8 h-full">
+                          <div className="relative overflow-hidden mb-auto col-span-9 h-full">
                             <m.div variants={scaleDelay} className="absolute inset-0 h-full object-cover object-center">
                               <ScrollBoundImage id="studio" image={studio.heroImage} />
                             </m.div>
@@ -149,7 +139,7 @@ export default function Studio(initialData) {
                       <div className="hidden md:block col-span-2 relative  h-[28.5vw]">
                         <ScrollBoundStack
                           image={studio.contentSupportingImage}
-                          image2={studio.heroImage}
+                          image2={studio.contentSupportingImage}
                           id="supporting-image"
                         />
 
@@ -175,7 +165,6 @@ export default function Studio(initialData) {
                         i == 2 ? (
                           <Fragment key={i}>
                             <div className="col-span-8 md:col-span-3 xl:col-span-3">
-                              <HashGrid />
                             </div>
                             <div className="col-span-8 md:col-span-2 xl:col-span-2">
                               <div className="mb-3 relative overflow-hidden h-[120vw] md:h-[30vw]">
@@ -191,19 +180,25 @@ export default function Studio(initialData) {
                             </div>  
                           </Fragment>
                         ) : (
-                          <div className="col-span-8 md:col-span-2 xl:col-span-2" key={i}>
-                            <div className="mb-3 relative overflow-hidden h-[120vw] md:h-[30vw]">
-                              <ScrollBoundStack
-                                image={e.image}
-                                image2={e.image}
-                                id={`team-member-alt-${i}`}
-                                delay={i == 0 ? 200 : 300}
-                              />
-                            </div>
+                          <Fragment key={i}>
+                            { i == 4 && (
+                              <div className="col-span-8 md:col-span-2 xl:col-span-2">
+                              </div>
+                            )}
+                            <div className={`col-span-8 md:col-span-2 xl:col-span-2`}>
+                              <div className="mb-3 relative overflow-hidden h-[120vw] md:h-[30vw]">
+                                <ScrollBoundStack
+                                  image={e.image}
+                                  image2={e.image}
+                                  id={`team-member-alt-${i}`}
+                                  delay={i == 0 ? 200 : 300}
+                                />
+                              </div>
 
-                            <span className="block text-xs leading-none mb-2">{e.jobTitle}</span>
-                            <span className="block leading-none">{e.name}</span>
-                          </div>  
+                              <span className="block text-xs leading-none mb-2">{e.jobTitle}</span>
+                              <span className="block leading-none">{e.name}</span>
+                            </div>  
+                          </Fragment>
                         )
                       )}
                     </div>
