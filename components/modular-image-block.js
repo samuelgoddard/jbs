@@ -13,6 +13,10 @@ export default function ModularImageBlock({ image, layout }) {
     cols = 3
     start = 5
   }
+  if (layout == 'contained-square') {
+    cols = 5
+    start = 3
+  }
 
   return (
     <div className="grid grid-cols-9">

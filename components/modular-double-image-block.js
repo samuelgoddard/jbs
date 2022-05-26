@@ -1,33 +1,43 @@
 import Image from "@/components/image";
 
-export default function ModularDoubleImageBlock({ image1, image2, layout }) {
-  let layoutClass = '';
+export default function ModularDoubleImageBlock({ image1, image2, image1AspectRatio, image2AspectRatio }) {
+  let image1Width = 'w-[60%]';
+  let image1Height = 'h-[45vw]';
 
-  if (layout == 'portrait-left') {
-    layoutClass = 'flex-row-reverse'
+  let image2Width = 'w-[80%]';
+  let image2Height = 'h-[60vw]';
+
+  if (image1AspectRatio == 'square') {
+    image1Width = 'w-[65%]'
+    image1Height = 'h-[28vw]'
+  }
+
+  if (image2AspectRatio == 'square') {
+    image2Width = 'w-[65%]'
+    image2Height = 'h-[28vw]'
   }
 
   return (
-    <div className={`flex flex-wrap items-end p-3 ${layoutClass}`}>
-      <div className="w-1/2 mb-[11vw] relative overflow-hidden">
-        <div className={`w-[65%] relative overflow-hidden ${layoutClass !== '' ? 'ml-auto' : ''}`}>
+    <div className={`flex flex-wrap items-end p-3`}>
+      <div className={`w-1/2 relative overflow-hidden ${image1AspectRatio == 'square' ? 'mb-[11vw]' : '' }`}>
+        <div className={`${image1Width} relative overflow-hidden`}>
           <Image
             image={image1}
             focalPoint={image1.hotspot}
             layout="fill"
             widthOverride={1000}
-            className="w-full h-[28vw] inset-0"
+            className={`w-full ${image1Height} inset-0`}
           />
         </div>
       </div>
       <div className="w-1/2 relative overflow-hidden flex">
-        <div className={`w-[80%] relative overflow-hidden ${layoutClass !== '' ? '' : 'ml-auto'}`}>
+        <div className={`${image2Width} relative overflow-hidden ml-auto`}>
           <Image
             image={image2}
             focalPoint={image2.hotspot}
             layout="fill"
             widthOverride={1000}
-            className="w-full h-[60vw] inset-0"
+            className={`w-full ${image2Height} inset-0`}
           />
         </div>
       </div>
