@@ -4,6 +4,7 @@ import ModularImageBlock from '@/components/modular-image-block'
 import ModularImageCarouselBlock from '@/components/modular-image-carousel-block'
 import ModularTextBlock from '@/components/modular-text-block'
 import ModularImageTextBlock from '@/components/modular-image-text-block'
+import ModularDoubleImageBlock from '@/components/modular-double-image-block'
 
 const notImplemented = ({ type }) => <h1>Not implemented {type}</h1>
 
@@ -45,6 +46,13 @@ const bodySerializers = {
   },
   modularImageTextBlock: {
     component: ModularImageTextBlock,
+    wrapper: ({ children }) => 
+      <div className="mb-[12vh]">
+        {children}
+      </div>
+  },
+  modularDoubleImageBlock: {
+    component: ModularDoubleImageBlock,
     wrapper: ({ children }) => 
       <div className="mb-[12vh]">
         {children}

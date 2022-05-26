@@ -28,14 +28,28 @@ export default function WorkListSection({ work, currentCat, currentType }) {
               return (e.category == currentCat || currentCat == 'all') & (e.type == currentType || currentType == 'all') ? (
                 <li className={`block`} key={i}>
                   <Link href={`/work/${e.slug.current}`}>
-                    <a className="flex items-center p-3 py-2 md:p-3 text-[12px] lg:text-[14px]">
-                      <span className="block w-10 md:w-16 relative overflow-hidden py-[10px] md:py-[15px] mr-2 md:mr-3">
+                    <a className="flex items-center p-3 py-2 md:p-3 text-[12px] lg:text-[14px] relative overflow-visible group">
+                      <div className="absolute top-0 left-0 right-0 w-full flex items-center justify-center opacity-0 md:group-hover:opacity-100 z-[10] pointer-events-none transition-opacity ease-in-out duration-300 ml-[-10%]">
+                        <div className="w-[20vw] h-[15vw] relative overflow-hidden mt-[-5vw]">
+                          { e.teaserImageThumbnail && (
+                            <Image
+                              image={e.teaserImageThumbnail}
+                              className="w-full h-full object-center object-cover"
+                              layout="fill"
+                              widthOverride={700}
+                              alt={e.title}
+                            />
+                          )}
+                        </div>
+                      </div>
+
+                      <span className="block w-10 md:w-16 relative py-[10px] md:py-[15px] mr-2 md:mr-3">
                         { e.teaserImageThumbnail && (
                           <Image
                             image={e.teaserImageThumbnail}
                             className="w-full h-full object-center object-cover"
                             layout="fill"
-                            widthOverride={500}
+                            widthOverride={200}
                             alt={e.title}
                           />
                         )}

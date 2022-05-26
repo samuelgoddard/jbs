@@ -36,7 +36,9 @@ export default function HashGridAnimated() {
       <div className="mx-auto col-span-1 row-span-1 col-start-9" data-scroll data-scroll-speed={-2}>+</div>
 
       <div data-scroll data-scroll-speed={2} className={`absolute inset-0 w-full h-full flex items-center justify-center`}>
-        <div className={`w-[12vw] h-[12vw] rounded-full flex items-center justify-center bg-[#FFB371] mt-[-10vw] mr-[-23vw]`}>Badge Here</div>
+        <div className={`w-[12vw] h-[12vw] rounded-full mt-[-10vw] mr-[-23vw]`}>
+          <img src="/images/badge.webp" alt="JBS Logo Badge" className="w-full" />
+        </div>
       </div>
     </div>
   )

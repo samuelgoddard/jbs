@@ -249,7 +249,7 @@ export default function WorkCarousel({ work, currentCat, currentType }) {
                   }
                   
                   return (e.category == currentCat || currentCat == 'all') & (e.type == currentType || currentType == 'all') ? (
-                    <li className={`block mb-8 md:mb-[7vw] transition-all ease-in-out duration-300  ${width} ${current == i ? 'opacity-100 md:border md:p-4 md:border-black md:border-opacity-[0.15]' : 'md:opacity-50 border-opacity-0 md:grayscale p-0'}`} key={i} data-scroll data-scroll-repeat data-scroll-call={i} data-scroll-offset="60%, 40%" onClick={() => setCurrent(i)}>
+                    <li className={`block mb-8 md:mb-[7vw] transition-all ease-in-out duration-300  ${width} ${current == i ? 'opacity-100 md:border md:p-4 md:border-black md:border-opacity-[0.15]' : 'md:opacity-100 border-opacity-0  p-0'}`} key={i} data-scroll data-scroll-repeat data-scroll-call={i} data-scroll-offset="60%, 40%" onClick={() => setCurrent(i)}>
                       { e.teaserImageThumbnail && (
                         <>
                         <div className="hidden md:block">
@@ -257,7 +257,7 @@ export default function WorkCarousel({ work, currentCat, currentType }) {
                             <Image
                               image={e.teaserImageThumbnail}
                               className="w-full"
-                              widthOverride={800}
+                              widthOverride={650}
                               alt={e.title}
                             />
                           </m.div>

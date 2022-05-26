@@ -36,6 +36,20 @@ const query = `*[_type == "work" && slug.current == $slug][0]{
       alt,
       caption
     },
+    image1 {
+      asset-> {
+        ...
+      },
+      alt,
+      caption
+    },
+    image2 {
+      asset-> {
+        ...
+      },
+      alt,
+      caption
+    },
     images[] {
       asset-> {
         ...
