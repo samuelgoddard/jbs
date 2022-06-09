@@ -25,7 +25,24 @@ export default function Image({ image, layout, widthOverride, heightOverride, fo
   if (layout) { attributes.layout = layout } else { attributes.layout = 'responsive' }
   if (priority) { attributes.priority = true } else { attributes.priority = false }
 
-	return (
+	return image.overrideVideo ? (
+    <div className={`image ${className} w-full h-full overflow-hidden relative ${layout == 'fill' && 'cover-image' }`}>
+      <video loop={true} autoPlay="autoplay" playsInline={true} muted className={`object-cover object-center w-full h-full absolute inset-0 z-10`}>
+        <source src={ image.overrideVideo.asset.url } type="video/mp4" />
+
+        Sorry. Your browser does not support the video tag.
+      </video>
+      
+      <figure className={`image ${className} ${layout == 'fill' && 'cover-image' }`}>
+        <Img {...imageProps} {...attributes} />
+        
+        {(image.caption && layout !== 'fill' && !noCaption) && (
+          <figcaption className="text-xs mt-2">"{image.caption}"</figcaption>
+        )}
+      </figure>
+    </div>
+  )
+  : (
     <figure className={`image ${className} ${layout == 'fill' && 'cover-image' }`}>
 		  <Img {...imageProps} {...attributes} />
       
