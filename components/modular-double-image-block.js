@@ -1,6 +1,6 @@
 import Image from "@/components/image";
 
-export default function ModularDoubleImageBlock({ image1, image2, image1AspectRatio, image2AspectRatio }) {
+export default function ModularDoubleImageBlock({ image1, image2, image1AspectRatio, image2AspectRatio, reverseOrder }) {
   let image1Width = 'w-[60%]';
   let image1Height = 'h-[45vw]';
 
@@ -18,9 +18,9 @@ export default function ModularDoubleImageBlock({ image1, image2, image1AspectRa
   }
 
   return (
-    <div className={`flex flex-wrap items-end p-3`}>
-      <div className={`w-1/2 relative overflow-hidden ${image1AspectRatio == 'square' ? 'mb-[11vw]' : '' }`}>
-        <div className={`${image1Width} relative overflow-hidden`}>
+    <div className={`flex flex-wrap items-end p-3 ${reverseOrder ? 'flex-row-reverse' : ' '}`}>
+      <div className={`w-1/2 relative overflow-hidden ${image1AspectRatio == 'square' ? '' : '' }`}>
+        <div className={`${image1Width} relative overflow-hidden ${ reverseOrder ? 'ml-auto' : '' }`}>
           <Image
             image={image1}
             focalPoint={image1.hotspot}
@@ -31,7 +31,7 @@ export default function ModularDoubleImageBlock({ image1, image2, image1AspectRa
         </div>
       </div>
       <div className="w-1/2 relative overflow-hidden flex">
-        <div className={`${image2Width} relative overflow-hidden ml-auto`}>
+        <div className={`${image2Width} relative overflow-hidden ${ reverseOrder ? 'mr-auto' : 'ml-auto' }`}>
           <Image
             image={image2}
             focalPoint={image2.hotspot}

@@ -74,12 +74,12 @@ export default function Footer({ contact }) {
           })}
         </div>
 
-        <div className="col-span-1 col-start-6 hidden md:flex">
+        {/* <div className="col-span-1 col-start-6 hidden md:flex">
           <Link href="/reel"><a className="text-xl md:text-2xl xl:text-2xl 2xl:text-3xl leading-[1.1] md:leading-[1.1] xl:leading-[1.1] 2xl:leading-[1.1] font-sans uppercase underline relative overflow-hidden group">
             <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-300">Reel</span>
             <span className="block absolute inset-0 transition-transform ease-in-out duration-300 -translate-y-full underline group-hover:translate-y-0">Reel</span>
           </a></Link>
-        </div>
+        </div> */}
 
         <div className="col-span-1 col-start-6 md:col-start-7">
           <div className="relative overflow-hidden">

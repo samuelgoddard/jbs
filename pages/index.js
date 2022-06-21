@@ -190,7 +190,7 @@ export default function Home(initialData) {
 
                 <div className="hidden md:flex col-span-4 col-start-3 text-right md:space-x-7 justify-end">
 
-                  <Link href="/reel">
+                  {/* <Link href="/reel">
                     <a className="text-sm md:text-[2.2vw] xl:text-[2vw] 2xl:text-[2.3vw] leading-[0.9] md:leading-[0.9] xl:leading-[0.9] 2xl:leading-[0.9] font-sans uppercase group relative overflow-hidden hidden md:block">
                       <m.span variants={revealDelayBottom} className="hidden md:inline-block relative overflow-hidden">
                         <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-300">Reel</span>
@@ -198,7 +198,7 @@ export default function Home(initialData) {
                       </m.span>
                       <m.span variants={revealDelayBottom} className="inline-block md:hidden">Reel</m.span>
                     </a>
-                  </Link>
+                  </Link> */}
 
                   <a href={`mailto:${contact.email}`} className="text-sm md:text-[2.2vw] xl:text-[2vw] 2xl:text-[2.3vw] leading-[0.9] md:leading-[0.9] xl:leading-[0.9] 2xl:leading-[0.9] font-sans uppercase group hidden md:block relative overflow-hidden ml-5">
                     <m.span variants={revealDelayBottom} className="hidden md:inline-block relative overflow-hidden">

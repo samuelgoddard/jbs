@@ -252,9 +252,30 @@ export default function WorkSlug(initialData) {
                       <SanityBlockContent serializers={{ container: ({ children }) => children }} blocks={content} />
                     </div> */}
 
-                    { heroCarouselImages && (
+                    { heroCarouselImages.length > 1 ? (
                       <div className="mb-16 md:mb-24 xl:mb-28">
                         <Carousel slides={heroCarouselImages} id="hero-carousel" />
+                      </div>
+                    ) : (
+                      <div className="mb-16 md:mb-24 xl:mb-28">
+                        <div className={`embla`}>
+                          <div className="embla__viewport">
+                            <div className="embla__container">
+                              <div className="embla__slide" >
+                                <div className="embla__slide__inner">
+                                  <div className="absolute inset-0">
+                                    <Image
+                                      image={heroCarouselImages[0]}
+                                      layout="fill"
+                                      widthOverride={1400}
+                                      className="w-full"
+                                    />
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     )}
 
