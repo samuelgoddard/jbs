@@ -52,14 +52,15 @@ export default function WorkViewSwitcher({ work }) {
   return (
     <>
       <div className="w-full pb-3 fixed top-0 left-0 right-0 z-[90] bg-white p-3">
-        <div className="w-[80vw] md:w-[64.4vw] flex space-x-6 items-center">
+        <div className="w-[80vw] md:w-[65.5vw] flex space-x-6 items-center">
           <div className="w-full md:w-8/12 flex space-x-[2vw]">
-            <FilterButton label={'all'} onClick={resetFilters} current={currentCat} />
+            {/* <FilterButton label={'all'} onClick={resetFilters} current={currentCat} />
             <FilterButton label={'drinks'} onClick={() => updateCat('drinks')} current={currentCat} />
             <FilterButton label={'food'} onClick={() => updateCat('food')} current={currentCat} />
-            <FilterButton label={'lifestyle'} onClick={() => updateCat('lifestyle')} current={currentCat} />
+            <FilterButton label={'lifestyle'} onClick={() => updateCat('lifestyle')} current={currentCat} /> */}
           </div>
-          <div className="w-4/12 justify-end space-x-[2vw] hidden md:flex">
+          <div className="w-5/12 justify-end space-x-[2vw] hidden md:flex">
+            <FilterButton label={'all'} onClick={() => updateType('all')} current={currentType} />
             <FilterButton label={'still'} onClick={() => updateType('still')} current={currentType} />
             <FilterButton label={'moving'} onClick={() => updateType('moving')} current={currentType} />
           </div>

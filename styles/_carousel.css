@@ -24,7 +24,7 @@
 }
 
 .embla__slide {
-  @apply bg-gray-100 min-w-full relative h-[70vw];
+  @apply bg-gray-100 min-w-full relative h-[60vw];
 }
 
 .embla__slide__inner {

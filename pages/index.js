@@ -89,7 +89,7 @@ export default function Home(initialData) {
             <m.div variants={fade}>
             <m.header className="absolute bottom-0 md:bottom-auto md:top-0 left-0 right-0 z-10">
               <div className="grid grid-cols-9 p-3">
-                <div className="col-span-6 relative overflow-hidden">
+                <div className="col-span-6 md:col-span-5 relative overflow-hidden">
                   <m.svg variants={revealDelayTop} className="w-[31px] md:w-[5.7vw] xl:w-[5.2vw] fill-current" viewBox="0 0 82 125" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M40.744 124.592c26.168 0 40.744-15.134 40.744-43.818V0H56.55v82.534c0 12.494-4.566 19.533-15.806 19.533-11.064 0-15.806-5.983-15.806-20.413H0c0 28.684 15.279 42.938 40.744 42.938Z" /></m.svg>
                 </div>
 
@@ -102,7 +102,7 @@ export default function Home(initialData) {
                 </div>
               </div>
               
-              <div className="absolute top-0 left-0 right-0 grid grid-cols-9 p-3">
+              {/* <div className="absolute top-0 left-0 right-0 grid grid-cols-9 p-3">
                 <span className="hidden md:block text-[10px] md:text-[11px] lg:text-sm 2xl:text-base leading-[0.85] md:leading-[0.85] lg:leading-[0.85] 2xl:leading-[0.85] col-span-1 relative overflow-hidden">
                   <m.span className="block" variants={revealDelayTop}>(</m.span>
                 </span>
@@ -127,7 +127,7 @@ export default function Home(initialData) {
                 <span className="hidden md:block text-[10px] md:text-[11px] lg:text-sm 2xl:text-base leading-[0.85] md:leading-[0.85] lg:leading-[0.85] 2xl:leading-[0.85] col-span-1 col-start-9 relative overflow-hidden">
                   <m.span className="block" variants={revealDelayTop}>)</m.span>
                 </span>
-              </div>
+              </div> */}
             </m.header>
 
             <m.main className="">
@@ -173,7 +173,7 @@ export default function Home(initialData) {
 
             <m.footer className="absolute top-0 md:top-auto md:bottom-0 left-0 right-0 z-10 p-3">
               <div className="grid grid-cols-9 items-end">
-                <div className="col-span-4 md:col-span-2 text-left">
+                <div className="col-span-2 md:col-span-2 text-left">
                   <Link href="/work">
                     <a
                       className="text-4xl md:text-[4.5vw] xl:text-[4.5vw] 2xl:text-[5.5vw] leading-[0.9] md:leading-[0.9] xl:leading-[0.9] 2xl:leading-[0.9] font-sans uppercase relative block overflow-hidden group"
@@ -220,7 +220,7 @@ export default function Home(initialData) {
                   })}
                 </div>
                 
-                <div className="col-span-4 md:col-span-2 col-start-6 md:col-start-8 text-right">
+                <div className="col-span-4 md:col-span-2 col-start-4 md:col-start-8 text-right">
                   <Link href="/studio">
                     <a
                       className="text-4xl md:text-[4.5vw] xl:text-[4.5vw] 2xl:text-[5.5vw] leading-[0.9] md:leading-[0.9] xl:leading-[0.9] 2xl:leading-[0.9] font-sans uppercase relative block overflow-hidden group"

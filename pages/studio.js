@@ -146,11 +146,11 @@ export default function Studio(initialData) {
                         <span className="text-xs mt-2 absolute top-auto bottom-0 left-0 z-10 block -mb-6">"{studio.contentSupportingImage.caption}"</span>
                       </div>
                       
-                      <FadeInWhenVisible className="col-span-7 md:col-span-3 col-start-1 md:col-start-5 leading-snug max-w-[550px]">
+                      <div className="col-span-7 md:col-span-3 col-start-1 md:col-start-5 leading-snug max-w-[550px]">
                         <div className="content">
                           <BlockContent serializers={{ container: ({ children }) => children }} blocks={studio.content} />
                         </div>
-                      </FadeInWhenVisible>
+                      </div>
                     </div>
 
                     <h2 className="font-bold text-[7.5vw] leading-none mb-8 md:mb-16 xl:mb-20">
@@ -168,13 +168,17 @@ export default function Studio(initialData) {
                             </div>
                             <div className="col-span-8 md:col-span-2 xl:col-span-2">
                               <div className="mb-3 relative overflow-hidden h-[120vw] md:h-[30vw]">
-                                <ScrollBoundStack
-                                  image={e.image}
-                                  image2={e.image}
-                                  id={`team-member-${i}`}
-                                  delay={100}
-                                />
-                              </div>
+                                <div className={`z-10 transition-all ease-in-out duration-1000 absolute inset-0 h-full object-cover object-center`}>
+                                    <Image
+                                      image={e.image}
+                                      focalPoint={e.image.hotspot}
+                                      widthOverride={900}
+                                      className="w-full"
+                                      noCaption
+                                      layout="fill"
+                                    />
+                                  </div>
+                                </div>
                               <span className="block text-xs leading-none mb-2">{e.jobTitle}</span>
                               <span className="block leading-none">{e.name}</span>
                             </div>  
@@ -187,12 +191,19 @@ export default function Studio(initialData) {
                             )}
                             <div className={`col-span-8 md:col-span-2 xl:col-span-2`}>
                               <div className="mb-3 relative overflow-hidden h-[120vw] md:h-[30vw]">
-                                <ScrollBoundStack
-                                  image={e.image}
-                                  image2={e.image}
-                                  id={`team-member-alt-${i}`}
-                                  delay={(i == 0 || i == 4) ? 100 : 300}
-                                />
+                                <div className="w-full absolute inset-0 h-full object-cover object-center overflow-hidden" data-scroll >
+                                  <div className={`z-10 transition-all ease-in-out duration-1000 absolute inset-0 h-full object-cover object-center`}>
+                                    <Image
+                                      image={e.image}
+                                      focalPoint={e.image.hotspot}
+                                      widthOverride={900}
+                                      className="w-full"
+                                      noCaption
+                                      layout="fill"
+                                    />
+                                  </div>
+                                </div>
+                                
                               </div>
 
                               <span className="block text-xs leading-none mb-2">{e.jobTitle}</span>
