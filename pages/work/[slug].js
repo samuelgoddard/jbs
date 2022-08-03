@@ -17,6 +17,7 @@ import Loader from '@/components/loader'
 
 const query = `*[_type == "work" && slug.current == $slug][0]{
   title,
+  orderRank,
   content,
   heroCarouselImages[] {
     asset-> {
@@ -101,8 +102,32 @@ const query = `*[_type == "work" && slug.current == $slug][0]{
   slug {
     current
   },
-  "moreWork": *[_type == "work" && slug.current != $slug][0...3] {
+  "moreWork": *[_type == "work" && slug.current != $slug && orderRank > ^.orderRank] | order(orderRank asc)[0..2] {
     title,
+    campaignTitle,
+    teaserImage {
+      asset-> {
+        ...,
+      },
+      overrideVideo {
+        asset-> {
+          ...
+        }
+      },
+      caption,
+      alt,
+      hotspot {
+        x,
+        y
+      },
+    },
+    slug {
+      current
+    }
+  },
+  "moreWorkLoop": *[_type == "work" && slug.current != $slug] | order(orderRank asc)[0..2] {
+    title,
+    campaignTitle,
     teaserImage {
       asset-> {
         ...,
@@ -135,7 +160,7 @@ const query = `*[_type == "work" && slug.current == $slug][0]{
 const pageService = new SanityPageService(query)
 
 export default function WorkSlug(initialData) {
-  const { data: { title, heroCarouselImages, moreWork, location, campaignTitle, tags, credits, contact, contentBlocks }  } = pageService.getPreviewHook(initialData)()
+  const { data: { title, heroCarouselImages, moreWork, moreWorkLoop, location, campaignTitle, tags, credits, contact, contentBlocks }  } = pageService.getPreviewHook(initialData)()
 
   const containerRef = useRef(null)
   return (
@@ -272,7 +297,7 @@ export default function WorkSlug(initialData) {
                     
                     <div className="flex flex-wrap p-3 mb-[12vw] md:mb-[15vh]">
                       <div className="w-4/12 md:w-6/12">
-                        <h2 className="block text-2xl md:text-3xl xl:text-4xl leading-1 md:leading-1 xl:leading-[1.2] 2xl:leading-[1.2] font-sans uppercase relative overflow-hidden">
+                        <h2 className="block text-2xl md:text-3xl xl:text-4xl leading-[1] md:leading-[1] xl:leading-[1] 2xl:leading-[1] font-sans uppercase relative overflow-hidden">
                           <m.span variants={revealDelay} className="block">Credits</m.span>
                         </h2>
                       </div>
@@ -301,24 +326,61 @@ export default function WorkSlug(initialData) {
                         <span className="block">More Work</span>
                         <Link href="/work"><a className="block underline text-right ml-auto">Back To Gallery</a></Link>
                       </div>
-                      {moreWork.map((e, i) => {
-                        return (
-                          <Link href={`/work/${e.slug.current}`} key={i}>
-                            <a className={`flex items-center w-full border-b border-black py-3 ${i == 1 ? 'text-right justify-end' : '' }`}>
-                              <div className={`w-[16.5%] max-w-[300px] min-h-[9vw] md:min-h-[9vw] xl:min-h-[8.4vw] bg-gray-100 relative overflow-hidden ${ i == 1 ? 'order-2' : 'order-1' }`}>
-                                <Image
-                                  image={e.teaserImage}
-                                  className="w-full"
-                                  widthOverride={750}
-                                  alt={e.title}
-                                  layout="fill"
-                                />
-                              </div>
-                              <h2 className={`block text-[6.5vw] leading-none px-3 md:px-4 xl:px-5 ${ i == 1 ? 'order-1' : 'order-2' }`}>{e.title}</h2>
-                            </a>
-                          </Link>
-                        )
-                      })}
+                      { moreWork.length > 2 ? (
+                        <>
+                          {moreWork.map((e, i) => {
+                            return (
+                              <Link href={`/work/${e.slug.current}`} key={i}>
+                                <a className={`flex items-center w-full border-b border-black py-3 group overflow-hidden relative ${i == 1 ? 'text-right justify-end' : '' }`}>
+                                  <div className={`w-[16.5%] max-w-[300px] min-h-[9vw] md:min-h-[9vw] xl:min-h-[8.4vw] bg-gray-100 relative overflow-hidden ${ i == 1 ? 'order-2' : 'order-1' }`}>
+                                    <Image
+                                      image={e.teaserImage}
+                                      className="w-full"
+                                      widthOverride={750}
+                                      alt={e.title}
+                                      layout="fill"
+                                    />
+                                  </div>
+                                  <div className={`px-3 md:px-4 xl:px-5 ${ i == 1 ? 'order-1' : 'order-2' }`}>
+                                    <h2 className={`block text-[5.75vw] leading-[0.8] mb-1 md:mb-3 relative overflow-hidden`}>
+                                      <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-300">{e.title}</span>
+                                      <span className="block absolute inset-0 transition-transform ease-in-out duration-300 -translate-y-full group-hover:translate-y-0 text-orange">{e.title}</span>
+                                    </h2>
+                                    <span className="block text-xl md:text-2xl xl:text-3xl leading-[1] md:leading-[1] xl:leading-[1] 2xl:leading-[1] font-sans uppercase relative overflow-hidden">
+                                      <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-300">{e.campaignTitle}</span>
+                                      <span className="block absolute inset-0 transition-transform ease-in-out duration-300 -translate-y-full group-hover:translate-y-0 text-orange">{e.campaignTitle}</span>
+                                    </span>
+                                  </div>
+                                </a>
+                              </Link>
+                            )
+                          })}
+                        </>
+                      ) : (
+                        <>
+                          {moreWorkLoop.map((e, i) => {
+                            return (
+                              <Link href={`/work/${e.slug.current}`} key={i}>
+                                <a className={`flex items-center w-full border-b border-black py-3 ${i == 1 ? 'text-right justify-end' : '' }`}>
+                                  <div className={`w-[16.5%] max-w-[300px] min-h-[9vw] md:min-h-[9vw] xl:min-h-[8.4vw] bg-gray-100 relative overflow-hidden ${ i == 1 ? 'order-2' : 'order-1' }`}>
+                                    <Image
+                                      image={e.teaserImage}
+                                      className="w-full"
+                                      widthOverride={750}
+                                      alt={e.title}
+                                      layout="fill"
+                                    />
+                                  </div>
+                                  <div className={`px-3 md:px-4 xl:px-5 ${ i == 1 ? 'order-1' : 'order-2' }`}>
+                                    <h2 className={`block text-[5.75vw] leading-[0.8] mb-1 md:mb-3`}>{e.title}</h2>
+                                    <span className="block text-xl md:text-2xl xl:text-3xl leading-[1] md:leading-[1] xl:leading-[1] 2xl:leading-[1] font-sans uppercase relative overflow-hidden">{e.campaignTitle}</span>
+                                  </div>
+                                </a>
+                              </Link>
+                            )
+                          })}
+                        </>
+                      )}
                     </div>
                   </article>
                 </m.main>

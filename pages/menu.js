@@ -209,7 +209,7 @@ export default function Menu(initialData) {
                         >
                           <m.span variants={revealDelay} className="block relative">
                             <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-300">Home</span>
-                            <span className="block absolute inset-0 transition-transform ease-in-out duration-300 -translate-y-full group-hover:translate-y-0">Home</span>
+                            <span className="block absolute inset-0 transition-transform ease-in-out duration-300 -translate-y-full group-hover:translate-y-0 text-orange">Home</span>
                           </m.span>
                         </a>
                       </Link>
@@ -223,7 +223,7 @@ export default function Menu(initialData) {
                         >
                           <m.span variants={revealDelay} className="block relative">
                             <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-300">Work</span>
-                            <span className="block absolute inset-0 transition-transform ease-in-out duration-300 -translate-y-full group-hover:translate-y-0">Work</span>
+                            <span className="block absolute inset-0 transition-transform ease-in-out duration-300 -translate-y-full group-hover:translate-y-0 text-orange">Work</span>
                           </m.span>
                         </a>
                       </Link>
@@ -237,7 +237,7 @@ export default function Menu(initialData) {
                         >
                           <m.span variants={revealDelay} className="block relative">
                             <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-300">Studio</span>
-                            <span className="block absolute inset-0 transition-transform ease-in-out duration-300 -translate-y-full group-hover:translate-y-0">Studio</span>
+                            <span className="block absolute inset-0 transition-transform ease-in-out duration-300 -translate-y-full group-hover:translate-y-0 text-orange">Studio</span>
                           </m.span>
                         </a>
                       </Link>
@@ -253,7 +253,7 @@ export default function Menu(initialData) {
                       >
                         <m.span variants={revealDelay} className="block relative">
                           <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-300">Insta</span>
-                          <span className="block absolute inset-0 transition-transform ease-in-out duration-300 -translate-y-full group-hover:translate-y-0">Insta</span>
+                          <span className="block absolute inset-0 transition-transform ease-in-out duration-300 -translate-y-full group-hover:translate-y-0 text-orange">Insta</span>
                         </m.span>
                       </a>
                     </li>

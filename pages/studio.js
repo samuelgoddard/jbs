@@ -160,7 +160,7 @@ export default function Studio(initialData) {
                       <span className="block text-left">Lifestyle, Food + Drink</span>
                     </h2>
 
-                    <div className="grid grid-cols-9 gap-3 mb-12 md:mb-24 xl:mb-28 2xl:mb-40">
+                    <div className="grid grid-cols-9 gap-3 md:gap-x-3 md:gap-y-12 xl:gap-y-16 mb-12 md:mb-28 xl:mb-32 2xl:mb-48">
                       {studio.teamMembers.map((e, i) =>
                         i == 2 ? (
                           <Fragment key={i}>
@@ -179,14 +179,18 @@ export default function Studio(initialData) {
                                     />
                                   </div>
                                 </div>
-                              <span className="block text-xs leading-none mb-2">{e.jobTitle}</span>
-                              <span className="block leading-none">{e.name}</span>
+                              <span className="block text-xs leading-none mb-[2px]">{e.jobTitle}</span>
+                              <span className="block leading-none md:text-lg">{e.name}</span>
                             </div>  
                           </Fragment>
                         ) : (
                           <Fragment key={i}>
                             { i == 4 && (
                               <div className="col-span-8 md:col-span-2 xl:col-span-2">
+                              </div>
+                            )}
+                            { i == 5 && (
+                              <div className="col-span-8 md:col-span-1 xl:col-span-1">
                               </div>
                             )}
                             <div className={`col-span-8 md:col-span-2 xl:col-span-2`}>
@@ -206,8 +210,8 @@ export default function Studio(initialData) {
                                 
                               </div>
 
-                              <span className="block text-xs leading-none mb-2">{e.jobTitle}</span>
-                              <span className="block leading-none">{e.name}</span>
+                              <span className="block text-xs leading-none mb-[2px]">{e.jobTitle}</span>
+                              <span className="block leading-none md:text-lg">{e.name}</span>
                             </div>  
                           </Fragment>
                         )

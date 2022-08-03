@@ -13,7 +13,7 @@ import WorkViewSwitcher from '@/components/work-view-switcher'
 import Link from 'next/link'
 
 const query = `{
-  "work": *[_type == "work"]{
+  "work": *[_type == "work"] | order(orderRank, asc) {
     title,
     category,
     type,

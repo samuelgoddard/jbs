@@ -20,6 +20,7 @@ module.exports = {
       colors: {
         'black': '#232322',
         'white': '#FFF',
+        'orange': '#FFB371',
         'example-color': {
           light: '#ffb288',
           DEFAULT: '#d18d67',

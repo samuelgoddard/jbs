@@ -24,7 +24,15 @@
 }
 
 .embla__slide {
+  @apply bg-gray-100 relative min-w-full h-[60vw];
+}
+
+.embla__slide--horizontal {
   @apply bg-gray-100 min-w-full relative h-[60vw];
+}
+
+.embla__slide--vertical {
+  @apply bg-gray-100 relative h-[60vw] w-[23vw];
 }
 
 .embla__slide__inner {
@@ -54,8 +62,16 @@
   }
 
   .embla__slide {
-    @apply bg-transparent min-w-[75vw] relative h-[47.5vw];
+    @apply bg-transparent min-w-[75vw] relative h-[44.5vw];
     padding-left: 5vw;
+  }
+
+  .embla__slide--horizontal {
+    @apply bg-transparent min-w-[75vw] relative h-[44.5vw];
+  }
+
+  .embla__slide--vertical {
+    @apply bg-transparent relative min-w-[36vw] h-[44.5vw];
   }
 
   .embla__dots {

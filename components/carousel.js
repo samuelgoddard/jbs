@@ -30,20 +30,28 @@ const Carousel = ({ slides, contained, id }) => {
     <div className={`embla ${contained && 'embla--contained' }`}>
         <div className="embla__viewport" ref={viewportRef}>
           <div className="embla__container">
-            {slides.map((slide, index) => (
-              <div className="embla__slide" key={index}>
-                <div className="embla__slide__inner">
-                  <div className="absolute inset-0">
-                    <Image
-                      image={slide}
-                      layout="fill"
-                      widthOverride={1400}
-                      className="w-full"
-                    />
+            {slides.map((slide, index) => {
+              let type = 'embla__slide--horizontal'
+
+              if (slide.asset.metadata.dimensions.height > slide.asset.metadata.dimensions.width) {
+                type = 'embla__slide--vertical'
+              }
+
+              return (
+                <div className={`embla__slide ${type}`} key={index}>
+                  <div className={`embla__slide__inner`}>
+                    <div className="absolute inset-0">
+                      <Image
+                        image={slide}
+                        layout="fill"
+                        widthOverride={1400}
+                        className="w-full"
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              )
+            })}
           </div>
         </div>
         {/* <PrevButton onClick={scrollPrev} enabled={prevBtnEnabled} />
