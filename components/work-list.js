@@ -74,9 +74,9 @@ export default function WorkListSection({ work, currentCat, currentType }) {
                           <m.span className="block" variants={reveal}>{e.location}</m.span>
                         </span>
                       </span>
-                      <span className="block ml-auto text-right">
+                      <span className="block ml-auto w-[60px] text-right">
                         <span className="block overflow-hidden">
-                          <m.span className="block" variants={reveal}>2021—</m.span>
+                          <m.span className="block" variants={reveal}>{e.year ? e.year + ' —' : '—'}</m.span>
                         </span>
                       </span>
                     </a>
