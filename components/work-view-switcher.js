@@ -60,9 +60,39 @@ export default function WorkViewSwitcher({ work }) {
             <FilterButton label={'lifestyle'} onClick={() => updateCat('lifestyle')} current={currentCat} /> */}
           </div>
           <div className="w-5/12 justify-end space-x-[2vw] hidden md:flex">
-            <FilterButton label={'all'} onClick={() => updateType('all')} current={currentType} />
+            {/* <FilterButton label={'all'} onClick={() => updateType('all')} current={currentType} />
             <FilterButton label={'still'} onClick={() => updateType('still')} current={currentType} />
-            <FilterButton label={'moving'} onClick={() => updateType('moving')} current={currentType} />
+            <FilterButton label={'moving'} onClick={() => updateType('moving')} current={currentType} /> */}
+
+
+            <div className="justify-center">
+              <nav>
+                <ul className="text-right flex space-x-2 mr-3 xl:mr-0">
+                  <li className="block">
+                    <button
+                      className={`text-lg md:text-[2.8vw] xl:text-[2.2vw] 2xl:text-[2vw] leading-none md:leading-none xl:leading-none 2xl:leading-none font-sans uppercase overflow-hidden group ${currentView == 'list' && 'text-[#D3D3D3]' }`}
+                      onClick={() => updateCurrentView('grid')}
+                    >
+                      <m.span className="block relative overflow-hidden" variants={reveal}>
+                        <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-300">Grid</span>
+                        <span className="block absolute inset-0 transition-transform ease-in-out duration-300 -translate-y-full group-hover:translate-y-0">Grid</span>
+                      </m.span>
+                    </button>
+                  </li>
+                  <li className="block">
+                    <button
+                      className={`text-lg md:text-[2.8vw] xl:text-[2.2vw] 2xl:text-[2vw] leading-none md:leading-none xl:leading-none 2xl:leading-none font-sans uppercase overflow-hidden group ${currentView == 'grid' && 'text-[#D3D3D3]' }`}
+                      onClick={() => updateCurrentView('list')}
+                    >
+                      <m.span className="block relative overflow-hidden" variants={reveal}>
+                        <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-300">List</span>
+                        <span className="block absolute inset-0 transition-transform ease-in-out duration-300 -translate-y-full group-hover:translate-y-0">List</span>
+                      </m.span>
+                    </button>
+                  </li>
+                </ul>
+              </nav>
+            </div>
           </div>
         </div>
       </div>
@@ -75,35 +105,6 @@ export default function WorkViewSwitcher({ work }) {
             <WorkListSection work={work} currentCat={currentCat} currentType={currentType} />
           )}
         </div>
-      </div>
-
-      <div className="fixed md:bottom-0 md:right-0 left-[50%] md:left-auto ml-[-50px] md:ml-0 p-3 pb-[10px] z-50 justify-center">
-        <nav>
-          <ul className="text-right flex space-x-2 md:block md:space-x-0">
-            <li className="block">
-              <button
-                className={`text-lg md:text-[2.8vw] xl:text-[2.2vw] 2xl:text-[2vw] leading-none md:leading-none xl:leading-none 2xl:leading-none font-sans uppercase overflow-hidden group ${currentView == 'list' && 'text-[#D3D3D3]' }`}
-                onClick={() => updateCurrentView('grid')}
-              >
-                <m.span className="block relative overflow-hidden" variants={reveal}>
-                  <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-300">Grid</span>
-                  <span className="block absolute inset-0 transition-transform ease-in-out duration-300 -translate-y-full group-hover:translate-y-0">Grid</span>
-                </m.span>
-              </button>
-            </li>
-            <li className="block">
-              <button
-                className={`text-lg md:text-[2.8vw] xl:text-[2.2vw] 2xl:text-[2vw] leading-none md:leading-none xl:leading-none 2xl:leading-none font-sans uppercase overflow-hidden group ${currentView == 'grid' && 'text-[#D3D3D3]' }`}
-                onClick={() => updateCurrentView('list')}
-              >
-                <m.span className="block relative overflow-hidden" variants={reveal}>
-                  <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-300">List</span>
-                  <span className="block absolute inset-0 transition-transform ease-in-out duration-300 -translate-y-full group-hover:translate-y-0">List</span>
-                </m.span>
-              </button>
-            </li>
-          </ul>
-        </nav>
       </div>
     </>
   )

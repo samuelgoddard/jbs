@@ -69,7 +69,7 @@ export default function WorkCarousel({ work, currentCat, currentType }) {
                           animate={{ y: 0, transition: { duration: 0.45, ease: [0.76, 0, 0.24, 1] } }}
                           exit={{ y: '100%', transition: { duration: 0.45, ease: [0.76, 0, 0.24, 1] } }}
                         >
-                          {e.campaignTitle}
+                          {e.campaignTitle} — {e.type.replace(/-/g, ' ')}
                         </m.span>
                       ) : (
                         <m.span
@@ -79,7 +79,7 @@ export default function WorkCarousel({ work, currentCat, currentType }) {
                           animate={{ y: '100%', transition: { duration: 0.45, ease: [0.76, 0, 0.24, 1] } }}
                           exit={{ y: 0, transition: { duration: 0.45, ease: [0.76, 0, 0.24, 1] } }}
                         >
-                          {e.campaignTitle}
+                          {e.campaignTitle} — {e.type.replace(/-/g, ' ')}
                         </m.span>
                       )
                     })}

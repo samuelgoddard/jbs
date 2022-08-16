@@ -18,6 +18,7 @@ const query = `{
     category,
     type,
     year,
+    type,
     campaignTitle,
     location,
     teaserImage {

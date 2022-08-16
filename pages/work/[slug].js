@@ -27,6 +27,7 @@ const query = `*[_type == "work" && slug.current == $slug][0]{
     caption
   },
   location,
+  type,
   campaignTitle,
   contentBlocks[] {
     ...,
@@ -166,7 +167,7 @@ const query = `*[_type == "work" && slug.current == $slug][0]{
 const pageService = new SanityPageService(query)
 
 export default function WorkSlug(initialData) {
-  const { data: { title, heroCarouselImages, moreWork, moreWorkLoop, location, campaignTitle, tags, credits, contact, contentBlocks }  } = pageService.getPreviewHook(initialData)()
+  const { data: { title, heroCarouselImages, moreWork, moreWorkLoop, location, campaignTitle, tags, credits, contact, contentBlocks, type }  } = pageService.getPreviewHook(initialData)()
 
   const containerRef = useRef(null)
   return (
