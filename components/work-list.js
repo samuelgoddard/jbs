@@ -22,7 +22,7 @@ export default function WorkListSection({ work, currentCat, currentType }) {
             </a>
           </Link>
         </div>
-        {[...Array(5)].map((index) => ( 
+        {[...Array(1)].map((index) => ( 
           <div key={index} className="list-child">
             {work.map((e, i) => {
               return (e.category == currentCat || currentCat == 'all') & (e.type == currentType || currentType == 'all') ? (
@@ -34,7 +34,7 @@ export default function WorkListSection({ work, currentCat, currentType }) {
                           { e.teaserImageThumbnail && (
                             <Image
                               image={e.teaserImageThumbnail}
-                              className="w-full h-full object-center object-cover"
+                              className="w-full h-full object-center object-cover will-change-auto"
                               layout="fill"
                               widthOverride={700}
                               alt={e.title}
@@ -43,11 +43,11 @@ export default function WorkListSection({ work, currentCat, currentType }) {
                         </div>
                       </div>
 
-                      <span className="block w-10 md:w-16 relative py-[10px] md:py-[15px] mr-2 md:mr-3">
+                      <span className="block w-10 md:w-16 h-[38px] relative  mr-2 md:mr-3">
                         { e.teaserImageThumbnail && (
                           <Image
                             image={e.teaserImageThumbnail}
-                            className="w-full h-full object-center object-cover"
+                            className="w-full h-full object-center object-cover will-change-auto"
                             layout="fill"
                             widthOverride={200}
                             alt={e.title}

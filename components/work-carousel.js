@@ -7,20 +7,26 @@ import { useLocomotiveScroll } from 'react-locomotive-scroll'
 
 export default function WorkCarousel({ work, currentCat, currentType }) {
   const [current, setCurrent] = useState(0);
+  const [hovering, setHovering] = useState(false);
   const { scroll } = useLocomotiveScroll()
 
-  function filterScrollUpdate() {
-    scroll.update()
-    scroll.scrollTo(0, { duration: 0, disableLerp: true })
+  // function filterScrollUpdate() {
+  //   scroll.update()
+  //   scroll.scrollTo(0, { duration: 0, disableLerp: true })
+  // }
+
+  function updateCurrent(e) {
+    setCurrent(e)
+    setHovering(true)
   }
 
-  useEffect(() => {
-    if (scroll) {
-      scroll.on('call', function(e) {
-        setCurrent(e)
-      });
-    }
-  }, [scroll])
+  // useEffect(() => {
+  //   if (scroll) {
+  //     scroll.on('call', function(e) {
+  //       setCurrent(e)
+  //     });
+  //   }
+  // }, [scroll])
 
   return (
     <div className="grid grid-cols-9" id="sticky">
@@ -28,11 +34,9 @@ export default function WorkCarousel({ work, currentCat, currentType }) {
         <div className="h-screen flex-col flex-wrap relative p-3 hidden md:flex pt-[7vw]">
         
           <div className="hidden md:flex w-full pb-3">
-            
-            <Link href={`/work/${work[current].slug.current}`}>
-              <a className="block overflow-hidden group w-full">
+            <div className="block overflow-hidden w-full">
 
-              <AnimatePresence>
+              <AnimatePresence initial={false}>
                 <span className="block overflow-hidden relative w-full">
                   <h1 className="text-5xl md:text-[6.5vw] xl:text-[7vw] 2xl:text-[7.5vw] leading-1 md:leading-1 xl:leading-1 2xl:leading-1 font-sans uppercase mb-[-5px] md:mb-[-0.78vw] relative overflow-hidden block w-full ml-[-0.3vw]">
                     {work.map((e, i) => {
@@ -69,7 +73,7 @@ export default function WorkCarousel({ work, currentCat, currentType }) {
                           animate={{ y: 0, transition: { duration: 0.45, ease: [0.76, 0, 0.24, 1] } }}
                           exit={{ y: '100%', transition: { duration: 0.45, ease: [0.76, 0, 0.24, 1] } }}
                         >
-                          {e.campaignTitle} — {e.type.replace(/-/g, ' ')}
+                          {e.campaignTitle} &bull; {e.type.replace(/-/g, ' ')}
                         </m.span>
                       ) : (
                         <m.span
@@ -79,7 +83,7 @@ export default function WorkCarousel({ work, currentCat, currentType }) {
                           animate={{ y: '100%', transition: { duration: 0.45, ease: [0.76, 0, 0.24, 1] } }}
                           exit={{ y: 0, transition: { duration: 0.45, ease: [0.76, 0, 0.24, 1] } }}
                         >
-                          {e.campaignTitle} — {e.type.replace(/-/g, ' ')}
+                          {e.campaignTitle} &bull; {e.type.replace(/-/g, ' ')}
                         </m.span>
                       )
                     })}
@@ -87,14 +91,13 @@ export default function WorkCarousel({ work, currentCat, currentType }) {
                 </span>
               </AnimatePresence>
 
-              </a>
-            </Link>
+            </div>
           </div>
 
           <div className="hidden md:block w-full flex-1">
-            <div className="w-full h-full block group">
-              <Link href={`/work/${work[current].slug.current}`}>
-                <a className="w-full h-full block group">
+            <div className="w-full h-full block">
+              
+                <div className="w-full h-full block">
                   <div className="h-full relative overflow-hidden mb-1">
                     <m.div variants={scaleDelay} className="w-full h-full">
                       <Image
@@ -239,8 +242,7 @@ export default function WorkCarousel({ work, currentCat, currentType }) {
                       </span>
                     </div> */}
                   </div>
-                </a>
-              </Link>
+                </div>
             </div>
           </div>
         
@@ -261,21 +263,37 @@ export default function WorkCarousel({ work, currentCat, currentType }) {
                   } else if (i % 3 === 0) {
                     width = 'w-full md:w-[75%] mr-auto'
                   }
+                  let active = 'md:opacity-100'
+
+                  if (current == i && hovering) {
+                    active = 'md:opacity-100'
+                  }
+
+                  if (current !== i && hovering) {
+                    active = 'md:opacity-30 md:grayscale'
+                  }
+
+                  if (!hovering) {
+                    active = 'md:opacity-100'
+                  }
                   
                   return (currentType == 'all') ? (
-                    <li className={`block mb-8 md:mb-[7vw] transition-all ease-in-out duration-300  ${width} ${current == i ? 'opacity-100 md:border md:p-4 md:border-black md:border-opacity-[0.15]' : 'md:opacity-100 border-opacity-0  p-0'}`} key={i} data-scroll data-scroll-repeat data-scroll-call={i} data-scroll-offset="60%, 40%" onClick={() => setCurrent(i)}>
+                    <li className={`block mb-8 md:mb-[7vw] transition-all ease-in-out duration-300 ${width} opacity-100 ${active}`} key={i} onMouseEnter={() => updateCurrent(i)}>
                       { e.teaserImageThumbnail && (
                         <>
-                        <div className="hidden md:block">
-                          <m.div variants={scaleDelay} className="w-full h-full">
-                            <Image
-                              image={e.teaserImageThumbnail}
-                              className="w-full"
-                              widthOverride={650}
-                              alt={e.title}
-                            />
-                          </m.div>
-                        </div>
+                        <Link href={`/work/${e.slug.current}`}>
+                          <a className="hidden md:block">
+                            <m.div variants={scaleDelay} className="w-full h-full">
+                              <Image
+                                image={e.teaserImageThumbnail}
+                                className="w-full"
+                                widthOverride={650}
+                                alt={e.title}
+                              />
+                              <span className={`block text-right text-sm mt-1 ${current == i ? 'opacity-100' : 'opacity-0'}`}>{e.title} — {e.campaignTitle}</span>
+                            </m.div>
+                          </a>
+                        </Link>
                         <Link href={`/work/${e.slug.current}`}>
                           <a className="w-full block md:hidden group">
                             <div className="h-[75vw] relative overflow-hidden mb-1">
@@ -311,19 +329,19 @@ export default function WorkCarousel({ work, currentCat, currentType }) {
                   ) : (
                     <>
                       {(e.type == currentType || e.type == 'still-and-moving') && (
-                        <li className={`block mb-8 md:mb-[7vw] transition-all ease-in-out duration-300  ${width} ${current == i ? 'opacity-100 md:border md:p-4 md:border-black md:border-opacity-[0.15]' : 'md:opacity-100 border-opacity-0  p-0'}`} key={i} data-scroll data-scroll-repeat data-scroll-call={i} data-scroll-offset="60%, 40%" onClick={() => setCurrent(i)}>
+                        <li className={`block mb-8 md:mb-[7vw] transition-all ease-in-out duration-300  ${width} ${current == i ? 'opacity-100 md:border md:p-4 md:border-black md:border-opacity-[0.15]' : 'md:opacity-100 border-opacity-0  p-0'}`} key={i} onMouseOver={() => setCurrent(i)}>
                         { e.teaserImageThumbnail && (
                           <>
-                          <div className="hidden md:block">
-                            <m.div variants={scaleDelay} className="w-full h-full">
+                          <Link href={`/work/${e.slug.current}`}>
+                            <a.div variants={scaleDelay} className="w-full h-full hidden md:block">
                               <Image
                                 image={e.teaserImageThumbnail}
                                 className="w-full"
                                 widthOverride={650}
                                 alt={e.title}
                               />
-                            </m.div>
-                          </div>
+                            </a.div>
+                          </Link>
                           <Link href={`/work/${e.slug.current}`}>
                             <a className="w-full block md:hidden group">
                               <div className="h-[75vw] relative overflow-hidden mb-1">

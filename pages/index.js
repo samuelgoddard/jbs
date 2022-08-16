@@ -165,9 +165,8 @@ export default function Home(initialData) {
               <m.div variants={scaleDelay} className="fixed inset-0 z-0 object-cover object-center">
                 <Image 
                   image={home.backgroundImage}
-                  focalPoint={home.backgroundImage.hotspot}
                   layout="fill"
-                  widthOverride={1400}
+                  widthOverride={2000}
                   className={`hidden md:block fixed inset-0 z-0 object-cover object-enter transition-all ease-custom duration-[450ms] ${(currentHover == 'work' || currentHover == 'studio' ) ? 'opacity-0 scale-[1.05]' : 'scale-1 opacity-100' }`}
                 />
 
@@ -182,7 +181,7 @@ export default function Home(initialData) {
                   image={home.workBackgroundImage}
                   focalPoint={home.workBackgroundImage.hotspot}
                   layout="fill"
-                  widthOverride={1400}
+                  widthOverride={2000}
                   className={`fixed inset-0 z-0 object-cover object-enter transition-all ease-custom duration-[450ms] ${currentHover == 'work' ? 'opacity-100 scale-1' : 'scale-[1.05] opacity-0' }`}
                 />
 
@@ -190,7 +189,7 @@ export default function Home(initialData) {
                   image={home.studioBackgroundImage}
                   focalPoint={home.studioBackgroundImage.hotspot}
                   layout="fill"
-                  widthOverride={1400}
+                  widthOverride={2000}
                   className={`fixed inset-0 z-0 object-cover object-enter transition-all ease-custom duration-[450ms] ${currentHover == 'studio' ? 'opacity-100 scale-1' : 'scale-[1.05] opacity-0' }`}
                 />
               </m.div>

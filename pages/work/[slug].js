@@ -295,7 +295,7 @@ export default function WorkSlug(initialData) {
                                     <Image
                                       image={heroCarouselImages[0]}
                                       layout="fill"
-                                      widthOverride={1400}
+                                      widthOverride={1920}
                                       className="w-full"
                                     />
                                   </div>

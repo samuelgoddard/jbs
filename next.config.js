@@ -2,8 +2,6 @@ module.exports = {
   swcMinify: true,
   images: {
     domains: ['cdn.sanity.io'],
-    loader: 'custom',
-    path: ''
   },
   webpack: (config, { dev, isServer }) => {
     if (!dev && !isServer) {

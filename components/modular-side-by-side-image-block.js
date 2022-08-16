@@ -12,8 +12,8 @@ export default function ModularSideBySideImageBlock({ image1, image2 }) {
             image={image1}
             focalPoint={image1.hotspot}
             layout="fill"
-            widthOverride={1000}
-            className={`w-full ${imageHeight} inset-0`}
+            widthOverride={1200}
+            className={`w-full ${imageHeight} inset-0 scale-[1.01]`}
           />
         </div>
       </div>
@@ -23,8 +23,8 @@ export default function ModularSideBySideImageBlock({ image1, image2 }) {
             image={image2}
             focalPoint={image2.hotspot}
             layout="fill"
-            widthOverride={1000}
-            className={`w-full ${imageHeight} inset-0`}
+            widthOverride={1200}
+            className={`w-full ${imageHeight} inset-0 scale-[1.01]`}
           />
         </div>
       </div>

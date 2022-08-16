@@ -22,7 +22,7 @@ export default function App({ Component, pageProps }) {
   }
 
   const itemFill = {
-    visible: { width: '100vw', height: '100vh' },
+    visible: { width: '100%', height: '100%' },
     hidden: { width: '30vw', height: '22vw' }
   }
 
@@ -38,9 +38,9 @@ export default function App({ Component, pageProps }) {
               animate="hidden"
               variants={introEnd}
               transition={{ delay: 4.5, duration: 0.5, ease: [0.83, 0, 0.17, 1] }}
-              className="bg-white fixed inset-0 z-[1000] pointer-events-none flex flex-col p-[14px] md:p-[20px]"
+              className="bg-white fixed inset-0 z-[1000] pointer-events-none flex flex-col"
             >
-              <div className="bg-white fixed inset-0 z-[1000] pointer-events-none flex flex-col p-[14px] md:p-[20px] h-full">
+              <div className="bg-white fixed inset-0 z-[1000] pointer-events-none flex flex-col h-full">
                 <div className="fixed inset-0 w-full z-20 flex items-center justify-center h-full">
                   <div className="relative">
                     <m.div
@@ -80,9 +80,8 @@ export default function App({ Component, pageProps }) {
                     variants={itemIn}
                     transition={{ delay: 2, duration: 0, ease: [0.83, 0, 0.17, 1]  }}
                   >
-                    <div 
-                      
-                      className="absolute top-0 bottom-0 left-0 right-0 flex items-center justify-center"
+                    <div    
+                      className="fixed top-0 bottom-0 left-0 right-0 flex items-center justify-center object-cover object-center"
                     >
                       <m.div
                         initial="hidden"
@@ -90,7 +89,7 @@ export default function App({ Component, pageProps }) {
                         variants={itemFill}
                         transition={{ delay: 3, duration: 1.5, ease: [0.85, 0, 0.15, 1]  }}
                       >
-                        <img src="/images/intro-04.jpg" alt="JBS Photography Image" className="w-full h-full object-cover" />
+                        <img src="/images/intro-04.jpg" alt="JBS Photography Image" className="w-full h-full object-cover object-center" />
                       </m.div>
                     </div>
                   </m.div>
