@@ -1,12 +1,13 @@
-import { useRef, useState } from 'react'
+import { useContext, useEffect, useRef, useState } from 'react'
 import Layout from '@/components/layout'
-import { fade, revealDelay, fadeDelay, revealDelayTop, revealDelayBottom, scaleDelay } from '@/helpers/transitions'
+import { fade, revealDelay, fadeDelay, scaleDelay } from '@/helpers/transitions'
 import { LazyMotion, domAnimation, m } from 'framer-motion'
 import { NextSeo } from 'next-seo'
 import Image from '@/components/image'
 import SanityPageService from '@/services/sanityPageService'
 import BlockContent from '@sanity/block-content-to-react'
 import Link from 'next/link'
+import { IntroContext } from '@/context/intro'
 // import Loader from '@/components/loader'
 
 const query = `{
@@ -66,8 +67,38 @@ const pageService = new SanityPageService(query)
 
 export default function Home(initialData) {
   const { data: { home, contact } } = pageService.getPreviewHook(initialData)()
-  const containerRef = useRef(null)
   const [currentHover, setCurrentHover] = useState(null)
+  const [introContext, setIntroContext] = useContext(IntroContext);
+
+  const revealDelayBottom = {
+    initial: { y: '-100%' },
+    enter: { 
+      y: 0,
+      transition: { delay: introContext ? 0 : 4.5, duration: 0.65, ease: [0.76, 0, 0.24, 1] }
+    },
+    exit: {
+      y: '-100%',
+      transition: { duration: 0.4, ease: [0.76, 0, 0.24, 1] }
+    }
+  }
+  
+  const revealDelayTop = {
+    initial: { y: '-100%' },
+    enter: { 
+      y: 0,
+      transition: { delay: introContext ? 0 : 4.5, duration: 0.65, ease: [0.76, 0, 0.24, 1] }
+    },
+    exit: {
+      y: '-100%',
+      transition: { duration: 0.4, ease: [0.76, 0, 0.24, 1] }
+    }
+  }
+
+  useEffect(() => {
+    setTimeout(() => {
+      setIntroContext(true)
+    }, 5000);
+  },[]);
 
   const updateCurrentHover = (value) => {
     setCurrentHover(value)

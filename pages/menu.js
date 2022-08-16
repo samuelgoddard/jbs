@@ -6,7 +6,8 @@ import SanityPageService from '@/services/sanityPageService'
 import Link from 'next/link'
 import Image from '@/components/image'
 import Loader from '@/components/loader'
-import { useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
+import { IntroContext } from '@/context/intro'
 
 const query = `{
   "home": *[_type == "home"][0]{
@@ -86,6 +87,11 @@ const pageService = new SanityPageService(query)
 export default function Menu(initialData) {
   const { data: { home, menu } } = pageService.getPreviewHook(initialData)()
   const [currentHover, setCurrentHover] = useState(null)
+  const [introContext, setIntroContext] = useContext(IntroContext);
+
+  useEffect(() => {
+    setIntroContext(true)
+  },[]);
 
   const updateCurrentHover = (value) => {
     setCurrentHover(value)

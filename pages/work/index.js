@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useContext, useEffect, useRef } from 'react'
 import Layout from '@/components/layout'
 import Header from '@/components/header'
 import Footer from '@/components/footer'
@@ -11,6 +11,7 @@ import SanityPageService from '@/services/sanityPageService'
 import Loader from '@/components/loader'
 import WorkViewSwitcher from '@/components/work-view-switcher'
 import Link from 'next/link'
+import { IntroContext } from '@/context/intro'
 
 const query = `{
   "work": *[_type == "work"] | order(orderRank, asc) {
@@ -62,6 +63,11 @@ const pageService = new SanityPageService(query)
 export default function Work(initialData) {
   const { data: { work } } = pageService.getPreviewHook(initialData)()
   const containerRef = useRef(null)
+  const [introContext, setIntroContext] = useContext(IntroContext);
+
+  useEffect(() => {
+    setIntroContext(true)
+  },[]);
 
   return (
     <Layout>

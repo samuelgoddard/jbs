@@ -1,4 +1,4 @@
-import { Fragment, useRef } from 'react'
+import { Fragment, useContext, useEffect, useRef } from 'react'
 import Layout from '@/components/layout'
 import Header from '@/components/header'
 import Footer from '@/components/footer'
@@ -16,6 +16,7 @@ import { SplitText } from '@cyriacbr/react-split-text'
 import ScrollBoundImage from '@/components/scroll-bound-image'
 import ScrollBoundStack from '@/components/scroll-bound-stack'
 import StudioTitle from '@/components/studio-title'
+import { IntroContext } from '@/context/intro'
 
 const query = `{
   "studio": *[_type == "studio"][0]{
@@ -82,6 +83,11 @@ const pageService = new SanityPageService(query)
 export default function Studio(initialData) {
   const { data: { studio, contact } } = pageService.getPreviewHook(initialData)()
   const containerRef = useRef(null)
+  const [introContext, setIntroContext] = useContext(IntroContext);
+
+  useEffect(() => {
+    setIntroContext(true)
+  },[]);
 
   return (
     <Layout>
