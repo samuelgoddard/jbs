@@ -24,6 +24,7 @@ const query = `{
       asset-> {
         ...,
       },
+      overrideVimeoVideo,
       caption,
       alt,
       hotspot {
@@ -35,6 +36,7 @@ const query = `{
       asset-> {
         ...,
       },
+      overrideVimeoVideo,
       caption,
       alt,
       hotspot {
