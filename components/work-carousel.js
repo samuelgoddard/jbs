@@ -251,7 +251,7 @@ export default function WorkCarousel({ work, currentCat, currentType }) {
       <div className="col-span-9 md:col-span-3 md:col-start-7 flex justify-center p-3">
         <div className="w-full md:w-9/12">
           <div className="pt-[10vw] pb-[25vw]">
-            {[...Array(5)].map((index) => ( 
+            {[...Array(1)].map((index) => ( 
               <div key={index}>
                 {work.map((e, i) => {
                   let width = 'w-full md:w-[75%] mx-auto'
