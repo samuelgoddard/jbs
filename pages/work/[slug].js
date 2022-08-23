@@ -270,10 +270,6 @@ export default function WorkSlug(initialData) {
                       <h2 className="block text-2xl md:text-3xl xl:text-4xl leading-1 md:leading-1 xl:leading-[1.2] 2xl:leading-[1.2] font-sans uppercase relative overflow-hidden">
                         <m.span variants={revealDelay} className="block">{campaignTitle}</m.span>
                       </h2>
-
-                      <h2 className="block text-2xl md:text-3xl xl:text-4xl leading-1 md:leading-1 xl:leading-[1.2] 2xl:leading-[1.2] font-sans uppercase relative overflow-hidden text-right flex-1">
-                        <m.span variants={revealDelay} className="block">Quick View</m.span>
-                      </h2>
                     </div>
 
                     {/* <div className="mb-4">
