@@ -17,6 +17,7 @@ import ScrollBoundImage from '@/components/scroll-bound-image'
 import ScrollBoundStack from '@/components/scroll-bound-stack'
 import StudioTitle from '@/components/studio-title'
 import { IntroContext } from '@/context/intro'
+import ScrollBoundFlicker from '@/components/scroll-bound-flicker'
 
 const query = `{
   "studio": *[_type == "studio"][0]{
@@ -36,7 +37,7 @@ const query = `{
     content,
     clientList,
     servicesList,
-    contentSupportingImage {
+    contentSupportingImages[] {
       asset-> {
         ...
       },
@@ -143,13 +144,10 @@ export default function Studio(initialData) {
                   <div className="p-3">
                     <div className="grid grid-cols-9 mb-12 md:mb-24 xl:mb-28 2xl:mb-40">
                       <div className="hidden md:block col-span-2 relative  h-[28.5vw]">
-                        <ScrollBoundStack
-                          image={studio.contentSupportingImage}
-                          image2={studio.contentSupportingImage}
+                        <ScrollBoundFlicker
+                          images={studio.contentSupportingImages}
                           id="supporting-image"
                         />
-
-                        <span className="text-xs mt-2 absolute top-auto bottom-0 left-0 z-10 block -mb-6">"{studio.contentSupportingImage.caption}"</span>
                       </div>
                       
                       <div className="col-span-7 md:col-span-3 col-start-1 md:col-start-5 leading-snug max-w-[550px]">

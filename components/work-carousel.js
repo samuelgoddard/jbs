@@ -4,6 +4,7 @@ import Image from '@/components/image'
 import { AnimatePresence, m } from 'framer-motion'
 import { revealDelay, reveal, scaleDelay } from '@/helpers/transitions'
 import { useLocomotiveScroll } from 'react-locomotive-scroll'
+import ProgressBar from './progress-bar'
 
 export default function WorkCarousel({ work, currentCat, currentType }) {
   const [current, setCurrent] = useState(0);
@@ -29,11 +30,13 @@ export default function WorkCarousel({ work, currentCat, currentType }) {
   // }, [scroll])
 
   return (
+    <>
     <div className="grid grid-cols-9" id="sticky">
       <div className="fixed top-0 left-0 w-[85vw] md:w-[66.75vw]" data-scroll data-scroll-sticky data-scroll-target="#sticky">
-        <div className="h-screen flex-col flex-wrap relative p-3 hidden md:flex pt-[7vw]">
-        
-          <div className="hidden md:flex w-full pb-3">
+      <Link href={`/work/${work[current].slug.current}`}>
+        <a className="h-screen flex-col flex-wrap relative p-3 hidden md:flex group">  
+          <div className="hidden md:flex w-full pb-3 md:pt-[12vw] xl:pt-[7.5vw] 2xl:pt-[5vw]">
+            
             <div className="block overflow-hidden w-full">
 
               <AnimatePresence initial={false}>
@@ -63,7 +66,7 @@ export default function WorkCarousel({ work, currentCat, currentType }) {
                       )
                     })}
                   </h1>
-                  <h2 className="text-4xl leading-1 md:leading-1 xl:leading-[1.2] 2xl:leading-[1.2] font-sans uppercase mb-[-5px] md:mb-[-5px] relative overflow-hidden block w-full mt-3">
+                  <h2 className="text-2xl xl:text-3xl leading-1 md:leading-1 xl:leading-[1.2] 2xl:leading-[1.2] font-sans uppercase mb-[-5px] md:mb-[-5px] relative overflow-hidden block w-full mt-3">
                     {work.map((e, i) => {
                       return i == current ? (
                         <m.span
@@ -73,7 +76,7 @@ export default function WorkCarousel({ work, currentCat, currentType }) {
                           animate={{ y: 0, transition: { duration: 0.45, ease: [0.76, 0, 0.24, 1] } }}
                           exit={{ y: '100%', transition: { duration: 0.45, ease: [0.76, 0, 0.24, 1] } }}
                         >
-                          {e.campaignTitle} &bull; {e.type.replace(/-/g, ' ')}
+                          {e.campaignTitle} &bull; {e.type.replace(/-/g, ' ').replace(/and/g, '&').replace(/moving/g, 'motion').replace(/still/g, 'stills')}
                         </m.span>
                       ) : (
                         <m.span
@@ -83,7 +86,7 @@ export default function WorkCarousel({ work, currentCat, currentType }) {
                           animate={{ y: '100%', transition: { duration: 0.45, ease: [0.76, 0, 0.24, 1] } }}
                           exit={{ y: 0, transition: { duration: 0.45, ease: [0.76, 0, 0.24, 1] } }}
                         >
-                          {e.campaignTitle} &bull; {e.type.replace(/-/g, ' ')}
+                          {e.campaignTitle} &bull; {e.type.replace(/-/g, ' ').replace(/and/g, '&').replace(/moving/g, 'motion').replace(/still/g, 'stills')}
                         </m.span>
                       )
                     })}
@@ -96,22 +99,21 @@ export default function WorkCarousel({ work, currentCat, currentType }) {
 
           <div className="hidden md:block w-full flex-1">
             <div className="w-full h-full block">
-              
-                <div className="w-full h-full block">
-                  <div className="h-full relative overflow-hidden mb-1">
+                <div className="w-full h-full flex flex-col">
+                  <div className="flex-1 relative overflow-hidden mb-1">
                     <m.div variants={scaleDelay} className="w-full h-full">
                       <Image
                         image={work[current].teaserImage}
                         widthOverride={1400}
                         layout="fill"
-                        className="w-full h-full transition-transform ease-in-out duration-[350ms] group-hover:scale-[1.05]"
+                        className="w-full h-full transition-transform ease-in-out duration-[500ms] group-hover:scale-[1.02]"
                         alt={work[current].title}
                       />
                     </m.div>
                   </div>
 
-                  <div className="w-full grid grid-cols-6">
-                    {/* <div className="col-span-1">
+                  <div className="w-full grid grid-cols-6 pt-2 h-auto">
+                    <div className="col-span-1">
                       <span className="block leading-none text-sm overflow-hidden w-full">
                         <AnimatePresence>
                           <span className="block overflow-hidden relative w-full">
@@ -205,7 +207,7 @@ export default function WorkCarousel({ work, currentCat, currentType }) {
 
                       </span>
                     </div>
-                    <div className="col-span-1 text-right">
+                    <div className="col-span-2 text-right">
                       <span className="block leading-none text-sm overflow-hidden w-full">
                         <AnimatePresence>
                           <span className="block overflow-hidden relative w-full">
@@ -236,7 +238,7 @@ export default function WorkCarousel({ work, currentCat, currentType }) {
                         </AnimatePresence>
                       </span>
                     </div>
-                    <div className="col-span-1 text-right">
+                    {/* <div className="col-span-1 text-right">
                       <span className="block leading-none text-sm overflow-hidden underline">
                         <m.span className="block" variants={reveal}>Case Study</m.span>
                       </span>
@@ -246,11 +248,12 @@ export default function WorkCarousel({ work, currentCat, currentType }) {
             </div>
           </div>
         
-        </div>
+        </a>
+        </Link>
       </div>
       <div className="col-span-9 md:col-span-3 md:col-start-7 flex justify-center p-3">
         <div className="w-full md:w-9/12">
-          <div className="pt-[10vw] pb-[25vw]">
+          <div className="pt-[10vw] pb-[15vw]">
             {[...Array(1)].map((index) => ( 
               <div key={index}>
                 {work.map((e, i) => {
@@ -384,5 +387,6 @@ export default function WorkCarousel({ work, currentCat, currentType }) {
         </div>
       </div>
     </div>
+    </>
   )
 }

@@ -24,7 +24,7 @@
 }
 
 .embla__slide {
-  @apply bg-gray-100 relative min-w-full h-[60vw];
+  @apply bg-gray-100 relative min-w-full h-[60vw] cursor-grab;
 }
 
 .embla__slide--horizontal {
@@ -48,7 +48,7 @@
 }
 
 .embla__dot {
-  @apply rounded-full w-[35px] h-[35px] flex items-center justify-center font-mono;
+  @apply rounded-full w-[35px] h-[35px] flex items-center justify-center font-mono cursor-pointer;
 }
 
 .embla__dot.is-selected {

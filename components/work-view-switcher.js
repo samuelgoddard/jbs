@@ -5,6 +5,7 @@ import FilterButton from '@/components/filter-button'
 import { useLocomotiveScroll } from 'react-locomotive-scroll'
 import { reveal } from '@/helpers/transitions'
 import { m } from 'framer-motion'
+import ProgressBar from './progress-bar'
 
 export default function WorkViewSwitcher({ work }) {
   const { scroll } = useLocomotiveScroll()
@@ -51,7 +52,7 @@ export default function WorkViewSwitcher({ work }) {
 
   return (
     <>
-      <div className="w-full pb-3 fixed top-0 left-0 right-0 z-[90] bg-white p-3">
+      <div className="w-full pb-3 fixed top-0 left-0 right-0 p-3 z-[10000]">
         <div className="w-[80vw] md:w-[65.5vw] flex space-x-6 items-center">
           <div className="w-full md:w-8/12 flex space-x-[2vw]">
             {/* <FilterButton label={'all'} onClick={resetFilters} current={currentCat} />
@@ -65,12 +66,12 @@ export default function WorkViewSwitcher({ work }) {
             <FilterButton label={'moving'} onClick={() => updateType('moving')} current={currentType} /> */}
 
 
-            <div className="justify-center">
-              <nav>
+            <div className="justify-center flex bg-white">
+              <nav className="bg-white relative z-[100000] pl-3">
                 <ul className="text-right flex space-x-2 mr-3 xl:mr-0">
                   <li className="block">
                     <button
-                      className={`text-lg md:text-[2.8vw] xl:text-[2.2vw] 2xl:text-[2vw] leading-none md:leading-none xl:leading-none 2xl:leading-none font-sans uppercase overflow-hidden group ${currentView == 'list' && 'text-[#D3D3D3]' }`}
+                      className={`text-3xl xl:text-4xl leading-1 md:leading-1 xl:leading-[1] 2xl:leading-[1] font-sans uppercase overflow-hidden group ${currentView == 'list' && 'text-[#D3D3D3]' }`}
                       onClick={() => updateCurrentView('grid')}
                     >
                       <m.span className="block relative overflow-hidden" variants={reveal}>
@@ -81,7 +82,7 @@ export default function WorkViewSwitcher({ work }) {
                   </li>
                   <li className="block">
                     <button
-                      className={`text-lg md:text-[2.8vw] xl:text-[2.2vw] 2xl:text-[2vw] leading-none md:leading-none xl:leading-none 2xl:leading-none font-sans uppercase overflow-hidden group ${currentView == 'grid' && 'text-[#D3D3D3]' }`}
+                      className={`text-3xl xl:text-4xl leading-1 md:leading-1 xl:leading-[1] 2xl:leading-[1] font-sans uppercase overflow-hidden group ${currentView == 'grid' && 'text-[#D3D3D3]' }`}
                       onClick={() => updateCurrentView('list')}
                     >
                       <m.span className="block relative overflow-hidden" variants={reveal}>

@@ -196,7 +196,7 @@ export default function WorkSlug(initialData) {
             <div data-scroll-container ref={containerRef} id="scroll-container">
               <div data-scroll-section>
 
-                <div className="p-3 self-start absolute top-0 left-0">
+                <div className="p-3 self-start absolute top-0 left-0 z-[1000]" data-scroll data-scroll-sticky data-scroll-target="#scroll-container">
                   <Link href="/">
                     <a className={`mb-1 md:mb-0 block w-[60px] overflow-hidden text-black relative z-[400]`}>
                       <m.div variants={revealDelayTop}>
@@ -211,7 +211,7 @@ export default function WorkSlug(initialData) {
                   </Link>
                 </div>
 
-                <m.header className="flex justify-center">
+                <m.header className="flex justify-center z-[1000] relative" data-scroll data-scroll-sticky data-scroll-target="#scroll-container">
                   <div className="flex space-x-1 p-3">
                     <Link href="/work">
                       <a className="text-lg md:text-[2.8vw] xl:text-[2.2vw] 2xl:text-[2vw] leading-none md:leading-none xl:leading-none 2xl:leading-none font-sans uppercase relative overflow-hidden block group">
