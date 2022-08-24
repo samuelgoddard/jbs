@@ -53,6 +53,10 @@ export default function WorkViewSwitcher({ work }) {
   return (
     <>
       <div className="w-full pb-3 fixed top-0 left-0 right-0 p-3 z-[10000]">
+        { currentView == 'grid' && (
+          <ProgressBar/>
+        )}
+
         <div className="w-[80vw] md:w-[65.5vw] flex space-x-6 items-center">
           <div className="w-full md:w-8/12 flex space-x-[2vw]">
             {/* <FilterButton label={'all'} onClick={resetFilters} current={currentCat} />
@@ -66,8 +70,8 @@ export default function WorkViewSwitcher({ work }) {
             <FilterButton label={'moving'} onClick={() => updateType('moving')} current={currentType} /> */}
 
 
-            <div className="justify-center flex bg-white">
-              <nav className="bg-white relative z-[100000] pl-3">
+            <div className="justify-center flex">
+              <nav className={`relative z-[100000] pl-3 ${currentView == 'grid' && 'bg-white' }`}>
                 <ul className="text-right flex space-x-2 mr-3 xl:mr-0">
                   <li className="block">
                     <button

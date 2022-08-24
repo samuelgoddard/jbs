@@ -104,7 +104,6 @@ export default function Work(initialData) {
               containerRef={containerRef}
               watch={[]}
             >
-              <ProgressBar/>
               <WorkViewSwitcher work={work} />
             </LocomotiveScrollProvider>
           </m.div>

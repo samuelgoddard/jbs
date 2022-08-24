@@ -262,7 +262,7 @@ export default function WorkSlug(initialData) {
                       </div>
                     </div>
 
-                    <h1 className="font-bold text-[14vw] md:text-[13vw] xl:text-[12vw] ml-[0vw] leading-[0.8] md:leading-[0.8] xl:leading-[0.8] relative overflow-hidden block mb-1 md:mb-3 px-0">
+                    <h1 className="font-bold text-[14vw] md:text-[13vw] xl:text-[12vw] ml-[0vw] leading-[0.8] md:leading-[0.8] xl:leading-[0.8] relative overflow-hidden block mb-1 md:mb-3 px-3 md:px-0">
                       <m.span variants={revealDelay} className="block">{title}</m.span>                        
                     </h1>
                     <div className="flex items-end mb-3 px-3">
