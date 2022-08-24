@@ -27,6 +27,7 @@ const query = `*[_type == "work" && slug.current == $slug][0]{
     alt,
     caption
   },
+  year,
   location,
   type,
   campaignTitle,
@@ -168,7 +169,7 @@ const query = `*[_type == "work" && slug.current == $slug][0]{
 const pageService = new SanityPageService(query)
 
 export default function WorkSlug(initialData) {
-  const { data: { title, heroCarouselImages, moreWork, moreWorkLoop, location, campaignTitle, tags, credits, contact, contentBlocks, type }  } = pageService.getPreviewHook(initialData)()
+  const { data: { title, heroCarouselImages, moreWork, moreWorkLoop, location, year, campaignTitle, tags, credits, contact, contentBlocks, type }  } = pageService.getPreviewHook(initialData)()
 
   const containerRef = useRef(null)
   const [introContext, setIntroContext] = useContext(IntroContext);
@@ -216,8 +217,8 @@ export default function WorkSlug(initialData) {
                     <Link href="/work">
                       <a className="text-lg md:text-[2.8vw] xl:text-[2.2vw] 2xl:text-[2vw] leading-none md:leading-none xl:leading-none 2xl:leading-none font-sans uppercase relative overflow-hidden block group">
                         <m.span variants={revealDelayTop} className="block">
-                          <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-300 opacity-20">Work</span>
-                          <span className="block absolute inset-0 transition-transform ease-in-out duration-300 -translate-y-full group-hover:translate-y-0">Work</span>
+                          <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms] opacity-20">Work</span>
+                          <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0">Work</span>
                         </m.span>
                       </a>
                     </Link>
@@ -239,13 +240,13 @@ export default function WorkSlug(initialData) {
                             <m.span variants={revealDelayTop} className="block">JBS.02</m.span>
                           </span>
                           <span className="text-sm md:text-base block leading-none md:leading-none mb-1 relative overflow-hidden">
+                            <m.span variants={revealDelayTop} className="block">{title}</m.span>
+                          </span>
+                          <span className="text-sm md:text-base block leading-none md:leading-none mb-1 relative overflow-hidden">
                             <m.span variants={revealDelayTop} className="block">{campaignTitle}</m.span>
                           </span>
                           <span className="text-sm md:text-base block leading-none md:leading-none mb-1 relative overflow-hidden">
-                            <m.span variants={revealDelayTop} className="block">{location}</m.span>
-                          </span>
-                          <span className="text-sm md:text-base block leading-none md:leading-none mb-1 relative overflow-hidden">
-                            <m.span variants={revealDelayTop} className="block">{title}</m.span>
+                            <m.span variants={revealDelayTop} className="block">{year}</m.span>
                           </span>
                         </div>
                         { tags && (
@@ -277,11 +278,11 @@ export default function WorkSlug(initialData) {
                     </div> */}
 
                     { heroCarouselImages.length > 1 ? (
-                      <div className="mb-16 md:mb-24 xl:mb-28">
+                      <div className="mb-[12vw]">
                         <Carousel slides={heroCarouselImages} id="hero-carousel" />
                       </div>
                     ) : (
-                      <div className="mb-16 md:mb-24 xl:mb-28">
+                      <div className="mb-[12vw]">
                         <div className={`embla`}>
                           <div className="embla__viewport">
                             <div className="embla__container">
@@ -342,7 +343,7 @@ export default function WorkSlug(initialData) {
                             return (
                               <Link href={`/work/${e.slug.current}`} key={i}>
                                 <a className={`flex items-center w-full border-b border-black py-3 group overflow-hidden relative ${i == 1 ? 'text-right justify-end' : '' }`}>
-                                  <div className={`w-[16.5%] max-w-[300px] min-h-[9vw] md:min-h-[9vw] xl:min-h-[8.4vw] bg-gray-100 relative overflow-hidden ${ i == 1 ? 'order-2' : 'order-1' }`}>
+                                  <div className={`w-[16.5%] max-w-[230px] min-h-[9vw] md:min-h-[9vw] xl:min-h-[8.4vw] bg-gray-100 relative overflow-hidden ${ i == 1 ? 'order-2' : 'order-1' }`}>
                                     <Image
                                       image={e.teaserImage}
                                       className="w-full"
@@ -352,13 +353,13 @@ export default function WorkSlug(initialData) {
                                     />
                                   </div>
                                   <div className={`px-3 md:px-4 xl:px-5 ${ i == 1 ? 'order-1' : 'order-2' }`}>
-                                    <h2 className={`block text-[5.75vw] leading-[0.8] mb-1 md:mb-3 relative overflow-hidden`}>
-                                      <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-300">{e.title}</span>
-                                      <span className="block absolute inset-0 transition-transform ease-in-out duration-300 -translate-y-full group-hover:translate-y-0 text-orange">{e.title}</span>
+                                    <h2 className={`block text-[5.75vw] leading-[0.8] mb-1 md:mb-2 relative overflow-hidden`}>
+                                      <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">{e.title}</span>
+                                      <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0 text-orange">{e.title}</span>
                                     </h2>
                                     <span className="block text-xl md:text-2xl xl:text-3xl leading-[1] md:leading-[1] xl:leading-[1] 2xl:leading-[1] font-sans uppercase relative overflow-hidden">
-                                      <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-300">{e.campaignTitle}</span>
-                                      <span className="block absolute inset-0 transition-transform ease-in-out duration-300 -translate-y-full group-hover:translate-y-0 text-orange">{e.campaignTitle}</span>
+                                      <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">{e.campaignTitle}</span>
+                                      <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0 text-orange">{e.campaignTitle}</span>
                                     </span>
                                   </div>
                                 </a>
@@ -372,7 +373,7 @@ export default function WorkSlug(initialData) {
                             return (
                               <Link href={`/work/${e.slug.current}`} key={i}>
                                 <a className={`flex items-center w-full border-b border-black py-3 ${i == 1 ? 'text-right justify-end' : '' }`}>
-                                  <div className={`w-[16.5%] max-w-[300px] min-h-[9vw] md:min-h-[9vw] xl:min-h-[8.4vw] bg-gray-100 relative overflow-hidden ${ i == 1 ? 'order-2' : 'order-1' }`}>
+                                  <div className={`w-[16.5%] max-w-[230px] min-h-[9vw] md:min-h-[9vw] xl:min-h-[8.4vw] bg-gray-100 relative overflow-hidden ${ i == 1 ? 'order-2' : 'order-1' }`}>
                                     <Image
                                       image={e.teaserImage}
                                       className="w-full"
@@ -382,7 +383,7 @@ export default function WorkSlug(initialData) {
                                     />
                                   </div>
                                   <div className={`px-3 md:px-4 xl:px-5 ${ i == 1 ? 'order-1' : 'order-2' }`}>
-                                    <h2 className={`block text-[5.75vw] leading-[0.8] mb-1 md:mb-3`}>{e.title}</h2>
+                                    <h2 className={`block text-[5.75vw] leading-[0.8] mb-1 md:mb-2`}>{e.title}</h2>
                                     <span className="block text-xl md:text-2xl xl:text-3xl leading-[1] md:leading-[1] xl:leading-[1] 2xl:leading-[1] font-sans uppercase relative overflow-hidden">{e.campaignTitle}</span>
                                   </div>
                                 </a>

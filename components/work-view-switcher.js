@@ -79,8 +79,8 @@ export default function WorkViewSwitcher({ work }) {
                       onClick={() => updateCurrentView('grid')}
                     >
                       <m.span className="block relative overflow-hidden" variants={reveal}>
-                        <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-300">Grid</span>
-                        <span className="block absolute inset-0 transition-transform ease-in-out duration-300 -translate-y-full group-hover:translate-y-0">Grid</span>
+                        <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">Grid</span>
+                        <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0">Grid</span>
                       </m.span>
                     </button>
                   </li>
@@ -90,8 +90,8 @@ export default function WorkViewSwitcher({ work }) {
                       onClick={() => updateCurrentView('list')}
                     >
                       <m.span className="block relative overflow-hidden" variants={reveal}>
-                        <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-300">List</span>
-                        <span className="block absolute inset-0 transition-transform ease-in-out duration-300 -translate-y-full group-hover:translate-y-0">List</span>
+                        <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">List</span>
+                        <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0">List</span>
                       </m.span>
                     </button>
                   </li>

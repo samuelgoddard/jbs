@@ -6,7 +6,7 @@ export const fade = {
   },
 	exit: {
     opacity: 0,
-		transition: { duration: 0.45, ease: [0.76, 0, 0.24, 1] }
+		transition: { duration: 0.65, ease: [0.76, 0, 0.24, 1] }
 	}
 }
 
@@ -18,7 +18,7 @@ export const fadeDelay = {
   },
 	exit: {
     opacity: 0,
-		transition: { duration: 0.45, ease: [0.76, 0, 0.24, 1] }
+		transition: { duration: 0.65, ease: [0.76, 0, 0.24, 1] }
 	}
 }
 
@@ -30,7 +30,7 @@ export const reveal = {
   },
 	exit: {
     y: '-100%',
-		transition: { duration: 0.45, ease: [0.76, 0, 0.24, 1] }
+		transition: { duration: 0.65, ease: [0.76, 0, 0.24, 1] }
 	}
 }
 
@@ -42,7 +42,7 @@ export const revealDelay = {
   },
 	exit: {
     y: '-100%',
-		transition: { duration: 0.45, ease: [0.76, 0, 0.24, 1] }
+		transition: { duration: 0.65, ease: [0.76, 0, 0.24, 1] }
 	}
 }
 
@@ -54,7 +54,7 @@ export const revealDelayBottom = {
   },
 	exit: {
     y: '-100%',
-		transition: { duration: 0.45, ease: [0.76, 0, 0.24, 1] }
+		transition: { duration: 0.65, ease: [0.76, 0, 0.24, 1] }
 	}
 }
 
@@ -66,18 +66,18 @@ export const revealDelayTop = {
   },
 	exit: {
     y: '-100%',
-		transition: { duration: 0.45, ease: [0.76, 0, 0.24, 1] }
+		transition: { duration: 0.65, ease: [0.76, 0, 0.24, 1] }
 	}
 }
 
 export const scaleDelay = {
-	initial: { scale: 1.05 },
+	initial: { scale: 1.035 },
   enter: { 
     scale: 1,
     transition: { duration: 0.65, ease: [0.76, 0, 0.24, 1] }
   },
 	exit: {
-    scale: 1.05,
-		transition: { duration: 0.45, ease: [0.76, 0, 0.24, 1] }
+    scale: 1.035,
+		transition: { duration: 0.65, ease: [0.76, 0, 0.24, 1] }
 	}
 }

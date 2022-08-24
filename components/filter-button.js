@@ -10,8 +10,8 @@ export default function FilterButton({ label, current, onClick}) {
         )}
       </m.span>
       <m.span className="inline-block relative overflow-hidden" variants={reveal}>
-        <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-300">{label}</span>
-        <span className="block absolute inset-0 transition-transform ease-in-out duration-300 -translate-y-full group-hover:translate-y-0">{label}</span>
+        <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">{label}</span>
+        <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0">{label}</span>
       </m.span>
     </button>
   )

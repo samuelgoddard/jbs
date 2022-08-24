@@ -167,7 +167,7 @@ export default function Menu(initialData) {
                     focalPoint={menu.backgroundImage.hotspot}
                     layout="fill"
                     widthOverride={1200}
-                    className={`absolute inset-0 w-full h-full z-0 object-cover object-center transition-all ease-custom duration-[400ms] ${(currentHover == 'work' || currentHover == 'studio' || currentHover == 'home' || currentHover == 'reel') ? 'opacity-0 scale-[1.05]' : 'scale-1 opacity-100' }`}
+                    className={`absolute inset-0 w-full h-full z-0 object-cover object-center transition-all ease-custom duration-[450ms] ${(currentHover == 'work' || currentHover == 'studio' || currentHover == 'home' || currentHover == 'reel') ? 'opacity-0 scale-1' : 'scale-1 opacity-100' }`}
                   />
 
                   <Image 
@@ -175,28 +175,28 @@ export default function Menu(initialData) {
                     focalPoint={menu.homeBackgroundImage.hotspot}
                     layout="fill"
                     widthOverride={1200}
-                    className={`absolute inset-0 w-full h-full z-0 object-cover object-center transition-all ease-custom duration-[400ms] ${currentHover == 'home' ? 'opacity-100 scale-1' : 'scale-[1.05] opacity-0' }`}
+                    className={`absolute inset-0 w-full h-full z-0 object-cover object-center transition-all ease-custom duration-[450ms] ${currentHover == 'home' ? 'opacity-100 scale-1' : 'scale-1 opacity-0' }`}
                   />
                   <Image 
                     image={menu.workBackgroundImage}
                     focalPoint={menu.workBackgroundImage.hotspot}
                     layout="fill"
                     widthOverride={1200}
-                    className={`absolute inset-0 w-full h-full z-0 object-cover object-center transition-all ease-custom duration-[400ms] ${currentHover == 'work' ? 'opacity-100 scale-1' : 'scale-[1.05] opacity-0' }`}
+                    className={`absolute inset-0 w-full h-full z-0 object-cover object-center transition-all ease-custom duration-[450ms] ${currentHover == 'work' ? 'opacity-100 scale-1' : 'scale-1 opacity-0' }`}
                   />
                   <Image 
                     image={menu.studioBackgroundImage}
                     focalPoint={menu.studioBackgroundImage.hotspot}
                     layout="fill"
                     widthOverride={1200}
-                    className={`absolute inset-0 w-full h-full z-0 object-cover object-center transition-all ease-custom duration-[400ms] ${currentHover == 'studio' ? 'opacity-100 scale-1' : 'scale-[1.05] opacity-0' }`}
+                    className={`absolute inset-0 w-full h-full z-0 object-cover object-center transition-all ease-custom duration-[450ms] ${currentHover == 'studio' ? 'opacity-100 scale-1' : 'scale-1 opacity-0' }`}
                   />
                   <Image 
                     image={menu.reelBackgroundImage}
                     focalPoint={menu.reelBackgroundImage.hotspot}
                     layout="fill"
                     widthOverride={1200}
-                    className={`absolute inset-0 w-full h-full z-0 object-cover object-center transition-all ease-custom duration-[400ms] ${currentHover == 'reel' ? 'opacity-100 scale-1' : 'scale-[1.05] opacity-0' }`}
+                    className={`absolute inset-0 w-full h-full z-0 object-cover object-center transition-all ease-custom duration-[450ms] ${currentHover == 'reel' ? 'opacity-100 scale-1' : 'scale-1 opacity-0' }`}
                   />
                 </m.div>
 
@@ -214,8 +214,8 @@ export default function Menu(initialData) {
                           className="text-5xl md:text-[7vw] xl:text-[6vw] 2xl:text-[5.5vw] leading-[0.8] md:leading-[0.8] xl:leading-[0.8] 2xl:leading-[0.8] font-sans uppercase block relative overflow-hidden my-3 group"
                         >
                           <m.span variants={revealDelay} className="block relative">
-                            <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-300">Home</span>
-                            <span className="block absolute inset-0 transition-transform ease-in-out duration-300 -translate-y-full group-hover:translate-y-0 text-orange">Home</span>
+                            <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">Home</span>
+                            <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0 text-orange">Home</span>
                           </m.span>
                         </a>
                       </Link>
@@ -228,8 +228,8 @@ export default function Menu(initialData) {
                           className="text-5xl md:text-[7vw] xl:text-[6vw] 2xl:text-[5.5vw] leading-[0.8] md:leading-[0.8] xl:leading-[0.8] 2xl:leading-[0.8] font-sans uppercase block relative overflow-hidden my-3 group"
                         >
                           <m.span variants={revealDelay} className="block relative">
-                            <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-300">Work</span>
-                            <span className="block absolute inset-0 transition-transform ease-in-out duration-300 -translate-y-full group-hover:translate-y-0 text-orange">Work</span>
+                            <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">Work</span>
+                            <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0 text-orange">Work</span>
                           </m.span>
                         </a>
                       </Link>
@@ -242,8 +242,8 @@ export default function Menu(initialData) {
                           className="text-5xl md:text-[7vw] xl:text-[6vw] 2xl:text-[5.5vw] leading-[0.8] md:leading-[0.8] xl:leading-[0.8] 2xl:leading-[0.8] font-sans uppercase block relative overflow-hidden my-3 group"
                         >
                           <m.span variants={revealDelay} className="block relative">
-                            <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-300">Studio</span>
-                            <span className="block absolute inset-0 transition-transform ease-in-out duration-300 -translate-y-full group-hover:translate-y-0 text-orange">Studio</span>
+                            <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">Studio</span>
+                            <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0 text-orange">Studio</span>
                           </m.span>
                         </a>
                       </Link>
@@ -258,8 +258,8 @@ export default function Menu(initialData) {
                         className="text-5xl md:text-[6vw] xl:text-[6vw] 2xl:text-[5.5vw] leading-[0.8] md:leading-[0.8] xl:leading-[0.8] 2xl:leading-[0.8] font-sans uppercase block relative overflow-hidden my-3 group"
                       >
                         <m.span variants={revealDelay} className="block relative">
-                          <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-300">Insta</span>
-                          <span className="block absolute inset-0 transition-transform ease-in-out duration-300 -translate-y-full group-hover:translate-y-0 text-orange">Insta</span>
+                          <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">Insta</span>
+                          <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0 text-orange">Insta</span>
                         </m.span>
                       </a>
                     </li>
@@ -273,36 +273,36 @@ export default function Menu(initialData) {
                 {/* <div className="grid-col-1 hidden md:block">
                   <a href="https://www.instagram.com/jasonbaileystudio" className="block text-[10px] md:text-[11px] lg:text-sm 2xl:text-base leading-[0.85] md:leading-[0.85] lg:leading-[0.85] 2xl:leading-[0.85] relative overflow-hidden group">
                     <m.span variants={revealDelayBottom} className="block relative">
-                      <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-300">Instagram</span>
-                      <span className="block absolute inset-0 transition-transform ease-in-out duration-300 -translate-y-full group-hover:translate-y-0">Instagram</span>
+                      <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">Instagram</span>
+                      <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0">Instagram</span>
                     </m.span>
                   </a>
                 </div> */}
 
                 <div className="grid-col-1 hidden md:block">
-                  <a href="#" className="block text-[10px] md:text-[11px] lg:text-sm 2xl:text-base leading-[0.85] md:leading-[0.85] lg:leading-[0.85] 2xl:leading-[0.85] relative overflow-hidden group">
+                  <a href="#" className="block text-[10px] md:text-[11px] lg:text-sm 2xl:text-base leading-[0.95] md:leading-[0.95] lg:leading-[0.95] 2xl:leading-[0.95] relative overflow-hidden group">
                     <m.span variants={revealDelayBottom} className="block relative">
-                      <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-300">Email</span>
-                      <span className="block absolute inset-0 transition-transform ease-in-out duration-300 -translate-y-full group-hover:translate-y-0">Email</span>
+                      <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms] underline">Email Us</span>
+                      <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0 underline">Email Us</span>
                     </m.span>
                   </a>
                 </div>
 
-                <div className="grid-col-1 col-start-2 hidden md:block">
-                  <a href="#" className="block text-[10px] md:text-[11px] lg:text-sm 2xl:text-base leading-[0.85] md:leading-[0.85] lg:leading-[0.85] 2xl:leading-[0.85] relative overflow-hidden group">
+                <div className="grid-col-1 col-start-3 hidden md:block text-center">
+                  <a href="#" className="block text-[10px] md:text-[11px] lg:text-sm 2xl:text-base leading-[0.95] md:leading-[0.95] lg:leading-[0.95] 2xl:leading-[0.95] relative overflow-hidden group">
                     <m.span variants={revealDelayBottom} className="block relative">
-                      <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-300">Terms</span>
-                      <span className="block absolute inset-0 transition-transform ease-in-out duration-300 -translate-y-full group-hover:translate-y-0">Terms</span>
+                      <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms] underline">Privacy</span>
+                      <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0 underline">Privacy</span>
                     </m.span>
                   </a>
                 </div>
 
-                <div className="grid-col-1 hidden md:block">
+                <div className="grid-col-3 col-start-6 hidden md:block">
                   <a href="#" className="block text-[10px] md:text-[11px] lg:text-sm 2xl:text-base leading-[0.95] md:leading-[0.95] lg:leading-[0.95] 2xl:leading-[0.95] relative overflow-hidden group">
                     <m.span variants={revealDelayBottom} className="flex space-x-1">
-                      <span className="block">By</span><span className="underline relative">
-                      <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-300 underline">ShiftWalk</span>
-                      <span className="block absolute inset-0 transition-transform ease-in-out duration-300 underline -translate-y-full group-hover:translate-y-0">ShiftWalk</span>
+                      <span className="block">Site By</span><span className="underline relative">
+                      <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms] underline">ShiftWalk</span>
+                      <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] underline -translate-y-full group-hover:translate-y-0">ShiftWalk</span>
                     </span></m.span>
                   </a>
                 </div>

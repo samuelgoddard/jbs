@@ -14,63 +14,63 @@ const bodySerializers = {
   block: {
     component: BlockContentWrapper,
     wrapper: ({ children }) => 
-      <div className="mb-[15vw]">
+      <div className="mb-[12vw]">
         {children}
       </div>
   },
   collectionGridBlock: {
     component: ModularCollectionGridBlock,
     wrapper: ({ children }) => 
-      <div className="mb-[15vw]">
+      <div className="mb-[12vw]">
         {children}
       </div>
   },
   modularImageBlock: {
     component: ModularImageBlock,
     wrapper: ({ children }) => 
-      <div className="mb-[15vw]">
+      <div className="mb-[12vw]">
         {children}
       </div>
   },
   modularVideoBlock: {
     component: ModularVideoBlock,
     wrapper: ({ children }) => 
-      <div className="mb-[15vw]">
+      <div className="mb-[12vw]">
         {children}
       </div>
   },
   imageCarouselBlock: {
     component: ModularImageCarouselBlock,
     wrapper: ({ children }) => 
-      <div className="mb-[15vw]">
+      <div className="mb-[12vw]">
         {children}
       </div>
   },
   textBlock: {
     component: ModularTextBlock,
     wrapper: ({ children }) => 
-      <div className="mb-[15vw]">
+      <div className="mb-[12vw]">
         {children}
       </div>
   },
   modularImageTextBlock: {
     component: ModularImageTextBlock,
     wrapper: ({ children }) => 
-      <div className="mb-[15vw]">
+      <div className="mb-[12vw]">
         {children}
       </div>
   },
   modularDoubleImageBlock: {
     component: ModularDoubleImageBlock,
     wrapper: ({ children }) => 
-      <div className="mb-[15vw]">
+      <div className="mb-[12vw]">
         {children}
       </div>
   },
   modularSideBySideImageBlock: {
     component: ModularSideBySideImageBlock,
     wrapper: ({ children }) => 
-      <div className="mb-[15vw]">
+      <div className="mb-[12vw]">
         {children}
       </div>
   }

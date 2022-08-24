@@ -41,14 +41,14 @@ export default function WorkCarousel({ work, currentCat, currentType }) {
 
               <AnimatePresence initial={false}>
                 <span className="block overflow-hidden relative w-full">
-                  <h1 className="text-5xl md:text-[6.5vw] xl:text-[7vw] 2xl:text-[7.5vw] leading-1 md:leading-1 xl:leading-1 2xl:leading-1 font-sans uppercase mb-[-5px] md:mb-[-0.78vw] relative overflow-hidden block w-full ml-[-0.3vw]">
+                  <h1 className="text-5xl md:text-[6.5vw] xl:text-[7vw] 2xl:text-[7.5vw] leading-1 md:leading-1 xl:leading-1 2xl:leading-1 font-sans uppercase mb-[-5px] md:mb-[-1vw] relative overflow-hidden block w-full ml-[-0.3vw]">
                     {work.map((e, i) => {
                       return i == current ? (
                         <m.span
                           key={i}
                           className="block"
                           initial={{ y: '100%', transition: { duration: 0.45, ease: [0.76, 0, 0.24, 1] } }}
-                          animate={{ y: 0, transition: { duration: 0.45, ease: [0.76, 0, 0.24, 1] } }}
+                          animate={{ y: 0, transition: { delay: 0.15, duration: 0.45, ease: [0.76, 0, 0.24, 1] } }}
                           exit={{ y: '100%', transition: { duration: 0.45, ease: [0.76, 0, 0.24, 1] } }}
                         >
                           {e.title}
@@ -66,6 +66,7 @@ export default function WorkCarousel({ work, currentCat, currentType }) {
                       )
                     })}
                   </h1>
+
                   <h2 className="text-2xl xl:text-3xl leading-1 md:leading-1 xl:leading-[1.2] 2xl:leading-[1.2] font-sans uppercase mb-[-5px] md:mb-[-5px] relative overflow-hidden block w-full mt-3">
                     {work.map((e, i) => {
                       return i == current ? (
@@ -281,7 +282,7 @@ export default function WorkCarousel({ work, currentCat, currentType }) {
                   }
                   
                   return (currentType == 'all') ? (
-                    <li className={`block mb-8 md:mb-[7vw] transition-all ease-in-out duration-300 ${width} opacity-100 ${active}`} key={i} onMouseEnter={() => updateCurrent(i)}>
+                    <li className={`block mb-8 md:mb-[7vw] transition-all ease-in-out duration-[450ms] ${width} opacity-100 ${active}`} key={i} onMouseEnter={() => updateCurrent(i)}>
                       { e.teaserImageThumbnail && (
                         <>
                         <Link href={`/work/${e.slug.current}`}>
@@ -293,7 +294,9 @@ export default function WorkCarousel({ work, currentCat, currentType }) {
                                 widthOverride={650}
                                 alt={e.title}
                               />
-                              <span className={`block text-right text-sm mt-1 ${current == i ? 'opacity-100' : 'opacity-0'}`}>{e.title} — {e.campaignTitle}</span>
+                              <div className="overflow-hidden relative">
+                                <span className={`block text-right text-sm mt-1 transition-transform ease-in-out duration-[450ms] ${current == i ? 'translate-y-0' : 'translate-y-full'}`}>{e.title} — {e.campaignTitle}</span>
+                              </div>
                             </m.div>
                           </a>
                         </Link>
@@ -332,7 +335,7 @@ export default function WorkCarousel({ work, currentCat, currentType }) {
                   ) : (
                     <>
                       {(e.type == currentType || e.type == 'still-and-moving') && (
-                        <li className={`block mb-8 md:mb-[7vw] transition-all ease-in-out duration-300  ${width} ${current == i ? 'opacity-100 md:border md:p-4 md:border-black md:border-opacity-[0.15]' : 'md:opacity-100 border-opacity-0  p-0'}`} key={i} onMouseOver={() => setCurrent(i)}>
+                        <li className={`block mb-8 md:mb-[7vw] transition-all ease-in-out duration-[450ms]  ${width} ${current == i ? 'opacity-100 md:border md:p-4 md:border-black md:border-opacity-[0.15]' : 'md:opacity-100 border-opacity-0  p-0'}`} key={i} onMouseOver={() => setCurrent(i)}>
                         { e.teaserImageThumbnail && (
                           <>
                           <Link href={`/work/${e.slug.current}`}>

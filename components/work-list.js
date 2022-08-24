@@ -30,7 +30,7 @@ export default function WorkListSection({ work, currentCat, currentType }) {
                   <Link href={`/work/${e.slug.current}`}>
                     <a className="flex items-center p-3 py-2 md:p-3 text-[12px] lg:text-[14px] relative overflow-visible group">
                       <div
-                        className={`absolute top-0 left-0 right-0 w-full flex items-center justify-center opacity-0 md:group-hover:opacity-100 z-[10] pointer-events-none transition-opacity ease-in-out duration-300 ml-[-10%]`}
+                        className={`absolute top-0 left-0 right-0 w-full flex items-center justify-center opacity-0 md:group-hover:opacity-100 z-[10] pointer-events-none transition-opacity ease-in-out duration-[450ms] ml-[-10%]`}
                       >
                         <div className={`relative overflow-hidden ${e.teaserImageThumbnail.asset.metadata.dimensions.height > e.teaserImageThumbnail.asset.metadata.dimensions.width ? 'w-[15vw] h-[23vw] mt-[-10vw]' : 'w-[20vw] h-[15vw] mt-[-5vw]' }`}>
                           { e.teaserImageThumbnail && (

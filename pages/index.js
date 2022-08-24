@@ -167,14 +167,14 @@ export default function Home(initialData) {
                   image={home.backgroundImage}
                   layout="fill"
                   widthOverride={2000}
-                  className={`hidden md:block fixed inset-0 z-0 object-cover object-enter transition-all ease-custom duration-[450ms] ${(currentHover == 'work' || currentHover == 'studio' ) ? 'opacity-0 scale-[1.05]' : 'scale-1 opacity-100' }`}
+                  className={`hidden md:block fixed inset-0 z-0 object-cover object-enter transition-all ease-custom duration-[450ms] ${(currentHover == 'work' || currentHover == 'studio' ) ? 'opacity-0 scale-1' : 'scale-1 opacity-100' }`}
                 />
 
                 <Image 
                   image={home.backgroundImage}
                   layout="fill"
                   widthOverride={1200}
-                  className={`block md:hidden fixed inset-0 z-0 transition-all ease-custom duration-[450ms] home-image-mobile ${(currentHover == 'work' || currentHover == 'studio' ) ? 'opacity-0 scale-[1.05]' : 'scale-1 opacity-100' }`}
+                  className={`block md:hidden fixed inset-0 z-0 transition-all ease-custom duration-[450ms] home-image-mobile ${(currentHover == 'work' || currentHover == 'studio' ) ? 'opacity-0 scale-1' : 'scale-1 opacity-100' }`}
                 />
 
                 <Image 
@@ -182,7 +182,7 @@ export default function Home(initialData) {
                   focalPoint={home.workBackgroundImage.hotspot}
                   layout="fill"
                   widthOverride={2000}
-                  className={`fixed inset-0 z-0 object-cover object-enter transition-all ease-custom duration-[450ms] ${currentHover == 'work' ? 'opacity-100 scale-1' : 'scale-[1.05] opacity-0' }`}
+                  className={`fixed inset-0 z-0 object-cover object-enter transition-all ease-custom duration-[450ms] ${currentHover == 'work' ? 'opacity-100 scale-1' : 'scale-1 opacity-0' }`}
                 />
 
                 <Image 
@@ -190,7 +190,7 @@ export default function Home(initialData) {
                   focalPoint={home.studioBackgroundImage.hotspot}
                   layout="fill"
                   widthOverride={2000}
-                  className={`fixed inset-0 z-0 object-cover object-enter transition-all ease-custom duration-[450ms] ${currentHover == 'studio' ? 'opacity-100 scale-1' : 'scale-[1.05] opacity-0' }`}
+                  className={`fixed inset-0 z-0 object-cover object-enter transition-all ease-custom duration-[450ms] ${currentHover == 'studio' ? 'opacity-100 scale-1' : 'scale-1 opacity-0' }`}
                 />
               </m.div>
 
@@ -211,8 +211,8 @@ export default function Home(initialData) {
                       onMouseLeave={() => updateCurrentHover(null)}
                     >
                       <m.span className="block relative overflow-hidden" variants={revealDelayBottom}>
-                        <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-300">Work</span>
-                        <span className="block absolute inset-0 transition-transform ease-in-out duration-300 -translate-y-full group-hover:translate-y-0">Work</span>
+                        <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">Work</span>
+                        <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0 text-white">Work</span>
                       </m.span>
                     </a>
                   </Link>
@@ -223,8 +223,8 @@ export default function Home(initialData) {
                   {/* <Link href="/reel">
                     <a className="text-sm md:text-[2.2vw] xl:text-[2vw] 2xl:text-[2.3vw] leading-[0.9] md:leading-[0.9] xl:leading-[0.9] 2xl:leading-[0.9] font-sans uppercase group relative overflow-hidden hidden md:block">
                       <m.span variants={revealDelayBottom} className="hidden md:inline-block relative overflow-hidden">
-                        <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-300">Reel</span>
-                        <span className="block absolute inset-0 transition-transform ease-in-out duration-300 -translate-y-full group-hover:translate-y-0">Reel</span>
+                        <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">Reel</span>
+                        <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0">Reel</span>
                       </m.span>
                       <m.span variants={revealDelayBottom} className="inline-block md:hidden">Reel</m.span>
                     </a>
@@ -232,8 +232,8 @@ export default function Home(initialData) {
 
                   <a href={`mailto:${contact.email}`} className="text-sm md:text-[2.2vw] xl:text-[2vw] 2xl:text-[2.3vw] leading-[0.9] md:leading-[0.9] xl:leading-[0.9] 2xl:leading-[0.9] font-sans uppercase group hidden md:block relative overflow-hidden ml-5">
                     <m.span variants={revealDelayBottom} className="hidden md:inline-block relative overflow-hidden">
-                      <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-300">Get in touch</span>
-                      <span className="block absolute inset-0 transition-transform ease-in-out duration-300 -translate-y-full group-hover:translate-y-0">Get in touch</span>
+                      <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">Get in touch</span>
+                      <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0 text-white">Get in touch</span>
                     </m.span>
                     <m.span variants={revealDelayBottom} className="inline-block md:hidden">Contact</m.span>
                   </a>
@@ -242,8 +242,8 @@ export default function Home(initialData) {
                     return e.title === 'Instagram' && (
                       <a key={i} href={e.url} target="_blank" rel="noopener noreferrer" className="text-sm md:text-[2.2vw] xl:text-[2vw] 2xl:text-[2.3vw] leading-[0.9] md:leading-[0.9] xl:leading-[0.9] 2xl:leading-[0.9] font-sans uppercase hover:underline focus:underline ml-3 hidden md:block relative overflow-hidden group">
                         <m.span className="inline-block" variants={revealDelayBottom}>
-                          <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-300">{e.title}</span>
-                          <span className="block absolute inset-0 transition-transform ease-in-out duration-300 -translate-y-full group-hover:translate-y-0">{e.title}</span>
+                          <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">{e.title}</span>
+                          <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0 text-white">{e.title}</span>
                         </m.span>
                       </a>
                     )
@@ -258,8 +258,8 @@ export default function Home(initialData) {
                       onMouseLeave={() => updateCurrentHover(null)}
                     >
                       <m.span className="block" variants={revealDelayBottom}>
-                        <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-300">Studio</span>
-                        <span className="block absolute inset-0 transition-transform ease-in-out duration-300 -translate-y-full group-hover:translate-y-0">Studio</span>
+                        <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">Studio</span>
+                        <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0 text-white">Studio</span>
                       </m.span>
                     </a>
                   </Link>

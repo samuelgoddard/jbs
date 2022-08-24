@@ -15,8 +15,8 @@ const revealDelay = {
 
 export default function Header({ light }) {
   return (
-    <header className="font-mono w-full z-20 absolute top-0 left-0 right-0 p-3">
-      <div className="flex flex-wrap">
+    <header className="font-mono w-full z-20 absolute top-0 left-0 right-0 p-3 z-[100000000]">
+      <div className="flex flex-wrap relative" data-scroll data-scroll-sticky data-scroll-target="#scroll-container">
         <Link href="/">
           <a className={`mb-1 md:mb-0 block w-[60px] overflow-hidden ${light ? 'text-white' : 'text-black' }`}>
             <m.div variants={revealDelay}>
