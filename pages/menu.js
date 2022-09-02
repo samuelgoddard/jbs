@@ -289,12 +289,14 @@ export default function Menu(initialData) {
                 </div>
 
                 <div className="grid-col-1 col-start-3 hidden md:block text-center">
-                  <a href="#" className="block text-[10px] md:text-[11px] lg:text-sm 2xl:text-base leading-[0.95] md:leading-[0.95] lg:leading-[0.95] 2xl:leading-[0.95] relative overflow-hidden group">
-                    <m.span variants={revealDelayBottom} className="block relative">
-                      <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms] underline">Privacy</span>
-                      <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0 underline">Privacy</span>
-                    </m.span>
-                  </a>
+                  {/* <Link href="/terms">
+                    <a className="block text-[10px] md:text-[11px] lg:text-sm 2xl:text-base leading-[0.95] md:leading-[0.95] lg:leading-[0.95] 2xl:leading-[0.95] relative overflow-hidden group">
+                      <m.span variants={revealDelayBottom} className="block relative">
+                        <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms] underline">Privacy</span>
+                        <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0 underline">Privacy</span>
+                      </m.span>
+                    </a>
+                  </Link> */}
                 </div>
 
                 <div className="grid-col-3 col-start-6 hidden md:block">

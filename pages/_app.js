@@ -37,7 +37,7 @@ export default function App({ Component, pageProps }) {
               initial="visible"
               animate="hidden"
               variants={introEnd}
-              transition={{ delay: 4.5, duration: 0.5, ease: [0.83, 0, 0.17, 1] }}
+              transition={{ delay: 2.95, duration: 0.5, ease: [0.83, 0, 0.17, 1] }}
               className="bg-white fixed inset-0 z-[1000] pointer-events-none flex flex-col"
             >
               <div className="bg-white fixed inset-0 z-[1000] pointer-events-none flex flex-col h-full">
@@ -47,7 +47,7 @@ export default function App({ Component, pageProps }) {
                       initial="hidden"
                       animate="visible"
                       variants={itemIn}
-                      transition={{ delay: 0.5, duration: 0, ease: [0.83, 0, 0.17, 1]  }}
+                      transition={{ delay: 0.3, duration: 0, ease: [0.83, 0, 0.17, 1]  }}
                       className="w-[33vw]"
                     >
                       <img src="/images/intro-01.jpg" alt="JBS Photography Image" />
@@ -57,7 +57,7 @@ export default function App({ Component, pageProps }) {
                       initial="hidden"
                       animate="visible"
                       variants={itemIn}
-                      transition={{ delay: 1, duration: 0, ease: [0.83, 0, 0.17, 1]  }}
+                      transition={{ delay: 0.6, duration: 0, ease: [0.83, 0, 0.17, 1]  }}
                       className="absolute top-0 left-0 ml-[20%] mt-[-15%] w-[20vw] rotate-6"
                     >
                       <img src="/images/intro-02.jpg" alt="JBS Photography Image" />
@@ -67,7 +67,7 @@ export default function App({ Component, pageProps }) {
                       initial="hidden"
                       animate="visible"
                       variants={itemIn}
-                      transition={{ delay: 1.5, duration: 0, ease: [0.83, 0, 0.17, 1]  }}
+                      transition={{ delay: 0.9, duration: 0, ease: [0.83, 0, 0.17, 1]  }}
                       className="absolute top-0 left-0 ml-[8%] w-[28vw] -rotate-6"
                     >
                       <img src="/images/intro-03.jpg" alt="JBS Photography Image" />
@@ -78,7 +78,7 @@ export default function App({ Component, pageProps }) {
                     initial="hidden"
                     animate="visible"
                     variants={itemIn}
-                    transition={{ delay: 2, duration: 0, ease: [0.83, 0, 0.17, 1]  }}
+                    transition={{ delay: 1.2, duration: 0, ease: [0.83, 0, 0.17, 1]  }}
                   >
                     <div    
                       className="fixed top-0 bottom-0 left-0 right-0 flex items-center justify-center object-cover object-center"
@@ -87,7 +87,7 @@ export default function App({ Component, pageProps }) {
                         initial="hidden"
                         animate="visible"
                         variants={itemFill}
-                        transition={{ delay: 3, duration: 1.5, ease: [0.85, 0, 0.15, 1]  }}
+                        transition={{ delay: 1.7, duration: 1.25, ease: [0.85, 0, 0.15, 1]  }}
                       >
                         <img src="/images/intro-04.jpg" alt="JBS Photography Image" className="w-full h-full object-cover object-center" />
                       </m.div>

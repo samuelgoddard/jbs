@@ -8,9 +8,9 @@ export default function WorkListSection({ work, currentCat, currentType }) {
   const [current, setCurrent] = useState(0);
 
   return (
-    <div className="grid grid-cols-9">
-      <div className="col-span-9 md:pt-32 xl:pt-40 pb-[90px]">
-        <div className="p-3">
+    <div className="w-full">
+      <div className="pt-20 md:pt-32 xl:pt-40 pb-[90px]">
+        {/* <div className="p-3">
           <Link href="/">
             <a className="md:hidden mb-1 md:mb-0 block w-[60px] pb-32 md:p-0 relative z-40">
               <svg className="w-full" viewBox="0 0 111 53" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -21,16 +21,16 @@ export default function WorkListSection({ work, currentCat, currentType }) {
               </svg>
             </a>
           </Link>
-        </div>
+        </div> */}
         {[...Array(1)].map((index) => ( 
-          <div key={index} className="list-child">
+          <div key={index} className="list-child" >
             {work.map((e, i) => {
               return (e.category == currentCat || currentCat == 'all') & (e.type == currentType || currentType == 'all') ? (
-                <li className={`block`} key={i}>
+                <li className={`block w-full`} key={i}>
                   <Link href={`/work/${e.slug.current}`}>
-                    <a className="flex items-center p-3 py-2 md:p-3 text-[12px] lg:text-[14px] relative overflow-visible group">
+                    <a className="flex w-full items-center p-3 py-2 md:p-3 text-[12px] lg:text-[14px] relative overflow-visible group hover:bg-gradient-to-r hover:from-orange/20 hover:via-orange/50 hover:to-orange/90 transition-all ease-in-out duration-[400ms] hover-grain">
                       <div
-                        className={`absolute top-0 left-0 right-0 w-full flex items-center justify-center opacity-0 md:group-hover:opacity-100 z-[10] pointer-events-none transition-opacity ease-in-out duration-[450ms] ml-[-10%]`}
+                        className={`absolute top-0 left-0 right-0 w-full flex items-center justify-center opacity-0 md:group-hover:opacity-100 z-[10] pointer-events-none ml-[-10%]`}
                       >
                         <div className={`relative overflow-hidden ${e.teaserImageThumbnail.asset.metadata.dimensions.height > e.teaserImageThumbnail.asset.metadata.dimensions.width ? 'w-[15vw] h-[23vw] mt-[-10vw]' : 'w-[20vw] h-[15vw] mt-[-5vw]' }`}>
                           { e.teaserImageThumbnail && (
@@ -56,9 +56,14 @@ export default function WorkListSection({ work, currentCat, currentType }) {
                           />
                         )}
                       </span>
-                      <span className="hidden md:block w-1/6">
+                      <span className="hidden md:block w-[10%]">
                         <span className="block overflow-hidden">
                           <m.span className="block" variants={reveal}>JBS.{(i + 1) < 10 && ('0')}{i + 1}</m.span>
+                        </span>
+                      </span>
+                      <span className="hidden md:block w-[10%] opacity-0 group-hover:opacity-100 ">
+                        <span className="block overflow-hidden">
+                          <m.span className="block" variants={reveal}>+</m.span>
                         </span>
                       </span>
                       <span className="block flex-1">
@@ -78,7 +83,7 @@ export default function WorkListSection({ work, currentCat, currentType }) {
                       </span>
                       <span className="block ml-auto w-[60px] text-right">
                         <span className="block overflow-hidden">
-                          <m.span className="block" variants={reveal}>{e.year ? e.year + ' —' : '—'}</m.span>
+                          <m.span className="block" variants={reveal}>{e.year ? e.year + '' : ''}</m.span>
                         </span>
                       </span>
                     </a>

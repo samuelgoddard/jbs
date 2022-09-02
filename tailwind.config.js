@@ -17,6 +17,13 @@ module.exports = {
       "3xl": "1920px"
     },
     extend: {
+      backgroundSize: {
+        'size-200': '200% 200%',
+      },
+      backgroundPosition: {
+        'pos-0': '0% 0%',
+        'pos-100': '100% 100%',
+      },
       colors: {
         'black': '#232322',
         'white': '#FFF',
