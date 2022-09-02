@@ -105,8 +105,8 @@ export default function App({ Component, pageProps }) {
           <Link href={router.pathname == '/menu' ? '/' : '/menu'}>
             <a className={`block w-[75px] bg-transparent p-3 group ${ router.pathname == '/studio' ? 'text-white' : 'text-black'}`}>
               <div className="relative">
-                <span className="block w-full h-[3px] mb-[5px] bg-current transition ease-in-out duration-[450ms]"></span>
-                <span className="block w-full h-[3px] mb-[5px] bg-current group-hover:-translate-x-2 transition ease-in-out duration-[450ms]"></span>
+                <span className={`block w-full h-[3px] mb-[5px] bg-current transition ease-in-out duration-[450ms] ${router.pathname == '/menu' && 'rotate-[45deg] scale-x-[0.55] translate-x-[9px] translate-y-2' }`}></span>
+                <span className={`block w-full h-[3px] mb-[5px] bg-current transition ease-in-out duration-[450ms] ${router.pathname == '/menu' ? 'rotate-[-45deg] scale-x-[0.55] translate-x-2' : 'group-hover:-translate-x-2'  }`}></span>
               </div>
             </a>
           </Link>

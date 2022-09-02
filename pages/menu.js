@@ -8,6 +8,7 @@ import Image from '@/components/image'
 import Loader from '@/components/loader'
 import { useContext, useEffect, useState } from 'react'
 import { IntroContext } from '@/context/intro'
+import { useRouter } from 'next/router'
 
 const query = `{
   "home": *[_type == "home"][0]{
@@ -80,14 +81,19 @@ const query = `{
       },
     },
   },
+  "contact": *[_type == "contact"][0]{
+    email
+  }
 }`
 
 const pageService = new SanityPageService(query)
 
 export default function Menu(initialData) {
-  const { data: { home, menu } } = pageService.getPreviewHook(initialData)()
+  const { data: { home, menu, contact } } = pageService.getPreviewHook(initialData)()
   const [currentHover, setCurrentHover] = useState(null)
   const [introContext, setIntroContext] = useContext(IntroContext);
+  const router = useRouter()
+
 
   useEffect(() => {
     setIntroContext(true)
@@ -110,6 +116,8 @@ export default function Menu(initialData) {
           >
             <m.div variants={fade}>
 
+            <button onClick={() => router.back()} className="w-14 h-12 bg-transparent fixed top-0 right-0 z-[10000000000]"></button>
+
             {/* <Loader/> */}
             <m.header className="absolute top-0 left-0 right-0 z-10">
               <div className="p-3">
@@ -127,9 +135,9 @@ export default function Menu(initialData) {
                 </Link>
               </div>
 
-              <div className="absolute top-0 left-0 right-0 grid grid-cols-9 p-3">
+              {/* <div className="absolute top-0 left-0 right-0 grid grid-cols-9 p-3">
                 <span className="block text-[10px] md:text-[11px] lg:text-sm 2xl:text-base leading-[0.85] md:leading-[0.85] lg:leading-[0.85] 2xl:leading-[0.85] col-span-1 relative overflow-hidden">
-                  {/* <m.span variants={revealDelayTop} className="block">(</m.span> */}
+                  <m.span variants={revealDelayTop} className="block">(</m.span>
                 </span>
 
                 <span className="block text-[10px] md:text-[11px] lg:text-sm 2xl:text-base leading-[0.85] md:leading-[0.85] lg:leading-[0.85] 2xl:leading-[0.85] col-span-4 md:col-span-1 col-start-2 relative overflow-hidden">
@@ -147,7 +155,7 @@ export default function Menu(initialData) {
                 <span className="block text-[10px] md:text-[11px] lg:text-sm 2xl:text-base leading-[0.85] md:leading-[0.85] lg:leading-[0.85] 2xl:leading-[0.85] col-span-1 col-start-7 relative overflow-hidden">
                   <m.span variants={revealDelayTop} className="block">Studio</m.span>
                 </span>
-              </div>
+              </div> */}
 
               {/* <nav className="flex space-x-3 text-sm md:text-base w-auto p-3 absolute top-0 right-0">
                 <Link href="/studio">
@@ -206,7 +214,7 @@ export default function Menu(initialData) {
               <div className="ml-[43vw] mt-[23.7vh]">
                 <nav className="border-t border-black">
                   <ul>
-                    <li className="block border-b border-black">
+                    {/* <li className="block border-b border-black">
                       <Link href="/">
                         <a
                           onMouseEnter={() => updateCurrentHover('home')}
@@ -219,7 +227,7 @@ export default function Menu(initialData) {
                           </m.span>
                         </a>
                       </Link>
-                    </li>
+                    </li> */}
                     <li className="block border-b border-black">
                       <Link href="/work">
                         <a
@@ -263,6 +271,18 @@ export default function Menu(initialData) {
                         </m.span>
                       </a>
                     </li>
+                    <li className="block border-b border-black">
+                        <a href={`mailto:${contact.email}`}
+                          onMouseEnter={() => updateCurrentHover('home')}
+                          onMouseLeave={() => updateCurrentHover(null)}
+                          className="text-5xl md:text-[7vw] xl:text-[6vw] 2xl:text-[5.5vw] leading-[0.8] md:leading-[0.8] xl:leading-[0.8] 2xl:leading-[0.8] font-sans uppercase block relative overflow-hidden my-3 group"
+                        >
+                          <m.span variants={revealDelay} className="block relative">
+                            <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">Email</span>
+                            <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0 text-orange">Email</span>
+                          </m.span>
+                        </a>
+                    </li>
                   </ul>
                 </nav>
               </div>
@@ -279,16 +299,16 @@ export default function Menu(initialData) {
                   </a>
                 </div> */}
 
-                <div className="grid-col-1 hidden md:block">
+                {/* <div className="grid-col-1 hidden md:block">
                   <a href="#" className="block text-[10px] md:text-[11px] lg:text-sm 2xl:text-base leading-[0.95] md:leading-[0.95] lg:leading-[0.95] 2xl:leading-[0.95] relative overflow-hidden group">
                     <m.span variants={revealDelayBottom} className="block relative">
                       <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms] underline">Email Us</span>
                       <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0 underline">Email Us</span>
                     </m.span>
                   </a>
-                </div>
+                </div> */}
 
-                <div className="grid-col-1 col-start-3 hidden md:block text-center">
+                <div className="grid-col-1 col-start-1 hidden md:block text-center">
                   {/* <Link href="/terms">
                     <a className="block text-[10px] md:text-[11px] lg:text-sm 2xl:text-base leading-[0.95] md:leading-[0.95] lg:leading-[0.95] 2xl:leading-[0.95] relative overflow-hidden group">
                       <m.span variants={revealDelayBottom} className="block relative">
@@ -299,7 +319,7 @@ export default function Menu(initialData) {
                   </Link> */}
                 </div>
 
-                <div className="grid-col-3 col-start-6 hidden md:block">
+                <div className="col-span-3 col-start-1 block">
                   <a href="#" className="block text-[10px] md:text-[11px] lg:text-sm 2xl:text-base leading-[0.95] md:leading-[0.95] lg:leading-[0.95] 2xl:leading-[0.95] relative overflow-hidden group">
                     <m.span variants={revealDelayBottom} className="flex space-x-1">
                       <span className="block">Site By</span><span className="underline relative">

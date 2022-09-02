@@ -158,32 +158,11 @@ export default function Home(initialData) {
                 </div>
               </div>
               
-              {/* <div className="absolute top-0 left-0 right-0 grid grid-cols-9 p-3">
-                <span className="hidden md:block text-[10px] md:text-[11px] lg:text-sm 2xl:text-base leading-[0.85] md:leading-[0.85] lg:leading-[0.85] 2xl:leading-[0.85] col-span-1 relative overflow-hidden">
-                  <m.span className="block" variants={revealDelayTop}>(</m.span>
+              <div className="absolute top-0 left-0 right-0 grid grid-cols-9 p-3">
+                <span className="text-[10px] md:text-[11px] lg:text-sm 2xl:text-base leading-[0.85] md:leading-[0.85] lg:leading-[0.85] 2xl:leading-[0.85] col-span-4 col-start-2 relative overflow-hidden hidden md:block">
+                  <m.span className="block" variants={revealDelayTop}>A Photography And Motion Studio, London</m.span>
                 </span>
-
-                <span className="text-[10px] md:text-[11px] lg:text-sm 2xl:text-base leading-[0.85] md:leading-[0.85] lg:leading-[0.85] 2xl:leading-[0.85] col-span-4 md:col-span-1 col-start-2 relative overflow-hidden hidden md:block">
-                  <m.span className="block" variants={revealDelayTop}>A Photography <span className="inline-block md:hidden">++ Moving Image</span></m.span>
-                </span>
-                
-                <span className="hidden md:block text-[10px] md:text-[11px] lg:text-sm 2xl:text-base leading-[0.85] md:leading-[0.85] lg:leading-[0.85] 2xl:leading-[0.85] col-span-1 col-start-3 relative overflow-hidden">
-                  <m.span className="block" variants={revealDelayTop}>++</m.span>
-                </span>
-                <span className="hidden md:block text-[10px] md:text-[11px] lg:text-sm 2xl:text-base leading-[0.85] md:leading-[0.85] lg:leading-[0.85] 2xl:leading-[0.85] col-span-1 col-start-4 relative overflow-hidden">
-                  <m.span className="block" variants={revealDelayTop}>Moving Image</m.span>
-                </span>
-                <span className="hidden md:block text-[10px] md:text-[11px] lg:text-sm 2xl:text-base leading-[0.85] md:leading-[0.85] lg:leading-[0.85] 2xl:leading-[0.85] col-span-1 col-start-6 relative overflow-hidden">
-                  <m.span className="block" variants={revealDelayTop}>
-                    Studio</m.span>
-                </span>
-                <span className="hidden md:block text-[10px] md:text-[11px] lg:text-sm 2xl:text-base leading-[0.85] md:leading-[0.85] lg:leading-[0.85] 2xl:leading-[0.85] col-span-1 col-start-8 relative overflow-hidden">
-                  <m.span className="block" variants={revealDelayTop}>London</m.span>
-                </span>
-                <span className="hidden md:block text-[10px] md:text-[11px] lg:text-sm 2xl:text-base leading-[0.85] md:leading-[0.85] lg:leading-[0.85] 2xl:leading-[0.85] col-span-1 col-start-9 relative overflow-hidden">
-                  <m.span className="block" variants={revealDelayTop}>)</m.span>
-                </span>
-              </div> */}
+              </div>
             </m.header>
 
             <m.main className="">
