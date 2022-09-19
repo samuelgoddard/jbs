@@ -52,12 +52,12 @@ export default function Footer({ contact }) {
               <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0 underline">Work</span>
             </a>
           </Link>
-          <Link href="/terms">
+          {/* <Link href="/terms">
             <a className="block text-[10px] md:text-[11px] lg:text-[13px] 2xl:text-[13px] leading-[0.95] md:leading-[0.95] lg:leading-[0.95] 2xl:leading-[0.95] underline mb-1 relative overflow-hidden group">
               <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">Privacy</span>
               <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0 underline">Privacy</span>
             </a>
-          </Link>
+          </Link> */}
         </div>
 
         <div className="col-span-2 col-start-3 -ml-6 md:ml-0 md:col-start-3 xl:col-start-4 flex space-x-4">
@@ -88,7 +88,7 @@ export default function Footer({ contact }) {
         </div>
         
         <div className="col-span-2 md:col-span-1 col-start-7 md:col-start-8">
-          <a href="#" className="block text-[10px] md:text-[11px] lg:text-[13px] 2xl:text-[13px] leading-[0.95] md:leading-[0.95] lg:leading-[0.95] 2xl:leading-[0.95] relative overflow-hidden group">
+          <a href="https://shiftwalk.studio" target="_blank" rel="noopener noreferrer" className="block text-[10px] md:text-[11px] lg:text-[13px] 2xl:text-[13px] leading-[0.95] md:leading-[0.95] lg:leading-[0.95] 2xl:leading-[0.95] relative overflow-hidden group">
             <span className="flex space-x-1">
               <span className="block"><span className="hidden xl:inline">Site </span>By</span><span className="underline relative">
               <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms] underline">ShiftWalk</span>
