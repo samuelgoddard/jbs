@@ -1,7 +1,7 @@
 @font-face {
   font-family: 'System85';
-  src: url('../public/fonts/System85Trial-Bold.woff2') format('woff2'),
-      url('../public/fonts/System85Trial-Bold.woff') format('woff');
+  src: url('../public/fonts/System85-Bold.woff2') format('woff2'),
+      url('../public/fonts/System85-Bold.woff') format('woff');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
