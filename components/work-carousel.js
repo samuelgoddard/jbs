@@ -41,7 +41,7 @@ export default function WorkCarousel({ work, currentCat, currentType }) {
 
               <AnimatePresence initial={false}>
                 <span className="block overflow-hidden relative w-full">
-                  <h1 className="text-5xl md:text-[6.5vw] xl:text-[7vw] 2xl:text-[7.5vw] leading-1 md:leading-1 xl:leading-1 2xl:leading-1 font-sans uppercase mb-[-5px] md:mb-[-1vw] relative overflow-hidden block w-full ml-[-0.3vw]">
+                  <h1 className="text-5xl md:text-[6.5vw] xl:text-[7vw] 2xl:text-[7.5vw] leading-[1.12] md:leading-[1.12] xl:leading-[1.12] 2xl:leading-[1.12] font-sans uppercase mb-[-5px] md:mb-[-1vw] relative overflow-hidden block w-full ml-[-0.3vw]">
                     {work.map((e, i) => {
                       return i == current ? (
                         <m.span
@@ -67,7 +67,7 @@ export default function WorkCarousel({ work, currentCat, currentType }) {
                     })}
                   </h1>
 
-                  <h2 className="text-2xl xl:text-3xl leading-1 md:leading-1 xl:leading-[1.2] 2xl:leading-[1.2] font-sans uppercase mb-[-5px] md:mb-[-5px] relative overflow-hidden block w-full mt-3">
+                  <h2 className="text-2xl xl:text-3xl leading-1 md:leading-1 xl:leading-[1.2] 2xl:leading-[1.2] font-sans uppercase mb-[0px] md:mb-[0px] relative overflow-hidden block w-full mt-3">
                     {work.map((e, i) => {
                       return i == current ? (
                         <m.span

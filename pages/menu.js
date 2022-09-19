@@ -220,7 +220,7 @@ export default function Menu(initialData) {
                         <a
                           onMouseEnter={() => updateCurrentHover('home')}
                           onMouseLeave={() => updateCurrentHover(null)}
-                          className="text-5xl md:text-[7vw] xl:text-[6vw] 2xl:text-[5.5vw] leading-[0.8] md:leading-[0.8] xl:leading-[0.8] 2xl:leading-[0.8] font-sans uppercase block relative overflow-hidden my-3 group"
+                          className="text-5xl md:text-[7vw] xl:text-[6vw] 2xl:text-[5.5vw] leading-[0.92] md:leading-[0.92] xl:leading-[0.92] 2xl:leading-[0.92] font-sans uppercase block relative overflow-hidden mt-2 mb-3 group"
                         >
                           <m.span variants={revealDelay} className="block relative">
                             <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">Home</span>
@@ -234,7 +234,7 @@ export default function Menu(initialData) {
                         <a
                           onMouseEnter={() => updateCurrentHover('work')}
                           onMouseLeave={() => updateCurrentHover(null)}
-                          className="text-6xl md:text-[7vw] xl:text-[6vw] 2xl:text-[5.5vw] leading-[0.8] md:leading-[0.8] xl:leading-[0.8] 2xl:leading-[0.8] font-sans uppercase block relative overflow-hidden my-3 group"
+                          className="text-6xl md:text-[7vw] xl:text-[6vw] 2xl:text-[5.5vw] leading-[0.92] md:leading-[0.92] xl:leading-[0.92] 2xl:leading-[0.92] font-sans uppercase block relative overflow-hidden mt-2 mb-3 group"
                         >
                           <m.span variants={revealDelay} className="block relative">
                             <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">Work</span>
@@ -248,7 +248,7 @@ export default function Menu(initialData) {
                         <a
                           onMouseEnter={() => updateCurrentHover('studio')}
                           onMouseLeave={() => updateCurrentHover(null)}
-                          className="text-6xl md:text-[7vw] xl:text-[6vw] 2xl:text-[5.5vw] leading-[0.8] md:leading-[0.8] xl:leading-[0.8] 2xl:leading-[0.8] font-sans uppercase block relative overflow-hidden my-3 group"
+                          className="text-6xl md:text-[7vw] xl:text-[6vw] 2xl:text-[5.5vw] leading-[0.92] md:leading-[0.92] xl:leading-[0.92] 2xl:leading-[0.92] font-sans uppercase block relative overflow-hidden mt-2 mb-3 group"
                         >
                           <m.span variants={revealDelay} className="block relative">
                             <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">Studio</span>
@@ -264,7 +264,7 @@ export default function Menu(initialData) {
                         href="https://www.instagram.com/jasonbaileystudio"
                         onMouseEnter={() => updateCurrentHover('reel')}
                         onMouseLeave={() => updateCurrentHover(null)}
-                        className="text-6xl md:text-[7vw] xl:text-[6vw] 2xl:text-[5.5vw] leading-[0.8] md:leading-[0.8] xl:leading-[0.8] 2xl:leading-[0.8] font-sans uppercase block relative overflow-hidden my-3 group"
+                        className="text-6xl md:text-[7vw] xl:text-[6vw] 2xl:text-[5.5vw] leading-[0.92] md:leading-[0.92] xl:leading-[0.92] 2xl:leading-[0.92] font-sans uppercase block relative overflow-hidden mt-2 mb-3 group"
                       >
                         <m.span variants={revealDelay} className="block relative">
                           <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">Insta</span>
@@ -276,7 +276,7 @@ export default function Menu(initialData) {
                         <a href={`mailto:${contact.email}`}
                           onMouseEnter={() => updateCurrentHover('home')}
                           onMouseLeave={() => updateCurrentHover(null)}
-                          className="text-6xl md:text-[7vw] xl:text-[6vw] 2xl:text-[5.5vw] leading-[0.8] md:leading-[0.8] xl:leading-[0.8] 2xl:leading-[0.8] font-sans uppercase block relative overflow-hidden my-3 group"
+                          className="text-6xl md:text-[7vw] xl:text-[6vw] 2xl:text-[5.5vw] leading-[0.92] md:leading-[0.92] xl:leading-[0.92] 2xl:leading-[0.92] font-sans uppercase block relative overflow-hidden mt-2 mb-3 group"
                         >
                           <m.span variants={revealDelay} className="block relative">
                             <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">Email</span>
@@ -289,7 +289,7 @@ export default function Menu(initialData) {
                     <li className="block md:hidden border-b border-black">
                       <Link href="/work">
                         <a
-                          className="text-6xl md:text-[7vw] xl:text-[6vw] 2xl:text-[5.5vw] leading-[0.8] md:leading-[0.8] xl:leading-[0.8] 2xl:leading-[0.8] font-sans uppercase block relative overflow-hidden my-3 group"
+                          className="text-6xl md:text-[7vw] xl:text-[6vw] 2xl:text-[5.5vw] leading-[0.92] md:leading-[0.92] xl:leading-[0.92] 2xl:leading-[0.92] font-sans uppercase block relative overflow-hidden mt-2 mb-3 group"
                         >
                           <m.span variants={revealDelay} className="block relative">
                             <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">Work</span>
@@ -301,7 +301,7 @@ export default function Menu(initialData) {
                     <li className="block md:hidden border-b border-black">
                       <Link href="/studio">
                         <a
-                          className="text-6xl md:text-[7vw] xl:text-[6vw] 2xl:text-[5.5vw] leading-[0.8] md:leading-[0.8] xl:leading-[0.8] 2xl:leading-[0.8] font-sans uppercase block relative overflow-hidden my-3 group"
+                          className="text-6xl md:text-[7vw] xl:text-[6vw] 2xl:text-[5.5vw] leading-[0.92] md:leading-[0.92] xl:leading-[0.92] 2xl:leading-[0.92] font-sans uppercase block relative overflow-hidden mt-2 mb-3 group"
                         >
                           <m.span variants={revealDelay} className="block relative">
                             <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">Studio</span>
@@ -315,7 +315,7 @@ export default function Menu(initialData) {
                         target="_blank"
                         rel="noopener noreferrer"
                         href="https://www.instagram.com/jasonbaileystudio"
-                        className="text-6xl md:text-[7vw] xl:text-[6vw] 2xl:text-[5.5vw] leading-[0.8] md:leading-[0.8] xl:leading-[0.8] 2xl:leading-[0.8] font-sans uppercase block relative overflow-hidden my-3 group"
+                        className="text-6xl md:text-[7vw] xl:text-[6vw] 2xl:text-[5.5vw] leading-[0.92] md:leading-[0.92] xl:leading-[0.92] 2xl:leading-[0.92] font-sans uppercase block relative overflow-hidden mt-2 mb-3 group"
                       >
                         <m.span variants={revealDelay} className="block relative">
                           <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">Insta</span>
@@ -325,7 +325,7 @@ export default function Menu(initialData) {
                     </li>
                     <li className="block md:hidden border-b border-black">
                         <a href={`mailto:${contact.email}`}
-                          className="text-6xl md:text-[7vw] xl:text-[6vw] 2xl:text-[5.5vw] leading-[0.8] md:leading-[0.8] xl:leading-[0.8] 2xl:leading-[0.8] font-sans uppercase block relative overflow-hidden my-3 group"
+                          className="text-6xl md:text-[7vw] xl:text-[6vw] 2xl:text-[5.5vw] leading-[0.92] md:leading-[0.92] xl:leading-[0.92] 2xl:leading-[0.92] font-sans uppercase block relative overflow-hidden mt-2 mb-3 group"
                         >
                           <m.span variants={revealDelay} className="block relative">
                             <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">Email</span>
@@ -370,7 +370,7 @@ export default function Menu(initialData) {
                 </div>
 
                 <div className="col-span-3 col-start-1 block">
-                  <a href="#" className="block text-[13px] md:text-[11px] lg:text-sm 2xl:text-base leading-[0.95] md:leading-[0.95] lg:leading-[0.95] 2xl:leading-[0.95] relative overflow-hidden group">
+                  <a href="https://www.shiftwalk.studio/" rel="noopener noreferrer" target="_blank" className="block text-[13px] md:text-[11px] lg:text-sm 2xl:text-base leading-[0.95] md:leading-[0.95] lg:leading-[0.95] 2xl:leading-[0.95] relative overflow-hidden group">
                     <m.span variants={revealDelayBottom} className="flex space-x-1">
                       <span className="block">Site By</span><span className="underline relative">
                       <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms] underline">ShiftWalk</span>

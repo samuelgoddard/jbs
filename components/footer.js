@@ -26,7 +26,7 @@ export default function Footer({ contact }) {
         <HashGridAnimated />
       </div>
 
-      <div className="grid grid-cols-9 items-end relative z-10 pt-[10vw] md:pt-0">
+      <div className="grid grid-cols-9 items-end relative z-10 pt-[10vw] md:pt-0 p-3">
         <div className="col-span-1">
           <div className="relative overflow-hidden">
             <svg className={`w-[31px] md:w-[51px] xl:w-[61px] fill-current transition-transform ease-custom duration-[800ms] delay-[0ms] ${showLogo ? 'md:translate-x-0' : 'md:translate-x-[-110%]' }`} viewBox="0 0 82 125" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M40.744 124.592c26.168 0 40.744-15.134 40.744-43.818V0H56.55v82.534c0 12.494-4.566 19.533-15.806 19.533-11.064 0-15.806-5.983-15.806-20.413H0c0 28.684 15.279 42.938 40.744 42.938Z" /></svg>

@@ -353,11 +353,11 @@ export default function WorkSlug(initialData) {
                                     />
                                   </div>
                                   <div className={`px-3 md:px-4 xl:px-5 ${ i == 1 ? 'order-1' : 'order-2' }`}>
-                                    <h2 className={`block text-[7.6vw] md:text-[5.75vw] leading-[0.9] md:leading-[0.9] mb-1 md:mb-2 relative overflow-hidden`}>
+                                    <h2 className={`block text-[7.6vw] md:text-[5.75vw] leading-[1.125] md:leading-[1.125] mb-1 md:mb-2 relative overflow-hidden -mt-2`}>
                                       <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">{e.title}</span>
                                       <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0 text-orange">{e.title}</span>
                                     </h2>
-                                    <span className="block text-lg md:text-2xl xl:text-3xl leading-[1] md:leading-[1] xl:leading-[1] 2xl:leading-[1] font-sans uppercase relative overflow-hidden">
+                                    <span className="block text-lg md:text-2xl xl:text-3xl leading-[1] md:leading-[1] xl:leading-[1] 2xl:leading-[1] font-sans uppercase relative overflow-hidden -mt-2">
                                       <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">{e.campaignTitle}</span>
                                       <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0 text-orange">{e.campaignTitle}</span>
                                     </span>
@@ -383,8 +383,8 @@ export default function WorkSlug(initialData) {
                                     />
                                   </div>
                                   <div className={`px-3 md:px-4 xl:px-5 ${ i == 1 ? 'order-1' : 'order-2' }`}>
-                                    <h2 className={`block text-[7.6vw] md:text-[5.75vw] leading-[0.9] md:leading-[0.9] mb-1 md:mb-2`}>{e.title}</h2>
-                                    <span className="block text-lg md:text-2xl xl:text-3xl leading-[1] md:leading-[1] xl:leading-[1] 2xl:leading-[1] font-sans uppercase relative overflow-hidden">{e.campaignTitle}</span>
+                                    <h2 className={`block text-[7.6vw] md:text-[5.75vw] leading-[1.125] md:leading-[1.125] mb-1 md:mb-2 -mt-2`}>{e.title}</h2>
+                                    <span className="block text-lg md:text-2xl xl:text-3xl leading-[1] md:leading-[1] xl:leading-[1] 2xl:leading-[1] font-sans uppercase relative overflow-hidden -mt-2">{e.campaignTitle}</span>
                                   </div>
                                 </a>
                               </Link>
