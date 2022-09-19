@@ -14,31 +14,31 @@ export default function ModularImageBlock({ image, layout, position }) {
     size = 1600
   }
   if (layout == 'contained-landscape' && position == 'left') {
-    pad = 'p-3'
+    pad = 'md:p-3'
     cols = 7
     start = 0
     size = 1600
   }
   if (layout == 'contained-landscape' && position == 'right') {
-    pad = 'p-3'
+    pad = 'md:p-3'
     cols = 7
     start = 4
     size = 1600
   }
   if (layout == 'contained-portrait' && position == 'center') {
-    pad = 'p-3'
+    pad = 'md:p-3'
     cols = 3
     start = 4
     size = 1200
   }
   if (layout == 'contained-portrait' && position == 'left') {
-    pad = 'p-3'
+    pad = 'md:p-3'
     cols = 3
     start = 0
     size = 1200
   }
   if (layout == 'contained-portrait' && position == 'right') {
-    pad = 'p-3'
+    pad = 'md:p-3'
     cols = 3
     start = 7
     size = 1200
@@ -50,13 +50,13 @@ export default function ModularImageBlock({ image, layout, position }) {
     size = 1400
   }
   if (layout == 'contained-square' && position == 'left') {
-    pad = 'p-3'
+    pad = 'md:p-3'
     cols = 5
     start = 0
     size = 1400
   }
   if (layout == 'contained-square' && position == 'right') {
-    pad = 'p-3'
+    pad = 'md:p-3'
     cols = 5
     start = 5
     size = 1400
@@ -64,7 +64,7 @@ export default function ModularImageBlock({ image, layout, position }) {
 
   return (
     <div className={`grid grid-cols-9 ${pad}`}>
-      <div className={`col-span-${cols} col-start-${start}`}>
+      <div className={`col-span-9 md:col-span-${cols} md:col-start-${start} border-b border-white md:border-none`}>
         <Image
           image={image}
           focalPoint={image.hotspot}

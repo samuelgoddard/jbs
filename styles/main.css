@@ -26,6 +26,10 @@ body {
   }
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 .cover-image {
   & img {
     @apply object-cover object-center;

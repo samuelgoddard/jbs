@@ -9,6 +9,7 @@ import Loader from '@/components/loader'
 import { useContext, useEffect, useState } from 'react'
 import { IntroContext } from '@/context/intro'
 import { useRouter } from 'next/router'
+import Div100vh from 'react-div-100vh'
 
 const query = `{
   "home": *[_type == "home"][0]{
@@ -107,7 +108,7 @@ export default function Menu(initialData) {
     <Layout>
       <NextSeo title={"Menu"} />
       
-      <div className="p-3 min-h-screen relative">
+      <Div100vh className="p-3  relative">
         <LazyMotion features={domAnimation}>
           <m.div
             initial="initial"
@@ -168,7 +169,7 @@ export default function Menu(initialData) {
             </m.header>
 
             <m.main className="">
-              <div className="fixed left-0 top-0 bottom-0 w-[43vw] z-0 overflow-hidden">
+              <div className="fixed left-0 top-0 bottom-0 w-[43vw] z-0 overflow-hidden hidden md:block">
                 <m.div variants={scaleDelay} className="absolute inset-0 w-full h-full z-0 object-cover object-center bg-gray-200">
                   <Image 
                     image={menu.backgroundImage}
@@ -211,7 +212,7 @@ export default function Menu(initialData) {
                 <div className="w-1/2 h-1/4 bg-white absolute top-0 right-0"></div>
               </div>
 
-              <div className="ml-[43vw] mt-[23.7vh]">
+              <div className="md:ml-[43vw] mt-[18vh] md:mt-[23.7vh]">
                 <nav className="border-t border-black">
                   <ul>
                     {/* <li className="block border-b border-black">
@@ -228,12 +229,12 @@ export default function Menu(initialData) {
                         </a>
                       </Link>
                     </li> */}
-                    <li className="block border-b border-black">
+                    <li className="hidden md:block border-b border-black">
                       <Link href="/work">
                         <a
                           onMouseEnter={() => updateCurrentHover('work')}
                           onMouseLeave={() => updateCurrentHover(null)}
-                          className="text-5xl md:text-[7vw] xl:text-[6vw] 2xl:text-[5.5vw] leading-[0.8] md:leading-[0.8] xl:leading-[0.8] 2xl:leading-[0.8] font-sans uppercase block relative overflow-hidden my-3 group"
+                          className="text-6xl md:text-[7vw] xl:text-[6vw] 2xl:text-[5.5vw] leading-[0.8] md:leading-[0.8] xl:leading-[0.8] 2xl:leading-[0.8] font-sans uppercase block relative overflow-hidden my-3 group"
                         >
                           <m.span variants={revealDelay} className="block relative">
                             <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">Work</span>
@@ -242,12 +243,12 @@ export default function Menu(initialData) {
                         </a>
                       </Link>
                     </li>
-                    <li className="block border-b border-black">
+                    <li className="hidden md:block border-b border-black">
                       <Link href="/studio">
                         <a
                           onMouseEnter={() => updateCurrentHover('studio')}
                           onMouseLeave={() => updateCurrentHover(null)}
-                          className="text-5xl md:text-[7vw] xl:text-[6vw] 2xl:text-[5.5vw] leading-[0.8] md:leading-[0.8] xl:leading-[0.8] 2xl:leading-[0.8] font-sans uppercase block relative overflow-hidden my-3 group"
+                          className="text-6xl md:text-[7vw] xl:text-[6vw] 2xl:text-[5.5vw] leading-[0.8] md:leading-[0.8] xl:leading-[0.8] 2xl:leading-[0.8] font-sans uppercase block relative overflow-hidden my-3 group"
                         >
                           <m.span variants={revealDelay} className="block relative">
                             <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">Studio</span>
@@ -256,14 +257,14 @@ export default function Menu(initialData) {
                         </a>
                       </Link>
                     </li>
-                    <li className="block border-b border-black">
+                    <li className="hidden md:block border-b border-black">
                       <a
                         target="_blank"
                         rel="noopener noreferrer"
                         href="https://www.instagram.com/jasonbaileystudio"
                         onMouseEnter={() => updateCurrentHover('reel')}
                         onMouseLeave={() => updateCurrentHover(null)}
-                        className="text-5xl md:text-[6vw] xl:text-[6vw] 2xl:text-[5.5vw] leading-[0.8] md:leading-[0.8] xl:leading-[0.8] 2xl:leading-[0.8] font-sans uppercase block relative overflow-hidden my-3 group"
+                        className="text-6xl md:text-[7vw] xl:text-[6vw] 2xl:text-[5.5vw] leading-[0.8] md:leading-[0.8] xl:leading-[0.8] 2xl:leading-[0.8] font-sans uppercase block relative overflow-hidden my-3 group"
                       >
                         <m.span variants={revealDelay} className="block relative">
                           <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">Insta</span>
@@ -271,11 +272,60 @@ export default function Menu(initialData) {
                         </m.span>
                       </a>
                     </li>
-                    <li className="block border-b border-black">
+                    <li className="hidden md:block border-b border-black">
                         <a href={`mailto:${contact.email}`}
                           onMouseEnter={() => updateCurrentHover('home')}
                           onMouseLeave={() => updateCurrentHover(null)}
-                          className="text-5xl md:text-[7vw] xl:text-[6vw] 2xl:text-[5.5vw] leading-[0.8] md:leading-[0.8] xl:leading-[0.8] 2xl:leading-[0.8] font-sans uppercase block relative overflow-hidden my-3 group"
+                          className="text-6xl md:text-[7vw] xl:text-[6vw] 2xl:text-[5.5vw] leading-[0.8] md:leading-[0.8] xl:leading-[0.8] 2xl:leading-[0.8] font-sans uppercase block relative overflow-hidden my-3 group"
+                        >
+                          <m.span variants={revealDelay} className="block relative">
+                            <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">Email</span>
+                            <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0 text-orange">Email</span>
+                          </m.span>
+                        </a>
+                    </li>
+
+
+                    <li className="block md:hidden border-b border-black">
+                      <Link href="/work">
+                        <a
+                          className="text-6xl md:text-[7vw] xl:text-[6vw] 2xl:text-[5.5vw] leading-[0.8] md:leading-[0.8] xl:leading-[0.8] 2xl:leading-[0.8] font-sans uppercase block relative overflow-hidden my-3 group"
+                        >
+                          <m.span variants={revealDelay} className="block relative">
+                            <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">Work</span>
+                            <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0 text-orange">Work</span>
+                          </m.span>
+                        </a>
+                      </Link>
+                    </li>
+                    <li className="block md:hidden border-b border-black">
+                      <Link href="/studio">
+                        <a
+                          className="text-6xl md:text-[7vw] xl:text-[6vw] 2xl:text-[5.5vw] leading-[0.8] md:leading-[0.8] xl:leading-[0.8] 2xl:leading-[0.8] font-sans uppercase block relative overflow-hidden my-3 group"
+                        >
+                          <m.span variants={revealDelay} className="block relative">
+                            <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">Studio</span>
+                            <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0 text-orange">Studio</span>
+                          </m.span>
+                        </a>
+                      </Link>
+                    </li>
+                    <li className="block md:hidden border-b border-black">
+                      <a
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        href="https://www.instagram.com/jasonbaileystudio"
+                        className="text-6xl md:text-[7vw] xl:text-[6vw] 2xl:text-[5.5vw] leading-[0.8] md:leading-[0.8] xl:leading-[0.8] 2xl:leading-[0.8] font-sans uppercase block relative overflow-hidden my-3 group"
+                      >
+                        <m.span variants={revealDelay} className="block relative">
+                          <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">Insta</span>
+                          <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0 text-orange">Insta</span>
+                        </m.span>
+                      </a>
+                    </li>
+                    <li className="block md:hidden border-b border-black">
+                        <a href={`mailto:${contact.email}`}
+                          className="text-6xl md:text-[7vw] xl:text-[6vw] 2xl:text-[5.5vw] leading-[0.8] md:leading-[0.8] xl:leading-[0.8] 2xl:leading-[0.8] font-sans uppercase block relative overflow-hidden my-3 group"
                         >
                           <m.span variants={revealDelay} className="block relative">
                             <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">Email</span>
@@ -289,7 +339,7 @@ export default function Menu(initialData) {
             </m.main>
 
             <m.footer className="absolute bottom-0 left-0 right-0 z-10 p-3">
-              <div className="ml-[43vw] grid grid-cols-5 items-end">
+              <div className="md:ml-[43vw] grid grid-cols-5 items-end">
                 {/* <div className="grid-col-1 hidden md:block">
                   <a href="https://www.instagram.com/jasonbaileystudio" className="block text-[10px] md:text-[11px] lg:text-sm 2xl:text-base leading-[0.85] md:leading-[0.85] lg:leading-[0.85] 2xl:leading-[0.85] relative overflow-hidden group">
                     <m.span variants={revealDelayBottom} className="block relative">
@@ -320,7 +370,7 @@ export default function Menu(initialData) {
                 </div>
 
                 <div className="col-span-3 col-start-1 block">
-                  <a href="#" className="block text-[10px] md:text-[11px] lg:text-sm 2xl:text-base leading-[0.95] md:leading-[0.95] lg:leading-[0.95] 2xl:leading-[0.95] relative overflow-hidden group">
+                  <a href="#" className="block text-[13px] md:text-[11px] lg:text-sm 2xl:text-base leading-[0.95] md:leading-[0.95] lg:leading-[0.95] 2xl:leading-[0.95] relative overflow-hidden group">
                     <m.span variants={revealDelayBottom} className="flex space-x-1">
                       <span className="block">Site By</span><span className="underline relative">
                       <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms] underline">ShiftWalk</span>
@@ -346,7 +396,7 @@ export default function Menu(initialData) {
             </m.div>
           </m.div>
         </LazyMotion>
-      </div>
+      </Div100vh>
     </Layout>
   )
 }

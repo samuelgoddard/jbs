@@ -127,7 +127,7 @@ export default function Studio(initialData) {
                         </div>
                       </div> */}
                       
-                      <div className="w-full h-[83vh] md:h-screen relative overflow-hidden flex flex-wrap flex-col">
+                      <div className="w-full h-[50vh] md:h-screen relative overflow-hidden flex flex-wrap flex-col">
                         <div className="grid grid-cols-9 flex-1 h-full">
                           <div className="relative overflow-hidden mb-auto col-span-9 h-full">
                             <m.div variants={scaleDelay} className="absolute inset-0 h-full object-cover object-center">
@@ -150,14 +150,14 @@ export default function Studio(initialData) {
                         />
                       </div>
                       
-                      <div className="col-span-7 md:col-span-3 col-start-1 md:col-start-5 leading-snug max-w-[550px]">
+                      <div className="col-span-8 md:col-span-3 col-start-1 md:col-start-5 leading-snug max-w-[550px]">
                         <div className="content">
                           <BlockContent serializers={{ container: ({ children }) => children }} blocks={studio.content} />
                         </div>
                       </div>
                     </div>
 
-                    <h2 className="font-bold text-[7.5vw] leading-[0.85] mb-8 md:mb-16 xl:mb-20">
+                    <h2 className="text-[7.4vw] md:text-[7.5vw] leading-[1] md:leading-[0.85] mb-8 md:mb-16 xl:mb-20">
                       <span className="block text-right">JBS Is a</span>
                       <span className="block text-left">Photography + Production</span>
                       <span className="block text-left">Studio Specialising In</span>
@@ -184,7 +184,7 @@ export default function Studio(initialData) {
                                   </div>
                                 </div>
                               <span className="block text-xs leading-none mb-[2px]">{e.jobTitle}</span>
-                              <span className="block leading-none md:text-lg">{e.name}</span>
+                              <span className="block leading-none text-lg md:text-lg mb-6 md:mb-0">{e.name}</span>
                             </div>  
                           </Fragment>
                         ) : (
@@ -215,7 +215,7 @@ export default function Studio(initialData) {
                               </div>
 
                               <span className="block text-xs leading-none mb-[2px]">{e.jobTitle}</span>
-                              <span className="block leading-none md:text-lg">{e.name}</span>
+                              <span className="block leading-none text-lg md:text-lg mb-6 md:mb-0">{e.name}</span>
                             </div>  
                           </Fragment>
                         )

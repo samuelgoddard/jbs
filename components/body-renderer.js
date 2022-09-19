@@ -28,21 +28,21 @@ const bodySerializers = {
   modularImageBlock: {
     component: ModularImageBlock,
     wrapper: ({ children }) => 
-      <div className="mb-[12vw]">
+      <div className="md:mb-[12vw]">
         {children}
       </div>
   },
   modularVideoBlock: {
     component: ModularVideoBlock,
     wrapper: ({ children }) => 
-      <div className="mb-[12vw]">
+      <div className="md:mb-[12vw]">
         {children}
       </div>
   },
   imageCarouselBlock: {
     component: ModularImageCarouselBlock,
     wrapper: ({ children }) => 
-      <div className="mb-[12vw]">
+      <div className="md:mb-[12vw]">
         {children}
       </div>
   },
@@ -56,21 +56,21 @@ const bodySerializers = {
   modularImageTextBlock: {
     component: ModularImageTextBlock,
     wrapper: ({ children }) => 
-      <div className="mb-[12vw]">
+      <div className="md:mb-[12vw]">
         {children}
       </div>
   },
   modularDoubleImageBlock: {
     component: ModularDoubleImageBlock,
     wrapper: ({ children }) => 
-      <div className="mb-[12vw]">
+      <div className="md:mb-[12vw]">
         {children}
       </div>
   },
   modularSideBySideImageBlock: {
     component: ModularSideBySideImageBlock,
     wrapper: ({ children }) => 
-      <div className="mb-[12vw]">
+      <div className="md:mb-[12vw]">
         {children}
       </div>
   }

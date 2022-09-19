@@ -197,7 +197,7 @@ export default function WorkSlug(initialData) {
             <div data-scroll-container ref={containerRef} id="scroll-container">
               <div data-scroll-section>
 
-                <div className="p-3 self-start absolute top-0 left-0 z-[1000]" data-scroll data-scroll-sticky data-scroll-target="#scroll-container">
+                <div className="p-3 self-start absolute top-0 left-0 z-[1001]" data-scroll data-scroll-sticky data-scroll-target="#scroll-container">
                   <Link href="/">
                     <a className={`mb-1 md:mb-0 block w-[60px] overflow-hidden text-black relative z-[400]`}>
                       <m.div variants={revealDelayTop}>
@@ -263,7 +263,7 @@ export default function WorkSlug(initialData) {
                       </div>
                     </div>
 
-                    <h1 className="text-[14vw] md:text-[13vw] xl:text-[12vw] ml-[0vw] leading-[0.8] md:leading-[0.8] xl:leading-[0.8] relative overflow-hidden block mb-1 md:mb-3 px-3 md:px-0">
+                    <h1 className="text-[14vw] md:text-[13vw] xl:text-[12vw] ml-[0vw] leading-[0.9] md:leading-[0.9] xl:leading-[0.9] relative overflow-hidden block mb-1 md:mb-3 px-3 md:px-0">
                       <m.span variants={revealDelay} className="block">{title}</m.span>                        
                     </h1>
                     <div className="flex items-end mb-3 px-3">
@@ -306,9 +306,9 @@ export default function WorkSlug(initialData) {
 
                     <BodyRenderer body={contentBlocks} />
                     
-                    <div className="flex flex-wrap p-3 mb-[12vw] md:mb-[15vh]">
-                      <div className="w-4/12 md:w-6/12">
-                        <h2 className="block text-2xl md:text-3xl xl:text-4xl leading-[1] md:leading-[1] xl:leading-[1] 2xl:leading-[1] font-sans uppercase relative overflow-hidden">
+                    <div className="flex flex-wrap p-3 mb-[12vw] md:mb-[15vh] mt-[12vw] md:mt-0">
+                      <div className="w-full md:w-6/12 mb-5 md:mb-0">
+                        <h2 className="block text-4xl md:text-3xl xl:text-4xl leading-[1] md:leading-[1] xl:leading-[1] 2xl:leading-[1] font-sans uppercase relative overflow-hidden">
                           <m.span variants={revealDelay} className="block">Credits</m.span>
                         </h2>
                       </div>
@@ -343,7 +343,7 @@ export default function WorkSlug(initialData) {
                             return (
                               <Link href={`/work/${e.slug.current}`} key={i}>
                                 <a className={`flex items-center w-full border-b border-black py-3 group overflow-hidden relative ${i == 1 ? 'text-right justify-end' : '' }`}>
-                                  <div className={`w-[16.5%] max-w-[230px] min-h-[9vw] md:min-h-[9vw] xl:min-h-[8.4vw] bg-gray-100 relative overflow-hidden ${ i == 1 ? 'order-2' : 'order-1' }`}>
+                                  <div className={`w-[25%] max-w-[330px] md:w-[16.5%] md:max-w-[230px] min-h-[14vw] md:min-h-[9vw] xl:min-h-[8.4vw] bg-gray-100 relative overflow-hidden ${ i == 1 ? 'order-2' : 'order-1' }`}>
                                     <Image
                                       image={e.teaserImage}
                                       className="w-full"
@@ -353,11 +353,11 @@ export default function WorkSlug(initialData) {
                                     />
                                   </div>
                                   <div className={`px-3 md:px-4 xl:px-5 ${ i == 1 ? 'order-1' : 'order-2' }`}>
-                                    <h2 className={`block text-[5.75vw] leading-[0.8] mb-1 md:mb-2 relative overflow-hidden`}>
+                                    <h2 className={`block text-[7.6vw] md:text-[5.75vw] leading-[0.9] md:leading-[0.9] mb-1 md:mb-2 relative overflow-hidden`}>
                                       <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">{e.title}</span>
                                       <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0 text-orange">{e.title}</span>
                                     </h2>
-                                    <span className="block text-xl md:text-2xl xl:text-3xl leading-[1] md:leading-[1] xl:leading-[1] 2xl:leading-[1] font-sans uppercase relative overflow-hidden">
+                                    <span className="block text-lg md:text-2xl xl:text-3xl leading-[1] md:leading-[1] xl:leading-[1] 2xl:leading-[1] font-sans uppercase relative overflow-hidden">
                                       <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">{e.campaignTitle}</span>
                                       <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0 text-orange">{e.campaignTitle}</span>
                                     </span>
@@ -373,7 +373,7 @@ export default function WorkSlug(initialData) {
                             return (
                               <Link href={`/work/${e.slug.current}`} key={i}>
                                 <a className={`flex items-center w-full border-b border-black py-3 ${i == 1 ? 'text-right justify-end' : '' }`}>
-                                  <div className={`w-[16.5%] max-w-[230px] min-h-[9vw] md:min-h-[9vw] xl:min-h-[8.4vw] bg-gray-100 relative overflow-hidden ${ i == 1 ? 'order-2' : 'order-1' }`}>
+                                  <div className={`w-[25%] max-w-[330px] md:w-[16.5%] md:max-w-[230px] min-h-[14vw] md:min-h-[9vw] xl:min-h-[8.4vw] bg-gray-100 relative overflow-hidden ${ i == 1 ? 'order-2' : 'order-1' }`}>
                                     <Image
                                       image={e.teaserImage}
                                       className="w-full"
@@ -383,8 +383,8 @@ export default function WorkSlug(initialData) {
                                     />
                                   </div>
                                   <div className={`px-3 md:px-4 xl:px-5 ${ i == 1 ? 'order-1' : 'order-2' }`}>
-                                    <h2 className={`block text-[5.75vw] leading-[0.8] mb-1 md:mb-2`}>{e.title}</h2>
-                                    <span className="block text-xl md:text-2xl xl:text-3xl leading-[1] md:leading-[1] xl:leading-[1] 2xl:leading-[1] font-sans uppercase relative overflow-hidden">{e.campaignTitle}</span>
+                                    <h2 className={`block text-[7.6vw] md:text-[5.75vw] leading-[0.9] md:leading-[0.9] mb-1 md:mb-2`}>{e.title}</h2>
+                                    <span className="block text-lg md:text-2xl xl:text-3xl leading-[1] md:leading-[1] xl:leading-[1] 2xl:leading-[1] font-sans uppercase relative overflow-hidden">{e.campaignTitle}</span>
                                   </div>
                                 </a>
                               </Link>
