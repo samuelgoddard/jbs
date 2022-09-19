@@ -23,7 +23,7 @@ export default function App({ Component, pageProps }) {
 
   const itemFill = {
     visible: { width: '100%', height: '100%' },
-    hidden: { width: '30vw', height: '22vw' }
+    hidden: { width: '35vw', height: '24vw' }
   }
 
   return (
@@ -48,7 +48,7 @@ export default function App({ Component, pageProps }) {
                       animate="visible"
                       variants={itemIn}
                       transition={{ delay: 0.3, duration: 0, ease: [0.83, 0, 0.17, 1]  }}
-                      className="w-[33vw]"
+                      className="w-[55vw] md:w-[33vw]"
                     >
                       <img src="/images/intro-01.jpg" alt="JBS Photography Image" />
                     </m.div>
@@ -58,7 +58,7 @@ export default function App({ Component, pageProps }) {
                       animate="visible"
                       variants={itemIn}
                       transition={{ delay: 0.6, duration: 0, ease: [0.83, 0, 0.17, 1]  }}
-                      className="absolute top-0 left-0 ml-[20%] mt-[-15%] w-[20vw] rotate-6"
+                      className="absolute top-0 left-0 ml-[20%] mt-[-15%] w-[37vw] md:w-[20vw] rotate-6"
                     >
                       <img src="/images/intro-02.jpg" alt="JBS Photography Image" />
                     </m.div>
@@ -68,7 +68,7 @@ export default function App({ Component, pageProps }) {
                       animate="visible"
                       variants={itemIn}
                       transition={{ delay: 0.9, duration: 0, ease: [0.83, 0, 0.17, 1]  }}
-                      className="absolute top-0 left-0 ml-[8%] w-[28vw] -rotate-6"
+                      className="absolute top-0 left-0 ml-[8%] w-[55vw] md:w-[28vw] -rotate-6"
                     >
                       <img src="/images/intro-03.jpg" alt="JBS Photography Image" />
                     </m.div>

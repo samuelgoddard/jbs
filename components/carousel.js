@@ -18,6 +18,9 @@ const Carousel = ({ slides, contained, id }) => {
     setSelectedIndex(embla.selectedScrollSnap());
   }, [embla, setSelectedIndex]);
 
+  const scrollPrev = useCallback(() => embla && embla.scrollPrev(), [embla]);
+  const scrollNext = useCallback(() => embla && embla.scrollNext(), [embla]);
+
   useEffect(() => {
     if (!embla) return;
     onSelect();
@@ -54,8 +57,10 @@ const Carousel = ({ slides, contained, id }) => {
             })}
           </div>
         </div>
-        {/* <PrevButton onClick={scrollPrev} enabled={prevBtnEnabled} />
-        <NextButton onClick={scrollNext} enabled={nextBtnEnabled} /> */}
+
+        <button onClick={scrollPrev} className="absolute w-10 h-10 text-2xl bg-opacity-40 rounded-full flex items-center justify-center leading-[0] border-black border bg-white text-black top-[40%] md:top-[43%] left-3">←</button>
+
+        <button onClick={scrollPrev} className="absolute w-10 h-10 text-2xl bg-opacity-40 rounded-full flex items-center justify-center leading-[0] border-black border bg-white text-black top-[40%] md:top-[43%] right-3">→</button>
 
         <div className="embla__dots">
           {scrollSnaps.map((_, index) => (

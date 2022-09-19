@@ -62,16 +62,15 @@
   }
 
   .embla__slide {
-    @apply bg-transparent min-w-[75vw] relative h-[44.5vw];
-    padding-left: 5vw;
+    @apply bg-transparent min-w-[75vw] relative h-[44.5vw] pl-[1px] md:pl-[5vw];
   }
 
   .embla__slide--horizontal {
-    @apply bg-transparent min-w-[85vw] md:min-w-[75vw] relative h-[55vw] md:h-[44.5vw];
+    @apply bg-transparent min-w-[110vw] md:min-w-[75vw] relative h-[65vw] md:h-[44.5vw];
   }
 
   .embla__slide--vertical {
-    @apply bg-transparent relative min-w-[45vw] md:min-w-[36vw] h-[55vw] md:h-[44.5vw];
+    @apply bg-transparent relative min-w-[50vw] md:min-w-[36vw] h-[65vw] md:h-[44.5vw];
   }
 
   .embla__dots {

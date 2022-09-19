@@ -20,33 +20,21 @@ const query = `{
         ...
       },
       caption,
-      alt,
-      hotspot {
-        x,
-        y
-      },
+      alt
     },
     workBackgroundImage {
       asset-> {
         ...
       },
       caption,
-      alt,
-      hotspot {
-        x,
-        y
-      },
+      alt
     },
     studioBackgroundImage {
       asset-> {
         ...
       },
       caption,
-      alt,
-      hotspot {
-        x,
-        y
-      },
+      alt
     },
     seo {
       ...,

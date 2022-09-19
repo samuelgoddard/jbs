@@ -81,10 +81,10 @@ export default function Work(initialData) {
         >
           {/* <Loader /> */}
           <m.div variants={fade}>
-            <header className="font-mono z-[10000000] fixed top-0 left-0 w-[20vw] p-3">
+            <header className="font-mono z-[10000000] fixed top-0 left-0 w-[40vw] p-3">
               <div className="flex flex-wrap">
                 <Link href="/">
-                  <a className={`mb-1 md:mb-0 block w-[72px] pt-[2px] md:pt-[4px] overflow-hidden text-black bg-white pr-3`}>
+                  <a className={`mb-1 md:mb-0 block w-[72px] pt-[2px] md:pt-[4px] overflow-hidden text-black pr-3`}>
                     <m.div variants={revealDelayTop}>
                       <svg className="w-full" viewBox="0 0 111 53" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M16.9088 52.2402C27.7683 52.2402 33.8176 45.9723 33.8176 34.0924V0H23.4682V34.8212C23.4682 39.9959 21.5733 42.9112 16.9088 42.9112C12.3172 42.9112 10.3493 40.4332 10.3493 34.4568H0C0 46.3367 6.3408 52.2402 16.9088 52.2402Z" fill="currentColor"/>

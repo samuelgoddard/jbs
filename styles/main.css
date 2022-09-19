@@ -35,14 +35,14 @@ html {
     @apply object-cover object-center;
   }
 }
-
+/* 
 .home-image-mobile {
 
   & img {
     @apply object-cover scale-110 !important;
     object-position: 35% -7vw !important;
   }
-}
+} */
 
 .image {
   & span {

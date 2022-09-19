@@ -254,7 +254,7 @@ export default function WorkCarousel({ work, currentCat, currentType }) {
       </div>
       <div className="col-span-9 md:col-span-3 md:col-start-7 flex justify-center p-3">
         <div className="w-full md:w-9/12">
-          <div className="pt-[10vw] pb-[15vw]">
+          <div className="pt-[16vw] md:pt-[10vw] pb-[15vw]">
             {[...Array(1)].map((index) => ( 
               <div key={index}>
                 {work.map((e, i) => {
@@ -282,7 +282,7 @@ export default function WorkCarousel({ work, currentCat, currentType }) {
                   }
                   
                   return (currentType == 'all') ? (
-                    <li className={`block mb-8 md:mb-[7vw] transition-all ease-in-out duration-[450ms] ${width} opacity-100 ${active}`} key={i} onMouseEnter={() => updateCurrent(i)}>
+                    <li className={`block mb-12 md:mb-[7vw] transition-all ease-in-out duration-[450ms] ${width} opacity-100 ${active}`} key={i} onMouseEnter={() => updateCurrent(i)}>
                       { e.teaserImageThumbnail && (
                         <>
                         <Link href={`/work/${e.slug.current}`}>
@@ -314,7 +314,7 @@ export default function WorkCarousel({ work, currentCat, currentType }) {
                               </m.div>
                             </div>
 
-                            <div className="w-full grid grid-cols-6 mt-2 mb-1">
+                            <div className="w-full grid-cols-6 mt-2 mb-1 hidden md:grid">
                               <div className="col-span-1">
                                 <span className="block leading-none text-xs">JBS.{i < 10 && ('0')}{i}</span>
                               </div>
@@ -327,6 +327,9 @@ export default function WorkCarousel({ work, currentCat, currentType }) {
                             </div>
 
                             <h1 className="text-5xl md:text-[6.5vw] xl:text-[7vw] 2xl:text-[7.5vw] leading-none md:leading-none xl:leading-none 2xl:leading-none font-sans uppercase">{e.title}</h1>
+
+                            <h1 className="text-2xl md:text-[6.5vw] xl:text-[7vw] 2xl:text-[7.5vw] leading-none md:leading-none xl:leading-none 2xl:leading-none font-sans uppercase md:hidden">{e.campaignTitle}</h1>
+                            
                           </a>
                         </Link>
                         </>
