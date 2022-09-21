@@ -199,13 +199,22 @@ export default function Home(initialData) {
                 <div className="col-span-3 md:col-span-2 text-left">
                   <Link href="/work">
                     <a
-                      className="-mt-1 md:mt-0 text-4xl md:text-[4.5vw] xl:text-[4.5vw] 2xl:text-[5.5vw] leading-[0.9] md:leading-[0.9] xl:leading-[0.9] 2xl:leading-[0.9] font-sans uppercase relative block overflow-hidden group"
+                      className="-mt-1 md:mt-0 text-4xl md:text-[4.5vw] xl:text-[4.5vw] 2xl:text-[5.5vw] leading-[0.9] md:leading-[0.9] xl:leading-[0.9] 2xl:leading-[0.9] font-sans uppercase relative hidden md:block overflow-hidden group"
                       onMouseEnter={() => updateCurrentHover('work')}
                       onMouseLeave={() => updateCurrentHover(null)}
                     >
                       <m.span className="block relative overflow-hidden" variants={revealDelayBottom}>
                         <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">Work</span>
                         <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0 text-white">Work</span>
+                      </m.span>
+                    </a>
+                  </Link>
+                  <Link href="/work">
+                    <a
+                      className="-mt-1 md:mt-0 text-4xl md:text-[4.5vw] xl:text-[4.5vw] 2xl:text-[5.5vw] leading-[0.9] md:leading-[0.9] xl:leading-[0.9] 2xl:leading-[0.9] font-sans uppercase relative block md:hidden overflow-hidden group"
+                    >
+                      <m.span className="block relative overflow-hidden" variants={revealDelayBottom}>
+                        <span className="block">Work</span>
                       </m.span>
                     </a>
                   </Link>
@@ -246,13 +255,22 @@ export default function Home(initialData) {
                 <div className="col-span-4 md:col-span-2 col-start-4 md:col-start-8 md:text-right">
                   <Link href="/studio">
                     <a
-                      className="-mt-1 md:mt-0 text-4xl md:text-[4.5vw] xl:text-[4.5vw] 2xl:text-[5.5vw] leading-[0.9] md:leading-[0.9] xl:leading-[0.9] 2xl:leading-[0.9] font-sans uppercase relative block overflow-hidden group"
+                      className="-mt-1 md:mt-0 text-4xl md:text-[4.5vw] xl:text-[4.5vw] 2xl:text-[5.5vw] leading-[0.9] md:leading-[0.9] xl:leading-[0.9] 2xl:leading-[0.9] font-sans uppercase relative hidden md:block overflow-hidden group"
                       onMouseEnter={() => updateCurrentHover('studio')}
                       onMouseLeave={() => updateCurrentHover(null)}
                     >
                       <m.span className="block" variants={revealDelayBottom}>
                         <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">Studio</span>
-                        <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0 text-white">Studio</span>
+                      </m.span>
+                    </a>
+                  </Link>
+
+                  <Link href="/studio">
+                    <a
+                      className="-mt-1 md:mt-0 text-4xl md:text-[4.5vw] xl:text-[4.5vw] 2xl:text-[5.5vw] leading-[0.9] md:leading-[0.9] xl:leading-[0.9] 2xl:leading-[0.9] font-sans uppercase relative block overflow-hidden group md:hidden"
+                    >
+                      <m.span className="block" variants={revealDelayBottom}>
+                        <span className="block">Studio</span>
                       </m.span>
                     </a>
                   </Link>
