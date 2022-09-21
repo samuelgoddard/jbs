@@ -261,6 +261,7 @@ export default function Home(initialData) {
                     >
                       <m.span className="block" variants={revealDelayBottom}>
                         <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">Studio</span>
+                        <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0 text-white">Studio</span>
                       </m.span>
                     </a>
                   </Link>
