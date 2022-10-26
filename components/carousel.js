@@ -60,7 +60,7 @@ const Carousel = ({ slides, contained, id }) => {
 
         <button onClick={scrollPrev} className="absolute w-10 h-10 text-2xl bg-opacity-40 rounded-full flex items-center justify-center leading-[0] border-black border bg-white text-black top-[40%] md:top-[43%] left-3">←</button>
 
-        <button onClick={scrollPrev} className="absolute w-10 h-10 text-2xl bg-opacity-40 rounded-full flex items-center justify-center leading-[0] border-black border bg-white text-black top-[40%] md:top-[43%] right-3">→</button>
+        <button onClick={scrollNext} className="absolute w-10 h-10 text-2xl bg-opacity-40 rounded-full flex items-center justify-center leading-[0] border-black border bg-white text-black top-[40%] md:top-[43%] right-3">→</button>
 
         <div className="embla__dots">
           {scrollSnaps.map((_, index) => (
