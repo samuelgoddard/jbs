@@ -16,7 +16,7 @@ export default function ModularTextBlock({ text, position }) {
 
   return (
     <div className="grid grid-cols-9 p-3">
-      <div className={`${cols} ${start} indent-12`}>
+      <div className={`${cols} ${start} indent-12 text-sm md:text-base`}>
         <BlockContent serializers={{ container: ({ children }) => children }} blocks={text} />
       </div>
     </div>

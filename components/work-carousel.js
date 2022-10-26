@@ -302,7 +302,7 @@ export default function WorkCarousel({ work, currentCat, currentType }) {
                         </Link>
                         <Link href={`/work/${e.slug.current}`}>
                           <a className="w-full block md:hidden group">
-                            <div className="h-[75vw] relative overflow-hidden mb-1">
+                            <div className="h-[55vw] md:h-[75vw] relative overflow-hidden mb-1">
                               <m.div variants={scaleDelay} className="w-full h-full">
                                 <Image
                                   image={e.teaserImage}
@@ -328,7 +328,7 @@ export default function WorkCarousel({ work, currentCat, currentType }) {
 
                             <h1 className="text-5xl md:text-[6.5vw] xl:text-[7vw] 2xl:text-[7.5vw] leading-none md:leading-none xl:leading-none 2xl:leading-none font-sans uppercase">{e.title}</h1>
 
-                            <h1 className="text-2xl md:text-[6.5vw] xl:text-[7vw] 2xl:text-[7.5vw] leading-none md:leading-none xl:leading-none 2xl:leading-none font-sans uppercase md:hidden">{e.campaignTitle}</h1>
+                            <h1 className="text-xl md:text-[6.5vw] xl:text-[7vw] 2xl:text-[7.5vw] leading-none md:leading-none xl:leading-none 2xl:leading-none font-sans uppercase md:hidden">{e.campaignTitle} &bull; {e.type.replace(/-/g, ' ').replace(/and/g, '&').replace(/moving/g, 'motion').replace(/still/g, 'stills')}</h1>
                             
                           </a>
                         </Link>

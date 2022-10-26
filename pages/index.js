@@ -1,6 +1,6 @@
-import { useContext, useEffect, useRef, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import Layout from '@/components/layout'
-import { fade, revealDelay, fadeDelay, scaleDelay } from '@/helpers/transitions'
+import { fade, fadeDelay, scaleDelay } from '@/helpers/transitions'
 import { LazyMotion, domAnimation, m } from 'framer-motion'
 import { NextSeo } from 'next-seo'
 import Image from '@/components/image'
@@ -8,7 +8,6 @@ import SanityPageService from '@/services/sanityPageService'
 import BlockContent from '@sanity/block-content-to-react'
 import Link from 'next/link'
 import { IntroContext } from '@/context/intro'
-// import Loader from '@/components/loader'
 import Div100vh from 'react-div-100vh'
 
 const query = `{
@@ -156,35 +155,43 @@ export default function Home(initialData) {
 
             <m.main className="">
               <m.div variants={scaleDelay} className="fixed inset-0 z-0 object-cover object-center">
-                <Image 
-                  image={home.backgroundImage}
-                  layout="fill"
-                  widthOverride={2000}
-                  className={`hidden md:block fixed inset-0 z-0 object-cover object-enter transition-all ease-custom duration-[450ms] ${(currentHover == 'work' || currentHover == 'studio' ) ? 'opacity-0 scale-1' : 'scale-1 opacity-100' }`}
-                />
+                <div className={`transition-all ease-custom duration-[450ms] ${(currentHover == 'work' || currentHover == 'studio' ) ? 'opacity-0 scale-1' : 'scale-1 opacity-100' }`}>
+                  <Image 
+                    image={home.backgroundImage}
+                    layout="fill"
+                    widthOverride={2000}
+                    className={`hidden md:block fixed inset-0 z-0 object-cover object-enter `}
+                  />
+                </div>
 
-                <Image 
-                  image={home.backgroundImage}
-                  layout="fill"
-                  widthOverride={1200}
-                  className={`block md:hidden fixed inset-0 z-0 transition-all ease-custom duration-[450ms] home-image-mobile ${(currentHover == 'work' || currentHover == 'studio' ) ? 'opacity-0 scale-1' : 'scale-1 opacity-100' }`}
-                />
+                <div className={`transition-all ease-custom duration-[450ms] home-image-mobile ${(currentHover == 'work' || currentHover == 'studio' ) ? 'opacity-0 scale-1' : 'scale-1 opacity-100' }`}>
+                  <Image 
+                    image={home.backgroundImage}
+                    layout="fill"
+                    widthOverride={1200}
+                    className={`block md:hidden fixed inset-0 z-0 home-image-mobile `}
+                  />
+                </div>
 
-                <Image 
-                  image={home.workBackgroundImage}
-                  focalPoint={home.workBackgroundImage.hotspot}
-                  layout="fill"
-                  widthOverride={2000}
-                  className={`fixed inset-0 z-0 object-cover object-enter transition-all ease-custom duration-[450ms] ${currentHover == 'work' ? 'opacity-100 scale-1' : 'scale-1 opacity-0' }`}
-                />
+                <div className={`transition-all ease-custom duration-[450ms] ${currentHover == 'work' ? 'opacity-100 scale-1' : 'scale-1 opacity-0' }`}>
+                  <Image 
+                    image={home.workBackgroundImage}
+                    focalPoint={home.workBackgroundImage.hotspot}
+                    layout="fill"
+                    widthOverride={2000}
+                    className={`fixed inset-0 z-0 object-cover object-enter`}
+                  />
+                </div>
 
-                <Image 
-                  image={home.studioBackgroundImage}
-                  focalPoint={home.studioBackgroundImage.hotspot}
-                  layout="fill"
-                  widthOverride={2000}
-                  className={`fixed inset-0 z-0 object-cover object-enter transition-all ease-custom duration-[450ms] ${currentHover == 'studio' ? 'opacity-100 scale-1' : 'scale-1 opacity-0' }`}
-                />
+                <div className={`transition-all ease-custom duration-[450ms] ${currentHover == 'studio' ? 'opacity-100 scale-1' : 'scale-1 opacity-0' }`}>
+                  <Image 
+                    image={home.studioBackgroundImage}
+                    focalPoint={home.studioBackgroundImage.hotspot}
+                    layout="fill"
+                    widthOverride={2000}
+                    className={`fixed inset-0 z-0 object-cover object-enter`}
+                  />
+                </div>
               </m.div>
 
               <article className="absolute bottom-0 top-auto md:bottom-auto md:top-0 right-0 left-0 z-10 w-full md:mt-[20vh] mb-[8vh] md:mb-0 p-3 indent-8 text-sm md:text-base leading-tight md:leading-tight grid grid-cols-9">

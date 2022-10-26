@@ -1,10 +1,7 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import Layout from '@/components/layout'
-import Header from '@/components/header'
-import Footer from '@/components/footer'
 import { fade, reveal } from '@/helpers/transitions'
-import { LocomotiveScrollProvider } from 'react-locomotive-scroll'
-import { LazyMotion, domAnimation, m, useAnimation } from 'framer-motion'
+import { LazyMotion, domAnimation, m } from 'framer-motion'
 import { NextSeo } from 'next-seo'
 import Link from 'next/link'
 

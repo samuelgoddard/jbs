@@ -19,7 +19,7 @@ export default function HashGridAnimated() {
   // }, [scroll, showLogo])
 
   return (
-    <div className="mx-auto grid grid-cols-9 grid-rows-3 h-full items-end py-12 md:pt-[10vw]">
+    <div className="mx-auto grid grid-cols-9 grid-rows-3 h-full items-end py-12 md:pt-[10vw] text-xs md:text-base">
       <div className="mx-auto col-span-1 row-span-1 col-start-2" data-scroll data-scroll-speed={-4}>+</div>
       <div className="mx-auto col-span-1 row-span-1 col-start-3" data-scroll data-scroll-speed={-3}>+</div>
       <div className="mx-auto col-span-1 row-span-1" data-scroll data-scroll-speed={-2.4}>+</div>
@@ -36,7 +36,7 @@ export default function HashGridAnimated() {
       <div className="mx-auto col-span-1 row-span-1 col-start-9" data-scroll data-scroll-speed={-2}>+</div>
 
       <div data-scroll data-scroll-speed={2} className={`absolute inset-0 w-full h-full flex items-center justify-center`}>
-        <div className={`w-[12vw] h-[12vw] rounded-full mt-[-10vw] mr-[-23vw]`}>
+        <div className={`w-[25vw] h-[25vw] md:w-[12vw] md:h-[12vw] rounded-full mt-[-10vw] mr-[-40vw] md:mr-[-23vw]`}>
           <img src="/images/badge.webp" alt="JBS Logo Badge" className="w-full" />
         </div>
       </div>

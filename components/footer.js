@@ -22,11 +22,11 @@ export default function Footer({ contact }) {
   
   return (
     <footer className="relative">
-      <div className="w-full h-[70vw] md:h-[50vw] hidden md:block">
+      <div className="w-full h-[70vw] md:h-[50vw] block">
         <HashGridAnimated />
       </div>
 
-      <div className="grid grid-cols-9 items-end relative z-10 pt-[10vw] md:pt-0 p-3">
+      <div className="grid grid-cols-9 items-end relative z-10 pt-[0vw] md:pt-0 p-3">
         <div className="col-span-1">
           <div className="relative overflow-hidden">
             <svg className={`w-[31px] md:w-[51px] xl:w-[61px] fill-current transition-transform ease-custom duration-[800ms] delay-[0ms] ${showLogo ? 'md:translate-x-0' : 'md:translate-x-[-110%]' }`} viewBox="0 0 82 125" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M40.744 124.592c26.168 0 40.744-15.134 40.744-43.818V0H56.55v82.534c0 12.494-4.566 19.533-15.806 19.533-11.064 0-15.806-5.983-15.806-20.413H0c0 28.684 15.279 42.938 40.744 42.938Z" /></svg>
@@ -60,10 +60,14 @@ export default function Footer({ contact }) {
           </Link> */}
         </div>
 
-        <div className="col-span-2 col-start-3 -ml-6 md:ml-0 md:col-start-3 xl:col-start-4 flex space-x-4">
-          <a href={`mailto:${contact.email}`} className="text-lg md:text-xl xl:text-2xl 2xl:text-3xl leading-[1.1] md:leading-[1.1] xl:leading-[1.1] 2xl:leading-[1.1] font-sans uppercase relative group overflow-hidden">
+        <div className="col-span-2 col-start-3 -ml-6 md:ml-0 md:col-start-3 xl:col-start-4 block md:flex md:space-x-4">
+          <a href={`mailto:${contact.email}`} className="text-lg md:text-xl xl:text-2xl 2xl:text-3xl leading-[1.1] md:leading-[1.1] xl:leading-[1.1] 2xl:leading-[1.1] font-sans uppercase relative group overflow-hidden hidden md:block">
             <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">Contact</span>
             <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0 text-orange">Contact</span>  
+          </a>
+          
+          <a href="https://shiftwalk.studio" target="_blank" rel="noopener noreferrer" className="block text-[10px] md:text-[11px] lg:text-[13px] 2xl:text-[13px] leading-[0.95] md:leading-[0.95] lg:leading-[0.95] 2xl:leading-[0.95] relative overflow-hidden group block md:hidden ml-[4px] whitespace-nowrap">
+              <span className="block">Site By <span className="underline">ShiftWalk</span></span>
           </a>
 
           {contact.socials.map((e, i) => {
@@ -88,7 +92,7 @@ export default function Footer({ contact }) {
         </div>
         
         <div className="col-span-2 md:col-span-1 col-start-7 md:col-start-8">
-          <a href="https://shiftwalk.studio" target="_blank" rel="noopener noreferrer" className="block text-[10px] md:text-[11px] lg:text-[13px] 2xl:text-[13px] leading-[0.95] md:leading-[0.95] lg:leading-[0.95] 2xl:leading-[0.95] relative overflow-hidden group">
+          <a href="https://shiftwalk.studio" target="_blank" rel="noopener noreferrer" className="block text-[10px] md:text-[11px] lg:text-[13px] 2xl:text-[13px] leading-[0.95] md:leading-[0.95] lg:leading-[0.95] 2xl:leading-[0.95] relative overflow-hidden group hidden md:block">
             <span className="flex space-x-1">
               <span className="block"><span className="hidden xl:inline">Site </span>By</span><span className="underline relative">
               <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms] underline">ShiftWalk</span>

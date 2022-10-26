@@ -5,7 +5,6 @@ import { NextSeo } from 'next-seo'
 import SanityPageService from '@/services/sanityPageService'
 import Link from 'next/link'
 import Image from '@/components/image'
-import Loader from '@/components/loader'
 import { useContext, useEffect, useState } from 'react'
 import { IntroContext } from '@/context/intro'
 import { useRouter } from 'next/router'
@@ -171,42 +170,52 @@ export default function Menu(initialData) {
             <m.main className="">
               <div className="fixed left-0 top-0 bottom-0 w-[43vw] z-0 overflow-hidden hidden md:block">
                 <m.div variants={scaleDelay} className="absolute inset-0 w-full h-full z-0 object-cover object-center bg-gray-200">
-                  <Image 
-                    image={menu.backgroundImage}
-                    focalPoint={menu.backgroundImage.hotspot}
-                    layout="fill"
-                    widthOverride={1200}
-                    className={`absolute inset-0 w-full h-full z-0 object-cover object-center transition-all ease-custom duration-[450ms] ${(currentHover == 'work' || currentHover == 'studio' || currentHover == 'home' || currentHover == 'reel') ? 'opacity-0 scale-1' : 'scale-1 opacity-100' }`}
-                  />
+                  <div className={`transition-all ease-custom duration-[450ms] ${(currentHover == 'work' || currentHover == 'studio' || currentHover == 'home' || currentHover == 'reel') ? 'opacity-0 scale-1' : 'scale-1 opacity-100' }`}>
+                    <Image 
+                      image={menu.backgroundImage}
+                      focalPoint={menu.backgroundImage.hotspot}
+                      layout="fill"
+                      widthOverride={1200}
+                      className={`absolute inset-0 w-full h-full z-0 object-cover object-center`}
+                    />
+                  </div>
 
-                  <Image 
-                    image={menu.homeBackgroundImage}
-                    focalPoint={menu.homeBackgroundImage.hotspot}
-                    layout="fill"
-                    widthOverride={1200}
-                    className={`absolute inset-0 w-full h-full z-0 object-cover object-center transition-all ease-custom duration-[450ms] ${currentHover == 'home' ? 'opacity-100 scale-1' : 'scale-1 opacity-0' }`}
-                  />
-                  <Image 
-                    image={menu.workBackgroundImage}
-                    focalPoint={menu.workBackgroundImage.hotspot}
-                    layout="fill"
-                    widthOverride={1200}
-                    className={`absolute inset-0 w-full h-full z-0 object-cover object-center transition-all ease-custom duration-[450ms] ${currentHover == 'work' ? 'opacity-100 scale-1' : 'scale-1 opacity-0' }`}
-                  />
-                  <Image 
-                    image={menu.studioBackgroundImage}
-                    focalPoint={menu.studioBackgroundImage.hotspot}
-                    layout="fill"
-                    widthOverride={1200}
-                    className={`absolute inset-0 w-full h-full z-0 object-cover object-center transition-all ease-custom duration-[450ms] ${currentHover == 'studio' ? 'opacity-100 scale-1' : 'scale-1 opacity-0' }`}
-                  />
-                  <Image 
-                    image={menu.reelBackgroundImage}
-                    focalPoint={menu.reelBackgroundImage.hotspot}
-                    layout="fill"
-                    widthOverride={1200}
-                    className={`absolute inset-0 w-full h-full z-0 object-cover object-center transition-all ease-custom duration-[450ms] ${currentHover == 'reel' ? 'opacity-100 scale-1' : 'scale-1 opacity-0' }`}
-                  />
+                  <div className={`transition-all ease-custom duration-[450ms] ${currentHover == 'home' ? 'opacity-100 scale-1' : 'scale-1 opacity-0' }`}>
+                    <Image 
+                      image={menu.homeBackgroundImage}
+                      focalPoint={menu.homeBackgroundImage.hotspot}
+                      layout="fill"
+                      widthOverride={1200}
+                      className={`absolute inset-0 w-full h-full z-0 object-cover object-center`}
+                    />
+                  </div>
+                  <div className={`transition-all ease-custom duration-[450ms] ${currentHover == 'work' ? 'opacity-100 scale-1' : 'scale-1 opacity-0' }`}>
+                    <Image 
+                      image={menu.workBackgroundImage}
+                      focalPoint={menu.workBackgroundImage.hotspot}
+                      layout="fill"
+                      widthOverride={1200}
+                      className={`absolute inset-0 w-full h-full z-0 object-cover object-center`}
+                    />
+                  </div>
+                  <div className={`transition-all ease-custom duration-[450ms] ${currentHover == 'studio' ? 'opacity-100 scale-1' : 'scale-1 opacity-0' }`}>
+                    <Image 
+                      image={menu.studioBackgroundImage}
+                      focalPoint={menu.studioBackgroundImage.hotspot}
+                      layout="fill"
+                      widthOverride={1200}
+                      className={`absolute inset-0 w-full h-full z-0 object-cover object-center`}
+                    />
+                  </div>
+                  <div className={`transition-all ease-custom duration-[450ms] ${currentHover == 'reel' ? 'opacity-100 scale-1' : 'scale-1 opacity-0' }`}>
+                    <Image 
+                      image={menu.reelBackgroundImage}
+                      focalPoint={menu.reelBackgroundImage.hotspot}
+                      layout="fill"
+                      widthOverride={1200}
+                      className={`absolute inset-0 w-full h-full z-0 object-cover object-center' }`}
+                    />
+                  </div>
                 </m.div>
 
                 <div className="w-1/2 h-1/4 bg-white absolute top-0 right-0"></div>
