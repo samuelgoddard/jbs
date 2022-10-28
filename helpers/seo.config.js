@@ -5,8 +5,15 @@ export default {
   openGraph: {
     type: 'website',
     locale: 'en_GB',
-    url: 'https://jason-bailey-studio.vercel.app/',
+    url: 'https://jasonbaileystudio.com/',
     site_name: 'Jason Bailey Studio',
+    images: [
+      {
+        url: '/images/social.jpg',
+        width: 800,
+        height: 600
+      },
+    ]
   },
   twitter: {
     handle: '@samuelgoddard',
