@@ -43,7 +43,7 @@ const Carousel = ({ slides, contained, id }) => {
               return (
                 <div className={`embla__slide ${type}`} key={index}>
                   <div className={`embla__slide__inner`}>
-                    <div className="absolute inset-0">
+                    <div className="absolute inset-0 scale-[1.01]">
                       <Image
                         image={slide}
                         layout="fill"
