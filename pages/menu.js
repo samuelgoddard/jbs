@@ -150,7 +150,7 @@ export default function Menu(initialData) {
                         className="w-full h-[66vw] md:h-[40vw] relative z-10 block object-cover object-center"
                         autoPlay={true}
                       >
-                        <source src="https://download-video.akamaized.net/2/playback/6eabd984-4c6d-4efa-9b62-bd559a103392/5270f94d-ff63266a?__token__=st=1675875173~exp=1675889573~acl=%2F2%2Fplayback%2F6eabd984-4c6d-4efa-9b62-bd559a103392%2F5270f94d-ff63266a%2A~hmac=6f6d9199264c1704319475c34a081d8e80176af081318ef8db8bb5249082a21c&r=dXMtd2VzdDE%3D" type="video/mp4"/>
+                        <source src="https://player.vimeo.com/progressive_redirect/playback/797019058/rendition/1080p/file.mp4?loc=external&signature=2d680dd9481e3de9c48bcc12849e21f3ed38f658cae0f2575f88cce9868ca4bc" type="video/mp4"/>
                         Sorry. Your browser does not support the video tag.
                       </video>
                     </div>
