@@ -77,7 +77,7 @@ export default function WorkCarousel({ work, currentCat, currentType }) {
                           animate={{ y: 0, transition: { duration: 0.45, ease: [0.76, 0, 0.24, 1] } }}
                           exit={{ y: '100%', transition: { duration: 0.45, ease: [0.76, 0, 0.24, 1] } }}
                         >
-                          {e.campaignTitle} &bull; {e.type.replace(/-/g, ' ').replace(/and/g, '&').replace(/moving/g, 'motion').replace(/still/g, 'stills')}
+                          {e.campaignTitle && (<>{e.campaignTitle} &bull; </>)}{e.type.replace(/-/g, ' ').replace(/and/g, '&').replace(/moving/g, 'motion').replace(/still/g, 'stills')}
                         </m.span>
                       ) : (
                         <m.span
@@ -87,7 +87,7 @@ export default function WorkCarousel({ work, currentCat, currentType }) {
                           animate={{ y: '100%', transition: { duration: 0.45, ease: [0.76, 0, 0.24, 1] } }}
                           exit={{ y: 0, transition: { duration: 0.45, ease: [0.76, 0, 0.24, 1] } }}
                         >
-                          {e.campaignTitle} &bull; {e.type.replace(/-/g, ' ').replace(/and/g, '&').replace(/moving/g, 'motion').replace(/still/g, 'stills')}
+                          {e.campaignTitle && (<>{e.campaignTitle} &bull; </>)}{e.type.replace(/-/g, ' ').replace(/and/g, '&').replace(/moving/g, 'motion').replace(/still/g, 'stills')}
                         </m.span>
                       )
                     })}
@@ -295,7 +295,7 @@ export default function WorkCarousel({ work, currentCat, currentType }) {
                                 alt={e.title}
                               />
                               <div className="overflow-hidden relative">
-                                <span className={`block text-right text-sm mt-1 transition-transform ease-in-out duration-[450ms] ${current == i ? 'translate-y-0' : 'translate-y-full'}`}>{e.title} — {e.campaignTitle}</span>
+                                <span className={`block text-right text-sm mt-1 transition-transform ease-in-out duration-[450ms] ${current == i ? 'translate-y-0' : 'translate-y-full'}`}>{e.title}{e.campaignTitle && (<> — {e.campaignTitle}</>)}</span>
                               </div>
                             </m.div>
                           </a>
@@ -328,7 +328,7 @@ export default function WorkCarousel({ work, currentCat, currentType }) {
 
                             <h1 className="text-5xl md:text-[6.5vw] xl:text-[7vw] 2xl:text-[7.5vw] leading-none md:leading-none xl:leading-none 2xl:leading-none font-sans uppercase">{e.title}</h1>
 
-                            <h1 className="text-xl md:text-[6.5vw] xl:text-[7vw] 2xl:text-[7.5vw] leading-none md:leading-none xl:leading-none 2xl:leading-none font-sans uppercase md:hidden">{e.campaignTitle} &bull; {e.type.replace(/-/g, ' ').replace(/and/g, '&').replace(/moving/g, 'motion').replace(/still/g, 'stills')}</h1>
+                            <h1 className="text-xl md:text-[6.5vw] xl:text-[7vw] 2xl:text-[7.5vw] leading-none md:leading-none xl:leading-none 2xl:leading-none font-sans uppercase md:hidden">{e.campaignTitle && (<>{e.campaignTitle} &bull; </>)}{e.type.replace(/-/g, ' ').replace(/and/g, '&').replace(/moving/g, 'motion').replace(/still/g, 'stills')}</h1>
                             
                           </a>
                         </Link>

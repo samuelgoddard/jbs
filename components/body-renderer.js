@@ -7,6 +7,7 @@ import ModularImageTextBlock from '@/components/modular-image-text-block'
 import ModularDoubleImageBlock from '@/components/modular-double-image-block'
 import ModularSideBySideImageBlock from '@/components/modular-side-by-side-image-block'
 import ModularVideoBlock from '@/components/modular-video-block'
+import ModularVideoBlockSquare from '@/components/modular-video-block-square'
 
 const notImplemented = ({ type }) => <h1>Not implemented {type}</h1>
 
@@ -34,6 +35,13 @@ const bodySerializers = {
   },
   modularVideoBlock: {
     component: ModularVideoBlock,
+    wrapper: ({ children }) => 
+      <div className="md:mb-[12vw]">
+        {children}
+      </div>
+  },
+  modularVideoBlockSquare: {
+    component: ModularVideoBlockSquare,
     wrapper: ({ children }) => 
       <div className="md:mb-[12vw]">
         {children}

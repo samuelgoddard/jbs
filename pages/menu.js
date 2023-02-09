@@ -1,6 +1,6 @@
 import Layout from '@/components/layout'
 import { revealDelay, revealDelayTop, revealDelayBottom, scaleDelay, fade } from '@/helpers/transitions'
-import { LazyMotion, domAnimation, m } from 'framer-motion'
+import { LazyMotion, domAnimation, m, AnimatePresence } from 'framer-motion'
 import { NextSeo } from 'next-seo'
 import SanityPageService from '@/services/sanityPageService'
 import Link from 'next/link'
@@ -80,6 +80,17 @@ const query = `{
         y
       },
     },
+    instaBackgroundImage {
+      asset-> {
+        ...
+      },
+      caption,
+      alt,
+      hotspot {
+        x,
+        y
+      },
+    },
   },
   "contact": *[_type == "contact"][0]{
     email
@@ -91,6 +102,7 @@ const pageService = new SanityPageService(query)
 export default function Menu(initialData) {
   const { data: { home, menu, contact } } = pageService.getPreviewHook(initialData)()
   const [currentHover, setCurrentHover] = useState(null)
+  const [reelActive, setReelActive] = useState(null)
   const [introContext, setIntroContext] = useContext(IntroContext);
   const router = useRouter()
 
@@ -102,6 +114,7 @@ export default function Menu(initialData) {
   const updateCurrentHover = (value) => {
     setCurrentHover(value)
   } 
+
 
   return (
     <Layout>
@@ -115,8 +128,40 @@ export default function Menu(initialData) {
             exit="exit"
           >
             <m.div variants={fade}>
+            
+            <AnimatePresence>
+              {reelActive && (
+                <m.div initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.66, ease: [0.83, 0, 0.17, 1] }} className="fixed inset-0 w-full h-full bg-white bg-opacity-90 z-[10000000000000000000] flex items-center justify-center">
+                  <button
+                    onClick={() => setReelActive(!reelActive)}
+                    className="absolute top-0 right-0 z-[1000000000000000000] block w-[75px] bg-transparent p-3 group"
+                  >
+                    <div class="relative"><span class="block w-full h-[3px] mb-[5px] bg-current transition ease-in-out duration-[450ms] rotate-[45deg] scale-x-[0.55] translate-x-[9px] translate-y-2"></span><span class="block w-full h-[3px] mb-[5px] bg-current transition ease-in-out duration-[450ms] rotate-[-45deg] scale-x-[0.55] translate-x-2"></span></div>
+                  </button>
 
-            <button onClick={() => router.back()} className="w-14 h-12 bg-transparent fixed top-0 right-0 z-[10000000000]"></button>
+                  <div className="grid grid-cols-9 p-3 md:p-3 border-b border-white md:border-0">
+                    <div className="col-span-9 md:col-span-7 md:col-start-2">
+                      <video 
+                        controls
+                        preload="metadata"
+                        className="w-full h-[66vw] md:h-[40vw] relative z-10 block object-cover object-center"
+                        autoPlay={true}
+                      >
+                        <source src="https://download-video.akamaized.net/2/playback/6eabd984-4c6d-4efa-9b62-bd559a103392/5270f94d-ff63266a?__token__=st=1675875173~exp=1675889573~acl=%2F2%2Fplayback%2F6eabd984-4c6d-4efa-9b62-bd559a103392%2F5270f94d-ff63266a%2A~hmac=6f6d9199264c1704319475c34a081d8e80176af081318ef8db8bb5249082a21c&r=dXMtd2VzdDE%3D" type="video/mp4"/>
+                        Sorry. Your browser does not support the video tag.
+                      </video>
+                    </div>
+                  </div>
+                </m.div>
+              )}
+            </AnimatePresence>
+
+            {!reelActive && (
+              <button onClick={() => router.back()} className="w-14 h-12 bg-transparent fixed top-0 right-0 z-[10000000000]"></button>
+            )}
 
             {/* <Loader/> */}
             <m.header className="absolute top-0 left-0 right-0 z-10">
@@ -207,10 +252,19 @@ export default function Menu(initialData) {
                       className={`absolute inset-0 w-full h-full z-0 object-cover object-center`}
                     />
                   </div>
-                  <div className={`transition-all ease-custom duration-[450ms] ${currentHover == 'reel' ? 'opacity-100 scale-1' : 'scale-1 opacity-0' }`}>
+                  <div className={`transition-all ease-custom duration-[450ms] ${currentHover == 'insta' ? 'opacity-100 scale-1' : 'scale-1 opacity-0' }`}>
                     <Image 
                       image={menu.reelBackgroundImage}
                       focalPoint={menu.reelBackgroundImage.hotspot}
+                      layout="fill"
+                      widthOverride={1200}
+                      className={`absolute inset-0 w-full h-full z-0 object-cover object-center`}
+                    />
+                  </div>
+                  <div className={`transition-all ease-custom duration-[450ms] ${currentHover == 'reel' ? 'opacity-100 scale-1' : 'scale-1 opacity-0' }`}>
+                    <Image 
+                      image={menu.instaBackgroundImage}
+                      focalPoint={menu.instaBackgroundImage.hotspot}
                       layout="fill"
                       widthOverride={1200}
                       className={`absolute inset-0 w-full h-full z-0 object-cover object-center' }`}
@@ -271,7 +325,7 @@ export default function Menu(initialData) {
                         target="_blank"
                         rel="noopener noreferrer"
                         href="https://www.instagram.com/jasonbaileystudio"
-                        onMouseEnter={() => updateCurrentHover('reel')}
+                        onMouseEnter={() => updateCurrentHover('insta')}
                         onMouseLeave={() => updateCurrentHover(null)}
                         className="text-6xl md:text-[7vw] xl:text-[6vw] 2xl:text-[5.5vw] leading-[0.92] md:leading-[0.92] xl:leading-[0.92] 2xl:leading-[0.92] font-sans uppercase block relative overflow-hidden mt-2 mb-3 group"
                       >
@@ -292,6 +346,19 @@ export default function Menu(initialData) {
                             <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0 text-orange">Email</span>
                           </m.span>
                         </a>
+                    </li>
+                    <li className="hidden md:block border-b border-black">
+                        <button
+                          onMouseEnter={() => updateCurrentHover('reel')}
+                          onMouseLeave={() => updateCurrentHover(null)}
+                          onClick={() => setReelActive(!reelActive)}
+                          className="text-6xl md:text-[7vw] xl:text-[6vw] 2xl:text-[5.5vw] leading-[0.92] md:leading-[0.92] xl:leading-[0.92] 2xl:leading-[0.92] font-sans uppercase block relative overflow-hidden mt-2 mb-3 group"
+                        >
+                          <m.span variants={revealDelay} className="block relative">
+                            <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">Reel</span>
+                            <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0 text-orange">Reel</span>
+                          </m.span>
+                        </button>
                     </li>
 
 
@@ -342,6 +409,19 @@ export default function Menu(initialData) {
                           </m.span>
                         </a>
                     </li>
+                    <li className="block md:hidden border-b border-black">
+                      <button
+                          onClick={() => setReelActive(!reelActive)}
+                          className="text-6xl md:text-[7vw] xl:text-[6vw] 2xl:text-[5.5vw] leading-[0.92] md:leading-[0.92] xl:leading-[0.92] 2xl:leading-[0.92] font-sans uppercase block relative overflow-hidden mt-2 mb-3 group"
+                        >
+                          <m.span variants={revealDelay} className="block relative">
+                            <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">Reel</span>
+                            <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0 text-orange">Reel</span>
+                          </m.span>
+                        </button>
+                    </li>
+
+
                   </ul>
                 </nav>
               </div>
