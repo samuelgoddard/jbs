@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from 'react'
 import Layout from '@/components/layout'
 import { fade, fadeDelay, scaleDelay } from '@/helpers/transitions'
-import { LazyMotion, domAnimation, m } from 'framer-motion'
+import { LazyMotion, domAnimation, m, AnimatePresence } from 'framer-motion'
 import { NextSeo } from 'next-seo'
 import Image from '@/components/image'
 import SanityPageService from '@/services/sanityPageService'
@@ -56,6 +56,7 @@ const pageService = new SanityPageService(query)
 export default function Home(initialData) {
   const { data: { home, contact } } = pageService.getPreviewHook(initialData)()
   const [currentHover, setCurrentHover] = useState(null)
+  const [reelActive, setReelActive] = useState(false)
   const [introContext, setIntroContext] = useContext(IntroContext);
 
   const revealDelayBottom = {
@@ -129,6 +130,36 @@ export default function Home(initialData) {
             exit="exit"
           >
             {/* <Loader /> */}
+
+            <AnimatePresence>
+              {reelActive && (
+                <m.div initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.66, ease: [0.83, 0, 0.17, 1] }} className="fixed inset-0 w-full h-full bg-white bg-opacity-90 z-[10000000000000000000] flex items-center justify-center">
+                  <button
+                    onClick={() => setReelActive(!reelActive)}
+                    className="absolute top-0 right-0 z-[1000000000000000000] block w-[75px] bg-transparent p-3 group"
+                  >
+                    <div class="relative"><span class="block w-full h-[3px] mb-[5px] bg-current transition ease-in-out duration-[450ms] rotate-[45deg] scale-x-[0.55] translate-x-[9px] translate-y-2"></span><span class="block w-full h-[3px] mb-[5px] bg-current transition ease-in-out duration-[450ms] rotate-[-45deg] scale-x-[0.55] translate-x-2"></span></div>
+                  </button>
+
+                  <div className="grid grid-cols-9 p-3 md:p-3 border-b border-white md:border-0">
+                    <div className="col-span-9 md:col-span-7 md:col-start-2">
+                      <video 
+                        controls
+                        preload="metadata"
+                        className="w-full h-[66vw] md:h-[40vw] relative z-10 block object-cover object-center"
+                        autoPlay={true}
+                      >
+                        <source src="https://player.vimeo.com/progressive_redirect/playback/797019058/rendition/720p/file.mp4?loc=external&signature=4a723a545cad7d1675b6f0fd8ce22ad53f614669e1212dbae51ca659b7ca4027" type="video/mp4"/>
+                        Sorry. Your browser does not support the video tag.
+                      </video>
+                    </div>
+                  </div>
+                </m.div>
+              )}
+            </AnimatePresence>
 
             <m.div variants={fade}>
             <m.header className="absolute bottom-0 md:bottom-auto md:top-0 left-0 right-0 z-10">
@@ -229,15 +260,15 @@ export default function Home(initialData) {
 
                 <div className="hidden md:flex col-span-4 col-start-3 text-right md:space-x-7 justify-end">
 
-                  {/* <Link href="/reel">
+                  <button onClick={() => setReelActive(!reelActive)}>
                     <a className="text-sm md:text-[2.2vw] xl:text-[2vw] 2xl:text-[2.3vw] leading-[0.9] md:leading-[0.9] xl:leading-[0.9] 2xl:leading-[0.9] font-sans uppercase group relative overflow-hidden hidden md:block">
                       <m.span variants={revealDelayBottom} className="hidden md:inline-block relative overflow-hidden">
                         <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">Reel</span>
-                        <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0">Reel</span>
+                        <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0 text-white">Reel</span>
                       </m.span>
                       <m.span variants={revealDelayBottom} className="inline-block md:hidden">Reel</m.span>
                     </a>
-                  </Link> */}
+                  </button>
 
                   <a href={`mailto:${contact.email}`} className="text-sm md:text-[2.2vw] xl:text-[2vw] 2xl:text-[2.3vw] leading-[0.9] md:leading-[0.9] xl:leading-[0.9] 2xl:leading-[0.9] font-sans uppercase group hidden md:block relative overflow-hidden ml-5">
                     <m.span variants={revealDelayBottom} className="hidden md:inline-block relative overflow-hidden">
