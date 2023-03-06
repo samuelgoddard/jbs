@@ -25,6 +25,7 @@ const query = `{
     }
   },
   "menu": *[_type == "menu"][0]{
+    reelUrl,
     backgroundImage {
       asset-> {
         ...
@@ -150,7 +151,7 @@ export default function Menu(initialData) {
                         className="w-full h-[66vw] md:h-[40vw] relative z-10 block object-cover object-center"
                         autoPlay={true}
                       >
-                        <source src="https://player.vimeo.com/progressive_redirect/playback/797019058/rendition/720p/file.mp4?loc=external&signature=4a723a545cad7d1675b6f0fd8ce22ad53f614669e1212dbae51ca659b7ca4027" type="video/mp4"/>
+                        <source src={menu.reelUrl} type="video/mp4"/>
                         Sorry. Your browser does not support the video tag.
                       </video>
                     </div>

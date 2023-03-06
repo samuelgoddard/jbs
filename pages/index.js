@@ -42,6 +42,9 @@ const query = `{
       }
     }
   },
+  "menu": *[_type == "menu"][0]{
+    reelUrl,
+  },
   "contact": *[_type == "contact"][0]{
     email,
     socials[] {
@@ -54,7 +57,7 @@ const query = `{
 const pageService = new SanityPageService(query)
 
 export default function Home(initialData) {
-  const { data: { home, contact } } = pageService.getPreviewHook(initialData)()
+  const { data: { home, contact, menu } } = pageService.getPreviewHook(initialData)()
   const [currentHover, setCurrentHover] = useState(null)
   const [reelActive, setReelActive] = useState(false)
   const [introContext, setIntroContext] = useContext(IntroContext);
@@ -152,7 +155,7 @@ export default function Home(initialData) {
                         className="w-full h-[66vw] md:h-[40vw] relative z-10 block object-cover object-center"
                         autoPlay={true}
                       >
-                        <source src="https://player.vimeo.com/progressive_redirect/playback/797019058/rendition/720p/file.mp4?loc=external&signature=4a723a545cad7d1675b6f0fd8ce22ad53f614669e1212dbae51ca659b7ca4027" type="video/mp4"/>
+                        <source src={menu.reelUrl} type="video/mp4"/>
                         Sorry. Your browser does not support the video tag.
                       </video>
                     </div>
