@@ -216,7 +216,7 @@ export default function Menu(initialData) {
             <m.main className="">
               <div className="fixed left-0 top-0 bottom-0 w-[43vw] z-0 overflow-hidden hidden md:block">
                 <m.div variants={scaleDelay} className="absolute inset-0 w-full h-full z-0 object-cover object-center bg-gray-200">
-                  <div className={`transition-all ease-custom duration-[450ms] ${(currentHover == 'work' || currentHover == 'studio' || currentHover == 'home' || currentHover == 'reel') ? 'opacity-0 scale-1' : 'scale-1 opacity-100' }`}>
+                  <div className={`transition-all ease-custom duration-[450ms] ${(currentHover == 'work' || currentHover == 'studio' || currentHover == 'home' || currentHover == 'reel' || currentHover == 'insta') ? 'opacity-0 scale-1' : 'scale-1 opacity-100' }`}>
                     <Image 
                       image={menu.backgroundImage}
                       focalPoint={menu.backgroundImage.hotspot}
