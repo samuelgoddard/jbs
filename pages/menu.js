@@ -351,7 +351,7 @@ export default function Menu(initialData) {
                         </a>
                       </Link>
                     </li>
-                    <li className="hidden md:block border-b border-black">
+                    {/* <li className="hidden md:block border-b border-black">
                       <Link href="/sustainability">
                         <a
                           onMouseEnter={() => updateCurrentHover('sustainability')}
@@ -364,7 +364,7 @@ export default function Menu(initialData) {
                           </m.span>
                         </a>
                       </Link>
-                    </li>
+                    </li> */}
                     <li className="hidden md:block border-b border-black">
                       <a
                         target="_blank"
@@ -431,7 +431,7 @@ export default function Menu(initialData) {
                         </a>
                       </Link>
                     </li>
-                    <li className="block md:hidden border-b border-black">
+                    {/* <li className="block md:hidden border-b border-black">
                       <Link href="/sustainability">
                         <a
                           className="text-[13.3vw] md:text-[6vw] xl:text-[5vw] 2xl:text-[4.5vw] leading-[0.92] md:leading-[0.92] xl:leading-[0.92] 2xl:leading-[0.92] font-sans uppercase block relative overflow-hidden group"
@@ -442,7 +442,7 @@ export default function Menu(initialData) {
                           </m.span>
                         </a>
                       </Link>
-                    </li>
+                    </li> */}
                     <li className="block md:hidden border-b border-black">
                       <a
                         target="_blank"
@@ -515,7 +515,7 @@ export default function Menu(initialData) {
                   </Link> */}
                 </div>
 
-                <div className="col-span-3 col-start-1 block">
+                <div className="col-span-4 md:col-span-3 col-start-1 md:col-start-1 block">
                   <a href="https://www.shiftwalk.studio/" rel="noopener noreferrer" target="_blank" className="block text-[13px] md:text-[11px] lg:text-sm 2xl:text-base leading-[0.95] md:leading-[0.95] lg:leading-[0.95] 2xl:leading-[0.95] relative overflow-hidden group">
                     <m.span variants={revealDelayBottom} className="flex space-x-1">
                       <span className="block">Site By</span><span className="underline relative">
@@ -524,13 +524,23 @@ export default function Menu(initialData) {
                     </span></m.span>
                   </a>
                 </div>
+
                 <div className="col-span-3 col-start-6 block">
-                  <button aria-label={newsletterContext ? 'Close newsletter modal' : 'Open newsletter modal' } onClick={newsletterToggle} className="block text-[13px] md:text-[11px] lg:text-sm 2xl:text-base leading-[0.95] md:leading-[0.95] lg:leading-[0.95] 2xl:leading-[0.95] relative overflow-hidden group uppercase">
-                    <m.span variants={revealDelayBottom} className="flex">
-                      <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms] underline">Newsletter</span>
-                      <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] underline -translate-y-full group-hover:translate-y-0">Newsletter</span>
-                    </m.span>
-                  </button>
+                  <div className="flex space-x-3">
+                    <Link href="/sustainability"><a className="block text-[13px] md:text-[11px] lg:text-sm 2xl:text-base leading-[0.95] md:leading-[0.95] lg:leading-[0.95] 2xl:leading-[0.95] relative overflow-hidden group">
+                      <m.span variants={revealDelayBottom} className="flex">
+                        <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms] underline">Sustainability</span>
+                        <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] underline -translate-y-full group-hover:translate-y-0">Sustainability</span>
+                      </m.span>
+                    </a>
+                    </Link>
+                    <button aria-label={newsletterContext ? 'Close newsletter modal' : 'Open newsletter modal' } onClick={newsletterToggle} className="block text-[13px] md:text-[11px] lg:text-sm 2xl:text-base leading-[0.95] md:leading-[0.95] lg:leading-[0.95] 2xl:leading-[0.95] relative overflow-hidden group uppercase">
+                      <m.span variants={revealDelayBottom} className="flex">
+                        <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms] underline">Newsletter</span>
+                        <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] underline -translate-y-full group-hover:translate-y-0">Newsletter</span>
+                      </m.span>
+                    </button>
+                  </div>
                 </div>
 
                 {/* <div className="grid-col-1 col-start-5">

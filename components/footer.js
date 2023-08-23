@@ -62,6 +62,13 @@ export default function Footer({ contact }) {
               <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0 underline">Work</span>
             </a>
           </Link>
+
+          <Link href="/sustainability">
+            <a className="block text-[10px] md:text-[11px] lg:text-[13px] 2xl:text-[13px] leading-[0.95] md:leading-[0.95] lg:leading-[0.95] 2xl:leading-[0.95] underline mb-1 relative overflow-hidden group">
+              <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">Sustainability</span>
+              <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0 underline">Sustainability</span>
+            </a>
+          </Link>
           {/* <Link href="/terms">
             <a className="block text-[10px] md:text-[11px] lg:text-[13px] 2xl:text-[13px] leading-[0.95] md:leading-[0.95] lg:leading-[0.95] 2xl:leading-[0.95] underline mb-1 relative overflow-hidden group">
               <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">Privacy</span>
@@ -79,6 +86,11 @@ export default function Footer({ contact }) {
           <a href="https://shiftwalk.studio" target="_blank" rel="noopener noreferrer" className="block text-[10px] md:text-[11px] lg:text-[13px] 2xl:text-[13px] leading-[0.95] md:leading-[0.95] lg:leading-[0.95] 2xl:leading-[0.95] relative overflow-hidden group block md:hidden ml-[4px] whitespace-nowrap mb-1 md:mb-0">
               <span className="block">Site By <span className="underline">ShiftWalk</span></span>
           </a>
+
+          {/* <Link href="/sustainability"><a className="block text-[10px] md:text-[11px] lg:text-[13px] 2xl:text-[13px] leading-[0.95] md:leading-[0.95] lg:leading-[0.95] 2xl:leading-[0.95] relative overflow-hidden group block md:hidden ml-[4px] whitespace-nowrap mb-1 md:mb-0">
+              <span className="block underline">Sustainability</span>
+          </a>
+          </Link> */}
 
           {contact.socials.map((e, i) => {
             return e.title === 'Instagram' && (
