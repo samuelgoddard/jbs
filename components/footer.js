@@ -1,11 +1,21 @@
 import Link from "next/link";
 import HashGridAnimated from "@/components/hash-grid-animated";
 import { useLocomotiveScroll } from 'react-locomotive-scroll'
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { NewsletterContext } from '@/context/newsletter'
 
 export default function Footer({ contact }) {
   const { scroll } = useLocomotiveScroll()
   let [showLogo, setShowLogo] = useState(false)
+  const [newsletterContext, setNewsletterContext] = useContext(NewsletterContext);
+
+  const newsletterToggle = () => {
+    if (newsletterContext) {
+      setNewsletterContext(false)
+    } else {
+      setNewsletterContext(true)
+    }
+  }
 
   useEffect(() => {
     if (scroll) {
@@ -60,22 +70,31 @@ export default function Footer({ contact }) {
           </Link> */}
         </div>
 
-        <div className="col-span-2 col-start-3 -ml-6 md:ml-0 md:col-start-3 xl:col-start-4 block md:flex md:space-x-4">
-          <a href={`mailto:${contact.email}`} className="text-lg md:text-xl xl:text-2xl 2xl:text-3xl leading-[1.1] md:leading-[1.1] xl:leading-[1.1] 2xl:leading-[1.1] font-sans uppercase relative group overflow-hidden hidden md:block">
+        <div className="col-span-3 xl:col-span-2 col-start-3 xl:col-start-3 -ml-6 md:ml-0 md:col-start-3 xl:col-start-4 block md:flex md:space-x-4">
+          <a href={`mailto:${contact.email}`} className="text-lg md:text-lg xl:text-xl 2xl:text-2xl leading-[1.1] md:leading-[1.1] xl:leading-[1.1] 2xl:leading-[1.1] font-sans uppercase relative group overflow-hidden hidden md:block">
             <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">Contact</span>
             <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0 text-orange">Contact</span>  
           </a>
           
-          <a href="https://shiftwalk.studio" target="_blank" rel="noopener noreferrer" className="block text-[10px] md:text-[11px] lg:text-[13px] 2xl:text-[13px] leading-[0.95] md:leading-[0.95] lg:leading-[0.95] 2xl:leading-[0.95] relative overflow-hidden group block md:hidden ml-[4px] whitespace-nowrap">
+          <a href="https://shiftwalk.studio" target="_blank" rel="noopener noreferrer" className="block text-[10px] md:text-[11px] lg:text-[13px] 2xl:text-[13px] leading-[0.95] md:leading-[0.95] lg:leading-[0.95] 2xl:leading-[0.95] relative overflow-hidden group block md:hidden ml-[4px] whitespace-nowrap mb-1 md:mb-0">
               <span className="block">Site By <span className="underline">ShiftWalk</span></span>
           </a>
 
           {contact.socials.map((e, i) => {
             return e.title === 'Instagram' && (
-              <a key={i} href={e.url} rel="noreferrer noopener" target="_blank" className="text-xl md:text-xl xl:text-2xl 2xl:text-3xl leading-[1.1] md:leading-[1.1] xl:leading-[1.1] 2xl:leading-[1.1] font-sans uppercase hidden group md:block relative overflow-hidden"><span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">Instagram</span>
+              <a key={i} href={e.url} rel="noreferrer noopener" target="_blank" className="text-lg md:text-lg xl:text-xl 2xl:text-2xl leading-[1.1] md:leading-[1.1] xl:leading-[1.1] 2xl:leading-[1.1] font-sans uppercase hidden group md:block relative overflow-hidden"><span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">Instagram</span>
               <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0 text-orange">Instagram</span></a>
             )
           })}
+
+          <button aria-label={newsletterContext ? 'Close newsletter modal' : 'Open newsletter modal' } onClick={newsletterToggle} className="text-lg md:text-lg xl:text-xl 2xl:text-2xl leading-[1.1] md:leading-[1.1] xl:leading-[1.1] 2xl:leading-[1.1] font-sans uppercase relative group overflow-hidden hidden md:block">
+            <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">Newsletter</span>
+            <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0 text-orange">Newsletter</span>  
+          </button>
+
+          <button aria-label={newsletterContext ? 'Close newsletter modal' : 'Open newsletter modal' } onClick={newsletterToggle} className="text-[10px] md:text-[11px] lg:text-[13px] 2xl:text-[13px] leading-[0.95] md:leading-[0.95] lg:leading-[0.95] 2xl:leading-[0.95] relative overflow-hidden group block md:hidden ml-[4px] whitespace-nowrap uppercase underline">
+            Newsletter
+          </button>
         </div>
 
         {/* <div className="col-span-1 col-start-6 hidden md:flex">
