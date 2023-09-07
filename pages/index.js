@@ -9,6 +9,7 @@ import BlockContent from '@sanity/block-content-to-react'
 import Link from 'next/link'
 import { IntroContext } from '@/context/intro'
 import Div100vh from 'react-div-100vh'
+import { NewsletterContext } from '@/context/newsletter'
 
 const query = `{
   "home": *[_type == "home"][0]{
@@ -61,6 +62,7 @@ export default function Home(initialData) {
   const [currentHover, setCurrentHover] = useState(null)
   const [reelActive, setReelActive] = useState(false)
   const [introContext, setIntroContext] = useContext(IntroContext);
+  const [newsletterContext, setNewsletterContext] = useContext(NewsletterContext);
 
   const revealDelayBottom = {
     initial: { y: '-100%' },
@@ -108,6 +110,14 @@ export default function Home(initialData) {
     exit: {
       x: '-100%',
       transition: { duration: 0.4, ease: [0.76, 0, 0.24, 1] }
+    }
+  }
+
+  const newsletterToggle = () => {
+    if (newsletterContext) {
+      setNewsletterContext(false)
+    } else {
+      setNewsletterContext(true)
     }
   }
 
@@ -261,7 +271,7 @@ export default function Home(initialData) {
                   </Link>
                 </div>
 
-                <div className="hidden md:flex col-span-4 col-start-3 text-right md:space-x-7 justify-end">
+                <div className="hidden md:flex col-span-5 col-start-3 text-center md:space-x-7 justify-center">
 
                   <button onClick={() => setReelActive(!reelActive)}>
                     <a className="text-sm md:text-[2.2vw] xl:text-[2vw] 2xl:text-[2.3vw] leading-[0.9] md:leading-[0.9] xl:leading-[0.9] 2xl:leading-[0.9] font-sans uppercase group relative overflow-hidden hidden md:block">
@@ -272,6 +282,14 @@ export default function Home(initialData) {
                       <m.span variants={revealDelayBottom} className="inline-block md:hidden">Reel</m.span>
                     </a>
                   </button>
+
+                  <button aria-label={newsletterContext ? 'Close newsletter modal' : 'Open newsletter modal' } onClick={newsletterToggle} className="text-sm md:text-[2.2vw] xl:text-[2vw] 2xl:text-[2.3vw] leading-[0.9] md:leading-[0.9] xl:leading-[0.9] 2xl:leading-[0.9] font-sans uppercase group relative overflow-hidden hidden md:block">
+                    <m.span variants={revealDelayBottom} className="hidden md:inline-block relative overflow-hidden">
+                      <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">Newsletter</span>
+                      <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0 text-white">Newsletter</span>
+                    </m.span>
+                    <m.span variants={revealDelayBottom} className="inline-block md:hidden">Newsletter</m.span>
+                    </button>
 
                   <a href={`mailto:${contact.email}`} className="text-sm md:text-[2.2vw] xl:text-[2vw] 2xl:text-[2.3vw] leading-[0.9] md:leading-[0.9] xl:leading-[0.9] 2xl:leading-[0.9] font-sans uppercase group hidden md:block relative overflow-hidden ml-5">
                     <m.span variants={revealDelayBottom} className="hidden md:inline-block relative overflow-hidden">
