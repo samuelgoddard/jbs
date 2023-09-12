@@ -63,12 +63,12 @@ export default function Footer({ contact }) {
             </a>
           </Link>
 
-          <Link href="/sustainability">
+          {/* <Link href="/sustainability">
             <a className="block text-[10px] md:text-[11px] lg:text-[13px] 2xl:text-[13px] leading-[0.95] md:leading-[0.95] lg:leading-[0.95] 2xl:leading-[0.95] underline mb-1 relative overflow-hidden group">
               <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">Sustainability</span>
               <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0 underline">Sustainability</span>
             </a>
-          </Link>
+          </Link> */}
           {/* <Link href="/terms">
             <a className="block text-[10px] md:text-[11px] lg:text-[13px] 2xl:text-[13px] leading-[0.95] md:leading-[0.95] lg:leading-[0.95] 2xl:leading-[0.95] underline mb-1 relative overflow-hidden group">
               <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">Privacy</span>

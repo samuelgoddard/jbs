@@ -274,7 +274,7 @@ export default function Menu(initialData) {
                       className={`absolute inset-0 w-full h-full z-0 object-cover object-center`}
                     />
                   </div>
-                  <div className={`transition-all ease-custom duration-[450ms] ${currentHover == 'sustainability' ? 'opacity-100 scale-1' : 'scale-1 opacity-0' }`}>
+                  {/* <div className={`transition-all ease-custom duration-[450ms] ${currentHover == 'sustainability' ? 'opacity-100 scale-1' : 'scale-1 opacity-0' }`}>
                     <Image 
                       image={menu.sustainabilityBackgroundImage}
                       focalPoint={menu.sustainabilityBackgroundImage.hotspot}
@@ -282,7 +282,7 @@ export default function Menu(initialData) {
                       widthOverride={1200}
                       className={`absolute inset-0 w-full h-full z-0 object-cover object-center`}
                     />
-                  </div>
+                  </div> */}
                   <div className={`transition-all ease-custom duration-[450ms] ${currentHover == 'insta' ? 'opacity-100 scale-1' : 'scale-1 opacity-0' }`}>
                     <Image 
                       image={menu.reelBackgroundImage}
@@ -527,13 +527,13 @@ export default function Menu(initialData) {
 
                 <div className="col-span-3 col-start-6 block">
                   <div className="flex space-x-3">
-                    <Link href="/sustainability"><a className="block text-[13px] md:text-[11px] lg:text-sm 2xl:text-base leading-[0.95] md:leading-[0.95] lg:leading-[0.95] 2xl:leading-[0.95] relative overflow-hidden group">
+                    {/* <Link href="/sustainability"><a className="block text-[13px] md:text-[11px] lg:text-sm 2xl:text-base leading-[0.95] md:leading-[0.95] lg:leading-[0.95] 2xl:leading-[0.95] relative overflow-hidden group">
                       <m.span variants={revealDelayBottom} className="flex">
                         <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms] underline">Sustainability</span>
                         <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] underline -translate-y-full group-hover:translate-y-0">Sustainability</span>
                       </m.span>
                     </a>
-                    </Link>
+                    </Link> */}
                     <button aria-label={newsletterContext ? 'Close newsletter modal' : 'Open newsletter modal' } onClick={newsletterToggle} className="block text-[13px] md:text-[11px] lg:text-sm 2xl:text-base leading-[0.95] md:leading-[0.95] lg:leading-[0.95] 2xl:leading-[0.95] relative overflow-hidden group uppercase">
                       <m.span variants={revealDelayBottom} className="flex">
                         <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms] underline">Newsletter</span>
