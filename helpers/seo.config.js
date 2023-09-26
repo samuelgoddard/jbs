@@ -5,7 +5,7 @@ export default {
   openGraph: {
     type: 'website',
     locale: 'en_GB',
-    url: 'https://jasonbailey.studio/',
+    url: 'https://jasonbaileystudio.com/',
     site_name: 'Jason Bailey Studio',
     images: [
       {
