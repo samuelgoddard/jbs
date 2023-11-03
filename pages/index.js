@@ -133,7 +133,22 @@ export default function Home(initialData) {
 
   return (
     <Layout>
-      <NextSeo title={home.title} />
+      <NextSeo
+        title={home.seo?.metaTitle ? home.seo?.metaTitle : home.title}
+        description={home.seo?.metaDesc ? home.seo?.metaDesc : null}
+        openGraph={{
+          title: home.seo?.metaTitle ? home.seo?.metaTitle : home.title,
+          description: home.seo?.metaDesc ? home.seo?.metaDesc : null,
+          images: home.seo?.shareGraphic?.asset ? [
+            {
+              url: home.seo?.shareGraphic?.asset.url ? home.seo?.shareGraphic?.asset.url : null,
+              width: home.seo?.shareGraphic?.asset.metadata.dimensions.width ? home.seo?.shareGraphic?.asset.metadata.dimensions.width : null,
+              height: home.seo?.shareGraphic?.asset.metadata.dimensions.height ? home.seo?.shareGraphic?.asset.metadata.dimensions.height : null,
+              type: 'image/jpeg',
+            }
+          ] : null
+        }}
+      />
       
       <Div100vh className="p-3 relative">
         <LazyMotion features={domAnimation}>

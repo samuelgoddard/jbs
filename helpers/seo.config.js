@@ -1,7 +1,7 @@
 export default {
-  defaultTitle: 'Jason Bailey Studio',
+  defaultTitle: 'Jason Bailey Studio | Award-Winning Food, Drinks & Lifestyle Photography',
   description: 'Our collective expertise spans decades in the design, comms, packaged goods, and hospitality industries. We love what we do and we think it shows in our work. We specialize in drinks, but above all, our studio is united around the pursuit of compelling stories.',
-  titleTemplate: '%s | Jason Bailey Studio',
+  titleTemplate: '%s | Jason Bailey Studio | Award-Winning Food, Drinks & Lifestyle Photography',
   openGraph: {
     type: 'website',
     locale: 'en_GB',

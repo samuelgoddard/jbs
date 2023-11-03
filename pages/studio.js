@@ -33,7 +33,7 @@ const query = `{
         y
       },
     },
-    heroText,
+    pulloutText,
     content,
     clientList,
     servicesList,
@@ -92,7 +92,22 @@ export default function Studio(initialData) {
 
   return (
     <Layout>
-      <NextSeo title={studio.title} />
+      <NextSeo
+        title={studio.seo?.metaTitle ? studio.seo?.metaTitle : studio.title}
+        description={studio.seo?.metaDesc ? studio.seo?.metaDesc : null}
+        openGraph={{
+          title: studio.seo?.metaTitle ? studio.seo?.metaTitle : studio.title,
+          description: studio.seo?.metaDesc ? studio.seo?.metaDesc : null,
+          images: studio.seo?.shareGraphic?.asset ? [
+            {
+              url: studio.seo?.shareGraphic?.asset.url ? studio.seo?.shareGraphic?.asset.url : null,
+              width: studio.seo?.shareGraphic?.asset.metadata.dimensions.width ? studio.seo?.shareGraphic?.asset.metadata.dimensions.width : null,
+              height: studio.seo?.shareGraphic?.asset.metadata.dimensions.height ? studio.seo?.shareGraphic?.asset.metadata.dimensions.height : null,
+              type: 'image/jpeg',
+            }
+          ] : null
+        }}
+      />
 
       <LazyMotion features={domAnimation}>
         <m.div
@@ -157,16 +172,16 @@ export default function Studio(initialData) {
                       </div>
                     </div>
 
-                    <h2 className="text-[11.4vw] md:text-[7.5vw] leading-[0.85] md:leading-[0.85] mb-8 md:mb-16 xl:mb-20 md:hidden">
-                      <span className="block text-left">JBS Is a Photography + Production Studio Specialising In Lifestyle, Food + Drink</span>
-                    </h2>
-
-                    <h2 className="text-[7.4vw] md:text-[7.5vw] leading-[1] md:leading-[0.85] mb-8 md:mb-16 xl:mb-20 hidden md:block">
-                      <span className="block text-right">JBS Is a</span>
-                      <span className="block text-left">Photography + Production</span>
-                      <span className="block text-left">Studio Specialising In</span>
-                      <span className="block text-left">Lifestyle, Food + Drink</span>
-                    </h2>
+                    {studio.pulloutText && (
+                      <>
+                        <h2 className="text-[11.4vw] md:text-[7.5vw] leading-[0.85] md:leading-[0.85] mb-8 md:mb-16 xl:mb-20 md:hidden">
+                          <span className="block">{studio.pulloutText}</span>
+                        </h2>
+                        <h2 className="text-[7.4vw] md:text-[7.5vw] leading-[1] md:leading-[0.85] mb-8 md:mb-16 xl:mb-20 hidden md:block text-left first-line:text-right first-line:ml-auto">
+                          {studio.pulloutText}
+                        </h2>
+                      </>
+                    )}
 
                     <div className="grid grid-cols-9 gap-3 gap-y-12 md:gap-x-3 md:gap-y-20 xl:gap-y-24 mb-12 md:mb-28 xl:mb-32 2xl:mb-48">
                       {studio.teamMembers.map((e, i) =>
