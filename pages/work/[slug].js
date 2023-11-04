@@ -102,6 +102,12 @@ const query = `*[_type == "work" && slug.current == $slug][0]{
     job,
     name
   },
+  seo {
+    ...,
+    shareGraphic {
+      asset->
+    }
+  },
   slug {
     current
   },
@@ -165,7 +171,7 @@ const query = `*[_type == "work" && slug.current == $slug][0]{
 const pageService = new SanityPageService(query)
 
 export default function WorkSlug(initialData) {
-  const { data: { title, heroCarouselImages, moreWork, moreWorkLoop, location, year, campaignTitle, tags, credits, contact, contentBlocks, type }  } = pageService.getPreviewHook(initialData)()
+  const { data: { title, heroCarouselImages, moreWork, moreWorkLoop, location, year, campaignTitle, tags, credits, contact, contentBlocks, type, seo }  } = pageService.getPreviewHook(initialData)()
 
   const containerRef = useRef(null)
   const [introContext, setIntroContext] = useContext(IntroContext);
@@ -176,7 +182,23 @@ export default function WorkSlug(initialData) {
 
   return (
     <Layout>
-      <NextSeo title={title} />
+      <NextSeo
+        title={seo?.metaTitle ? seo?.metaTitle : title}
+        description={seo?.metaDesc ? seo?.metaDesc : null}
+        openGraph={{
+          title: seo?.metaTitle ? seo?.metaTitle : title,
+          description: seo?.metaDesc ? seo?.metaDesc : null,
+          images: seo?.shareGraphic?.asset || heroCarouselImages[0] ? [
+            {
+              url: seo?.shareGraphic?.asset.url ? seo?.shareGraphic?.asset.url : heroCarouselImages[0].asset.url,
+              width: seo?.shareGraphic?.asset.metadata.dimensions.width ? seo?.shareGraphic?.asset.metadata.dimensions.width : heroCarouselImages[0].asset.metadata.dimensions.width,
+              height: seo?.shareGraphic?.asset.metadata.dimensions.height ? seo?.shareGraphic?.asset.metadata.dimensions.height : heroCarouselImages[0].asset.metadata.dimensions.height,
+              type: 'image/jpeg',
+            }
+          ] : null
+        }}
+      />
+
       <LazyMotion features={domAnimation}>
         <m.div
           initial="initial"
