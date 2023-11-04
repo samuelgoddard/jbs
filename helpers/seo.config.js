@@ -9,7 +9,7 @@ export default {
     site_name: 'Jason Bailey Studio',
     images: [
       {
-        url: '/images/social.jpg',
+        url: 'https://jasonbaileystudio.com/images/social.jpg',
         width: 800,
         height: 600
       },
