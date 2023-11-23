@@ -15,6 +15,7 @@ const query = `{
   "home": *[_type == "home"][0]{
     title,
     content,
+    headerTagline,
     backgroundImage {
       asset-> {
         ...
@@ -205,11 +206,13 @@ export default function Home(initialData) {
                 </div>
               </div>
               
-              <div className="absolute top-0 left-0 right-0 grid grid-cols-9 p-3">
-                <span className="text-[10px] md:text-[11px] lg:text-sm 2xl:text-base leading-[0.85] md:leading-[0.85] lg:leading-[0.85] 2xl:leading-[0.85] col-span-4 col-start-2 relative overflow-hidden hidden md:block">
-                  <m.span className="block" variants={revealDelayTop}>A Photography And Motion Studio, London</m.span>
-                </span>
-              </div>
+              {home.headerTagline && (
+                <div className="absolute top-0 left-0 right-0 grid grid-cols-9 p-3">
+                  <span className="text-[10px] md:text-[11px] lg:text-sm 2xl:text-base leading-[0.85] md:leading-[0.85] lg:leading-[0.85] 2xl:leading-[0.85] col-span-4 col-start-2 relative overflow-hidden hidden md:block">
+                    <m.span className="block" variants={revealDelayTop}>{home.headerTagline}</m.span>
+                  </span>
+                </div>
+              )}
             </m.header>
 
             <m.main className="">
