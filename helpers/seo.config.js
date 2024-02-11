@@ -1,6 +1,6 @@
 export default {
   defaultTitle: 'Jason Bailey Studio | Award-Winning Food, Drinks & Lifestyle Photography',
-  description: 'Our collective expertise spans decades in the design, comms, packaged goods, and hospitality industries. We love what we do and we think it shows in our work. We specialize in drinks, but above all, our studio is united around the pursuit of compelling stories.',
+  description: 'Jason Bailey Studio, an award-winning stills and motion studio based in East London, specializes in food, beverage, and lifestyle photography.',
   titleTemplate: '%s | Jason Bailey Studio | Award-Winning Food, Drinks & Lifestyle Photography',
   openGraph: {
     type: 'website',
