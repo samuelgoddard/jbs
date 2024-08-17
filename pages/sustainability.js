@@ -6,10 +6,10 @@ import { fade, scaleDelay, reveal, fadeDelay, revealDelay } from '@/helpers/tran
 import { LazyMotion, domAnimation, m } from 'framer-motion'
 import { NextSeo } from 'next-seo'
 import SanityPageService from '@/services/sanityPageService'
-import BlockContent from '@sanity/block-content-to-react'
 import Image from '@/components/image'
 import ScrollBoundImage from '@/components/scroll-bound-image'
 import { IntroContext } from '@/context/intro'
+import {PortableText} from '@portabletext/react'
 
 const query = `{
   "sustainability": *[_type == "sustainability"][0]{
@@ -88,15 +88,6 @@ export default function Sustainability(initialData) {
                 <div className="">
                   <div className="grid grid-cols-9 mb-12 md:mb-24 xl:mb-28 2xl:mb-40">
                     <div className="col-span-9">
-                      {/* <div className="absolute top-0 left-0 grid grid-cols-9 z-10">
-                        <div className="col-span-9 md:col-span-3 xl:col-span-2 bg-white pt-[20vw] p-3">
-                          <div className="w-full leading-tight md:pr-[20px]">
-                            <m.div variants={fadeDelay}>
-                              <BlockContent serializers={{ container: ({ children }) => children }} blocks={studio.heroText} />
-                            </m.div>
-                          </div>
-                        </div>
-                      </div> */}
                       
                       <div className="pt-[80px] md:pt-[12vw] lg:pt-[10vw] pb-[50px] md:pb-[6vw]">
                         <span className="block leading-none text-xs md:text-xl md:leading-none font-mono mx-auto text-center mb-4 md:mb-5 lg:mb-8">Striving for a healthier environment</span>
@@ -138,7 +129,7 @@ export default function Sustainability(initialData) {
                     <div className="grid grid-cols-9 mb-20 md:mb-[10vw] xl:mb-[13vw] 2xl:mb-[13vw]">
                       <div className="col-span-8 md:col-span-3 col-start-1 md:col-start-5 leading-snug max-w-[550px]">
                         <div className="content text-sm md:text-base">
-                          <BlockContent serializers={{ container: ({ children }) => children }} blocks={sustainability.content} />
+                          <PortableText value={sustainability.content}/>
                         </div>
                       </div>
                     </div>

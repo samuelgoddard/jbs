@@ -269,10 +269,6 @@ export default function WorkSlug(initialData) {
                   </h2>
                 </div>
 
-                {/* <div className="mb-4">
-                  <SanityBlockContent serializers={{ container: ({ children }) => children }} blocks={content} />
-                </div> */}
-
                 { heroCarouselImages.length > 1 ? (
                   <div className="mb-[12vw]">
                     <Carousel slides={heroCarouselImages} id="hero-carousel" />

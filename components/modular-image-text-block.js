@@ -1,5 +1,5 @@
 import Image from "@/components/image";
-import BlockContent from '@sanity/block-content-to-react'
+import {PortableText} from '@portabletext/react'
 
 export default function ModularImageTextBlock({ text, image, layout }) {
   let layoutClass = '';
@@ -21,7 +21,7 @@ export default function ModularImageTextBlock({ text, image, layout }) {
       </div>
       <div className="w-full md:w-1/2 indent-12 flex items-center justify-center">
         <div className="w-full md:w-9/12">
-          <BlockContent serializers={{ container: ({ children }) => children }} blocks={text} />
+          <PortableText value={text}/>
         </div>
       </div>
     </div>

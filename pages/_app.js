@@ -26,7 +26,8 @@ export default function App({ Component, pageProps }) {
   }
 
   return (
-    <ReactLenis root options={{ lerp: 0.125 }}>
+    <>
+    {/* <ReactLenis root options={{ lerp: 0.125 }}> */}
       <DefaultSeo {...SEO} />
 
       <IntroContext.Provider value={[introContext, setIntroContext]}>
@@ -134,6 +135,7 @@ export default function App({ Component, pageProps }) {
             </NewsletterContext.Provider>
           </ReelContext.Provider>
         </IntroContext.Provider>
-      </ReactLenis>
+      {/* </ReactLenis> */}
+      </>
   )
 }

@@ -1,3 +1,4 @@
+import React from 'react'
 import Img from 'next/image'
 import sanity from '@/services/sanity'
 import { useNextSanityImage } from 'next-sanity-image'

@@ -1,15 +1,10 @@
-import BlockContent from '@sanity/block-content-to-react'
+
 import { blockSerializers } from '@/components/body-renderer'
+import {PortableText} from '@portabletext/react'
 
 const BlockContentWrapper = ({ text }) => {
   return (
-    <BlockContent
-    serializers={{ 
-      types: blockSerializers,
-      container: ({ children }) => children
-    }}
-      blocks={text}
-    />
+    <PortableText value={text} components={blockSerializers} />
   )
 }
 

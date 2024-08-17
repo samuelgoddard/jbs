@@ -6,17 +6,16 @@ import { fade, scaleDelay, reveal, fadeDelay, revealDelay } from '@/helpers/tran
 import { LazyMotion, domAnimation, m } from 'framer-motion'
 import { NextSeo } from 'next-seo'
 import SanityPageService from '@/services/sanityPageService'
-import BlockContent from '@sanity/block-content-to-react'
 import Image from '@/components/image'
 import HashGrid from '@/components/hash-grid'
 import FadeInWhenVisible from '@/components/fade-in-when-visible'
 // import Loader from '@/components/loader'
-import { SplitText } from '@cyriacbr/react-split-text'
 import ScrollBoundImage from '@/components/scroll-bound-image'
 import ScrollBoundStack from '@/components/scroll-bound-stack'
 import StudioTitle from '@/components/studio-title'
 import { IntroContext } from '@/context/intro'
 import ScrollBoundFlicker from '@/components/scroll-bound-flicker'
+import {PortableText} from '@portabletext/react'
 
 const query = `{
   "studio": *[_type == "studio"][0]{
@@ -122,15 +121,6 @@ export default function Studio(initialData) {
                 <div className="">
                   <div className="grid grid-cols-9 mb-12 md:mb-24 xl:mb-28 2xl:mb-40">
                     <div className="col-span-9">
-                      {/* <div className="absolute top-0 left-0 grid grid-cols-9 z-10">
-                        <div className="col-span-9 md:col-span-3 xl:col-span-2 bg-white pt-[20vw] p-3">
-                          <div className="w-full leading-tight md:pr-[20px]">
-                            <m.div variants={fadeDelay}>
-                              <BlockContent serializers={{ container: ({ children }) => children }} blocks={studio.heroText} />
-                            </m.div>
-                          </div>
-                        </div>
-                      </div> */}
                       
                       <div className="w-full h-[60vh] md:h-screen relative overflow-hidden flex flex-wrap flex-col">
                         <div className="grid grid-cols-9 flex-1 h-full">
@@ -157,7 +147,7 @@ export default function Studio(initialData) {
                       
                       <div className="col-span-8 md:col-span-3 col-start-1 md:col-start-5 leading-snug max-w-[550px]">
                         <div className="content text-sm md:text-base">
-                          <BlockContent serializers={{ container: ({ children }) => children }} blocks={studio.content} />
+                          <PortableText value={studio.content}/>
                         </div>
                       </div>
                     </div>

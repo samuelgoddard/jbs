@@ -1,4 +1,4 @@
-import BlockContent from '@sanity/block-content-to-react'
+import {PortableText} from '@portabletext/react'
 
 export default function ModularTextBlock({ text, position }) {
   let cols = 'col-span-8 md:col-span-3';
@@ -17,7 +17,7 @@ export default function ModularTextBlock({ text, position }) {
   return (
     <div className="grid grid-cols-9 p-3">
       <div className={`${cols} ${start} indent-12 text-sm md:text-base`}>
-        <BlockContent serializers={{ container: ({ children }) => children }} blocks={text} />
+        <PortableText value={text}/>
       </div>
     </div>
   )
