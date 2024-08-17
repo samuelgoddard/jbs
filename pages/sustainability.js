@@ -3,7 +3,6 @@ import Layout from '@/components/layout'
 import Header from '@/components/header'
 import Footer from '@/components/footer'
 import { fade, scaleDelay, reveal, fadeDelay, revealDelay } from '@/helpers/transitions'
-import { LocomotiveScrollProvider } from 'react-locomotive-scroll'
 import { LazyMotion, domAnimation, m } from 'framer-motion'
 import { NextSeo } from 'next-seo'
 import SanityPageService from '@/services/sanityPageService'
@@ -82,13 +81,6 @@ export default function Sustainability(initialData) {
           {/* <Loader /> */}
 
           <m.div variants={fade}>
-          <LocomotiveScrollProvider
-            options={{ smooth: true, lerp: 0.1 }}
-            containerRef={containerRef}
-            watch={[]}
-          >
-            <div data-scroll-container ref={containerRef} id="scroll-container">
-              <div data-scroll-section>
 
               <Header />
               
@@ -216,9 +208,6 @@ export default function Sustainability(initialData) {
               </main>
 
               <Footer contact={contact} />
-              </div>
-            </div>
-          </LocomotiveScrollProvider>
           </m.div>
         </m.div>
       </LazyMotion>

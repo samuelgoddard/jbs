@@ -68,7 +68,6 @@ export default function ModularImageBlock({ image, layout, position }) {
         <Image
           image={image}
           focalPoint={image.hotspot}
-          layout="responsive"
           widthOverride={size}
           className=""
         />

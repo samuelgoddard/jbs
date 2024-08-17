@@ -2,7 +2,6 @@ import React, { useState, useEffect, useCallback } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import Image from "@/components/image";
 import { m } from "framer-motion";
-import { useLocomotiveScroll } from "react-locomotive-scroll";
 
 const Carousel = ({ slides, contained, id }) => {
   const [viewportRef, embla] = useEmblaCarousel({ speed: 4, skipSnaps: false, loop: true, inViewThreshold: 0.75});
@@ -43,7 +42,7 @@ const Carousel = ({ slides, contained, id }) => {
               return (
                 <div className={`embla__slide ${type}`} key={index}>
                   <div className={`embla__slide__inner`}>
-                    <div className="absolute inset-0 scale-[1.01]">
+                    <div className="absolute inset-0">
                       <Image
                         image={slide}
                         layout="fill"

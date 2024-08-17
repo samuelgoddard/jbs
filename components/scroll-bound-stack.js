@@ -1,9 +1,9 @@
 import { useEffect, useRef } from "react";
-import { useLocomotiveScroll } from "react-locomotive-scroll";
+// import { useLocomotiveScroll } from "react-locomotive-scroll";
 import Image from "@/components/image";
 
 export default function ScrollBoundStack({ image, image2, id, delay }) {
-  const { scroll } = useLocomotiveScroll()
+  // const { scroll } = useLocomotiveScroll()
   const scaleElement = useRef(null);
   const scaleElement2 = useRef(null);
   let progress = 0;
@@ -18,22 +18,22 @@ export default function ScrollBoundStack({ image, image2, id, delay }) {
     computedDelay = 'delay-300'
   }
 
-  useEffect(() => {
-    if (scroll) {
-      scroll.on('scroll', (args) => {
-        if (typeof args.currentElements[id] === 'object') {
-          let progress = args.currentElements[id].progress
-          if (progress > 0.33) {
-            scaleElement.current.style.transform = `translate(0, -100%)`
-            scaleElement2.current.style.transform = `translate(0, 0)`
-          } else if (progress < 0.33) {
-            scaleElement.current.style.transform = `translate(0, 0)`
-            scaleElement2.current.style.transform = `translate(0, 100%)`
-          }
-        }
-      })
-    }
-  }, [scroll, progress])
+  // useEffect(() => {
+  //   if (scroll) {
+  //     scroll.on('scroll', (args) => {
+  //       if (typeof args.currentElements[id] === 'object') {
+  //         let progress = args.currentElements[id].progress
+  //         if (progress > 0.33) {
+  //           scaleElement.current.style.transform = `translate(0, -100%)`
+  //           scaleElement2.current.style.transform = `translate(0, 0)`
+  //         } else if (progress < 0.33) {
+  //           scaleElement.current.style.transform = `translate(0, 0)`
+  //           scaleElement2.current.style.transform = `translate(0, 100%)`
+  //         }
+  //       }
+  //     })
+  //   }
+  // }, [scroll, progress])
 
   return (
     <div className="w-full absolute inset-0 h-full object-cover object-center overflow-hidden" data-scroll data-scroll-id={id}>

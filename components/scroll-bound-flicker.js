@@ -1,9 +1,9 @@
 import { useEffect, useRef } from "react";
-import { useLocomotiveScroll } from "react-locomotive-scroll";
+// import { useLocomotiveScroll } from "react-locomotive-scroll";
 import Image from "@/components/image";
 
 export default function ScrollBoundFlicker({ images, id }) {
-  const { scroll } = useLocomotiveScroll()
+  // const { scroll } = useLocomotiveScroll()
   const scaleElement = useRef(null);
   const scaleElement2 = useRef(null);
   const scaleElement3 = useRef(null);
@@ -18,137 +18,137 @@ export default function ScrollBoundFlicker({ images, id }) {
   const scaleElement12 = useRef(null);
   let progress = 0;
 
-  useEffect(() => {
-    if (scroll) {
-      scroll.on('scroll', (args) => {
-        if (typeof args.currentElements[id] === 'object') {
-          let progress = args.currentElements[id].progress
+  // useEffect(() => {
+  //   if (scroll) {
+  //     scroll.on('scroll', (args) => {
+  //       if (typeof args.currentElements[id] === 'object') {
+  //         let progress = args.currentElements[id].progress
           
-          if (progress > 0.25) {
-            scaleElement2.current.style.transform = `translate(0, 0)`
-          } else if (progress < 0.25) {
-            scaleElement2.current.style.transform = `translate(0, -100%)`
-            scaleElement3.current.style.transform = `translate(0, -100%)`
-            scaleElement4.current.style.transform = `translate(0, -100%)`
-            scaleElement5.current.style.transform = `translate(0, -100%)`
-            scaleElement6.current.style.transform = `translate(0, -100%)`
-            scaleElement7.current.style.transform = `translate(0, -100%)`
-            scaleElement8.current.style.transform = `translate(0, -100%)`
-            scaleElement9.current.style.transform = `translate(0, -100%)`
-            scaleElement10.current.style.transform = `translate(0, -100%)`
-            scaleElement11.current.style.transform = `translate(0, -100%)`
-            scaleElement12.current.style.transform = `translate(0, -100%)`
-          }
+  //         if (progress > 0.25) {
+  //           scaleElement2.current.style.transform = `translate(0, 0)`
+  //         } else if (progress < 0.25) {
+  //           scaleElement2.current.style.transform = `translate(0, -100%)`
+  //           scaleElement3.current.style.transform = `translate(0, -100%)`
+  //           scaleElement4.current.style.transform = `translate(0, -100%)`
+  //           scaleElement5.current.style.transform = `translate(0, -100%)`
+  //           scaleElement6.current.style.transform = `translate(0, -100%)`
+  //           scaleElement7.current.style.transform = `translate(0, -100%)`
+  //           scaleElement8.current.style.transform = `translate(0, -100%)`
+  //           scaleElement9.current.style.transform = `translate(0, -100%)`
+  //           scaleElement10.current.style.transform = `translate(0, -100%)`
+  //           scaleElement11.current.style.transform = `translate(0, -100%)`
+  //           scaleElement12.current.style.transform = `translate(0, -100%)`
+  //         }
 
-          if (progress > 0.3) {
-            scaleElement3.current.style.transform = `translate(0, 0)`
-          } else if (progress < 0.3) {
-            scaleElement3.current.style.transform = `translate(0, -100%)`
-            scaleElement4.current.style.transform = `translate(0, -100%)`
-            scaleElement5.current.style.transform = `translate(0, -100%)`
-            scaleElement6.current.style.transform = `translate(0, -100%)`
-            scaleElement7.current.style.transform = `translate(0, -100%)`
-            scaleElement8.current.style.transform = `translate(0, -100%)`
-            scaleElement9.current.style.transform = `translate(0, -100%)`
-            scaleElement10.current.style.transform = `translate(0, -100%)`
-            scaleElement11.current.style.transform = `translate(0, -100%)`
-            scaleElement12.current.style.transform = `translate(0, -100%)`
-          }
+  //         if (progress > 0.3) {
+  //           scaleElement3.current.style.transform = `translate(0, 0)`
+  //         } else if (progress < 0.3) {
+  //           scaleElement3.current.style.transform = `translate(0, -100%)`
+  //           scaleElement4.current.style.transform = `translate(0, -100%)`
+  //           scaleElement5.current.style.transform = `translate(0, -100%)`
+  //           scaleElement6.current.style.transform = `translate(0, -100%)`
+  //           scaleElement7.current.style.transform = `translate(0, -100%)`
+  //           scaleElement8.current.style.transform = `translate(0, -100%)`
+  //           scaleElement9.current.style.transform = `translate(0, -100%)`
+  //           scaleElement10.current.style.transform = `translate(0, -100%)`
+  //           scaleElement11.current.style.transform = `translate(0, -100%)`
+  //           scaleElement12.current.style.transform = `translate(0, -100%)`
+  //         }
 
-          if (progress > 0.35) {
-            scaleElement4.current.style.transform = `translate(0, 0)`
-          } else if (progress < 0.35) {
-            scaleElement4.current.style.transform = `translate(0, -100%)`
-            scaleElement5.current.style.transform = `translate(0, -100%)`
-            scaleElement6.current.style.transform = `translate(0, -100%)`
-            scaleElement7.current.style.transform = `translate(0, -100%)`
-            scaleElement8.current.style.transform = `translate(0, -100%)`
-            scaleElement9.current.style.transform = `translate(0, -100%)`
-            scaleElement10.current.style.transform = `translate(0, -100%)`
-            scaleElement11.current.style.transform = `translate(0, -100%)`
-            scaleElement12.current.style.transform = `translate(0, -100%)`
-          }
+  //         if (progress > 0.35) {
+  //           scaleElement4.current.style.transform = `translate(0, 0)`
+  //         } else if (progress < 0.35) {
+  //           scaleElement4.current.style.transform = `translate(0, -100%)`
+  //           scaleElement5.current.style.transform = `translate(0, -100%)`
+  //           scaleElement6.current.style.transform = `translate(0, -100%)`
+  //           scaleElement7.current.style.transform = `translate(0, -100%)`
+  //           scaleElement8.current.style.transform = `translate(0, -100%)`
+  //           scaleElement9.current.style.transform = `translate(0, -100%)`
+  //           scaleElement10.current.style.transform = `translate(0, -100%)`
+  //           scaleElement11.current.style.transform = `translate(0, -100%)`
+  //           scaleElement12.current.style.transform = `translate(0, -100%)`
+  //         }
 
-          if (progress > 0.4) {
-            scaleElement5.current.style.transform = `translate(0, 0)`
-          } else if (progress < 0.4) {
-            scaleElement5.current.style.transform = `translate(0, -100%)`
-            scaleElement6.current.style.transform = `translate(0, -100%)`
-            scaleElement7.current.style.transform = `translate(0, -100%)`
-            scaleElement8.current.style.transform = `translate(0, -100%)`
-            scaleElement9.current.style.transform = `translate(0, -100%)`
-            scaleElement10.current.style.transform = `translate(0, -100%)`
-            scaleElement11.current.style.transform = `translate(0, -100%)`
-            scaleElement12.current.style.transform = `translate(0, -100%)`
-          }
+  //         if (progress > 0.4) {
+  //           scaleElement5.current.style.transform = `translate(0, 0)`
+  //         } else if (progress < 0.4) {
+  //           scaleElement5.current.style.transform = `translate(0, -100%)`
+  //           scaleElement6.current.style.transform = `translate(0, -100%)`
+  //           scaleElement7.current.style.transform = `translate(0, -100%)`
+  //           scaleElement8.current.style.transform = `translate(0, -100%)`
+  //           scaleElement9.current.style.transform = `translate(0, -100%)`
+  //           scaleElement10.current.style.transform = `translate(0, -100%)`
+  //           scaleElement11.current.style.transform = `translate(0, -100%)`
+  //           scaleElement12.current.style.transform = `translate(0, -100%)`
+  //         }
 
-          if (progress > 0.45) {
-            scaleElement6.current.style.transform = `translate(0, 0)`
-          } else if (progress < 0.45) {
-            scaleElement6.current.style.transform = `translate(0, -100%)`
-            scaleElement7.current.style.transform = `translate(0, -100%)`
-            scaleElement8.current.style.transform = `translate(0, -100%)`
-            scaleElement9.current.style.transform = `translate(0, -100%)`
-            scaleElement10.current.style.transform = `translate(0, -100%)`
-            scaleElement11.current.style.transform = `translate(0, -100%)`
-            scaleElement12.current.style.transform = `translate(0, -100%)`
-          }
+  //         if (progress > 0.45) {
+  //           scaleElement6.current.style.transform = `translate(0, 0)`
+  //         } else if (progress < 0.45) {
+  //           scaleElement6.current.style.transform = `translate(0, -100%)`
+  //           scaleElement7.current.style.transform = `translate(0, -100%)`
+  //           scaleElement8.current.style.transform = `translate(0, -100%)`
+  //           scaleElement9.current.style.transform = `translate(0, -100%)`
+  //           scaleElement10.current.style.transform = `translate(0, -100%)`
+  //           scaleElement11.current.style.transform = `translate(0, -100%)`
+  //           scaleElement12.current.style.transform = `translate(0, -100%)`
+  //         }
 
-          if (progress > 0.5) {
-            scaleElement7.current.style.transform = `translate(0, 0)`
-          } else if (progress < 0.5) {
-            scaleElement7.current.style.transform = `translate(0, -100%)`
-            scaleElement8.current.style.transform = `translate(0, -100%)`
-            scaleElement9.current.style.transform = `translate(0, -100%)`
-            scaleElement10.current.style.transform = `translate(0, -100%)`
-            scaleElement11.current.style.transform = `translate(0, -100%)`
-            scaleElement12.current.style.transform = `translate(0, -100%)`
-          }
+  //         if (progress > 0.5) {
+  //           scaleElement7.current.style.transform = `translate(0, 0)`
+  //         } else if (progress < 0.5) {
+  //           scaleElement7.current.style.transform = `translate(0, -100%)`
+  //           scaleElement8.current.style.transform = `translate(0, -100%)`
+  //           scaleElement9.current.style.transform = `translate(0, -100%)`
+  //           scaleElement10.current.style.transform = `translate(0, -100%)`
+  //           scaleElement11.current.style.transform = `translate(0, -100%)`
+  //           scaleElement12.current.style.transform = `translate(0, -100%)`
+  //         }
 
-          if (progress > 0.55) {
-            scaleElement8.current.style.transform = `translate(0, 0)`
-          } else if (progress < 0.55) {
-            scaleElement8.current.style.transform = `translate(0, -100%)`
-            scaleElement9.current.style.transform = `translate(0, -100%)`
-            scaleElement10.current.style.transform = `translate(0, -100%)`
-            scaleElement11.current.style.transform = `translate(0, -100%)`
-            scaleElement12.current.style.transform = `translate(0, -100%)`
-          }
+  //         if (progress > 0.55) {
+  //           scaleElement8.current.style.transform = `translate(0, 0)`
+  //         } else if (progress < 0.55) {
+  //           scaleElement8.current.style.transform = `translate(0, -100%)`
+  //           scaleElement9.current.style.transform = `translate(0, -100%)`
+  //           scaleElement10.current.style.transform = `translate(0, -100%)`
+  //           scaleElement11.current.style.transform = `translate(0, -100%)`
+  //           scaleElement12.current.style.transform = `translate(0, -100%)`
+  //         }
 
-          if (progress > 0.6) {
-            scaleElement9.current.style.transform = `translate(0, 0)`
-          } else if (progress < 0.6) {
-            scaleElement9.current.style.transform = `translate(0, -100%)`
-            scaleElement10.current.style.transform = `translate(0, -100%)`
-            scaleElement11.current.style.transform = `translate(0, -100%)`
-            scaleElement12.current.style.transform = `translate(0, -100%)`
-          }
+  //         if (progress > 0.6) {
+  //           scaleElement9.current.style.transform = `translate(0, 0)`
+  //         } else if (progress < 0.6) {
+  //           scaleElement9.current.style.transform = `translate(0, -100%)`
+  //           scaleElement10.current.style.transform = `translate(0, -100%)`
+  //           scaleElement11.current.style.transform = `translate(0, -100%)`
+  //           scaleElement12.current.style.transform = `translate(0, -100%)`
+  //         }
 
-          if (progress > 0.65) {
-            scaleElement10.current.style.transform = `translate(0, 0)`
-          } else if (progress < 0.65) {
-            scaleElement10.current.style.transform = `translate(0, -100%)`
-            scaleElement11.current.style.transform = `translate(0, -100%)`
-            scaleElement12.current.style.transform = `translate(0, -100%)`
-          }
+  //         if (progress > 0.65) {
+  //           scaleElement10.current.style.transform = `translate(0, 0)`
+  //         } else if (progress < 0.65) {
+  //           scaleElement10.current.style.transform = `translate(0, -100%)`
+  //           scaleElement11.current.style.transform = `translate(0, -100%)`
+  //           scaleElement12.current.style.transform = `translate(0, -100%)`
+  //         }
 
-          if (progress > 0.7) {
-            scaleElement11.current.style.transform = `translate(0, 0)`
-          } else if (progress < 0.7) {
-            scaleElement11.current.style.transform = `translate(0, -100%)`
-            scaleElement12.current.style.transform = `translate(0, -100%)`
-          }
+  //         if (progress > 0.7) {
+  //           scaleElement11.current.style.transform = `translate(0, 0)`
+  //         } else if (progress < 0.7) {
+  //           scaleElement11.current.style.transform = `translate(0, -100%)`
+  //           scaleElement12.current.style.transform = `translate(0, -100%)`
+  //         }
 
-          if (progress > 0.75) {
-            scaleElement12.current.style.transform = `translate(0, 0)`
-          } else if (progress < 0.75) {
-            scaleElement12.current.style.transform = `translate(0, -100%)`
-          }
+  //         if (progress > 0.75) {
+  //           scaleElement12.current.style.transform = `translate(0, 0)`
+  //         } else if (progress < 0.75) {
+  //           scaleElement12.current.style.transform = `translate(0, -100%)`
+  //         }
 
-        }
-      })
-    }
-  }, [scroll, progress])
+  //       }
+  //     })
+  //   }
+  // }, [scroll, progress])
 
   return (
     <div className="w-full absolute inset-0 h-full object-cover object-center overflow-hidden" data-scroll data-scroll-id={id}>
