@@ -1,11 +1,17 @@
 import { useEffect, useRef } from "react";
-// import { useLocomotiveScroll } from "react-locomotive-scroll";
 import Image from "@/components/image";
+import { useMotionValueEvent, useScroll } from "framer-motion";
 
 export default function ScrollBoundImage({ image }) {
-  // const { scroll } = useLocomotiveScroll()
+
+  const { scrollYProgress } = useScroll()
   const scaleElement = useRef(null);
   let progress = 0;
+
+  useMotionValueEvent(scrollYProgress, "change", (latest) => {
+    const progress = latest
+    scaleElement.current.style.transform = `scale(${1 + latest / 2.5})`
+  })
 
   // useEffect(() => {
   //   if (scroll) {

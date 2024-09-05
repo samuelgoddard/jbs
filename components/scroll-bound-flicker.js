@@ -1,9 +1,11 @@
 import { useEffect, useRef } from "react";
 // import { useLocomotiveScroll } from "react-locomotive-scroll";
 import Image from "@/components/image";
+import { useMotionValueEvent, useScroll } from "framer-motion";
 
 export default function ScrollBoundFlicker({ images, id }) {
-  // const { scroll } = useLocomotiveScroll()
+  const { scrollYProgress } = useScroll()
+
   const scaleElement = useRef(null);
   const scaleElement2 = useRef(null);
   const scaleElement3 = useRef(null);
@@ -18,13 +20,136 @@ export default function ScrollBoundFlicker({ images, id }) {
   const scaleElement12 = useRef(null);
   let progress = 0;
 
+  useMotionValueEvent(scrollYProgress, "change", (latest) => {
+    if (latest > 0.15) {
+      scaleElement2.current.style.transform = `translate(0, 0)`
+    } else if (latest < 0.15) {
+      scaleElement2.current.style.transform = `translate(0, -100%)`
+      scaleElement3.current.style.transform = `translate(0, -100%)`
+      scaleElement4.current.style.transform = `translate(0, -100%)`
+      scaleElement5.current.style.transform = `translate(0, -100%)`
+      scaleElement6.current.style.transform = `translate(0, -100%)`
+      scaleElement7.current.style.transform = `translate(0, -100%)`
+      scaleElement8.current.style.transform = `translate(0, -100%)`
+      scaleElement9.current.style.transform = `translate(0, -100%)`
+      scaleElement10.current.style.transform = `translate(0, -100%)`
+      scaleElement11.current.style.transform = `translate(0, -100%)`
+      scaleElement12.current.style.transform = `translate(0, -100%)`
+    }
+
+    if (latest > 0.175) {
+      scaleElement3.current.style.transform = `translate(0, 0)`
+    } else if (latest < 0.175) {
+      scaleElement3.current.style.transform = `translate(0, -100%)`
+      scaleElement4.current.style.transform = `translate(0, -100%)`
+      scaleElement5.current.style.transform = `translate(0, -100%)`
+      scaleElement6.current.style.transform = `translate(0, -100%)`
+      scaleElement7.current.style.transform = `translate(0, -100%)`
+      scaleElement8.current.style.transform = `translate(0, -100%)`
+      scaleElement9.current.style.transform = `translate(0, -100%)`
+      scaleElement10.current.style.transform = `translate(0, -100%)`
+      scaleElement11.current.style.transform = `translate(0, -100%)`
+      scaleElement12.current.style.transform = `translate(0, -100%)`
+    }
+
+    if (latest > 0.2) {
+      scaleElement4.current.style.transform = `translate(0, 0)`
+    } else if (latest < 0.2) {
+      scaleElement4.current.style.transform = `translate(0, -100%)`
+      scaleElement5.current.style.transform = `translate(0, -100%)`
+      scaleElement6.current.style.transform = `translate(0, -100%)`
+      scaleElement7.current.style.transform = `translate(0, -100%)`
+      scaleElement8.current.style.transform = `translate(0, -100%)`
+      scaleElement9.current.style.transform = `translate(0, -100%)`
+      scaleElement10.current.style.transform = `translate(0, -100%)`
+      scaleElement11.current.style.transform = `translate(0, -100%)`
+      scaleElement12.current.style.transform = `translate(0, -100%)`
+    }
+
+    if (latest > 0.225) {
+      scaleElement5.current.style.transform = `translate(0, 0)`
+    } else if (latest < 0.225) {
+      scaleElement5.current.style.transform = `translate(0, -100%)`
+      scaleElement6.current.style.transform = `translate(0, -100%)`
+      scaleElement7.current.style.transform = `translate(0, -100%)`
+      scaleElement8.current.style.transform = `translate(0, -100%)`
+      scaleElement9.current.style.transform = `translate(0, -100%)`
+      scaleElement10.current.style.transform = `translate(0, -100%)`
+      scaleElement11.current.style.transform = `translate(0, -100%)`
+      scaleElement12.current.style.transform = `translate(0, -100%)`
+    }
+
+    if (latest > 0.25) {
+      scaleElement6.current.style.transform = `translate(0, 0)`
+    } else if (latest < 0.25) {
+      scaleElement6.current.style.transform = `translate(0, -100%)`
+      scaleElement7.current.style.transform = `translate(0, -100%)`
+      scaleElement8.current.style.transform = `translate(0, -100%)`
+      scaleElement9.current.style.transform = `translate(0, -100%)`
+      scaleElement10.current.style.transform = `translate(0, -100%)`
+      scaleElement11.current.style.transform = `translate(0, -100%)`
+      scaleElement12.current.style.transform = `translate(0, -100%)`
+    }
+
+    if (latest > 0.275) {
+      scaleElement7.current.style.transform = `translate(0, 0)`
+    } else if (latest < 0.275) {
+      scaleElement7.current.style.transform = `translate(0, -100%)`
+      scaleElement8.current.style.transform = `translate(0, -100%)`
+      scaleElement9.current.style.transform = `translate(0, -100%)`
+      scaleElement10.current.style.transform = `translate(0, -100%)`
+      scaleElement11.current.style.transform = `translate(0, -100%)`
+      scaleElement12.current.style.transform = `translate(0, -100%)`
+    }
+
+    if (latest > 0.3) {
+      scaleElement8.current.style.transform = `translate(0, 0)`
+    } else if (latest < 0.3) {
+      scaleElement8.current.style.transform = `translate(0, -100%)`
+      scaleElement9.current.style.transform = `translate(0, -100%)`
+      scaleElement10.current.style.transform = `translate(0, -100%)`
+      scaleElement11.current.style.transform = `translate(0, -100%)`
+      scaleElement12.current.style.transform = `translate(0, -100%)`
+    }
+
+    if (latest > 0.325) {
+      scaleElement9.current.style.transform = `translate(0, 0)`
+    } else if (latest < 0.325) {
+      scaleElement9.current.style.transform = `translate(0, -100%)`
+      scaleElement10.current.style.transform = `translate(0, -100%)`
+      scaleElement11.current.style.transform = `translate(0, -100%)`
+      scaleElement12.current.style.transform = `translate(0, -100%)`
+    }
+
+    if (latest > 0.35) {
+      scaleElement10.current.style.transform = `translate(0, 0)`
+    } else if (latest < 0.35) {
+      scaleElement10.current.style.transform = `translate(0, -100%)`
+      scaleElement11.current.style.transform = `translate(0, -100%)`
+      scaleElement12.current.style.transform = `translate(0, -100%)`
+    }
+
+    if (latest > 0.375) {
+      scaleElement11.current.style.transform = `translate(0, 0)`
+    } else if (latest < 0.375) {
+      scaleElement11.current.style.transform = `translate(0, -100%)`
+      scaleElement12.current.style.transform = `translate(0, -100%)`
+    }
+
+    if (latest > 0.4) {
+      scaleElement12.current.style.transform = `translate(0, 0)`
+    } else if (latest < 0.4) {
+      scaleElement12.current.style.transform = `translate(0, -100%)`
+    }
+  })
+
   // useEffect(() => {
   //   if (scroll) {
   //     scroll.on('scroll', (args) => {
   //       if (typeof args.currentElements[id] === 'object') {
   //         let progress = args.currentElements[id].progress
           
-  //         if (progress > 0.25) {
+  //         if (latest > 0.25) {
   //           scaleElement2.current.style.transform = `translate(0, 0)`
   //         } else if (progress < 0.25) {
   //           scaleElement2.current.style.transform = `translate(0, -100%)`

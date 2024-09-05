@@ -207,8 +207,28 @@ export default function WorkSlug(initialData) {
           {/* <Loader /> */}
           <m.div variants={fade}>
 
-
-            {/* <m.header className="absolute top-0 left-0 right-0 flex justify-center z-[100000000]" data-scroll data-scroll-sticky data-scroll-target="#scroll-container">
+          <header className="font-mono w-full grid grid-cols-12 top-0 left-0 right-0 p-3 z-[100000000] pointer-events-none fixed">
+            <div className="col-span-4 col-start-4 pointer-events-auto">
+              <div className="flex space-x-1">
+                <Link legacyBehavior href="/">
+                  <a className="text-lg/none lg:text-xl/none xl:text-2xl/none font-sans uppercase relative overflow-hidden block group">
+                    <m.span variants={revealDelayTop} className="block">
+                      <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms] opacity-20">Work</span>
+                      <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0">Work</span>
+                    </m.span>
+                  </a>
+                </Link>
+                <span className="text-lg/none lg:text-xl/none xl:text-2xl/none font-sans uppercase opacity-20 block relative overflow-hidden">
+                  <m.span variants={revealDelayTop} className="block">/</m.span>
+                </span>
+                <span className="text-lg/none lg:text-xl/none xl:text-2xl/none font-sans uppercase block relative overflow-hidden">
+                  <m.span variants={revealDelayTop} className="block">{title}</m.span>
+                </span>
+              </div>
+            </div>
+          </header>
+          
+            {/* <m.header className="fixed top-0 left-0 right-0 flex justify-center z-[100000000]" data-scroll data-scroll-sticky data-scroll-target="#scroll-container">
               <div className="flex space-x-1 p-3">
                 <Link legacyBehavior href="/work">
                   <a className="text-lg md:text-[2.8vw] xl:text-[2.2vw] 2xl:text-[2vw] leading-none md:leading-none xl:leading-none 2xl:leading-none font-sans uppercase relative overflow-hidden block group">
