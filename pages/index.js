@@ -1,16 +1,16 @@
-import { useContext, useEffect, useRef, useState } from 'react'
+import { useContext, useRef, useState } from 'react'
 import Layout from '@/components/layout'
-import { fade, fadeDelay, scaleDelay } from '@/helpers/transitions'
-import { LazyMotion, domAnimation, m, AnimatePresence } from 'framer-motion'
+import { fade, scaleDelay } from '@/helpers/transitions'
+import { LazyMotion, domAnimation, m, useScroll, useMotionValueEvent, AnimatePresence } from 'framer-motion'
 import { NextSeo } from 'next-seo'
 import Image from '@/components/image'
 import SanityPageService from '@/services/sanityPageService'
 import Link from 'next/link'
 import { IntroContext } from '@/context/intro'
-import Div100vh from 'react-div-100vh'
 import { NewsletterContext } from '@/context/newsletter'
 import { ReelContext } from '@/context/reel'
 import Footer from '@/components/footer'
+import { useLenis } from '@studio-freight/react-lenis'
 
 const query = `{
   "home": *[_type == "home"][0]{
@@ -105,21 +105,25 @@ export default function Home(initialData) {
   const { data: { home, contact, menu, work } } = pageService.getPreviewHook(initialData)()
   const [reelContext, setReelContext] = useContext(ReelContext)
   const [introContext, setIntroContext] = useContext(IntroContext);
+  const [filtersActive, setFiltersActive] = useState(false);
   const [newsletterContext, setNewsletterContext] = useContext(NewsletterContext);
+  const { scrollYProgress } = useScroll()
+  const lenis = useLenis();
 
-  const revealDelayBottom = {
-    initial: { y: '-100%' },
-    enter: { 
-      y: 0,
-      transition: { delay: introContext ? 0 : 2.8, duration: 0.65, ease: [0.76, 0, 0.24, 1] }
-    },
-    exit: {
-      y: 0,
-      transition: { duration: 0.3, ease: [0.76, 0, 0.24, 1] }
+  useMotionValueEvent(scrollYProgress, "change", (latest) => {
+    if (latest > 0.055) {
+      setFiltersActive(true)
     }
-  }
-  
-  
+    
+    if (latest < 0.055) {
+      setFiltersActive(false)
+    }
+
+    if (latest > 0.75) {
+      setFiltersActive(false)
+    }
+  })
+
   const revealDelayTop = {
     initial: { x: '-100%' },
     enter: { 
@@ -163,10 +167,6 @@ export default function Home(initialData) {
       setNewsletterContext(true)
     }
   }
-
-  const updateCurrentHover = (value) => {
-    setCurrentHover(value)
-  } 
   
   let newWork = []
   
@@ -205,6 +205,85 @@ export default function Home(initialData) {
             {/* <Loader /> */}
 
             <m.div variants={fade} className="pt-[120px] md:pt-[200px]">
+
+              <AnimatePresence>
+                {filtersActive && (
+                  <m.div
+                    initial={{ opacity: 0, y: '-100%' }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: '-100%' }}
+                    transition={{ duration: 0.65, ease: [0.76, 0, 0.24, 1] }}
+                    className="fixed top-0 px-3 py-3 md:px-4 md:py-2 lg:px-5 lg:py-2 left-0 right-0 z-[100] flex text-white bg-gradient-to-b from-black/40 via-black/20 to-transparent text-sm/none md:text-base/none lg:text-lg/none xl:text-xl/none tracking-tighter uppercase"
+                  >
+                    <button onClick={() => setReelContext(!reelContext)} className="uppercase hidden md:block group">
+                      <span className="relative overflow-hidden block">
+                        <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">Play Reel (2:14)</span>
+                        <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0">Play Reel (2:14)</span>
+                      </span>
+                    </button>
+
+                    <nav className="mx-auto">
+                      <ul className="flex space-x-1 md:space-x-1 lg:space-x-1.5">
+                        <li className="block">
+                          <button className="block uppercase px-2.5 lg:px-3.5 py-2 lg:py-3.5 relative group">
+                            <span className="relative overflow-hidden block">
+                              <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">All</span>
+                              <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0">All</span>
+                            </span>
+                            <span className="block absolute inset-0 rounded-[130%] border-white border skew-y-[-5deg] scale-y-[1] scale-x-[1.075]"></span>
+                          </button>
+                        </li>
+                        <li className="block">
+                          <button className="block uppercase px-2.5 lg:px-3.5 py-2 lg:py-3.5 relative group">
+                            <span className="relative overflow-hidden block">
+                              <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">Food</span>
+                              <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0">Food</span>
+                            </span>
+                            {/* <span className="block absolute inset-0 rounded-[130%] border-white border skew-y-[-5deg] scale-y-[1] scale-x-[1.075]"></span> */}
+                          </button>
+                        </li>
+                        <li className="block">
+                          <button className="block uppercase px-2.5 lg:px-3.5 py-2 lg:py-3.5 relative group">
+                            <span className="relative overflow-hidden block">
+                              <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">Drinks</span>
+                              <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0">Drinks</span>
+                            </span>
+                            {/* <span className="block absolute inset-0 rounded-[130%] border-white border skew-y-[-5deg] scale-y-[1] scale-x-[1.075]"></span> */}
+                          </button>
+                        </li>
+                        <li className="block">
+                          <button className="block uppercase px-2.5 lg:px-3.5 py-2 lg:py-3.5 relative group">
+                            <span className="relative overflow-hidden block">
+                              <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">Lifestyle</span>
+                              <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0">Lifestyle</span>
+                            </span>
+                            {/* <span className="block absolute inset-0 rounded-[130%] border-white border skew-y-[-5deg] scale-y-[1] scale-x-[1.075]"></span> */}
+                          </button>
+                        </li>
+                        <li className="block">
+                          <button className="block uppercase px-2.5 lg:px-3.5 py-2 lg:py-3.5 relative group">
+                            <span className="relative overflow-hidden block">
+                              <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">Product</span>
+                              <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0">Product</span>
+                            </span>
+                            {/* <span className="block absolute inset-0 rounded-[130%] border-white border skew-y-[-5deg] scale-y-[1] scale-x-[1.075]"></span> */}
+                          </button>
+                        </li>
+                      </ul>
+                    </nav>
+
+                    <button onClick={ ()=> lenis?.scrollTo(0, {offset: 0, duration: 2, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))})} className="hidden md:block uppercase group">
+                      <span className="block relative overflow-hidden">
+                        <span className="relative overflow-hidden block">
+                          <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">To Top</span>
+                          <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0">To Top</span>
+                        </span>
+                      </span>
+                    </button>
+                  </m.div>
+                )}
+              </AnimatePresence>
+
               <m.header className="block z-10 absolute top-0 right-0 left-0 p-3">
                 {home.headerTagline && (
                   <div className="">
@@ -233,7 +312,7 @@ export default function Home(initialData) {
                 <div className="col-span-1 relative overflow-hidden">
                   {work1.map((e, i) => {
                     return (
-                      <Link legacyBehavior href={`/work/${e.slug.current}`} key={i}>
+                      <Link scroll={false} legacyBehavior href={`/work/${e.slug.current}`} key={i}>
                         <a className="relative overflow-hidden block cursor-pointer" variants={scaleDelay}>
                           <div className={`transition-all ease-custom duration-[600ms] opacity-100 group`}>
                             <div className="absolute inset-0 w-full h-full bg-[rgba(0,0,0,0.8)] z-[20] flex flex-wrap opacity-0 group-hover:opacity-100 transition-opacity ease-in-out duration-[400ms] text-white p-2">
@@ -267,7 +346,7 @@ export default function Home(initialData) {
                 <div className="col-span-1 relative overflow-hidden">
                 {work2.map((e, i) => {
                     return (
-                      <Link legacyBehavior href={`/work/${e.slug.current}`} key={i}>
+                      <Link scroll={false} legacyBehavior href={`/work/${e.slug.current}`} key={i}>
                         <a className="relative overflow-hidden block cursor-pointer">
                           <div className={`transition-all ease-custom duration-[600ms] opacity-100 group`}>
                             <div className="absolute inset-0 w-full h-full bg-[rgba(0,0,0,0.8)] z-[20] flex flex-wrap opacity-0 group-hover:opacity-100 transition-opacity ease-in-out duration-[400ms] text-white p-2">
@@ -300,7 +379,7 @@ export default function Home(initialData) {
                 <div className="col-span-1 relative overflow-hidden">
                   {work3.map((e, i) => {
                     return (
-                      <Link legacyBehavior href={`/work/${e.slug.current}`} key={i}>
+                      <Link scroll={false} legacyBehavior href={`/work/${e.slug.current}`} key={i}>
                         <a className="relative overflow-hidden block cursor-pointer">
                           <div className={`transition-all ease-custom duration-[600ms] opacity-100 group`}>
                             <div className="absolute inset-0 w-full h-full bg-[rgba(0,0,0,0.8)] z-[20] flex flex-wrap opacity-0 group-hover:opacity-100 transition-opacity ease-in-out duration-[400ms] text-white p-2">
@@ -331,99 +410,6 @@ export default function Home(initialData) {
                   })}
                 </div>
               </m.main>
-
-              {/* <m.footer className="p-3">
-                <div className="grid grid-cols-9 items-end">
-                  <div className="col-span-3 md:col-span-2 text-left">
-                    <Link href="/work">
-                      <a
-                        className="-mt-1 md:mt-0 text-4xl md:text-[4.5vw] xl:text-[4.5vw] 2xl:text-[5.5vw] leading-[0.9] md:leading-[0.9] xl:leading-[0.9] 2xl:leading-[0.9] font-sans uppercase relative hidden md:block overflow-hidden group"
-                        onMouseEnter={() => updateCurrentHover('work')}
-                        onMouseLeave={() => updateCurrentHover(null)}
-                      >
-                        <m.span className="block relative overflow-hidden" variants={revealDelayBottom}>
-                          <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">Work</span>
-                          <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0 text-white">Work</span>
-                        </m.span>
-                      </a>
-                    </Link>
-                    <Link href="/work">
-                      <a
-                        className="-mt-1 md:mt-0 text-4xl md:text-[4.5vw] xl:text-[4.5vw] 2xl:text-[5.5vw] leading-[0.9] md:leading-[0.9] xl:leading-[0.9] 2xl:leading-[0.9] font-sans uppercase relative block md:hidden overflow-hidden group"
-                      >
-                        <m.span className="block relative overflow-hidden" variants={revealDelayBottom}>
-                          <span className="block">Work</span>
-                        </m.span>
-                      </a>
-                    </Link>
-                  </div>
-
-                  <div className="hidden md:flex col-span-5 col-start-3 text-center md:space-x-7 justify-center">
-
-                    <button onClick={() => setReelContext(!reelContext)}>
-                      <a className="text-sm md:text-[2.2vw] xl:text-[2vw] 2xl:text-[2.3vw] leading-[0.9] md:leading-[0.9] xl:leading-[0.9] 2xl:leading-[0.9] font-sans uppercase group relative overflow-hidden hidden md:block">
-                        <m.span variants={revealDelayBottom} className="hidden md:inline-block relative overflow-hidden">
-                          <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">Reel</span>
-                          <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0 text-white">Reel</span>
-                        </m.span>
-                        <m.span variants={revealDelayBottom} className="inline-block md:hidden">Reel</m.span>
-                      </a>
-                    </button>
-
-                    <button aria-label={newsletterContext ? 'Close newsletter modal' : 'Open newsletter modal' } onClick={newsletterToggle} className="text-sm md:text-[2.2vw] xl:text-[2vw] 2xl:text-[2.3vw] leading-[0.9] md:leading-[0.9] xl:leading-[0.9] 2xl:leading-[0.9] font-sans uppercase group relative overflow-hidden hidden md:block">
-                      <m.span variants={revealDelayBottom} className="hidden md:inline-block relative overflow-hidden">
-                        <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">Newsletter</span>
-                        <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0 text-white">Newsletter</span>
-                      </m.span>
-                      <m.span variants={revealDelayBottom} className="inline-block md:hidden">Newsletter</m.span>
-                      </button>
-
-                    <a href={`mailto:${contact.email}`} className="text-sm md:text-[2.2vw] xl:text-[2vw] 2xl:text-[2.3vw] leading-[0.9] md:leading-[0.9] xl:leading-[0.9] 2xl:leading-[0.9] font-sans uppercase group hidden md:block relative overflow-hidden ml-5">
-                      <m.span variants={revealDelayBottom} className="hidden md:inline-block relative overflow-hidden">
-                        <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">Get in touch</span>
-                        <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0 text-white">Get in touch</span>
-                      </m.span>
-                      <m.span variants={revealDelayBottom} className="inline-block md:hidden">Contact</m.span>
-                    </a>
-
-                    {contact.socials.map((e, i) => {
-                      return e.title === 'Instagram' && (
-                        <a key={i} href={e.url} target="_blank" rel="noopener noreferrer" className="text-sm md:text-[2.2vw] xl:text-[2vw] 2xl:text-[2.3vw] leading-[0.9] md:leading-[0.9] xl:leading-[0.9] 2xl:leading-[0.9] font-sans uppercase hover:underline focus:underline ml-3 hidden md:block relative overflow-hidden group">
-                          <m.span className="inline-block" variants={revealDelayBottom}>
-                            <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">{e.title}</span>
-                            <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0 text-white">{e.title}</span>
-                          </m.span>
-                        </a>
-                      )
-                    })}
-                  </div>
-                  
-                  <div className="col-span-4 md:col-span-2 col-start-4 md:col-start-8 md:text-right">
-                    <Link href="/studio">
-                      <a
-                        className="-mt-1 md:mt-0 text-4xl md:text-[4.5vw] xl:text-[4.5vw] 2xl:text-[5.5vw] leading-[0.9] md:leading-[0.9] xl:leading-[0.9] 2xl:leading-[0.9] font-sans uppercase relative hidden md:block overflow-hidden group"
-                        onMouseEnter={() => updateCurrentHover('studio')}
-                        onMouseLeave={() => updateCurrentHover(null)}
-                      >
-                        <m.span className="block" variants={revealDelayBottom}>
-                          <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">Studio</span>
-                          <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0 text-white">Studio</span>
-                        </m.span>
-                      </a>
-                    </Link>
-
-                    <Link href="/studio">
-                      <a
-                        className="-mt-1 md:mt-0 text-4xl md:text-[4.5vw] xl:text-[4.5vw] 2xl:text-[5.5vw] leading-[0.9] md:leading-[0.9] xl:leading-[0.9] 2xl:leading-[0.9] font-sans uppercase relative block overflow-hidden group md:hidden"
-                      >
-                        <m.span className="block" variants={revealDelayBottom}>
-                          <span className="block">Studio</span>
-                        </m.span>
-                      </a>
-                    </Link>
-                  </div>
-                </div>
-              </m.footer> */}
             </m.div>
 
             <Footer contact={contact} />

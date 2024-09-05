@@ -1,6 +1,9 @@
 import Link from 'next/link'
 import { m } from 'framer-motion'
 import { useRouter } from 'next/router'
+import { ReelContext } from '@/context/reel'
+import { useContext } from 'react'
+import { NewsletterContext } from '@/context/newsletter'
 
 const revealDelay = {
 	initial: { y: '-100%' },
@@ -16,12 +19,22 @@ const revealDelay = {
 
 export default function Header({ light }) {
   const router = useRouter()
+  const [reelContext, setReelContext] = useContext(ReelContext)
+  const [newsletterContext, setNewsletterContext] = useContext(NewsletterContext);
+
+  const newsletterToggle = () => {
+    if (newsletterContext) {
+      setNewsletterContext(false)
+    } else {
+      setNewsletterContext(true)
+    }
+  }
 
   return (
-    <header className="font-mono w-full z-20 absolute top-0 left-0 right-0 p-3 z-[100000000]">
+    <header className="font-mono w-full absolute top-0 left-0 right-0 p-3 z-[100000000]">
       {/* <div className="flex flex-wrap relative" data-scroll data-scroll-sticky data-scroll-target="#scroll-container"> */}
       <div className="flex flex-wrap relative">
-        <Link legacyBehavior href="/">
+        <Link scroll={false} legacyBehavior href="/">
           <a className={`mb-1 md:mb-0 block w-[60px] overflow-hidden transition-all ease-in-out duration-300 ${router.asPath == '/studio' ? 'text-white' : 'text-black' } ${ router.asPath == '/' ? 'opacity-0' : 'delay-[600ms]' }`}>
             <m.div variants={revealDelay}>
               <svg className="w-full" viewBox="0 0 111 53" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -34,8 +47,8 @@ export default function Header({ light }) {
           </a>
         </Link>
 
-        <div className="ml-auto">
-          <Link legacyBehavior href={router.pathname == '/menu' ? '/' : '/menu'}>
+        <div className="ml-auto block md:hidden">
+          <Link scroll={false} legacyBehavior href={router.pathname == '/menu' ? '/' : '/menu'}>
             <a className={`block w-[75px] bg-transparent p-3 group ${ router.pathname == '/studio' ? 'text-white' : 'text-black'}`}>
               <div className="relative">
                 <span className={`block w-full h-[3px] mb-[5px] bg-current transition ease-in-out duration-[450ms] ${router.pathname == '/menu' && 'rotate-[45deg] scale-x-[0.55] translate-x-[9px] translate-y-2' }`}></span>
@@ -43,6 +56,81 @@ export default function Header({ light }) {
               </div>
             </a>
           </Link>
+        </div>
+
+        <div className={`ml-auto hidden md:block transition-all ease-in-out duration-300 ${ router.pathname == '/studio' ? 'text-white delay-[600ms]' : 'text-black'}`}>
+          <nav className="block">
+            <ul className="flex gap-3">
+              <li className="block">
+                <Link scroll={false} legacyBehavior href="/">
+                  <a className="text-lg/none lg:text-xl/none xl:text-2xl/none font-sans uppercase block relative group">
+                    <m.span variants={revealDelay} className="block relative overflow-hidden">
+                      <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">Work</span>
+                      <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0">Work</span>
+                    </m.span>
+
+                    <span className={`block absolute bottom-[-12px] left-[40%] text-[19px]/none transition ease-in-out duration-[450ms] ${(router.asPath == '/' || router.asPath.includes('/work')) ? 'opacity-100 delay-[600ms]' : 'opacity-0' }`}>▴</span>
+                  </a>
+                </Link>
+              </li>
+              <li className="block">
+                <Link scroll={false} legacyBehavior href="/studio">
+                  <a className="text-lg/none lg:text-xl/none xl:text-2xl/none font-sans uppercase block relative group">
+                    <m.span variants={revealDelay} className="block relative overflow-hidden">
+                      <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">Studio</span>
+                      <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0">Studio</span>
+                    </m.span>
+                    
+                    <span className={`block absolute bottom-[-12px] left-[40%] text-[19px]/none transition ease-in-out !text-white ${router.asPath == '/studio' ? 'opacity-100 delay-[600ms] duration-[450ms]' : 'opacity-0 duration-[250ms]' }`}>▴</span>
+                  </a>
+                </Link>
+              </li>
+              <li className="block">
+                <a
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href="https://www.instagram.com/jasonbaileystudio"
+                  className="text-lg/none lg:text-xl/none xl:text-2xl/none font-sans uppercase block relative overflow-hidden group"
+                >
+                  <m.span variants={revealDelay} className="block relative overflow-hidden">
+                    <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">Insta</span>
+                    <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0">Insta</span>
+                  </m.span>
+                </a>
+              </li>
+              <li className="block">
+                <button aria-label={newsletterContext ? 'Close newsletter modal' : 'Open newsletter modal' } onClick={newsletterToggle} className="text-lg/none lg:text-xl/none xl:text-2xl/none font-sans uppercase block relative overflow-hidden group">
+                  <m.span variants={revealDelay} className="flex">
+                    <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">Newsletter</span>
+                    <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0">Newsletter</span>
+                  </m.span>
+                </button>
+              </li>
+
+              <li className="block">
+                <button
+                  onClick={() => setReelContext(!reelContext)}
+                  className="text-lg/none lg:text-xl/none xl:text-2xl/none font-sans uppercase block relative overflow-hidden group"
+                >
+                  <m.span variants={revealDelay} className="block relative overflow-hidden">
+                    <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">Reel</span>
+                    <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0">Reel</span>
+                  </m.span>
+                </button>
+              </li>
+              
+              <li className="block">
+                <a href={`mailto:jason@jasonbaileystudio.com`}
+                  className="text-lg/none lg:text-xl/none xl:text-2xl/none font-sans uppercase block relative overflow-hidden group"
+                >
+                  <m.span variants={revealDelay} className="block relative overflow-hidden">
+                    <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">Contact</span>
+                    <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0 text-orange">Contact</span>
+                  </m.span>
+                </a>
+              </li>
+            </ul>
+          </nav>
         </div>
       </div>
     </header>

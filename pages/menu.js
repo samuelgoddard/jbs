@@ -264,7 +264,7 @@ export default function Menu(initialData) {
                 <nav className="border-t border-black">
                   <ul>
                     {/* <li className="block border-b border-black">
-                      <Link legacyBehavior href="/">
+                      <Link scroll={false} legacyBehavior href="/">
                         <a
                           onMouseEnter={() => updateCurrentHover('home')}
                           onMouseLeave={() => updateCurrentHover(null)}
@@ -278,7 +278,7 @@ export default function Menu(initialData) {
                       </Link>
                     </li> */}
                     <li className="hidden md:block border-b border-black">
-                      <Link legacyBehavior href="/">
+                      <Link scroll={false} legacyBehavior href="/">
                         <a
                           onMouseEnter={() => updateCurrentHover('work')}
                           onMouseLeave={() => updateCurrentHover(null)}
@@ -292,7 +292,7 @@ export default function Menu(initialData) {
                       </Link>
                     </li>
                     <li className="hidden md:block border-b border-black">
-                      <Link legacyBehavior href="/studio">
+                      <Link scroll={false} legacyBehavior href="/studio">
                         <a
                           onMouseEnter={() => updateCurrentHover('studio')}
                           onMouseLeave={() => updateCurrentHover(null)}
@@ -306,7 +306,7 @@ export default function Menu(initialData) {
                       </Link>
                     </li>
                     {/* <li className="hidden md:block border-b border-black">
-                      <Link legacyBehavior href="/sustainability">
+                      <Link scroll={false} legacyBehavior href="/sustainability">
                         <a
                           onMouseEnter={() => updateCurrentHover('sustainability')}
                           onMouseLeave={() => updateCurrentHover(null)}
@@ -335,16 +335,16 @@ export default function Menu(initialData) {
                       </a>
                     </li>
                     <li className="hidden md:block border-b border-black">
-                        <a href={`mailto:${contact.email}`}
-                          onMouseEnter={() => updateCurrentHover('home')}
-                          onMouseLeave={() => updateCurrentHover(null)}
-                          className="text-6xl md:text-[6vw] xl:text-[5vw] 2xl:text-[4.5vw] leading-[0.92] md:leading-[0.92] xl:leading-[0.92] 2xl:leading-[0.92] font-sans uppercase block relative overflow-hidden group"
-                        >
-                          <m.span variants={revealDelay} className="block relative mt-2 mb-3 overflow-hidden">
-                            <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">Email</span>
-                            <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0 text-orange">Email</span>
-                          </m.span>
-                        </a>
+                      <a href={`mailto:${contact.email}`}
+                        onMouseEnter={() => updateCurrentHover('home')}
+                        onMouseLeave={() => updateCurrentHover(null)}
+                        className="text-6xl md:text-[6vw] xl:text-[5vw] 2xl:text-[4.5vw] leading-[0.92] md:leading-[0.92] xl:leading-[0.92] 2xl:leading-[0.92] font-sans uppercase block relative overflow-hidden group"
+                      >
+                        <m.span variants={revealDelay} className="block relative mt-2 mb-3 overflow-hidden">
+                          <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">Email</span>
+                          <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0 text-orange">Email</span>
+                        </m.span>
+                      </a>
                     </li>
                     <li className="hidden md:block border-b border-black">
                         <button
@@ -362,7 +362,7 @@ export default function Menu(initialData) {
 
 
                     <li className="block md:hidden border-b border-black">
-                      <Link legacyBehavior href="/work">
+                      <Link scroll={false} legacyBehavior href="/">
                         <a
                           className="text-[13.3vw] md:text-[6vw] xl:text-[5vw] 2xl:text-[4.5vw] leading-[0.92] md:leading-[0.92] xl:leading-[0.92] 2xl:leading-[0.92] font-sans uppercase block relative overflow-hidden group"
                         >
@@ -374,7 +374,7 @@ export default function Menu(initialData) {
                       </Link>
                     </li>
                     <li className="block md:hidden border-b border-black">
-                      <Link legacyBehavior href="/studio">
+                      <Link scroll={false} legacyBehavior href="/studio">
                         <a
                           className="text-[13.3vw] md:text-[6vw] xl:text-[5vw] 2xl:text-[4.5vw] leading-[0.92] md:leading-[0.92] xl:leading-[0.92] 2xl:leading-[0.92] font-sans uppercase block relative overflow-hidden group"
                         >
@@ -386,7 +386,7 @@ export default function Menu(initialData) {
                       </Link>
                     </li>
                     {/* <li className="block md:hidden border-b border-black">
-                      <Link legacyBehavior href="/sustainability">
+                      <Link scroll={false} legacyBehavior href="/sustainability">
                         <a
                           className="text-[13.3vw] md:text-[6vw] xl:text-[5vw] 2xl:text-[4.5vw] leading-[0.92] md:leading-[0.92] xl:leading-[0.92] 2xl:leading-[0.92] font-sans uppercase block relative overflow-hidden group"
                         >
@@ -459,7 +459,7 @@ export default function Menu(initialData) {
                 </div> */}
 
                 <div className="grid-col-1 col-start-1 hidden md:block text-center">
-                  {/* <Link legacyBehavior href="/terms">
+                  {/* <Link scroll={false} legacyBehavior href="/terms">
                     <a className="block text-[10px] md:text-[11px] lg:text-sm 2xl:text-base leading-[0.95] md:leading-[0.95] lg:leading-[0.95] 2xl:leading-[0.95] relative overflow-hidden group">
                       <m.span variants={revealDelayBottom} className="block relative">
                         <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms] underline">Privacy</span>
@@ -481,7 +481,7 @@ export default function Menu(initialData) {
 
                 <div className="col-span-3 col-start-6 block">
                   <div className="flex space-x-3">
-                    {/* <Link legacyBehavior href="/sustainability"><a className="block text-[13px] md:text-[11px] lg:text-sm 2xl:text-base leading-[0.95] md:leading-[0.95] lg:leading-[0.95] 2xl:leading-[0.95] relative overflow-hidden group">
+                    {/* <Link scroll={false} legacyBehavior href="/sustainability"><a className="block text-[13px] md:text-[11px] lg:text-sm 2xl:text-base leading-[0.95] md:leading-[0.95] lg:leading-[0.95] 2xl:leading-[0.95] relative overflow-hidden group">
                       <m.span variants={revealDelayBottom} className="flex">
                         <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms] underline">Sustainability</span>
                         <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] underline -translate-y-full group-hover:translate-y-0">Sustainability</span>
@@ -498,7 +498,7 @@ export default function Menu(initialData) {
                 </div>
 
                 {/* <div className="grid-col-1 col-start-5">
-                  <Link legacyBehavior href="/">
+                  <Link scroll={false} legacyBehavior href="/">
                     <a className="mb-1 md:mb-0 block w-[45px] md:w-[60px] ml-auto relative overflow-hidden">
                       <m.svg variants={revealDelayBottom} className="block w-full" viewBox="0 0 111 53" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M16.9088 52.2402C27.7683 52.2402 33.8176 45.9723 33.8176 34.0924V0H23.4682V34.8212C23.4682 39.9959 21.5733 42.9112 16.9088 42.9112C12.3172 42.9112 10.3493 40.4332 10.3493 34.4568H0C0 46.3367 6.3408 52.2402 16.9088 52.2402Z" fill="#212121"/>

@@ -33,7 +33,7 @@ export default function WorkCarousel({ work, currentCat, currentType }) {
     <>
     <div className="grid grid-cols-9" id="sticky">
       <div className="fixed top-0 left-0 w-[85vw] md:w-[66.75vw]" data-scroll data-scroll-sticky data-scroll-target="#sticky">
-      <Link href={`/work/${work[current].slug.current}`}>
+      <Link scroll={false} href={`/work/${work[current].slug.current}`}>
         <a className="h-screen flex-col flex-wrap relative p-3 hidden md:flex group">  
           <div className="hidden md:flex w-full pb-3 md:pt-[12vw] xl:pt-[7.5vw] 2xl:pt-[5vw]">
             

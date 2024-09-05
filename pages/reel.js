@@ -294,7 +294,7 @@ export default function Menu(initialData) {
                       </Link>
                     </li> */}
                     <li className="hidden md:block border-b border-black">
-                      <Link href="/work">
+                      <Link href="/">
                         <a
                           onMouseEnter={() => updateCurrentHover('work')}
                           onMouseLeave={() => updateCurrentHover(null)}
@@ -364,7 +364,7 @@ export default function Menu(initialData) {
 
 
                     <li className="block md:hidden border-b border-black">
-                      <Link href="/work">
+                      <Link href="/">
                         <a
                           className="text-6xl md:text-[7vw] xl:text-[6vw] 2xl:text-[5.5vw] leading-[0.92] md:leading-[0.92] xl:leading-[0.92] 2xl:leading-[0.92] font-sans uppercase block relative overflow-hidden group"
                         >

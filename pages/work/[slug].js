@@ -329,13 +329,13 @@ export default function WorkSlug(initialData) {
                 <div className="p-3">
                   <div className="flex border-b border-black pb-3 text-sm md:text-base">
                     <span className="block">More Work</span>
-                    <Link legacyBehaviour href="/work"><a className="block underline text-right ml-auto">Back To Gallery</a></Link>
+                    <Link scroll={false} legacyBehaviour href="/"><a className="block underline text-right ml-auto">Back To Gallery</a></Link>
                   </div>
                   { moreWork.length > 2 ? (
                     <>
                       {moreWork.map((e, i) => {
                         return (
-                          <Link legacyBehaviour href={`/work/${e.slug.current}`} key={i}>
+                          <Link scroll={false} legacyBehaviour href={`/work/${e.slug.current}`} key={i}>
                             <a className={`flex items-center w-full border-b border-black py-3 group overflow-hidden relative ${i == 1 ? 'md:text-right md:justify-end' : '' }`}>
                               <div className={`w-[30%] max-w-[330px] md:w-[16.5%] md:max-w-[230px] min-h-[18vw] md:min-h-[9vw] xl:min-h-[8.4vw] bg-gray-100 relative overflow-hidden ${ i == 1 ? 'md:order-2' : 'order-1' }`}>
                                 <Image
@@ -365,7 +365,7 @@ export default function WorkSlug(initialData) {
                     <>
                       {moreWorkLoop.map((e, i) => {
                         return (
-                          <Link href={`/work/${e.slug.current}`} key={i}>
+                          <Link scroll={false} href={`/work/${e.slug.current}`} key={i}>
                             <a className={`flex items-center w-full border-b border-black py-3 group ${i == 1 ? 'md:text-right md:justify-end' : '' }`}>
                               <div className={`w-[25%] max-w-[330px] md:w-[16.5%] md:max-w-[230px] min-h-[14vw] md:min-h-[9vw] xl:min-h-[8.4vw] bg-gray-100 relative overflow-hidden ${ i == 1 ? 'md:order-2' : 'md:order-1' }`}>
                                 <Image
