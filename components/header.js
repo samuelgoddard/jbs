@@ -35,7 +35,7 @@ export default function Header({ light }) {
       {/* <div className="flex flex-wrap relative" data-scroll data-scroll-sticky data-scroll-target="#scroll-container"> */}
       <div className="flex flex-wrap relative">
         <Link scroll={false} legacyBehavior href="/">
-          <a className={`mb-1 md:mb-0 block w-[60px] overflow-hidden transition-all ease-in-out duration-300 fixed top-3 left-3 ${router.asPath == '/studio' ? 'text-white' : 'text-black' } ${ router.asPath == '/' ? 'opacity-0' : 'delay-[600ms]' }`}>
+          <a className={`mb-1 md:mb-0 block w-[60px] overflow-hidden transition-all ease-in-out duration-300 fixed top-3 left-3 ${router.asPath == '/studio' ? 'text-white' : 'text-black' } ${ router.asPath == '/' || router.asPath.includes('/cat') ? 'opacity-0' : 'delay-[600ms]' }`}>
             <m.div variants={revealDelay}>
               <svg className="w-full" viewBox="0 0 111 53" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M16.9088 52.2402C27.7683 52.2402 33.8176 45.9723 33.8176 34.0924V0H23.4682V34.8212C23.4682 39.9959 21.5733 42.9112 16.9088 42.9112C12.3172 42.9112 10.3493 40.4332 10.3493 34.4568H0C0 46.3367 6.3408 52.2402 16.9088 52.2402Z" fill="currentColor"/>

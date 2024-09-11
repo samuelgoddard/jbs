@@ -45,9 +45,8 @@ const query = `{
       }
     }
   },
-  "work": *[_type == "work"] | order(orderRank, asc) {
+  "work": *[_type == "work" && categoryNew->slug.current == $slug] | order(orderRank, asc) {
     title,
-    category,
     categoryNew-> {
       title,
       slug {
@@ -102,6 +101,12 @@ const query = `{
       current
     }
   },
+  "currentCat": *[_type == "category" && slug.current == $slug][0]{
+    title,
+    slug {
+      current
+    }
+  },
   "contact": *[_type == "contact"][0]{
     email,
     socials[] {
@@ -114,7 +119,7 @@ const query = `{
 const pageService = new SanityPageService(query)
 
 export default function Home(initialData) {
-  const { data: { home, contact, menu, work, cats } } = pageService.getPreviewHook(initialData)()
+  const { data: { home, contact, menu, work, cats, currentCat } } = pageService.getPreviewHook(initialData)()
   const [reelContext, setReelContext] = useContext(ReelContext)
   const [introContext, setIntroContext] = useContext(IntroContext);
   const [filtersActive, setFiltersActive] = useState(false);
@@ -243,20 +248,22 @@ export default function Home(initialData) {
                                 <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">All</span>
                                 <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0">All</span>
                               </span>
-                              <span className="block absolute inset-0 rounded-[130%] border-white border skew-y-[-5deg] scale-y-[1] scale-x-[1.075]"></span>
+                              {/* <span className="block absolute inset-0 rounded-[130%] border-white border skew-y-[-5deg] scale-y-[1] scale-x-[1.075]"></span> */}
                             </a>
                           </Link>
                         </li>
                         {cats.map((e, i) => {
                           return (
-                            <li className="block">
+                            <li className="block" key={i}>
                               <Link scroll={false} legacyBehavior href={`/cat/${e.slug.current}`}>
                                 <a className="block uppercase px-2.5 lg:px-3.5 py-2 lg:py-3.5 relative group">
                                   <span className="relative overflow-hidden block">
                                     <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">{e.title}</span>
                                     <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0">{e.title}</span>
                                   </span>
-                                  {/* <span className="block absolute inset-0 rounded-[130%] border-white border skew-y-[-5deg] scale-y-[1] scale-x-[1.075]"></span> */}
+                                  {e.slug.current == currentCat.slug.current && (
+                                    <span className="block absolute inset-0 rounded-[130%] border-white border skew-y-[-5deg] scale-y-[1] scale-x-[1.075]"></span>
+                                  )}
                                 </a>
                               </Link>
                             </li>
@@ -414,9 +421,16 @@ export default function Home(initialData) {
 }
 
 export async function getStaticProps(context) {
-  const cms = await pageService.fetchQuery(context)
-
+  const props = await pageService.fetchQuery(context)
   return {
-    props: { ...cms }
-  }
+    props
+  };
+}
+
+export async function getStaticPaths() {
+  const paths = await pageService.fetchPaths('category')
+  return {
+    paths: paths,
+    fallback: false,
+  };
 }

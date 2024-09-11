@@ -1,28 +1,20 @@
 import { useEffect, useRef } from "react";
 // import { useLocomotiveScroll } from "react-locomotive-scroll";
-import { m } from 'framer-motion'
+import { m, useMotionValueEvent, useScroll } from 'framer-motion'
 import { revealDelay } from "@/helpers/transitions";
-import { isMobile } from 'react-device-detect';
+import { isMobile } from "react-device-detect";
 
 export default function StudioTitle({ id }) {
-  // const { scroll } = useLocomotiveScroll()
+  const { scrollYProgress } = useScroll()
   const scaleElement = useRef(null);
-  let progress = 0;
 
-  // useEffect(() => {
-  //   if (scroll && !isMobile) {
-  //     scroll.on('scroll', (args) => {
-  //       if (typeof args.currentElements[id] === 'object') {
-  //         let progress = args.currentElements[id].progress
-  //         if (progress > 0.66) {
-  //           scaleElement.current.style.transform = `translate(-68%, 0)`
-  //         } else if (progress < 0.66) {
-  //           scaleElement.current.style.transform = `translate(0, 0)`
-  //         }
-  //       }
-  //     })
-  //   }
-  // }, [scroll, progress])
+  useMotionValueEvent(scrollYProgress, "change", (latest) => {
+    if (!isMobile && latest > 0.05) {
+      scaleElement.current.style.transform = `translate(-68%, 0)`
+    } else {
+      scaleElement.current.style.transform = `translate(0, 0)`
+    }
+  })
 
   return (
     <div data-scroll data-scroll-id={id}>
