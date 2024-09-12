@@ -102,11 +102,6 @@ const query = `{
         current
       }
     },
-    type,
-    year,
-    type,
-    campaignTitle,
-    location,
     teaserImage {
       asset-> {
         ...,
@@ -130,15 +125,6 @@ const query = `{
         x,
         y
       },
-    },
-    slug {
-      current
-    },
-    seo {
-      ...,
-      shareGraphic {
-        asset->
-      }
     }
   },
   "menu": *[_type == "menu"][0]{
@@ -236,11 +222,7 @@ export default function Home(initialData) {
   
   let newWork = []
   
-  newWork = [...work, ...snapshots];
-
-  let work1 = newWork.splice(0, work.length / 3);
-  let work2 = newWork.splice(0, work.length / 3);
-  let work3 = newWork.splice(0, work.length / 3);
+  newWork = [...work, ...snapshots]
 
   return (
     <Layout>
