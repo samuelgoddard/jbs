@@ -130,7 +130,8 @@ const query = `{
   "menu": *[_type == "menu"][0]{
     reelUrl,
   },
-  "cats": *[_type == "category"]{
+  "cats": *[_type == "category"] | order(orderRank, asc){
+    orderRank,
     title,
     slug {
       current
