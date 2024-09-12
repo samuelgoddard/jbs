@@ -16,6 +16,7 @@ import StudioTitle from '@/components/studio-title'
 import { IntroContext } from '@/context/intro'
 import ScrollBoundFlicker from '@/components/scroll-bound-flicker'
 import {PortableText} from '@portabletext/react'
+import BodyRenderer from '@/components/body-renderer'
 
 const query = `{
   "studio": *[_type == "studio"][0]{
@@ -46,6 +47,76 @@ const query = `{
         y
       }
     },
+    contentBlocks[] {
+    ...,
+    image {
+      asset-> {
+        ...
+      },
+      overrideVideo {
+        asset-> {
+          ...
+        }
+      },
+      overrideVimeoVideo,
+      alt,
+      caption
+    },
+    image1 {
+      asset-> {
+        ...
+      },
+      overrideVideo {
+        asset-> {
+          ...
+        }
+      },
+      overrideVimeoVideo,
+      alt,
+      caption
+    },
+    image2 {
+      asset-> {
+        ...
+      },
+      overrideVideo {
+        asset-> {
+          ...
+        }
+      },
+      overrideVimeoVideo,
+      alt,
+      caption
+    },
+    images[] {
+      asset-> {
+        ...
+      },
+      overrideVideo {
+        asset-> {
+          ...
+        }
+      },
+      overrideVimeoVideo,
+      alt,
+      caption
+    },
+    items[] {
+      ...,
+      image {
+        asset-> {
+          ...
+        },
+        overrideVideo {
+          asset-> {
+            ...
+          }
+        },
+        alt,
+        caption
+      },
+    }
+  },
     teamMembers[] {
       name,
       jobTitle,
@@ -221,6 +292,8 @@ export default function Studio(initialData) {
                         )
                       )}
                     </div>
+
+                    <BodyRenderer body={studio.contentBlocks} />
 
 
                     <div className="grid grid-cols-9 gap-3 mt-[20vw] md:mt-0">

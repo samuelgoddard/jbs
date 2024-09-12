@@ -11,6 +11,8 @@ import { NewsletterContext } from '@/context/newsletter'
 import { ReelContext } from '@/context/reel'
 import Footer from '@/components/footer'
 import { useLenis } from '@studio-freight/react-lenis'
+import { Masonry } from '@mui/lab';
+
 
 const query = `{
   "home": *[_type == "home"][0]{
@@ -308,13 +310,20 @@ export default function Home(initialData) {
                 </div>
               </div>
 
-              <m.main className="grid grid-cols-1 md:grid-cols-3 mb-[20vw] md:mb-[10vw]">
-                <div className="col-span-1 relative overflow-hidden">
-                  {work1.map((e, i) => {
-                    return (
+              <m.main className="mb-[20vw] md:mb-[10vw]">
+                <Masonry columns={{ xs: 1, md:2, lg:3 }} spacing={0} classes="!gap-0">
+                  {work.map((e, i) => {
+                    let aspect = 'aspect-auto'
+
+                    e.teaserImageThumbnail.overrideVideoAspectRatio == '169' && (aspect = '!aspect-[16/9]')
+                    e.teaserImageThumbnail.overrideVideoAspectRatio == '45' && (aspect = '!aspect-[4/5]')
+                    e.teaserImageThumbnail.overrideVideoAspectRatio == '916' && (aspect = '!aspect-[9/16]')
+                    e.teaserImageThumbnail.overrideVideoAspectRatio == '11' && (aspect = '!aspect-[1/1]')
+
+                    return e.slug ? (
                       <Link scroll={false} legacyBehavior href={`/work/${e.slug.current}`} key={i}>
-                        <a className="relative overflow-hidden block cursor-pointer" variants={scaleDelay}>
-                          <div className={`transition-all ease-custom duration-[600ms] opacity-100 group`}>
+                        <a className={`relative overflow-hidden block cursor-pointer ${aspect}`} variants={scaleDelay}>
+                          <div className={`transition-all ease-custom duration-[600ms] opacity-100 group h-full`}>
                             <div className="absolute inset-0 w-full h-full bg-[rgba(0,0,0,0.8)] z-[20] flex flex-wrap opacity-0 group-hover:opacity-100 transition-opacity ease-in-out duration-[400ms] text-white p-2">
                               <div className="w-full">
                                 <h2 className="text-[8vw] md:text-[3vw] leading-none block mb-1">{e.title}</h2>
@@ -328,87 +337,38 @@ export default function Home(initialData) {
                               </div>
                             </div>
                             
-                            <m.div variants={scaleDelay}>
-                              <div className="scale-[1.05]">
+                            <m.div variants={scaleDelay} className="h-full">
+                              <div className="scale-[1.05] h-full">
                                 <Image 
+                                  layout={e.teaserImageThumbnail.overrideVideoAspectRatio ? 'fill' : 'responsive'}
                                   image={e.teaserImageThumbnail}
-                                  widthOverride={700}
-                                  className={`block w-full`}
+                                  widthOverride={800}
+                                  className={e.teaserImageThumbnail.overrideVideoAspectRatio ? 'w-full h-full absolute inset-0 object-center' : 'block w-full' }
                                 />
                               </div>
                             </m.div>
                           </div>
                         </a>
                       </Link>
-                    )
-                  })}
-                </div>
-                <div className="col-span-1 relative overflow-hidden">
-                {work2.map((e, i) => {
-                    return (
-                      <Link scroll={false} legacyBehavior href={`/work/${e.slug.current}`} key={i}>
-                        <a className="relative overflow-hidden block cursor-pointer">
-                          <div className={`transition-all ease-custom duration-[600ms] opacity-100 group`}>
-                            <div className="absolute inset-0 w-full h-full bg-[rgba(0,0,0,0.8)] z-[20] flex flex-wrap opacity-0 group-hover:opacity-100 transition-opacity ease-in-out duration-[400ms] text-white p-2">
-                              <div className="w-full">
-                                <h2 className="text-[8vw] md:text-[3vw] leading-none block mb-1">{e.title}</h2>
-                                <h2 className="text-[3vw] md:text-[1.5vw] leading-none">{e.campaignTitle}</h2>
-                              </div>
-
-                              <div className="w-full mt-auto">
-                                <span className="block text-xs leading-none mb-1">JBS.0{work1.length + (i+1)}</span>
-                                <span className="block text-xs leading-none">{e.type}, {e.categoryNew?.title}, {e.location}</span>
-                                <span className="block text-xs leading-none">{e.year}</span>
-                              </div>
+                    ) : (
+                      <div className="relative overflow-hidden block cursor-pointer" variants={scaleDelay}>
+                        <div className={`transition-all ease-custom duration-[600ms] opacity-100 group aspect-square`}>
+                          
+                          <m.div variants={scaleDelay}>
+                            <div className="scale-[1.05]">
+                              <Image 
+                                layout={e.teaserImageThumbnail.overrideVideoAspectRatio ? 'fill' : 'responsive'}
+                                  image={e.teaserImageThumbnail}
+                                  widthOverride={800}
+                                  className={e.teaserImageThumbnail.overrideVideoAspectRatio ? 'w-full h-full absolute inset-0 object-center' : 'block w-full' }
+                              />
                             </div>
-                            <m.div variants={scaleDelay}>
-                              <div className="scale-[1.05]">
-                                <Image 
-                                  image={e.teaserImageThumbnail}
-                                  widthOverride={700}
-                                  className={`block w-full`}
-                                />
-                              </div>
-                            </m.div>
-                          </div>
-                        </a>
-                      </Link>
+                          </m.div>
+                        </div>
+                      </div>
                     )
                   })}
-                </div>
-                <div className="col-span-1 relative overflow-hidden">
-                  {work3.map((e, i) => {
-                    return (
-                      <Link scroll={false} legacyBehavior href={`/work/${e.slug.current}`} key={i}>
-                        <a className="relative overflow-hidden block cursor-pointer">
-                          <div className={`transition-all ease-custom duration-[600ms] opacity-100 group`}>
-                            <div className="absolute inset-0 w-full h-full bg-[rgba(0,0,0,0.8)] z-[20] flex flex-wrap opacity-0 group-hover:opacity-100 transition-opacity ease-in-out duration-[400ms] text-white p-2">
-                              <div className="w-full">
-                                <h2 className="text-[8vw] md:text-[3vw] leading-none block mb-1">{e.title}</h2>
-                                <h2 className="text-[3vw] md:text-[1.5vw] leading-none">{e.campaignTitle}</h2>
-                              </div>
-
-                              <div className="w-full mt-auto">
-                                <span className="block text-xs leading-none mb-1">JBS.0{work1.length + work2.length + (i+1)}</span>
-                                <span className="block text-xs leading-none">{e.type}, {e.categoryNew?.title}, {e.location}</span>
-                                <span className="block text-xs leading-none">{e.year}</span>
-                              </div>
-                            </div>
-                            <m.div variants={scaleDelay}>
-                              <div className="scale-[1.05]">
-                                <Image 
-                                  image={e.teaserImageThumbnail}
-                                  widthOverride={700}
-                                  className={`block w-full`}
-                                />
-                              </div>
-                            </m.div>
-                          </div>
-                        </a>
-                      </Link>
-                    )
-                  })}
-                </div>
+                </Masonry>
               </m.main>
             </m.div>
 
