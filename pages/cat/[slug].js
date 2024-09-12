@@ -94,6 +94,53 @@ const query = `{
       }
     }
   },
+  "snapshots": *[_type == "snapshot" && categoryNew->slug.current == $slug] | order(orderRank, asc) {
+    title,
+    categoryNew-> {
+      title,
+      slug {
+        current
+      }
+    },
+    type,
+    year,
+    type,
+    campaignTitle,
+    location,
+    teaserImage {
+      asset-> {
+        ...,
+      },
+      overrideVimeoVideo,
+      caption,
+      alt,
+      hotspot {
+        x,
+        y
+      },
+    },
+    teaserImageThumbnail {
+      asset-> {
+        ...,
+      },
+      overrideVimeoVideo,
+      caption,
+      alt,
+      hotspot {
+        x,
+        y
+      },
+    },
+    slug {
+      current
+    },
+    seo {
+      ...,
+      shareGraphic {
+        asset->
+      }
+    }
+  },
   "menu": *[_type == "menu"][0]{
     reelUrl,
   },
@@ -121,7 +168,7 @@ const query = `{
 const pageService = new SanityPageService(query)
 
 export default function Home(initialData) {
-  const { data: { home, contact, menu, work, cats, currentCat } } = pageService.getPreviewHook(initialData)()
+  const { data: { home, contact, menu, work, snapshots, cats, currentCat } } = pageService.getPreviewHook(initialData)()
   const [reelContext, setReelContext] = useContext(ReelContext)
   const [introContext, setIntroContext] = useContext(IntroContext);
   const [filtersActive, setFiltersActive] = useState(false);
@@ -189,7 +236,7 @@ export default function Home(initialData) {
   
   let newWork = []
   
-  newWork = [...work];
+  newWork = [...work, ...snapshots];
 
   let work1 = newWork.splice(0, work.length / 3);
   let work2 = newWork.splice(0, work.length / 3);
@@ -312,7 +359,7 @@ export default function Home(initialData) {
 
               <m.main className="mb-[20vw] md:mb-[10vw]">
                 <Masonry columns={{ xs: 1, md:2, lg:3 }} spacing={0} classes="!gap-0">
-                  {work.map((e, i) => {
+                  {newWork.map((e, i) => {
                     let aspect = 'aspect-auto'
 
                     e.teaserImageThumbnail.overrideVideoAspectRatio == '169' && (aspect = '!aspect-[16/9]')
