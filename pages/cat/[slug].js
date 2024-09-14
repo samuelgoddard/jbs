@@ -345,10 +345,10 @@ export default function Home(initialData) {
                   {newWork.map((e, i) => {
                     let aspect = 'aspect-auto'
 
-                    e.teaserImageThumbnail.overrideVideoAspectRatio == '169' && (aspect = '!aspect-[16/9]')
-                    e.teaserImageThumbnail.overrideVideoAspectRatio == '45' && (aspect = '!aspect-[4/5]')
-                    e.teaserImageThumbnail.overrideVideoAspectRatio == '916' && (aspect = '!aspect-[9/16]')
-                    e.teaserImageThumbnail.overrideVideoAspectRatio == '11' && (aspect = '!aspect-[1/1]')
+                    e.teaserImageThumbnail?.overrideVideoAspectRatio == '169' && (aspect = '!aspect-[16/9]')
+                    e.teaserImageThumbnail?.overrideVideoAspectRatio == '45' && (aspect = '!aspect-[4/5]')
+                    e.teaserImageThumbnail?.overrideVideoAspectRatio == '916' && (aspect = '!aspect-[9/16]')
+                    e.teaserImageThumbnail?.overrideVideoAspectRatio == '11' && (aspect = '!aspect-[1/1]')
 
                     return e.slug ? (
                       <Link scroll={false} legacyBehavior href={`/work/${e.slug.current}`} key={i}>
@@ -369,12 +369,14 @@ export default function Home(initialData) {
                             
                             <m.div variants={scaleDelay} className="h-full">
                               <div className="scale-[1.05] h-full">
+                              {e.teaserImageThumbnail && (
                                 <Image 
                                   layout={e.teaserImageThumbnail.overrideVideoAspectRatio ? 'fill' : 'responsive'}
                                   image={e.teaserImageThumbnail}
                                   widthOverride={800}
                                   className={e.teaserImageThumbnail.overrideVideoAspectRatio ? 'w-full h-full absolute inset-0 object-center' : 'block w-full' }
                                 />
+                                )}
                               </div>
                             </m.div>
                           </div>
@@ -386,12 +388,14 @@ export default function Home(initialData) {
                           
                           <m.div variants={scaleDelay}>
                             <div className="scale-[1.05]">
-                              <Image 
-                                layout={e.teaserImageThumbnail.overrideVideoAspectRatio ? 'fill' : 'responsive'}
-                                  image={e.teaserImageThumbnail}
-                                  widthOverride={800}
-                                  className={e.teaserImageThumbnail.overrideVideoAspectRatio ? 'w-full h-full absolute inset-0 object-center' : 'block w-full' }
-                              />
+                              {e.teaserImageThumbnail && (
+                                <Image 
+                                  layout={e.teaserImageThumbnail.overrideVideoAspectRatio ? 'fill' : 'responsive'}
+                                    image={e.teaserImageThumbnail}
+                                    widthOverride={800}
+                                    className={e.teaserImageThumbnail.overrideVideoAspectRatio ? 'w-full h-full absolute inset-0 object-center' : 'block w-full' }
+                                />
+                              )}
                             </div>
                           </m.div>
                         </div>
