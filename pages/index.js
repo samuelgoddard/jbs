@@ -364,7 +364,7 @@ export default function Home(initialData) {
 
                     return e.slug ? (
                       <Link scroll={false} legacyBehavior href={`/work/${e.slug.current}`} key={i}>
-                        <a className={`relative overflow-hidden block cursor-pointer ${aspect}`} variants={scaleDelay}>
+                        <a className={`relative overflow-hidden block cursor-pointer ${aspect} item`} variants={scaleDelay}>
                           <div className={`transition-all ease-custom duration-[600ms] opacity-100 group h-full`}>
                             <div className="absolute inset-0 w-full h-full bg-[rgba(0,0,0,0.8)] z-[20] flex flex-wrap opacity-0 group-hover:opacity-100 transition-opacity ease-in-out duration-[400ms] text-white p-2">
                               <div className="w-full">
@@ -379,7 +379,7 @@ export default function Home(initialData) {
                               </div>
                             </div>
                             
-                            <m.div variants={scaleDelay} className="h-full">
+                            <div className={`h-full ${aspect} item`}>
                               <div className="scale-[1.05] h-full">
                                 { e.teaserImageThumbnail && (
                                   <Image 
@@ -390,22 +390,22 @@ export default function Home(initialData) {
                                   />
                                 )}
                               </div>
-                            </m.div>
+                            </div>
                           </div>
                         </a>
                       </Link>
                     ) : (
                       <div className="relative overflow-hidden block cursor-pointer" variants={scaleDelay}>
-                        <div className={`transition-all ease-custom duration-[600ms] opacity-100 group aspect-square`}>
+                        <div className={`transition-all ease-custom duration-[600ms] opacity-100 group item`}>
                           
                           <m.div variants={scaleDelay}>
                             <div className="scale-[1.05]">
                               {e.teaserImageThumbnail && (
                                 <Image 
                                   layout={e.teaserImageThumbnail.overrideVideoAspectRatio ? 'fill' : 'responsive'}
-                                    image={e.teaserImageThumbnail}
-                                    widthOverride={900}
-                                    className={e.teaserImageThumbnail.overrideVideoAspectRatio ? 'w-full h-full absolute inset-0 object-center' : 'block w-full' }
+                                  image={e.teaserImageThumbnail}
+                                  widthOverride={900}
+                                  className={e.teaserImageThumbnail.overrideVideoAspectRatio ? 'w-full h-full absolute inset-0 object-center' : 'block w-full' }
                                 />
                               )}
                             </div>

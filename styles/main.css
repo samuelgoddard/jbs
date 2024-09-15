@@ -153,3 +153,9 @@ body {
     }
   }
 }
+
+.item {
+  & > div { 
+    @apply h-full;
+  }
+}

@@ -384,7 +384,7 @@ export default function Home(initialData) {
                       </Link>
                     ) : (
                       <div className="relative overflow-hidden block cursor-pointer" variants={scaleDelay}>
-                        <div className={`transition-all ease-custom duration-[600ms] opacity-100 group aspect-square`}>
+                        <div className={`transition-all ease-custom duration-[600ms] opacity-100 group item`}>
                           
                           <m.div variants={scaleDelay}>
                             <div className="scale-[1.05]">
