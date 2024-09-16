@@ -47,8 +47,14 @@ const query = `{
       }
     }
   },
-  "work": *[_type == "work" && categoryNew->slug.current == $slug] | order(orderRank, asc) {
+  "work": *[_type == "work" && $slug in categoryMulti[]->slug.current] | order(orderRank, asc) {
     title,
+    categoryMulti[]-> {
+      title,
+      slug {
+        current
+      }
+    },
     categoryNew-> {
       title,
       slug {
@@ -94,8 +100,14 @@ const query = `{
       }
     }
   },
-  "snapshots": *[_type == "snapshot" && categoryNew->slug.current == $slug] | order(orderRank, asc) {
+  "snapshots": *[_type == "snapshot" && $slug in categoryMulti[]->slug.current] | order(orderRank, asc) {
     title,
+    categoryMulti[]-> {
+      title,
+      slug {
+        current
+      }
+    },
     categoryNew-> {
       title,
       slug {

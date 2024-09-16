@@ -42,6 +42,12 @@ const query = `{
     gridItems[]-> {
       title,
       category,
+      categoryMulti[]-> {
+        title,
+        slug {
+          current
+        }
+      },
       categoryNew-> {
         title,
         slug {
@@ -374,7 +380,7 @@ export default function Home(initialData) {
 
                               <div className="w-full mt-auto">
                                 <span className="block text-xs leading-none mb-1">JBS.0{i+1}</span>
-                                <span className="block text-xs leading-none">{e.type}, {e.categoryNew?.title}, {e.location}</span>
+                                <span className="block text-xs leading-none">{e.type}, {e.categoryMulti && e.categoryMulti[0].title}, {e.location}</span>
                                 <span className="block text-xs leading-none">{e.year}</span>
                               </div>
                             </div>
