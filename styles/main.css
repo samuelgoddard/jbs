@@ -24,7 +24,7 @@ body {
 
   &::-webkit-scrollbar {
     display: none;
-  }
+  } 
 }
 
 .cover-image {
