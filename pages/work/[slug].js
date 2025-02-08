@@ -10,6 +10,7 @@ import Link from 'next/link'
 import Carousel from '@/components/carousel'
 import BodyRenderer from '@/components/body-renderer'
 import { IntroContext } from '@/context/intro'
+import { NewsletterContentContext } from '@/context/newsletter-content'
 
 const query = `*[_type == "work" && slug.current == $slug][0]{
   title,
@@ -164,19 +165,45 @@ const query = `*[_type == "work" && slug.current == $slug][0]{
       title,
       url
     }
+  },
+  "menu": *[_type == "menu"][0]{
+    email,
+    newsletterHeading,
+    newsletterText,
+    newsletterImage {
+      asset-> {
+        ...
+      },
+      caption,
+      alt,
+      hotspot {
+        x,
+        y
+      }
+    },
+    socials[] {
+      title,
+      url
+    }
   }
 }`
 
 const pageService = new SanityPageService(query)
 
 export default function WorkSlug(initialData) {
-  const { data: { title, heroCarouselImages, moreWork, moreWorkLoop, location, year, campaignTitle, tags, credits, contact, contentBlocks, type, seo }  } = pageService.getPreviewHook(initialData)()
+  const { data: { title, heroCarouselImages, moreWork, moreWorkLoop, location, year, campaignTitle, tags, credits, contact, contentBlocks, type, seo, menu }  } = pageService.getPreviewHook(initialData)()
 
   const containerRef = useRef(null)
   const [introContext, setIntroContext] = useContext(IntroContext);
+  const [newsletterContentContext, setNewsletterContentContext] = useContext(NewsletterContentContext);
 
   useEffect(() => {
     setIntroContext(true)
+    setNewsletterContentContext({
+      heading: menu.newsletterHeading,
+      text: menu.newsletterText,
+      image: menu.newsletterImage
+    })
   },[]);
 
   return (

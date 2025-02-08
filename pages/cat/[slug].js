@@ -1,4 +1,4 @@
-import { useContext, useRef, useState } from 'react'
+import { useContext, useEffect, useRef, useState } from 'react'
 import Layout from '@/components/layout'
 import { fade, scaleDelay } from '@/helpers/transitions'
 import { LazyMotion, domAnimation, m, useScroll, useMotionValueEvent, AnimatePresence } from 'framer-motion'
@@ -12,6 +12,8 @@ import { ReelContext } from '@/context/reel'
 import Footer from '@/components/footer'
 import { useLenis } from '@studio-freight/react-lenis'
 import { Masonry } from '@mui/lab';
+import ConditionalWrap from 'conditional-wrap'
+import { NewsletterContentContext } from '@/context/newsletter-content'
 
 
 const query = `{
@@ -114,6 +116,11 @@ const query = `{
         current
       }
     },
+    workLink-> {
+      slug {
+        current
+      }
+    },
     teaserImage {
       asset-> {
         ...,
@@ -141,6 +148,19 @@ const query = `{
   },
   "menu": *[_type == "menu"][0]{
     reelUrl,
+    newsletterHeading,
+    newsletterText,
+    newsletterImage {
+      asset-> {
+        ...
+      },
+      caption,
+      alt,
+      hotspot {
+        x,
+        y
+      }
+    }
   },
   "cats": *[_type == "category"] | order(orderRank, asc){
     orderRank,
@@ -172,8 +192,18 @@ export default function Home(initialData) {
   const [introContext, setIntroContext] = useContext(IntroContext);
   const [filtersActive, setFiltersActive] = useState(false);
   const [newsletterContext, setNewsletterContext] = useContext(NewsletterContext);
+  const [newsletterContentContext, setNewsletterContentContext] = useContext(NewsletterContentContext);
+  
   const { scrollYProgress } = useScroll()
   const lenis = useLenis();
+
+  useEffect(() => {
+    setNewsletterContentContext({
+      heading: menu.newsletterHeading,
+      text: menu.newsletterText,
+      image: menu.newsletterImage
+    })
+  }, []);
 
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
     if (latest > 0.055) {
@@ -395,23 +425,34 @@ export default function Home(initialData) {
                         </a>
                       </Link>
                     ) : (
-                      <div className="relative overflow-hidden block cursor-pointer" variants={scaleDelay}>
-                        <div className={`transition-all ease-custom duration-[600ms] opacity-100 group item`}>
-                          
-                          <m.div variants={scaleDelay}>
-                            <div className="scale-[1.05]">
-                              {e.teaserImageThumbnail && (
-                                <Image 
-                                  layout={e.teaserImageThumbnail.overrideVideoAspectRatio ? 'fill' : 'responsive'}
-                                    image={e.teaserImageThumbnail}
-                                    widthOverride={800}
-                                    className={e.teaserImageThumbnail.overrideVideoAspectRatio ? 'w-full h-full absolute inset-0 object-center' : 'block w-full' }
-                                />
-                              )}
-                            </div>
-                          </m.div>
+                      <ConditionalWrap
+                        condition={!!e.workLink?.slug?.current}
+                        wrap={children => (
+                          <Link scroll={false} legacyBehavior href={`/work/${e.workLink.slug.current}`}>
+                            <a>
+                              {children}
+                            </a>
+                          </Link>
+                        )}
+                      >
+                        <div className="relative overflow-hidden block" variants={scaleDelay}>
+                          <div className={`transition-all ease-custom duration-[600ms] opacity-100 group item`}>
+                            
+                            <m.div variants={scaleDelay}>
+                              <div className="scale-[1.05]">
+                                {e.teaserImageThumbnail && (
+                                  <Image 
+                                    layout={e.teaserImageThumbnail.overrideVideoAspectRatio ? 'fill' : 'responsive'}
+                                      image={e.teaserImageThumbnail}
+                                      widthOverride={800}
+                                      className={e.teaserImageThumbnail.overrideVideoAspectRatio ? 'w-full h-full absolute inset-0 object-center' : 'block w-full' }
+                                  />
+                                )}
+                              </div>
+                            </m.div>
+                          </div>
                         </div>
-                      </div>
+                      </ConditionalWrap>
                     )
                   })}
                 </Masonry>

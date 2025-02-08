@@ -11,6 +11,7 @@ import { useRouter } from 'next/router'
 import Div100vh from 'react-div-100vh'
 import { NewsletterContext } from '@/context/newsletter'
 import { ReelContext } from '@/context/reel'
+import { NewsletterContentContext } from '@/context/newsletter-content'
 
 const query = `{
   "home": *[_type == "home"][0]{
@@ -28,6 +29,19 @@ const query = `{
   },
   "menu": *[_type == "menu"][0]{
     reelUrl,
+    newsletterHeading,
+    newsletterText,
+    newsletterImage {
+      asset-> {
+        ...
+      },
+      caption,
+      alt,
+      hotspot {
+        x,
+        y
+      }
+    },
     backgroundImage {
       asset-> {
         ...
@@ -120,6 +134,7 @@ export default function Menu(initialData) {
   const [introContext, setIntroContext] = useContext(IntroContext);
   const router = useRouter()
   const [newsletterContext, setNewsletterContext] = useContext(NewsletterContext);
+  const [newsletterContentContext, setNewsletterContentContext] = useContext(NewsletterContentContext);
 
   const newsletterToggle = () => {
     if (newsletterContext) {
@@ -129,9 +144,13 @@ export default function Menu(initialData) {
     }
   }
 
-
   useEffect(() => {
     setIntroContext(true)
+    setNewsletterContentContext({
+      heading: menu.newsletterHeading,
+      text: menu.newsletterText,
+      image: menu.newsletterImage
+    })
   },[]);
 
   const updateCurrentHover = (value) => {
@@ -191,7 +210,7 @@ export default function Menu(initialData) {
             <m.main className="">
               <div className="fixed left-0 top-0 bottom-0 w-[43vw] z-0 overflow-hidden hidden md:block">
                 <m.div variants={scaleDelay} className="absolute inset-0 w-full h-full z-0 object-cover object-center bg-gray-200">
-                  <div className={`transition-all ease-custom duration-[450ms] ${(currentHover == 'work' || currentHover == 'studio' || currentHover == 'home' || currentHover == 'reel' || currentHover == 'insta') ? 'opacity-0 scale-1' : 'scale-1 opacity-100' }`}>
+                  {/* <div className={`transition-all ease-custom duration-[450ms] ${(currentHover == 'work' || currentHover == 'studio' || currentHover == 'home' || currentHover == 'reel' || currentHover == 'insta') ? 'opacity-0 scale-1' : 'scale-1 opacity-100' }`}>
                     <Image 
                       image={menu.backgroundImage}
                       focalPoint={menu.backgroundImage.hotspot}
@@ -227,7 +246,7 @@ export default function Menu(initialData) {
                       widthOverride={1200}
                       className={`absolute inset-0 w-full h-full z-0 object-cover object-center`}
                     />
-                  </div>
+                  </div> */}
                   {/* <div className={`transition-all ease-custom duration-[450ms] ${currentHover == 'sustainability' ? 'opacity-100 scale-1' : 'scale-1 opacity-0' }`}>
                     <Image 
                       image={menu.sustainabilityBackgroundImage}
@@ -237,7 +256,7 @@ export default function Menu(initialData) {
                       className={`absolute inset-0 w-full h-full z-0 object-cover object-center`}
                     />
                   </div> */}
-                  <div className={`transition-all ease-custom duration-[450ms] ${currentHover == 'insta' ? 'opacity-100 scale-1' : 'scale-1 opacity-0' }`}>
+                  {/* <div className={`transition-all ease-custom duration-[450ms] ${currentHover == 'insta' ? 'opacity-100 scale-1' : 'scale-1 opacity-0' }`}>
                     <Image 
                       image={menu.reelBackgroundImage}
                       focalPoint={menu.reelBackgroundImage.hotspot}
@@ -254,7 +273,7 @@ export default function Menu(initialData) {
                       widthOverride={1200}
                       className={`absolute inset-0 w-full h-full z-0 object-cover object-center' }`}
                     />
-                  </div>
+                  </div> */}
                 </m.div>
 
                 <div className="w-1/2 h-1/4 bg-white absolute top-0 right-0"></div>

@@ -32,6 +32,12 @@ body {
     @apply object-cover object-center;
   }
 }
+
+.force-top {
+  & img {
+    @apply object-cover object-[50%_15%];
+  }
+}
 /* 
 .home-image-mobile {
 

@@ -17,6 +17,7 @@ import { IntroContext } from '@/context/intro'
 import ScrollBoundFlicker from '@/components/scroll-bound-flicker'
 import {PortableText} from '@portabletext/react'
 import BodyRenderer from '@/components/body-renderer'
+import { NewsletterContentContext } from '@/context/newsletter-content'
 
 const query = `{
   "studio": *[_type == "studio"][0]{
@@ -139,6 +140,21 @@ const query = `{
       }
     }
   },
+  "menu": *[_type == "menu"][0] {
+    newsletterHeading,
+    newsletterText,
+    newsletterImage {
+      asset-> {
+        ...
+      },
+      caption,
+      alt,
+      hotspot {
+        x,
+        y
+      }
+    }
+  },
   "contact": *[_type == "contact"][0]{
     email,
     socials[] {
@@ -151,9 +167,18 @@ const query = `{
 const pageService = new SanityPageService(query)
 
 export default function Studio(initialData) {
-  const { data: { studio, contact } } = pageService.getPreviewHook(initialData)()
+  const { data: { studio, contact, menu } } = pageService.getPreviewHook(initialData)()
   const containerRef = useRef(null)
   const [introContext, setIntroContext] = useContext(IntroContext);
+  const [newsletterContentContext, setNewsletterContentContext] = useContext(NewsletterContentContext);
+
+  useEffect(() => {
+    setNewsletterContentContext({
+      heading: menu.newsletterHeading,
+      text: menu.newsletterText,
+      image: menu.newsletterImage
+    })
+  },[]);
 
   useEffect(() => {
     setIntroContext(true)
@@ -234,7 +259,7 @@ export default function Studio(initialData) {
                       </>
                     )}
 
-                    <div className="grid grid-cols-9 gap-3 gap-y-12 md:gap-x-3 md:gap-y-20 xl:gap-y-24 mb-12 md:mb-28 xl:mb-32 2xl:mb-48">
+                    {/* <div className="grid grid-cols-9 gap-3 gap-y-12 md:gap-x-3 md:gap-y-20 xl:gap-y-24 mb-12 md:mb-28 xl:mb-32 2xl:mb-48">
                       {studio.teamMembers.map((e, i) =>
                         i == 2 ? (
                           <Fragment key={i}>
@@ -291,7 +316,7 @@ export default function Studio(initialData) {
                           </Fragment>
                         )
                       )}
-                    </div>
+                    </div> */}
 
                     <BodyRenderer body={studio.contentBlocks} />
 
