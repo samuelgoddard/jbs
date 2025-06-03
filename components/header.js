@@ -120,14 +120,16 @@ export default function Header({ light }) {
               </li>
               
               <li className="block">
-                <a href={`mailto:jason@jasonbaileystudio.com`}
-                  className="text-lg/none lg:text-xl/none xl:text-2xl/none font-sans uppercase block relative overflow-hidden group"
-                >
-                  <m.span variants={revealDelay} className="block relative overflow-hidden">
-                    <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">Contact</span>
-                    <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0">Contact</span>
-                  </m.span>
-                </a>
+                <Link scroll={false} legacyBehavior href="/contact">
+                  <a className="text-lg/none lg:text-xl/none xl:text-2xl/none font-sans uppercase block relative group">
+                    <m.span variants={revealDelay} className="block relative overflow-hidden">
+                      <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">Contact</span>
+                      <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0">Contact</span>
+                    </m.span>
+                    
+                    <span className={`block absolute bottom-[-12px] left-[40%] text-[19px]/none transition ease-in-out ${router.asPath == '/contact' ? 'opacity-100 delay-[600ms] duration-[450ms]' : 'opacity-0 duration-[250ms]' }`}>▴</span>
+                  </a>
+                </Link>
               </li>
             </ul>
           </nav>
