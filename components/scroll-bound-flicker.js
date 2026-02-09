@@ -21,9 +21,9 @@ export default function ScrollBoundFlicker({ images, id }) {
   let progress = 0;
 
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    if (latest > 0.15) {
+    if (latest > 0.05) {
       scaleElement2.current.style.transform = `translate(0, 0)`
-    } else if (latest < 0.15) {
+    } else if (latest < 0.05) {
       scaleElement2.current.style.transform = `translate(0, -100%)`
       scaleElement3.current.style.transform = `translate(0, -100%)`
       scaleElement4.current.style.transform = `translate(0, -100%)`
@@ -37,9 +37,9 @@ export default function ScrollBoundFlicker({ images, id }) {
       scaleElement12.current.style.transform = `translate(0, -100%)`
     }
 
-    if (latest > 0.17) {
+    if (latest > 0.06) {
       scaleElement3.current.style.transform = `translate(0, 0)`
-    } else if (latest < 0.17) {
+    } else if (latest < 0.06) {
       scaleElement3.current.style.transform = `translate(0, -100%)`
       scaleElement4.current.style.transform = `translate(0, -100%)`
       scaleElement5.current.style.transform = `translate(0, -100%)`
@@ -66,9 +66,9 @@ export default function ScrollBoundFlicker({ images, id }) {
       scaleElement12.current.style.transform = `translate(0, -100%)`
     }
 
-    if (latest > 0.21) {
+    if (latest > 0.07) {
       scaleElement5.current.style.transform = `translate(0, 0)`
-    } else if (latest < 0.21) {
+    } else if (latest < 0.07) {
       scaleElement5.current.style.transform = `translate(0, -100%)`
       scaleElement6.current.style.transform = `translate(0, -100%)`
       scaleElement7.current.style.transform = `translate(0, -100%)`
@@ -79,9 +79,9 @@ export default function ScrollBoundFlicker({ images, id }) {
       scaleElement12.current.style.transform = `translate(0, -100%)`
     }
 
-    if (latest > 0.23) {
+    if (latest > 0.08) {
       scaleElement6.current.style.transform = `translate(0, 0)`
-    } else if (latest < 0.23) {
+    } else if (latest < 0.08) {
       scaleElement6.current.style.transform = `translate(0, -100%)`
       scaleElement7.current.style.transform = `translate(0, -100%)`
       scaleElement8.current.style.transform = `translate(0, -100%)`
@@ -91,9 +91,9 @@ export default function ScrollBoundFlicker({ images, id }) {
       scaleElement12.current.style.transform = `translate(0, -100%)`
     }
 
-    if (latest > 0.25) {
+    if (latest > 0.09) {
       scaleElement7.current.style.transform = `translate(0, 0)`
-    } else if (latest < 0.25) {
+    } else if (latest < 0.09) {
       scaleElement7.current.style.transform = `translate(0, -100%)`
       scaleElement8.current.style.transform = `translate(0, -100%)`
       scaleElement9.current.style.transform = `translate(0, -100%)`
@@ -102,9 +102,9 @@ export default function ScrollBoundFlicker({ images, id }) {
       scaleElement12.current.style.transform = `translate(0, -100%)`
     }
 
-    if (latest > 0.27) {
+    if (latest > 0.10) {
       scaleElement8.current.style.transform = `translate(0, 0)`
-    } else if (latest < 0.27) {
+    } else if (latest < 0.10) {
       scaleElement8.current.style.transform = `translate(0, -100%)`
       scaleElement9.current.style.transform = `translate(0, -100%)`
       scaleElement10.current.style.transform = `translate(0, -100%)`
@@ -112,33 +112,33 @@ export default function ScrollBoundFlicker({ images, id }) {
       scaleElement12.current.style.transform = `translate(0, -100%)`
     }
 
-    if (latest > 0.28) {
+    if (latest > 0.11) {
       scaleElement9.current.style.transform = `translate(0, 0)`
-    } else if (latest < 0.28) {
+    } else if (latest < 0.11) {
       scaleElement9.current.style.transform = `translate(0, -100%)`
       scaleElement10.current.style.transform = `translate(0, -100%)`
       scaleElement11.current.style.transform = `translate(0, -100%)`
       scaleElement12.current.style.transform = `translate(0, -100%)`
     }
 
-    if (latest > 0.30) {
+    if (latest > 0.12) {
       scaleElement10.current.style.transform = `translate(0, 0)`
-    } else if (latest < 0.30) {
+    } else if (latest < 0.12) {
       scaleElement10.current.style.transform = `translate(0, -100%)`
       scaleElement11.current.style.transform = `translate(0, -100%)`
       scaleElement12.current.style.transform = `translate(0, -100%)`
     }
 
-    if (latest > 0.32) {
+    if (latest > 0.13) {
       scaleElement11.current.style.transform = `translate(0, 0)`
-    } else if (latest < 0.32) {
+    } else if (latest < 0.13) {
       scaleElement11.current.style.transform = `translate(0, -100%)`
       scaleElement12.current.style.transform = `translate(0, -100%)`
     }
 
-    if (latest > 0.34) {
+    if (latest > 0.14) {
       scaleElement12.current.style.transform = `translate(0, 0)`
-    } else if (latest < 0.34) {
+    } else if (latest < 0.14) {
       scaleElement12.current.style.transform = `translate(0, -100%)`
     }
   })
