@@ -318,7 +318,36 @@ export default function Studio(initialData) {
                       )}
                     </div> */}
 
+                    <div className="flex flex-wrap mt-12 mx-[61px] md:mx-[37px] mb-12">
+                      <div className="w-full block md:px-6">
+                        <p><strong className="font-bold underline">Representation</strong><br/>
+                        Laird and Good Company</p>
+                        <hr className="border-b border-black border-t-0 pb-3 mb-3" />
+                      </div>
+                        <p className="w-full block mb-8 lg:mb-0 md:w-1/2 lg:w-1/3 md:px-6 break-words">
+                        <strong className="font-bold underline">UK, Europe + ROW</strong><br/>
+                        Biddy Marquis-Henninger<br/>
+                        E <a className="underline" href="mailto:biddy@lairdandgoodcompany.com">biddy@lairdandgoodcompany.com</a><br/>
+                        T <a className="underline" href="tel:+442045254313">+44 (0) 20 4525 4313</a><br/>
+                        M <a className="underline" href="tel:+447950248829">+44 (0) 7950 248 829</a>
+                      </p>
+                      <p className="w-full block mb-8 lg:mb-0 md:w-1/2 lg:w-1/3 md:px-6 break-words">
+                        <strong className="font-bold underline">United States</strong><br/>
+                        Kenna Zimmer<br/>
+                        E <a className="underline" href="mailto:kenna@lairdandgoodcompany.com">kenna@lairdandgoodcompany.com</a><br/>
+                        T <a className="underline" href="tel:+12123344280">+1 212 334 4280</a><br/>
+                        M <a className="underline" href="tel:+16466100047">+1 646 610 0047</a>
+                      </p>
+                      <p className="w-full block mb-8 lg:mb-0 md:w-1/2 lg:w-1/3 md:px-6 break-words">
+                        <strong className="font-bold underline">Studio - London, UK</strong><br/>
+                        Jason Bailey<br/>
+                        E <a className="underline" href="mailto:jason@jasonbaileystudio.com">jason@jasonbaileystudio.com</a><br/>
+                        T <a className="underline" href="tel:+447907655617">+44 (0)7907655617</a>
+                      </p>
+                    </div>
+
                     <BodyRenderer body={studio.contentBlocks} />
+                    
 
 
                     <div className="grid grid-cols-9 gap-3 mt-[20vw] md:mt-0">

@@ -304,22 +304,22 @@ export default function Menu(initialData) {
                           className="text-6xl md:text-[6vw] xl:text-[5vw] 2xl:text-[4.5vw] leading-[0.92] md:leading-[0.92] xl:leading-[0.92] 2xl:leading-[0.92] font-sans uppercase block relative overflow-hidden group"
                         >
                           <m.span variants={revealDelay} className="block relative mt-2 mb-3 overflow-hidden">
-                            <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">Work</span>
-                            <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0 text-orange">Work</span>
+                            <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">Photo+Motion</span>
+                            <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0 text-orange">Photo+Motion</span>
                           </m.span>
                         </a>
                       </Link>
                     </li>
                     <li className="hidden md:block border-b border-black">
-                      <Link scroll={false} legacyBehavior href="/studio">
+                      <Link scroll={false} legacyBehavior href="/film">
                         <a
                           onMouseEnter={() => updateCurrentHover('studio')}
                           onMouseLeave={() => updateCurrentHover(null)}
                           className="text-6xl md:text-[6vw] xl:text-[5vw] 2xl:text-[4.5vw] leading-[0.92] md:leading-[0.92] xl:leading-[0.92] 2xl:leading-[0.92] font-sans uppercase block relative overflow-hidden group"
                         >
                           <m.span variants={revealDelay} className="block relative mt-2 mb-3 overflow-hidden">
-                            <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">Studio</span>
-                            <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0 text-orange">Studio</span>
+                            <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">Film+Narrative</span>
+                            <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0 text-orange">Film+Narrative</span>
                           </m.span>
                         </a>
                       </Link>
@@ -354,18 +354,6 @@ export default function Menu(initialData) {
                       </a>
                     </li>
                     <li className="hidden md:block border-b border-black">
-                      <a href={`mailto:${contact.email}`}
-                        onMouseEnter={() => updateCurrentHover('home')}
-                        onMouseLeave={() => updateCurrentHover(null)}
-                        className="text-6xl md:text-[6vw] xl:text-[5vw] 2xl:text-[4.5vw] leading-[0.92] md:leading-[0.92] xl:leading-[0.92] 2xl:leading-[0.92] font-sans uppercase block relative overflow-hidden group"
-                      >
-                        <m.span variants={revealDelay} className="block relative mt-2 mb-3 overflow-hidden">
-                          <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">Email</span>
-                          <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0 text-orange">Email</span>
-                        </m.span>
-                      </a>
-                    </li>
-                    <li className="hidden md:block border-b border-black">
                         <button
                           onMouseEnter={() => updateCurrentHover('reel')}
                           onMouseLeave={() => updateCurrentHover(null)}
@@ -378,28 +366,42 @@ export default function Menu(initialData) {
                           </m.span>
                         </button>
                     </li>
+                    <li className="hidden md:block border-b border-black">
+                      <Link scroll={false} legacyBehavior href="/studio">
+                        <a
+                          onMouseEnter={() => updateCurrentHover('studio')}
+                          onMouseLeave={() => updateCurrentHover(null)}
+                          className="text-6xl md:text-[6vw] xl:text-[5vw] 2xl:text-[4.5vw] leading-[0.92] md:leading-[0.92] xl:leading-[0.92] 2xl:leading-[0.92] font-sans uppercase block relative overflow-hidden group"
+                        >
+                          <m.span variants={revealDelay} className="block relative mt-2 mb-3 overflow-hidden">
+                            <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">About+Contact</span>
+                            <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0 text-orange">About+Contact</span>
+                          </m.span>
+                        </a>
+                      </Link>
+                    </li>
 
 
                     <li className="block md:hidden border-b border-black">
                       <Link scroll={false} legacyBehavior href="/">
                         <a
-                          className="text-[13.3vw] md:text-[6vw] xl:text-[5vw] 2xl:text-[4.5vw] leading-[0.92] md:leading-[0.92] xl:leading-[0.92] 2xl:leading-[0.92] font-sans uppercase block relative overflow-hidden group"
+                          className="text-[12vw] md:text-[6vw] xl:text-[5vw] 2xl:text-[4.5vw] leading-[0.92] md:leading-[0.92] xl:leading-[0.92] 2xl:leading-[0.92] font-sans uppercase block relative overflow-hidden group"
                         >
                           <m.span variants={revealDelay} className="block relative mt-2 mb-3 overflow-hidden">
-                            <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">Work</span>
-                            <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0 text-orange">Work</span>
+                            <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">Photo+Motion</span>
+                            <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0 text-orange">Photo+Motion</span>
                           </m.span>
                         </a>
                       </Link>
                     </li>
                     <li className="block md:hidden border-b border-black">
-                      <Link scroll={false} legacyBehavior href="/studio">
+                      <Link scroll={false} legacyBehavior href="/film">
                         <a
-                          className="text-[13.3vw] md:text-[6vw] xl:text-[5vw] 2xl:text-[4.5vw] leading-[0.92] md:leading-[0.92] xl:leading-[0.92] 2xl:leading-[0.92] font-sans uppercase block relative overflow-hidden group"
+                          className="text-[12vw] md:text-[6vw] xl:text-[5vw] 2xl:text-[4.5vw] leading-[0.92] md:leading-[0.92] xl:leading-[0.92] 2xl:leading-[0.92] font-sans uppercase block relative overflow-hidden group"
                         >
                           <m.span variants={revealDelay} className="block relative mt-2 mb-3 overflow-hidden">
-                            <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">Studio</span>
-                            <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0 text-orange">Studio</span>
+                            <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">Film+Narrative</span>
+                            <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0 text-orange">Film+Narrative</span>
                           </m.span>
                         </a>
                       </Link>
@@ -407,7 +409,7 @@ export default function Menu(initialData) {
                     {/* <li className="block md:hidden border-b border-black">
                       <Link scroll={false} legacyBehavior href="/sustainability">
                         <a
-                          className="text-[13.3vw] md:text-[6vw] xl:text-[5vw] 2xl:text-[4.5vw] leading-[0.92] md:leading-[0.92] xl:leading-[0.92] 2xl:leading-[0.92] font-sans uppercase block relative overflow-hidden group"
+                          className="text-[12vw] md:text-[6vw] xl:text-[5vw] 2xl:text-[4.5vw] leading-[0.92] md:leading-[0.92] xl:leading-[0.92] 2xl:leading-[0.92] font-sans uppercase block relative overflow-hidden group"
                         >
                           <m.span variants={revealDelay} className="block relative mt-2 mb-3 overflow-hidden">
                             <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">Sustainability</span>
@@ -421,7 +423,7 @@ export default function Menu(initialData) {
                         target="_blank"
                         rel="noopener noreferrer"
                         href="https://www.instagram.com/jasonbaileystudio"
-                        className="text-[13.3vw] md:text-[6vw] xl:text-[5vw] 2xl:text-[4.5vw] leading-[0.92] md:leading-[0.92] xl:leading-[0.92] 2xl:leading-[0.92] font-sans uppercase block relative overflow-hidden group"
+                        className="text-[12vw] md:text-[6vw] xl:text-[5vw] 2xl:text-[4.5vw] leading-[0.92] md:leading-[0.92] xl:leading-[0.92] 2xl:leading-[0.92] font-sans uppercase block relative overflow-hidden group"
                       >
                         <m.span variants={revealDelay} className="block relative mt-2 mb-3 overflow-hidden">
                           <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">Insta</span>
@@ -429,20 +431,20 @@ export default function Menu(initialData) {
                         </m.span>
                       </a>
                     </li>
-                    <li className="block md:hidden border-b border-black">
+                    {/* <li className="block md:hidden border-b border-black">
                         <a href={`mailto:${contact.email}`}
-                          className="text-[13.3vw] md:text-[6vw] xl:text-[5vw] 2xl:text-[4.5vw] leading-[0.92] md:leading-[0.92] xl:leading-[0.92] 2xl:leading-[0.92] font-sans uppercase block relative overflow-hidden group"
+                          className="text-[12vw] md:text-[6vw] xl:text-[5vw] 2xl:text-[4.5vw] leading-[0.92] md:leading-[0.92] xl:leading-[0.92] 2xl:leading-[0.92] font-sans uppercase block relative overflow-hidden group"
                         >
                           <m.span variants={revealDelay} className="block relative mt-2 mb-3 overflow-hidden">
                             <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">Email</span>
                             <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0 text-orange">Email</span>
                           </m.span>
                         </a>
-                    </li>
+                    </li> */}
                     <li className="block md:hidden border-b border-black">
                       <button
                           onClick={() => setReelContext(!reelContext)}
-                          className="text-[13.3vw] md:text-[6vw] xl:text-[5vw] 2xl:text-[4.5vw] leading-[0.92] md:leading-[0.92] xl:leading-[0.92] 2xl:leading-[0.92] font-sans uppercase block relative overflow-hidden group"
+                          className="text-[12vw] md:text-[6vw] xl:text-[5vw] 2xl:text-[4.5vw] leading-[0.92] md:leading-[0.92] xl:leading-[0.92] 2xl:leading-[0.92] font-sans uppercase block relative overflow-hidden group"
                         >
                           <m.span variants={revealDelay} className="block relative mt-2 mb-3 overflow-hidden">
                             <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">Reel</span>
@@ -451,18 +453,17 @@ export default function Menu(initialData) {
                         </button>
                     </li>
                     <li className="block md:hidden border-b border-black">
-                      <Link scroll={false} legacyBehavior href="/contact">
+                      <Link scroll={false} legacyBehavior href="/studio">
                         <a
-                          className="text-[13.3vw] md:text-[6vw] xl:text-[5vw] 2xl:text-[4.5vw] leading-[0.92] md:leading-[0.92] xl:leading-[0.92] 2xl:leading-[0.92] font-sans uppercase block relative overflow-hidden group"
+                          className="text-[12vw] md:text-[6vw] xl:text-[5vw] 2xl:text-[4.5vw] leading-[0.92] md:leading-[0.92] xl:leading-[0.92] 2xl:leading-[0.92] font-sans uppercase block relative overflow-hidden group"
                         >
                           <m.span variants={revealDelay} className="block relative mt-2 mb-3 overflow-hidden">
-                            <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">Contact</span>
-                            <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0 text-orange">Contact</span>
+                            <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">About+Contact</span>
+                            <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0 text-orange">About+Contact</span>
                           </m.span>
                         </a>
                       </Link>
                     </li>
-
                   </ul>
                 </nav>
               </div>

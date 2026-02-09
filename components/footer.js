@@ -56,14 +56,20 @@ export default function Footer({ contact }) {
         <div className="col-span-1 col-start-2 hidden md:block">
           <Link legacyBehavior href="/">
             <a className="block text-[10px] md:text-[11px] lg:text-[13px] 2xl:text-[13px] leading-[0.95] md:leading-[0.95] lg:leading-[0.95] 2xl:leading-[0.95] underline mb-1 relative overflow-hidden group">
-              <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">Work</span>
-              <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0 underline">Work</span>
+              <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">Photo+Motion</span>
+              <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0 underline">Photo+Motion</span>
+            </a>
+          </Link>
+          <Link legacyBehavior href="/film">
+            <a className="block text-[10px] md:text-[11px] lg:text-[13px] 2xl:text-[13px] leading-[0.95] md:leading-[0.95] lg:leading-[0.95] 2xl:leading-[0.95] underline mb-1 relative overflow-hidden group">
+              <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">Film+Narrative</span>
+              <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0 underline">Film+Narrative</span>
             </a>
           </Link>
           <Link legacyBehavior href="/studio">
             <a className="block text-[10px] md:text-[11px] lg:text-[13px] 2xl:text-[13px] leading-[0.95] md:leading-[0.95] lg:leading-[0.95] 2xl:leading-[0.95] underline mb-1 relative overflow-hidden group">
-              <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">Studio</span>
-              <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0 underline">Studio</span>
+              <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">About+Contact</span>
+              <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0 underline">About+Contact</span>
             </a>
           </Link>
           
@@ -83,12 +89,12 @@ export default function Footer({ contact }) {
         </div>
 
         <div className="col-span-3 xl:col-span-2 col-start-3 xl:col-start-3 -ml-6 md:ml-0 md:col-start-3 xl:col-start-4 block md:flex md:space-x-4">
-          <Link legacyBehavior href="/contact">
+          {/* <Link legacyBehavior href="/contact">
             <a className="text-lg md:text-lg xl:text-xl 2xl:text-2xl leading-[1.1] md:leading-[1.1] xl:leading-[1.1] 2xl:leading-[1.1] font-sans uppercase relative group overflow-hidden hidden md:block">
               <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">Contact</span>
               <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0 text-orange">Contact</span>  
             </a>
-          </Link>
+          </Link> */}
           
           <a href="https://shiftwalk.studio" target="_blank" rel="noopener noreferrer" className="block text-[10px] md:text-[11px] lg:text-[13px] 2xl:text-[13px] leading-[0.95] md:leading-[0.95] lg:leading-[0.95] 2xl:leading-[0.95] relative overflow-hidden group block md:hidden ml-[4px] whitespace-nowrap mb-1 md:mb-0">
               <span className="block">Site By <span className="underline">ShiftWalk</span></span>
