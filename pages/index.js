@@ -209,11 +209,11 @@ export default function Home(initialData) {
   }, []);
 
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    if (latest > 0.055) {
+    if (latest > 0.025) {
       setFiltersActive(true)
     }
     
-    if (latest < 0.055) {
+    if (latest < 0.025) {
       setFiltersActive(false)
     }
 
