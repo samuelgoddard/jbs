@@ -90,7 +90,7 @@ export default function Sustainability(initialData) {
                       
                       <div className="pt-[80px] md:pt-[12vw] lg:pt-[10vw] pb-[50px] md:pb-[6vw]">
                         <span className="block leading-none text-xs md:text-xl md:leading-none font-mono mx-auto text-center mb-4 md:mb-5 lg:mb-8">Film + Narrative</span>
-                        <h1 className="text-[10vw] md:text-[8vw] leading-[0.86] md:leading-[0.86] mt-auto w-auto px-3 mx-auto text-center max-w-[80%] mb-6 md:mb-10">
+                        <h1 className="text-[13vw] md:text-[8vw] leading-[0.86] md:leading-[0.86] mt-auto w-auto px-3 mx-auto text-center max-w-[80%] mb-6 md:mb-10">
                         Boutique Creative + Premium Production
                         </h1>
 
