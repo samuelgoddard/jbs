@@ -10,6 +10,7 @@ import ScrollBoundImage from '@/components/scroll-bound-image'
 import { IntroContext } from '@/context/intro'
 import {PortableText} from '@portabletext/react'
 import Link from 'next/link'
+import ModularTextBlock from '@/components/modular-text-block'
 
 const query = `{
   "filmNarrative": *[_type == "filmNarrative"][0]{
@@ -25,22 +26,27 @@ const query = `{
         y
       },
     },
-    films[]-> {
-      title,
-      slug {
-        current
-      },
-      teaserImage {
-        asset-> {
-          ...
+    films[] {
+      film -> {
+        title,
+        slug {
+          current
         },
-        caption,
-        alt,
-        hotspot {
-          x,
-          y
+        teaserImage {
+          asset-> {
+            ...,
+            caption,
+            alt,
+            hotspot {
+              x,
+              y
+            }
+          },
         }
-      }
+      },
+      showJBSIconBadge,
+      containWidth,
+      text
     },
     seo {
       ...,
@@ -99,27 +105,42 @@ export default function Sustainability(initialData) {
 
 
                       {filmNarrative.films.map((film, index) => (
-                        <div key={index}>
-                          <Link scroll={false} href={`/work/${film.slug?.current}`}>
-                            <a className="w-full h-[80vw] md:h-[75vw] xl:h-[66vw] max-h-[1300px] relative overflow-hidden flex flex-wrap flex-col group">
-                              <div className={`grid grid-cols-9 flex-1 h-full relative overflow-hidden ${index == 0 && 'pt-[38px] md:pt-[100px]'} ${index == 1 && 'pb-[38px] md:pb-[100px]'} ${index == 2 && 'pt-[38px] md:pt-[100px]'} ${index == 3 && 'pb-[38px] md:pb-[100px]'}`}>
+                        <div className="grid grid-cols-12" key={index} >
+                          <div className={`col-span-12 ${film.containWidth && 'md:col-span-10 md:col-start-2'}`}>
+                            <div className={`relative ${(index == 0 && film.showJBSIconBadge) && 'pt-[38px] md:pt-[100px]'} ${(index == 1 && film.showJBSIconBadge) && 'pb-[38px] md:pb-[100px]'} ${(index == 2 && film.showJBSIconBadge) && 'pt-[38px] md:pt-[100px]'} ${(index == 3 && film.showJBSIconBadge) && 'pb-[38px] md:pb-[100px]'}`}>
+
+                              {film.showJBSIconBadge && (
                                 <div
                                   data-scroll
                                   data-scroll-speed={-0.5}
-                                  className={`absolute inset-0 w-full h-full z-[10] flex px-12 ${index == 0 && 'justify-start'} ${index == 1 && 'justify-end items-end'}`}
+                                  className={`absolute inset-0 w-full h-full z-[10] px-12 flex ${(index == 0 && film.showJBSIconBadge) && 'justify-start'} ${(index == 1 && film.showJBSIconBadge) && 'justify-end items-end hidden md:flex'} ${(index == 2 && film.showJBSIconBadge) && 'justify-start'} ${(index == 3 && film.showJBSIconBadge) && 'justify-end items-end hidden md:flex'}`}
                                 >
                                   <div className={`w-[20vw] h-[20vw] md:w-[15vw] md:h-[15vw] max-w-[220px] rounded-full`}>
                                     <img src="/images/badge.webp" alt="JBS Logo Badge" className="w-full" />
                                   </div>
                                 </div>
-                                <div className="relative overflow-hidden mb-auto col-span-9 h-full">
-                                  <m.div variants={scaleDelay} className="absolute inset-0 h-full object-cover object-center">
-                                    <ScrollBoundImage id="studio" image={film.teaserImage}  />
-                                  </m.div>
+                              )}
+
+                              <Link scroll={false} href={`/work/${film.film.slug?.current}`}>
+                                <a className="w-full aspect-video max-h-[1300px] relative overflow-hidden flex flex-wrap flex-col group">
+                                  <div className={`grid grid-cols-9 flex-1 h-full relative overflow-hidden`}>
+                                    <div className="relative overflow-hidden mb-auto col-span-9 h-full">
+                                      <m.div variants={scaleDelay} className="absolute inset-0 h-full object-cover object-center">
+                                        <ScrollBoundImage id="studio" image={film.film.teaserImage}  />
+                                      </m.div>
+                                    </div>
+                                  </div>
+                                </a>
+                              </Link>
+                            </div>
+                            {film.text && (
+                              <div className={`grid grid-cols-9 mb-12 md:mb-16 ${film.containWidth ? 'px-3 md:px-0 py-3' : 'p-3'} ${(index == 0 && film.showJBSIconBadge) && ''} ${(index == 1 && film.showJBSIconBadge) && '-mt-[38px] md:-mt-[100px]'} ${(index == 2 && film.showJBSIconBadge) && ''} ${(index == 3 && film.showJBSIconBadge) && '-mt-[38px] md:-mt-[100px]'}`}>
+                                <div className="col-span-9 md:col-span-6 max-w-[780px]">
+                                  <PortableText value={film.text}/>
                                 </div>
                               </div>
-                            </a>
-                          </Link>
+                            )}
+                          </div>
                         </div>
                       ))}
                     </div>
