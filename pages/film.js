@@ -64,6 +64,17 @@ const query = `{
       containWidth,
       text,
     },
+    logosImage {
+      asset-> {
+        ...,
+        caption,
+        alt,
+        hotspot {
+          x,
+          y
+        }
+      }
+    },
     imageGrid[] {
       asset-> {
         ...,
@@ -211,7 +222,7 @@ export default function Sustainability(initialData) {
                       </div>
                     </div>
 
-                    <div className="grid grid-cols-9 mb-20 md:mb-[6vw] xl:mb-[8vw] 2xl:mb-[8vw]">
+                    <div className="grid grid-cols-9 mb-12 md:mb-20">
                       <div className="col-span-9 md:col-span-7 col-start-1 md:col-start-2 text-center aspect-video relative overflow-hidden lg:mx-16">
                         <m.div variants={scaleDelay} className="absolute inset-0 h-full object-cover object-center">
                           <ScrollBoundImage id="laurels" image={filmNarrative.heroImage} />
@@ -219,6 +230,12 @@ export default function Sustainability(initialData) {
                       </div>
                     </div>
                   </div>
+
+                  <h2 className="text-center mx-auto mb-12 md:mb-20 text-xl md:text-2xl lg:text-3xl"><a href="https://www.allelsefollows.studio/" rel="noopener noreferrer" className="underline text-center" target="_blank">See more about Adam and Lucy here</a></h2>
+
+                  {filmNarrative.logosImage && (
+                    <Image image={filmNarrative.logosImage} className="w-full mb-6 px-3" />
+                  )}
 
                   <div className="grid grid-cols-12">
                     {filmNarrative.imageGrid?.map((image, index) => (

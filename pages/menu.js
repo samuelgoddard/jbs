@@ -353,7 +353,7 @@ export default function Menu(initialData) {
                         </m.span>
                       </a>
                     </li>
-                    <li className="hidden md:block border-b border-black">
+                    {/* <li className="hidden md:block border-b border-black">
                         <button
                           onMouseEnter={() => updateCurrentHover('reel')}
                           onMouseLeave={() => updateCurrentHover(null)}
@@ -365,7 +365,7 @@ export default function Menu(initialData) {
                             <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0 text-orange">Reel</span>
                           </m.span>
                         </button>
-                    </li>
+                    </li> */}
                     <li className="hidden md:block border-b border-black">
                       <Link scroll={false} legacyBehavior href="/studio">
                         <a
@@ -441,7 +441,7 @@ export default function Menu(initialData) {
                           </m.span>
                         </a>
                     </li> */}
-                    <li className="block md:hidden border-b border-black">
+                    {/* <li className="block md:hidden border-b border-black">
                       <button
                           onClick={() => setReelContext(!reelContext)}
                           className="text-[12vw] md:text-[6vw] xl:text-[5vw] 2xl:text-[4.5vw] leading-[0.92] md:leading-[0.92] xl:leading-[0.92] 2xl:leading-[0.92] font-sans uppercase block relative overflow-hidden group"
@@ -451,7 +451,7 @@ export default function Menu(initialData) {
                             <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0 text-orange">Reel</span>
                           </m.span>
                         </button>
-                    </li>
+                    </li> */}
                     <li className="block md:hidden border-b border-black">
                       <Link scroll={false} legacyBehavior href="/studio">
                         <a
