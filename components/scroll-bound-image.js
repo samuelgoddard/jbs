@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import Image from "@/components/image";
 import { useMotionValueEvent, useScroll } from "framer-motion";
 
-export default function ScrollBoundImage({ image }) {
+export default function ScrollBoundImage({ image, amount }) {
 
   const { scrollYProgress } = useScroll()
   const scaleElement = useRef(null);
@@ -10,7 +10,7 @@ export default function ScrollBoundImage({ image }) {
 
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
     const progress = latest
-    scaleElement.current.style.transform = `scale(${1 + latest / 2.5})`
+    scaleElement.current.style.transform = `scale(${1 + latest / (amount ? amount : 2.5)})`
   })
 
   // useEffect(() => {
