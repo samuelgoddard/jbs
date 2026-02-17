@@ -304,7 +304,7 @@ export default function Home(initialData) {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: '-100%' }}
                     transition={{ duration: 0.65, ease: [0.76, 0, 0.24, 1] }}
-                    className="fixed top-0 px-3 py-3 md:px-4 md:py-2 lg:px-5 lg:py-2 left-0 right-0 z-[100] flex text-white bg-gradient-to-b from-black/40 via-black/20 to-transparent text-sm/none md:text-base/none lg:text-lg/none xl:text-xl/none tracking-tighter uppercase"
+                    className="fixed top-0 px-3 py-3 md:px-4 md:py-2 lg:px-5 lg:py-2 left-0 right-0 z-[100] flex text-white bg-gradient-to-b from-black/80 via-black/50 to-transparent text-sm/none md:text-base/none lg:text-lg/none xl:text-xl/none tracking-tighter uppercase"
                   >
                     <button onClick={() => setReelContext(!reelContext)} className="uppercase hidden md:block group">
                       <span className="relative overflow-hidden block">
@@ -327,7 +327,7 @@ export default function Home(initialData) {
                           </Link>
                         </li>
                         {cats.map((e, i) => {
-                          return (
+                          return e.slug.current != 'narrative' && (
                             <li className="block" key={i}>
                               <Link scroll={false} legacyBehavior href={`/cat/${e.slug.current}`}>
                                 <a className="block uppercase px-2.5 lg:px-3.5 py-2 lg:py-3.5 relative group">
@@ -343,6 +343,16 @@ export default function Home(initialData) {
                             </li>
                           )
                         })}
+                        <li className="block">
+                          <Link scroll={false} legacyBehavior href={`/film`}>
+                            <a className="block uppercase px-2.5 lg:px-3.5 py-2 lg:py-3.5 relative group">
+                              <span className="relative overflow-hidden block">
+                                <span className="block group-hover:translate-y-full transition-transform ease-in-out duration-[450ms]">Film+Narrative</span>
+                                <span className="block absolute inset-0 transition-transform ease-in-out duration-[450ms] -translate-y-full group-hover:translate-y-0">Film+Narrative</span>
+                              </span>
+                            </a>
+                          </Link>
+                        </li>
                       </ul>
                     </nav>
 

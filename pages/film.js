@@ -132,7 +132,7 @@ export default function Sustainability(initialData) {
                   <div className="grid grid-cols-9 mb-12 md:mb-24 xl:mb-28 2xl:mb-40">
                     <div className="col-span-9">
                       
-                      <div className="pt-[80px] md:pt-[12vw] lg:pt-[10vw] pb-[50px] md:pb-[6vw]">
+                      <div className="pt-[80px] md:pt-[12vw] lg:pt-[10vw] pb-[75px] md:pb-[8vw]">
                         {filmNarrative.heroMetaText && (
                         <span className="block leading-none text-xs md:text-xl md:leading-none font-mono mx-auto text-center mb-4 md:mb-5 lg:mb-8">{filmNarrative.heroMetaText}</span>
                         )}
@@ -150,6 +150,11 @@ export default function Sustainability(initialData) {
 
                       <div className="grid grid-cols-12">
                         <div className="col-span-12 md:col-span-10 md:col-start-2 lg:col-span-8 lg:col-start-3 grid grid-cols-12 gap-4">
+                          
+                          <div className="col-span-12">
+                            <h2 className="text-[5.5vw] md:text-[3.5vw] leading-[0.86] md:leading-[0.86] text-center mx-auto mb-4 md:mb-6">Watch our latest releases</h2>
+                          </div>
+
                           {filmNarrative.films.map((film, index) => (
                               <div className={`col-span-12 md:col-span-6`} key={index}>
                                 <div className={`relative`}>
