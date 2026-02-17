@@ -31,6 +31,7 @@ const query = `{
     },
     bodyHeading,
     bodyText,
+    filmsHeading,
     films[] {
       film -> {
         title,
@@ -151,9 +152,11 @@ export default function Sustainability(initialData) {
                       <div className="grid grid-cols-12">
                         <div className="col-span-12 md:col-span-10 md:col-start-2 lg:col-span-8 lg:col-start-3 grid grid-cols-12 gap-4">
                           
-                          <div className="col-span-12">
-                            <h2 className="text-[5.5vw] md:text-[3.5vw] leading-[0.86] md:leading-[0.86] text-center mx-auto mb-4 md:mb-6">Watch our latest releases</h2>
-                          </div>
+                          {filmNarrative.filmsHeading && (
+                            <div className="col-span-12">
+                              <h2 className="text-[5.5vw] md:text-[3.5vw] leading-[0.86] md:leading-[0.86] text-center mx-auto mb-4 md:mb-6">{filmNarrative.filmsHeading}</h2>
+                            </div>
+                          )}
 
                           {filmNarrative.films.map((film, index) => (
                               <div className={`col-span-12 md:col-span-6`} key={index}>
