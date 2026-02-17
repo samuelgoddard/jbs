@@ -311,7 +311,7 @@ export default function Home(initialData) {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: '-100%' }}
                     transition={{ duration: 0.65, ease: [0.76, 0, 0.24, 1] }}
-                    className="fixed top-0 px-3 py-3 md:px-4 md:py-2 lg:px-5 lg:py-2 left-0 right-0 z-[100] flex text-white bg-gradient-to-b from-black/40 via-black/20 to-transparent text-sm/none md:text-base/none lg:text-lg/none xl:text-xl/none tracking-tighter uppercase"
+                    className="fixed top-0 px-3 py-3 md:px-4 md:py-2 lg:px-5 lg:py-2 left-0 right-0 z-[100] flex text-white bg-black text-sm/none md:text-base/none lg:text-lg/none xl:text-xl/none tracking-tighter uppercase"
                   >
                     <button onClick={() => setReelContext(!reelContext)} className="uppercase hidden md:block group">
                       <span className="relative overflow-hidden block">
