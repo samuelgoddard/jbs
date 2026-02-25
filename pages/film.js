@@ -77,8 +77,10 @@ const query = `{
       }
     },
     imageGrid[] {
+      externalLink,
       asset-> {
         ...,
+        externalLink,
         caption,
         alt,
         hotspot {
@@ -248,7 +250,13 @@ export default function Sustainability(initialData) {
                   <div className="grid grid-cols-12">
                     {filmNarrative.imageGrid?.map((image, index) => (
                       <div className="col-span-6 md:col-span-4 aspect-[16/10] relative overflow-hidden bg-black/10" key={index}>
-                        <Image image={image} layout="fill" className="w-full h-full object-cover object-center absolute inset-0" />
+                        {image.externalLink ? (
+                          <a href={image.externalLink} target="_blank" rel="noopener noreferrer" className="w-full h-full object-cover object-center absolute inset-0">
+                            <Image image={image} layout="fill" className="w-full h-full object-cover object-center absolute inset-0" />
+                          </a>
+                        ) : (
+                          <Image image={image} layout="fill" className="w-full h-full object-cover object-center absolute inset-0" />
+                        )}
                       </div>
                     ))}
                   </div>
