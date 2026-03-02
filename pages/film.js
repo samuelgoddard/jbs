@@ -89,6 +89,7 @@ const query = `{
         }
       }
     },
+    footerText,
     seo {
       ...,
       shareGraphic {
@@ -241,7 +242,11 @@ export default function Sustainability(initialData) {
                     </div>
                   </div>
 
-                  <h2 className="text-center mx-auto mb-12 md:mb-20 text-xl md:text-2xl lg:text-3xl"><a href="https://www.allelsefollows.studio/" rel="noopener noreferrer" className="underline text-center" target="_blank">See more about Adam and Lucy here</a></h2>
+                  {filmNarrative.footerText && (
+                    <h2 className="text-center mx-auto mb-12 md:mb-20 text-xl md:text-2xl lg:text-3xl max-w-[900px] px-3">
+                      <PortableText components={{ marks: { link: ({ children, value }) => <a href={value.href} className="underline hover:text-black/75 focus:text-black/75" target="_blank" rel="noopener noreferrer">{children}</a> } }} value={filmNarrative.footerText} />
+                    </h2>
+                  )}
 
                   {filmNarrative.logosImage && (
                     <Image image={filmNarrative.logosImage} className="w-full mb-6 px-3" />
@@ -251,7 +256,7 @@ export default function Sustainability(initialData) {
                     {filmNarrative.imageGrid?.map((image, index) => (
                       <div className="col-span-6 md:col-span-4 aspect-[16/10] relative overflow-hidden bg-black/10" key={index}>
                         {image.externalLink ? (
-                          <a href={image.externalLink} target="_blank" rel="noopener noreferrer" className="w-full h-full object-cover object-center absolute inset-0">
+                          <a href={image.externalLink.startsWith('http') ? image.externalLink : `https://${image.externalLink}`} target="_blank" rel="noopener noreferrer" className="w-full h-full object-cover object-center absolute inset-0">
                             <Image image={image} layout="fill" className="w-full h-full object-cover object-center absolute inset-0" />
                           </a>
                         ) : (

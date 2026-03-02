@@ -322,24 +322,11 @@ export default function WorkSlug(initialData) {
                   </div>
                 ) : (
                   <div className="mb-[12vw]">
-                    <div className={`embla`}>
-                      <div className="embla__viewport">
-                        <div className="embla__container">
-                          <div className="embla__slide" >
-                            <div className="embla__slide__inner">
-                              <div className="absolute inset-0">
-                                <Image
-                                  image={heroCarouselImages[0]}
-                                  layout="fill"
-                                  widthOverride={1920}
-                                  className="w-full"
-                                />
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                    <Image
+                      image={heroCarouselImages[0]}
+                      widthOverride={1920}
+                      className="w-full"
+                    />
                   </div>
                 )}
 
