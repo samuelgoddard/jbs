@@ -10,7 +10,8 @@ import ScrollBoundImage from '@/components/scroll-bound-image'
 import { IntroContext } from '@/context/intro'
 import {PortableText} from '@portabletext/react'
 import Link from 'next/link'
-import ModularTextBlock from '@/components/modular-text-block'
+
+import ModularVideoBlockResponsive from '@/components/modular-video-block-responsive'
 
 const query = `{
   "filmNarrative": *[_type == "filmNarrative"][0]{
@@ -22,6 +23,7 @@ const query = `{
       asset-> {
         ...
       },
+      overrideVimeoVideo,
       caption,
       alt,
       hotspot {
@@ -232,14 +234,23 @@ export default function Sustainability(initialData) {
                         )}
                       </div>
                     </div>
+                    {filmNarrative.heroImage.overrideVimeoVideo && (
+                      <div className="grid grid-cols-9 mb-12 md:mb-20">
+                      <div className="col-span-9 md:col-span-7 col-start-1 md:col-start-2 text-center relative overflow-hidden lg:mx-16">
+                        <ModularVideoBlockResponsive video={filmNarrative.heroImage.overrideVimeoVideo} />
+                        </div>
+                      </div>
+                    )}
 
-                    <div className="grid grid-cols-9 mb-12 md:mb-20">
+                    {!filmNarrative.heroImage.overrideVimeoVideo && ( 
+                      <div className="grid grid-cols-9 mb-12 md:mb-20">
                       <div className="col-span-9 md:col-span-7 col-start-1 md:col-start-2 text-center aspect-video relative overflow-hidden lg:mx-16">
                         <m.div variants={scaleDelay} className="absolute inset-0 h-full object-cover object-center">
-                          <ScrollBoundImage id="laurels" image={filmNarrative.heroImage} />
-                        </m.div>
+                            <ScrollBoundImage id="laurels" image={filmNarrative.heroImage} />
+                          </m.div>
+                        </div>
                       </div>
-                    </div>
+                    )}
                   </div>
 
                   {filmNarrative.footerText && (
