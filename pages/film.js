@@ -234,23 +234,14 @@ export default function Sustainability(initialData) {
                         )}
                       </div>
                     </div>
-                    {filmNarrative.heroImage.overrideVimeoVideo && (
-                      <div className="grid grid-cols-9 mb-12 md:mb-20">
-                      <div className="col-span-9 md:col-span-7 col-start-1 md:col-start-2 text-center relative overflow-hidden lg:mx-16">
-                        <ModularVideoBlockResponsive video={filmNarrative.heroImage.overrideVimeoVideo} />
-                        </div>
-                      </div>
-                    )}
 
-                    {!filmNarrative.heroImage.overrideVimeoVideo && ( 
-                      <div className="grid grid-cols-9 mb-12 md:mb-20">
-                      <div className="col-span-9 md:col-span-7 col-start-1 md:col-start-2 text-center aspect-video relative overflow-hidden lg:mx-16">
-                        <m.div variants={scaleDelay} className="absolute inset-0 h-full object-cover object-center">
-                            <ScrollBoundImage id="laurels" image={filmNarrative.heroImage} />
-                          </m.div>
-                        </div>
+                    <div className="grid grid-cols-9 mb-12 md:mb-20">
+                    <div className="col-span-9 md:col-span-7 col-start-1 md:col-start-2 text-center aspect-video relative overflow-hidden lg:mx-16">
+                      <m.div variants={scaleDelay} className="absolute inset-0 h-full object-cover object-center">
+                          <ScrollBoundImage id="laurels" image={filmNarrative.heroImage} />
+                        </m.div>
                       </div>
-                    )}
+                    </div>
                   </div>
 
                   {filmNarrative.footerText && (
